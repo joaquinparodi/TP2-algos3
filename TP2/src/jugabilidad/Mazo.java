@@ -10,6 +10,6 @@ public class Mazo {
 	private ArrayList<DeCampo> campos;
 	private ArrayList<Magica> magicas;
 	private ArrayList<Trampa> trampas;
-	private ArrayList<Cartas> cartas;
+	private ArrayList<Cartas> mazo;
 	
 }
