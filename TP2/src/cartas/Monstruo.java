@@ -2,14 +2,12 @@ package cartas;
 
 public class Monstruo implements Clase {
 	
-	Posicion posicionActual;
-	
-	public Monstruo() {
-		posicionActual = new PosicionAtaque();
+	public Posicion obtenerPosicionInicial() {
+		 return new PosicionAtaque();
 	}
 	
-	public void cambiarPosicion() {
-		posicionActual = posicionActual.cambiarPosicion();
+	public Posicion cambiarPosicion( Posicion posicion ) {
+		return posicion.cambiarPosicion();
 	}
 	
 }

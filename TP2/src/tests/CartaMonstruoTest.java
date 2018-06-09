@@ -9,6 +9,5 @@ class MonstruoTest {
 	@Test
 	void testMonstruoRecienCreadoTienePosicionDeAtaque() {
 		//Al cambiar la posicion, queda en posicion de defensa
+		
 	}
-
-44

@@ -1,15 +1,13 @@
 package cartas;
 
 public class Magica implements Clase {
-
-	Posicion posicionActual;
 	
-	public Magica () {
-		posicionActual = new PosicionAtaque();
+	public Posicion obtenerPosicionInicial() {
+		return new PosicionArriba();
 	}
 	
-	public void cambiarPosicion() {
-		posicionActual = posicionActual.cambiarPosicion();
+	public Posicion cambiarPosicion( Posicion posicion ) {
+		return posicion.cambiarPosicion();
 	}
 
 }

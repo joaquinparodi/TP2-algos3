@@ -2,6 +2,8 @@ package cartas;
 
 public interface Clase {
 	
-	public void cambiarPosicion();
+	public Posicion obtenerPosicionInicial();
+	
+	public Posicion cambiarPosicion( Posicion posicion );
 	
 }

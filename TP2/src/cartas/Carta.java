@@ -9,7 +9,14 @@ public abstract class Carta {
 	public Carta( String nombreDeLaCarta, Clase claseDeLaCarta ) {
 		nombre = nombreDeLaCarta;
 		clase = claseDeLaCarta;
-		//Falta inicializar posicionActual
+		posicionActual = clase.obtenerPosicionInicial();
 	}
 	
+	public void cambiarPosicion() {
+		posicionActual = clase.cambiarPosicion();
+	}
+	
+	private void mandarAlCemetenterio() {
+		
+	}
 }

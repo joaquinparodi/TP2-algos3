@@ -1,15 +1,13 @@
 package cartas;
 
 public class Trampa implements Clase {
-
-	Posicion posicionActual;
 	
-	public Campo () {
-		posicionActual = new PosicionAbajo();
+	public Posicion obtenerPosicionInicial() {
+		return new PosicionAbajo();
 	}
 	
-	public void cambiarPosicion() {
-		posicionActual = posicionActual.cambiarPosicion();
+	public Posicion cambiarPosicion( Posicion posicion ) {
+		return posicion.cambiarPosicion();
 	}
 	
 }
