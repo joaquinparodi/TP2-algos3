@@ -9,7 +9,7 @@ public class Magica implements Clase {
 	}
 	
 	public void cambiarPosicion() {
-		posicionActual = posicionActual.cambiarPoscion();
+		posicionActual = posicionActual.cambiarPosicion();
 	}
 
 }

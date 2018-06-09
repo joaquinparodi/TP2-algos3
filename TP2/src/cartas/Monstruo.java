@@ -1,24 +1,16 @@
 package cartas;
 
-public class Monstruo extends Carta {
+public class Monstruo implements Clase {
 	
-	private int puntosDeAtaque;
-	private int puntosDeDefensa;
-	private int nivel; // de 1 a 10 estrellas
-	private String efecto; // puede tenerlo o no
-	private String posicion; // posicion de ataque o defensa
-	private boolean atacoEsteTurno;
+	Posicion posicionActual;
 	
-	public Monstruo(int unAtaque, int unaDefensa, int unNivel, String unEfecto, String unNombre, String unaPosicion) {
-		puntosDeAtaque = unAtaque;
-		puntosDeDefensa = unaDefensa;
-		nivel = unNivel;
-		efecto = unEfecto;
-		nombre = unNombre;
-		posicion = unaPosicion;
-		atacoEsteTurno = false;
+	public Monstruo() {
+		posicionActual = new PosicionAtaque();
 	}
 	
+	public void cambiarPosicion() {
+		posicionActual = posicionActual.cambiarPosicion();
+	}
 	
-
 }
+

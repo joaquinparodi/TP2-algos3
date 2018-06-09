@@ -1,14 +1,15 @@
 package cartas;
 
-
 public abstract class Carta {
 	
+	protected Clase clase;
 	protected String nombre;
-	protected boolean estaVolteada;
+	protected Posicion posicionActual;
 	
-	public Carta(String unNombre, boolean estadoVolteada) {
-		nombre = unNombre;
-		estaVolteada = estadoVolteada;
+	public Carta( String nombreDeLaCarta, Clase claseDeLaCarta ) {
+		nombre = nombreDeLaCarta;
+		clase = claseDeLaCarta;
+		//Falta inicializar posicionActual
 	}
-
+	
 }
