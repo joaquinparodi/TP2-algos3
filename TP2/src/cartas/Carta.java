@@ -1,6 +1,6 @@
 package cartas;
 
-public abstract class Carta {
+public class Carta {
 	
 	protected Clase clase;
 	protected String nombre;
@@ -15,8 +15,5 @@ public abstract class Carta {
 	public void cambiarPosicion() {
 		posicionActual = clase.cambiarPosicion();
 	}
-	
-	private void mandarAlCemetenterio() {
-		
-	}
+
 }
