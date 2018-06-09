@@ -11,4 +11,4 @@ public abstract class Carta {
 		estaVolteada = estadoVolteada;
 	}
 
-}asdasd
+}
