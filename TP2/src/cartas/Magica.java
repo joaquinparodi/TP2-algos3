@@ -1,8 +1,15 @@
 package cartas;
 
-public class Magica extends Carta {
+public class Magica implements Clase {
+
+	Posicion posicionActual;
 	
-	public Magica(boolean volteada) {
-		estaVolteada = volteada;
+	public Magica () {
+		posicionActual = new PosicionAtaque();
 	}
+	
+	public void cambiarPosicion() {
+		posicionActual = posicionActual.cambiarPoscion();
+	}
+
 }
