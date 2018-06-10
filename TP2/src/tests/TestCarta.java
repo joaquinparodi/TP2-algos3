@@ -12,7 +12,6 @@ class TestCarta {
 	//private static final double DELTA = 1e-2;
 	
 	@Test
-
 	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosQuitaPuntos() {
 		
 		//Las cartqs de clase monstruo se inicializan en mano 
