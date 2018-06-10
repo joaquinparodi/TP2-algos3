@@ -6,4 +6,5 @@ public class PosicionDefensa implements Posicion {
 		return new PosicionAtaque();
 	}
 	
+	
 }

@@ -6,4 +6,8 @@ public interface Clase {
 	
 	public Posicion cambiarPosicion( Posicion posicion );
 	
+	public double atacar( Posicion posicionActual, Carta otraCarta );
+	
+	public double recibirAtaque( Posicion posicionActual, double puntosAtaqueAtacante, double puntosDefensaAtacante );
+	
 }

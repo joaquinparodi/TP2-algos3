@@ -13,7 +13,15 @@ public class Carta {
 	}
 	
 	public void cambiarPosicion() {
-		posicionActual = clase.cambiarPosicion();
+		posicionActual = clase.cambiarPosicion( posicionActual );
 	}
 
+	public double atacar( Carta otraCarta ) {
+		clase.atacar( posicionActual, otraCarta );
+		return 0;
+	}
+	
+	public double recibirAtaque ( double puntosAtaqueAtacante, double puntosDefensaAtacante ) {
+		return clase.recibirAtaque( posicionActual, puntosAtaqueAtacante, puntosDefensaAtacante ); 
+	}
 }

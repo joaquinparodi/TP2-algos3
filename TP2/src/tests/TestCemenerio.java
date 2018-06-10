@@ -10,7 +10,8 @@ import jugabilidad.Cementerio;
 class TestCemenerio {
 
 	@Test
-	void testAgregarCartaACementerioYPreguntarSiPerteneceEsCorrecto() {
+	public void testAgregarCartaACementerioYPreguntarSiPerteneceEsCorrecto() {
+		
 		Cementerio cementerio = new Cementerio();
 
 		Clase monstruo = new Monstruo();
