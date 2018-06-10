@@ -21,7 +21,8 @@ public class Carta {
 		return 0;
 	}
 	
-	public double recibirAtaque ( double puntosAtaqueAtacante, double puntosDefensaAtacante ) {
-		return clase.recibirAtaque( posicionActual, puntosAtaqueAtacante, puntosDefensaAtacante ); 
+	public double recibirAtaque( Atributos atributosAtacante ) {
+		return clase.recibirAtaque( posicionActual, atributosAtacante ); 
 	}
+	
 }

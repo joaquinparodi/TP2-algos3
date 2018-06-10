@@ -6,4 +6,16 @@ public class PosicionAbajo implements Posicion {
 		return new PosicionArriba();
 	}
 
+	@Override
+	public double atacar(Atributos atributos, Carta otroMonstruo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double recibirAtaque(Atributos atributoAtacante, Atributos atributoAtacado) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -6,13 +6,12 @@ public class PosicionAtaque implements Posicion {
 		return new PosicionDefensa();
 	}
 
-	public double atacar( double puntosDeAtaque, double puntosDeDefensa, Carta otraCarta ) {
-		double vidaPerdida = otraCarta.recibirAtaque( puntosDeAtaque, puntosDeDefensa );
-		return vidaPerdida;
+	public double atacar( Atributos atributosAtacante, Carta otraCarta ) {
+		return otraCarta.recibirAtaque( atributosAtacante );
 	}
 	
-	public double recibirAtaque( double puntosAtaqueAtacante, double puntosDefensaAtacante, double puntosDeAtaque, double puntosDeDefensa ) {
-		return puntosDeAtaque - puntosAtaqueAtacante;
+	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
+		return atributos.obtenerPuntosDeAtaque() - atributosAtacante.obtenerPuntosDeAtaque();
 	}
 	
 }

@@ -14,7 +14,7 @@ class TestCemenerio {
 		
 		Cementerio cementerio = new Cementerio();
 
-		Clase monstruo = new Monstruo();
+		Clase monstruo = new Monstruo( 1000, 2000);;
 		Carta carta = new Carta( "PikachuInflitrado", monstruo );
 
 		cementerio.agregarCarta( carta );
