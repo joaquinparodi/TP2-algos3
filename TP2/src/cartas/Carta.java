@@ -1,15 +1,17 @@
 package cartas;
 
 public class Carta {
-	
-	private Clase clase;
-	private String nombre;
-	private Posicion posicionActual;
 
-	public Carta( String nombreDeLaCarta, Clase claseDeLaCarta ) {
+	protected Clase clase;
+	protected String nombre;
+	protected Posicion posicionActual;
+	protected Jugador jugador;
+
+	public Carta( String nombreDeLaCarta, Clase claseDeLaCarta , Jugador unJugador) {
 		nombre = nombreDeLaCarta;
 		clase = claseDeLaCarta;
 		posicionActual = new PosicionEnMano();
+		jugador = unJugador;
 	}
 	
 	public void cambiarPosicion() {

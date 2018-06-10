@@ -1,9 +1,7 @@
-
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+import jugabilidad.Jugador;
 
-import Jugador;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TestJugador{
 
