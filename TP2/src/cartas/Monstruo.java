@@ -2,12 +2,10 @@ package cartas;
 
 public class Monstruo implements Clase {
 	
-	private double puntosDeAtaque;
-	private double puntosDeDefensa;
+	private Atributos atributos;
 	
 	public Monstruo( double auxPuntosDeAtaque, double auxPuntosDeDefensa ) {
-		puntosDeAtaque = auxPuntosDeAtaque;
-		puntosDeDefensa = auxPuntosDeDefensa;
+		atributos = new Atributos( auxPuntosDeAtaque, auxPuntosDeDefensa );
 	}
 	
 	public Posicion obtenerPosicionInicial() {
@@ -19,11 +17,11 @@ public class Monstruo implements Clase {
 	}
 	
 	public double atacar( Posicion posicionAtacante, Carta otroMonstruo ) {
-		posicionAtacante.atacar( puntosDeAtaque, puntosDeDefensa, otroMonstruo );
+		return posicionAtacante.atacar( atributos, otroMonstruo );
 	}
 	
-	public double recibirAtaque( Posicion posicionActual, double puntosAtaqueAtacante, double puntosDefensaAtacante ) {
-		return posicionActual.recibirAtaque ( puntosAtaqueAtacante, puntosDefensaAtacante, puntosDeAtaque, puntosDeDefensa );
+	public double recibirAtaque( Posicion posicionActual, Atributos atributoAtacante ) {
+		return posicionActual.recibirAtaque( atributoAtacante, atributos );
 	}
 }
 

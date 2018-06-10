@@ -17,11 +17,11 @@ public class Carta {
 	}
 
 	public double atacar( Carta otraCarta ) {
-		clase.atacar( posicionActual, otraCarta );
-		return 0;
+		return clase.atacar( posicionActual, otraCarta );	
 	}
 	
-	public double recibirAtaque ( double puntosAtaqueAtacante, double puntosDefensaAtacante ) {
-		return clase.recibirAtaque( posicionActual, puntosAtaqueAtacante, puntosDefensaAtacante ); 
+	public double recibirAtaque( Atributos atributosAtacante ) {
+		return clase.recibirAtaque( posicionActual, atributosAtacante ); 
 	}
+	
 }
