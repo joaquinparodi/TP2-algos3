@@ -2,13 +2,17 @@ package jugabilidad;
 
 public class Jugador {
 
-    double vida;
+    private double vida;
 
-	public void Jugador (double vida){
+	public Jugador (double vida){
 	    this.vida = vida;
     }
 
     public double obtenerVida(){
 	    return this.vida;
+    }
+
+    public void hacerDanio(double danio){
+	    this.vida = this.vida - danio ;
     }
 }
