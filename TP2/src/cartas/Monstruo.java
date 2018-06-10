@@ -1,24 +1,32 @@
-package cartas;
+package TP2.src.cartas;
+import cartas.PosicionAtaque;
 
-public class Monstruo implements Clase {
-	
-	private Atributos atributos;
-	
-	public Monstruo( double auxPuntosDeAtaque, double auxPuntosDeDefensa ) {
-		atributos = new Atributos( auxPuntosDeAtaque, auxPuntosDeDefensa );
+public class Monstruo extends Carta {
+
+	private Carta cartaBase;
+	private double puntosAtaque;
+	private double puntosDefensa;
+	private PosicionMonstruo posicion;
+
+	public Monstruo (String nombre, jugabilidad.Jugador unJugador, double ataque, double defensa){
+		super(nombre,unJugador);
+		this.puntosAtaque = ataque;
+		this.puntosDefensa = defensa;
+		this.posicion = new PosicionAtaque(puntosAtaque);
 	}
-	
-	public Posicion cambiarPosicion( Posicion posicion ) {
-		return posicion.cambiarPosicion( this );
+
+	public void atacar (Monstruo otroMonstruo){
+		Resultado resultado = otroMonstruo.recibirAtaque(posicion);
+		resultado.aplicarAJugadores(this, otroMonstruo);
 	}
-	
-	public double atacar( Posicion posicionAtacante, Carta otroMonstruo ) {
-		return posicionAtacante.atacar( atributos, otroMonstruo );
+
+	public Resultado recibirAtaque (PosicionMonstruo posicionAtacante){
+		return posicionAtacante.atacar(posicion);
 	}
-	
-	public double recibirAtaque( Posicion posicionActual, Atributos atributoAtacante ) {
-		return posicionActual.recibirAtaque( atributoAtacante, atributos );
+
+
+	public void descontarVidaAlJugador(double vida) {
+		jugador.hacerDanio(vida);
 	}
-	
 }
 

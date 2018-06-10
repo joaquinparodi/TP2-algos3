@@ -1,4 +1,4 @@
 package jugabilidad;
 
-public class Cementerio extends Mazo {
+public class Cementerio extends jugabilidad.Mazo {
 }

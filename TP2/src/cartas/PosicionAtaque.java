@@ -1,17 +1,18 @@
 package cartas;
 
-public class PosicionAtaque implements Posicion {
-	
-	public Posicion cambiarPosicion( Monstruo mosntruo ) {
-		return new PosicionDefensa();
-	}
-	
-	public double atacar( Atributos atributosAtacante, Carta otraCarta ) {
-		return otraCarta.recibirAtaque( atributosAtacante );
-	}
-	
-	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
-		return atributos.obtenerPuntosDeAtaque() - atributosAtacante.obtenerPuntosDeAtaque();
-	}
-	
+import TP2.src.cartas.*;
+
+public class PosicionAtaque extends PosicionMonstruo {
+
+    public PosicionAtaque (double puntos){
+        super(puntos);
+    }
+
+    public Resultado atacar (PosicionMonstruo posicion){
+
+        return posicion.recibirAtaque (this.puntos);
+
+    }
+
+
 }

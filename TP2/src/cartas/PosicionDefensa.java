@@ -1,17 +1,13 @@
-package cartas;
+package TP2.src.cartas;
 
-public class PosicionDefensa implements Posicion {
+public class PosicionDefensa extends PosicionMonstruo {
 
-	public Posicion cambiarPosicion( Monstruo monstruo ) {
-		return new PosicionDefensa();
-	}
+    public PosicionDefensa (double puntos){
+        super(puntos);
+    }
 
-	public double atacar( Atributos atributosAtacante, Carta otraCarta ) {
-		return otraCarta.recibirAtaque( atributosAtacante );
-	}
-
-	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
-		return 0;
-	}
-		
+    @Override
+    public Resultado atacar(PosicionMonstruo otraPosicion) {
+        return null;
+    }
 }
