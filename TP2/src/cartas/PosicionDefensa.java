@@ -6,16 +6,12 @@ public class PosicionDefensa implements Posicion {
 		return new PosicionAtaque();
 	}
 
-	@Override
-	public double atacar(Atributos atributos, Carta otroMonstruo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double atacar( Atributos atributosAtacante, Carta otraCarta ) {
+		return otraCarta.recibirAtaque( atributosAtacante );
 	}
 
-	@Override
-	public double recibirAtaque(Atributos atributoAtacante, Atributos atributoAtacado) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
+		return atributos.obtenerPuntosDeDefensa() - atributosAtacante.obtenerPuntosDeDefensa();
 	}
 	
 	

@@ -17,8 +17,7 @@ public class Carta {
 	}
 
 	public double atacar( Carta otraCarta ) {
-		clase.atacar( posicionActual, otraCarta );
-		return 0;
+		return clase.atacar( posicionActual, otraCarta );	
 	}
 	
 	public double recibirAtaque( Atributos atributosAtacante ) {

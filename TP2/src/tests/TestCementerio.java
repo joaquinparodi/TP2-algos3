@@ -7,7 +7,7 @@ import cartas.Clase;
 import cartas.Monstruo;
 import jugabilidad.Cementerio;
 
-class TestCemenerio {
+class TestCementerio {
 
 	@Test
 	public void testAgregarCartaACementerioYPreguntarSiPerteneceEsCorrecto() {
