@@ -2,14 +2,14 @@ package cartas;
 
 public class Carta {
 	
-	protected Clase clase;
-	protected String nombre;
-	protected Posicion posicionActual;
-	
+	private Clase clase;
+	private String nombre;
+	private Posicion posicionActual;
+
 	public Carta( String nombreDeLaCarta, Clase claseDeLaCarta ) {
 		nombre = nombreDeLaCarta;
 		clase = claseDeLaCarta;
-		posicionActual = clase.obtenerPosicionInicial();
+		posicionActual = new PosicionEnMano();
 	}
 	
 	public void cambiarPosicion() {

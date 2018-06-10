@@ -8,12 +8,8 @@ public class Monstruo implements Clase {
 		atributos = new Atributos( auxPuntosDeAtaque, auxPuntosDeDefensa );
 	}
 	
-	public Posicion obtenerPosicionInicial() {
-		 return new PosicionAtaque();
-	}
-	
 	public Posicion cambiarPosicion( Posicion posicion ) {
-		return posicion.cambiarPosicion();
+		return posicion.cambiarPosicion( this );
 	}
 	
 	public double atacar( Posicion posicionAtacante, Carta otroMonstruo ) {
@@ -23,5 +19,6 @@ public class Monstruo implements Clase {
 	public double recibirAtaque( Posicion posicionActual, Atributos atributoAtacante ) {
 		return posicionActual.recibirAtaque( atributoAtacante, atributos );
 	}
+	
 }
 

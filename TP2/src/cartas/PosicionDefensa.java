@@ -2,8 +2,8 @@ package cartas;
 
 public class PosicionDefensa implements Posicion {
 
-	public Posicion cambiarPosicion() {
-		return new PosicionAtaque();
+	public Posicion cambiarPosicion( Monstruo monstruo ) {
+		return new PosicionDefensa();
 	}
 
 	public double atacar( Atributos atributosAtacante, Carta otraCarta ) {
@@ -11,7 +11,7 @@ public class PosicionDefensa implements Posicion {
 	}
 
 	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
-		return atributos.obtenerPuntosDeDefensa() - atributosAtacante.obtenerPuntosDeDefensa();
+		return 0;
 	}
 		
 }

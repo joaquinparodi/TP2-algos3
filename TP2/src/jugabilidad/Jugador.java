@@ -2,13 +2,16 @@ package jugabilidad;
 
 public class Jugador {
 
-    double vida;
-
-	public void Jugador (double vida){
-	    this.vida = vida;
+    double vidaActual;
+    HashMap<Carta> cartasEnMano;
+    
+	public Jugador( double vidaInicial ) {
+	    vidaActual = vidaInicial;
+	    cartasEnMano = new HashMap<Carta>();
     }
 
-    public double obtenerVida(){
-	    return this.vida;
+    public double obtenerVida() {
+	    return vidaActual;
     }
+    
 }
