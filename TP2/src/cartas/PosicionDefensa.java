@@ -13,6 +13,5 @@ public class PosicionDefensa implements Posicion {
 	public double recibirAtaque( Atributos atributosAtacante, Atributos atributos ) {
 		return atributos.obtenerPuntosDeDefensa() - atributosAtacante.obtenerPuntosDeDefensa();
 	}
-	
-	
+		
 }
