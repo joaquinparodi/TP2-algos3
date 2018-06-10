@@ -23,7 +23,7 @@ public class Monstruo implements Clase {
 	}
 	
 	public double recibirAtaque( Posicion posicionActual, double puntosAtaqueAtacante, double puntosDefensaAtacante ) {
-		return posicionActual.recibirAtaque ( puntosAtaqueAtacante, puntosDefensaAtacante. puntosDeAtaque, puntosDeDefensa );
+		return posicionActual.recibirAtaque ( puntosAtaqueAtacante, puntosDefensaAtacante, puntosDeAtaque, puntosDeDefensa );
 	}
 }
 
