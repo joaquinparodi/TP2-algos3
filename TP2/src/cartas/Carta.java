@@ -1,16 +1,20 @@
 package cartas;
 import jugabilidad.Jugador;
 
-public abstract class Carta {
+public abstract class Carta implements Clase {
 
-    protected Jugador jugador;
-    protected String nombre;
+    protected Jugador jugadorDuenio;
+    protected String nombreCarta;
 
-    public Carta (String unNombre, Jugador unJugador){
-        this.nombre = unNombre;
-        this.jugador = unJugador;
+    public abstract void atacar( Carta otraCarta );
+    
+    public Carta( String auxNombre, Jugador auxJugador ) {
+        nombreCarta = auxNombre;
+        jugadorDuenio = auxJugador;
     }
 
-    public void enviarAlCementerio (){
+    public void enviarAlCementer() {
     }
+    
+
 }

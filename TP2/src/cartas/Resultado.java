@@ -2,12 +2,12 @@ package cartas;
 
 public abstract class Resultado {
 
-    protected double vida;
+    protected double vidaPerdida;
 
-    protected Resultado (double vida){
-        this.vida = vida;
+    protected Resultado ( double auxVidaPerdida ){
+    	vidaPerdida = auxVidaPerdida;
     }
 
-    abstract public void aplicarAJugadores(Monstruo unMonstruo, Monstruo otroMonstruo);
+    abstract public void aplicarAJugadores( Monstruo unMonstruo, Monstruo otroMonstruo );
 
 }

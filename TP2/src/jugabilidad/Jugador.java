@@ -15,4 +15,5 @@ public class Jugador {
     public void hacerDanio(double danio){
 	    this.vida = this.vida - danio ;
     }
+    
 }
