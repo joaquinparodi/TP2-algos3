@@ -40,10 +40,14 @@ public class Monstruo extends Carta {
 		posicion = new PosicionAtaque(puntosAtaque);
 	}
 	
+
 	public void asignarPosicion(PosicionMonstruo posicion) {
 		this.posicion = posicion;
 	}
-	
-	
+
+	public void enviarAlCementerio() {
+		this.jugadorDuenio.enviarMonstruoAlCementerio(this);
+	}
+
 }
 

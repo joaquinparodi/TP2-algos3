@@ -28,4 +28,5 @@ class TestJugador {
 
         assertEquals(vidaEsperada,vidaObtenida);
     }
+    
 }

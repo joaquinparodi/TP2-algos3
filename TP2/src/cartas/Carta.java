@@ -1,5 +1,4 @@
 package cartas;
-import jugabilidad.Cementerio;
 import jugabilidad.Jugador;
 
 public abstract class Carta{
@@ -12,9 +11,6 @@ public abstract class Carta{
         jugadorDuenio = auxJugador;
     }
 
-    public void enviarAlCementerio() {
-    	Cementerio cementerio = Cementerio.obtenerCementerio();
-    	cementerio.agregarCarta(this);
-    }
+    public abstract void enviarAlCementerio();
     
 }
