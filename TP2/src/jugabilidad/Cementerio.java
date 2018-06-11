@@ -21,4 +21,8 @@ public class Cementerio{
 	public void agregarCarta (Carta unaCarta) {
 		listaDeCartas.add(unaCarta);
 	}
+	
+	public boolean tieneCarta (Carta unaCarta) {
+		return listaDeCartas.contains(unaCarta);
+	}
 }
