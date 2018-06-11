@@ -7,7 +7,7 @@ public class Derrota extends Resultado {
     }
     
     public void aplicarAJugadores( Monstruo monstruoPerdedor, Monstruo monstruoGanador ) {
-        monstruoPerdedor.descontarVidaAlJugador( vidaPerdida );
+        monstruoGanador.aplicarResultadoA(monstruoPerdedor,this.vidaPerdida);
     }
     
 }

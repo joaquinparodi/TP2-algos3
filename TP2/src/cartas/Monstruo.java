@@ -24,9 +24,21 @@ public class Monstruo extends Carta {
 		return posicionAtacante.atacar( posicion );
 	}
 
-
-	public void descontarVidaAlJugador( double vida ) {
-		posicion.hacerDanioAJugador( jugadorDuenio, vida );
+	public void aplicarResultadoA(Monstruo otroMonstruo,double vida) {
+		posicion.aplicarQuitaDeVidaA(otroMonstruo,vida);
+		posicion.destruirCarta(otroMonstruo);
+	}
+	
+	public void quitarVidaAJugador(double vida) {
+		posicion.hacerDanioAJugador(jugadorDuenio, vida);;
+	}
+	
+	public void cambiarADefensa() {
+		posicion = new PosicionDefensa(puntosDefensa);
+	}
+	
+	public void cambiarAAtaque() {
+		posicion = new PosicionAtaque(puntosAtaque);
 	}
 }
 

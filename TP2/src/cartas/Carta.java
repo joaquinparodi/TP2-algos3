@@ -1,19 +1,20 @@
 package cartas;
+import jugabilidad.Cementerio;
 import jugabilidad.Jugador;
 
-public abstract class Carta implements Clase {
+public abstract class Carta{
 
     protected Jugador jugadorDuenio;
     protected String nombreCarta;
 
-    public abstract void atacar( Carta otraCarta );
-    
     public Carta( String auxNombre, Jugador auxJugador ) {
         nombreCarta = auxNombre;
         jugadorDuenio = auxJugador;
     }
 
-    public void enviarAlCementer() {
+    public void enviarAlCementerio() {
+    	Cementerio cementerio = Cementerio.obtenerCementerio();
+    	cementerio.agregarCarta(this);
     }
     
 

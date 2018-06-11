@@ -7,6 +7,6 @@ public class Victoria extends Resultado {
     }
 
     public void aplicarAJugadores( Monstruo monstruoGanador, Monstruo monstruoPerdedor ) {
-        monstruoPerdedor.descontarVidaAlJugador( vidaPerdida );
+        monstruoGanador.aplicarResultadoA(monstruoPerdedor, vidaPerdida );
     }
 }

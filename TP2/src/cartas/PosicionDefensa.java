@@ -14,4 +14,12 @@ public class PosicionDefensa extends PosicionMonstruo {
     public void hacerDanioAJugador( Jugador unJugador, double vida ) {
     }
     
+    public void aplicarQuitaDeVidaA(Monstruo unMonstruo, double vida) {
+    	
+    }
+    
+    public void destruirCarta (Monstruo unMonstruo) {
+    	
+    }
+    
 }

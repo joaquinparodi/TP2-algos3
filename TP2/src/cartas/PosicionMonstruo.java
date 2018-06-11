@@ -9,6 +9,10 @@ public abstract class PosicionMonstruo {
 
     public abstract void hacerDanioAJugador( Jugador jugador, double vida );  
     
+    public abstract void aplicarQuitaDeVidaA (Monstruo unMonstruo,double vida);
+    
+    public abstract void destruirCarta(Monstruo unMonstruo);
+    
     public PosicionMonstruo( double auxPuntos ) {
         puntos = auxPuntos;
     }

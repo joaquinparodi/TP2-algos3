@@ -2,7 +2,6 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import cartas.Carta;
 import cartas.Monstruo;
 import org.junit.jupiter.api.Test;
 import jugabilidad.Jugador;
@@ -18,8 +17,8 @@ class TestCarta {
 		Jugador otroJugador = new Jugador (8000);
 
 		//La carta se inicializa en modo ataque
-		Carta unaCarta = new Monstruo ("Facundo", unJugador, 1000, 2000);
-		Carta otraCarta = new Monstruo ("Javier", otroJugador, 1500, 2000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1000, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1500, 2000);
 
 		unaCarta.atacar( otraCarta );
 
@@ -64,7 +63,7 @@ class TestCarta {
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1500,2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,2000);
 		
-		otraCarta.cambiarPosicion();
+		otraCarta.cambiarADefensa();
 		
 		unaCarta.atacar(otraCarta);
 
@@ -80,7 +79,7 @@ class TestCarta {
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1500,2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,1000);
 		
-		otraCarta.cambiarPosicion();
+		otraCarta.cambiarADefensa();
 		
 		unaCarta.atacar(otraCarta);
 
@@ -97,13 +96,18 @@ class TestCarta {
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,3000,3300);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,2200,3000);
 		
-		otraCarta.cambiarPosicion();
+		otraCarta.cambiarADefensa();
 		
 		unaCarta.atacar(otraCarta);
 
 		assertEquals(8000,unJugador.obtenerVida());
 		assertEquals(8000,otroJugador.obtenerVida());
 
+	}
+	
+	@Test
+	public void testCartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye () {
+		
 	}
 	
 }
