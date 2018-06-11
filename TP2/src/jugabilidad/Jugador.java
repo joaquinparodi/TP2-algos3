@@ -1,5 +1,6 @@
 package jugabilidad;
 import cartas.Monstruo;
+import cartas.Magica;
 
 public class Jugador {
 
@@ -20,6 +21,10 @@ public class Jugador {
     
     public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
 
+    }
+    
+    public void enviarMagicaAlCementerio(Magica unaCartaMagica) {
+    	
     }
     
 }
