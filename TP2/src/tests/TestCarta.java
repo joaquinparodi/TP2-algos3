@@ -52,7 +52,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnModoDefensaConMasPuntosYSeQuitaVida () {
+	public void testCartaAtacaAOtraEnModoDefensaConMasPuntosYNingunoPierdeVida () {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
@@ -63,7 +63,8 @@ class TestCarta {
 		
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(7500,unJugador.obtenerVida());
+		assertEquals(8000,unJugador.obtenerVida());
+		assertEquals(8000,otroJugador.obtenerVida());
 	}
 	
 	@Test
