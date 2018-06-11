@@ -1,8 +1,10 @@
 package jugabilidad;
+import cartas.Monstruo;
 
 public class Jugador {
 
     private double vida;
+    private CampoDeJuego campo;
 
 	public Jugador (double vida){
 	    this.vida = vida;
@@ -14,6 +16,10 @@ public class Jugador {
 
     public void hacerDanio(double danio){
 	    this.vida = this.vida - danio ;
+    }
+    
+    public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
+    	campo.enviarMonstruoAlCementerio(unMonstruo);
     }
     
 }

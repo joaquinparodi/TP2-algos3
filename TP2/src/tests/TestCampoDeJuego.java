@@ -6,7 +6,7 @@ public class TestCampoDeJuego {
 	
 	@Test
 	public void testColocarCartaEnElCampo() {
-		
+
 	}
 	
 }
