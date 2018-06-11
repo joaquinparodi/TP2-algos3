@@ -17,5 +17,4 @@ public abstract class Carta{
     	cementerio.agregarCarta(this);
     }
     
-
 }
