@@ -1,4 +1,5 @@
-package TP2.src.cartas;
+package cartas;
+import jugabilidad.Jugador;
 
 public abstract class PosicionMonstruo {
 
@@ -10,6 +11,9 @@ public abstract class PosicionMonstruo {
 
     public abstract Resultado atacar (PosicionMonstruo otraPosicion);
 
+    public abstract void hacerDanioAJugador (Jugador jugador, double vida);
+    
+   
     public Resultado recibirAtaque (double puntos){
 
         if (puntos>this.puntos){

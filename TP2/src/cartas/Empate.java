@@ -1,4 +1,4 @@
-package TP2.src.cartas;
+package cartas;
 
 public class Empate extends Resultado {
     public Empate(double vida) {

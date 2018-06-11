@@ -2,7 +2,7 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import TP2.src.cartas.Monstruo;
+import cartas.Monstruo;
 import org.junit.jupiter.api.Test;
 import jugabilidad.Jugador;
 
@@ -22,8 +22,33 @@ class TestCarta {
 		unaCarta.atacar(otraCarta);
 
 		assertEquals(7500,unJugador.obtenerVida());
+	}
+	
+	@Test
+	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosQuitaPuntosAlOtro() {
+		Jugador unJugador = new Jugador (8000);
+		Jugador otroJugador = new Jugador (8000);
 
-		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1600,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,2000);
+
+		unaCarta.atacar(otraCarta);
+
+		assertEquals(7900,otroJugador.obtenerVida());
+	}
+	
+	@Test
+	public void testCartaAtacaAOtraConIgualPuntosDeAtaqueNoLeRestaANadie () {
+		Jugador unJugador = new Jugador (8000);
+		Jugador otroJugador = new Jugador (8000);
+
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1500,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,2000);
+
+		unaCarta.atacar(otraCarta);
+
+		assertEquals(8000,unJugador.obtenerVida());
+		assertEquals(8000,otroJugador.obtenerVida());
 	}
 	
 }

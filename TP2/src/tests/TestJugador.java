@@ -1,4 +1,4 @@
-
+package tests;
 import jugabilidad.Jugador;
 import org.junit.jupiter.api.Test;
 

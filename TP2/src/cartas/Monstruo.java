@@ -1,9 +1,7 @@
-package TP2.src.cartas;
-import cartas.PosicionAtaque;
-
+package cartas;
 public class Monstruo extends Carta {
 
-	private Carta cartaBase;
+
 	private double puntosAtaque;
 	private double puntosDefensa;
 	private PosicionMonstruo posicion;
@@ -26,7 +24,7 @@ public class Monstruo extends Carta {
 
 
 	public void descontarVidaAlJugador(double vida) {
-		jugador.hacerDanio(vida);
+		posicion.hacerDanioAJugador(jugador,vida);
 	}
 }
 

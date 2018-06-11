@@ -1,4 +1,5 @@
-package TP2.src.cartas;
+package cartas;
+import jugabilidad.Jugador;
 
 public class PosicionDefensa extends PosicionMonstruo {
 
@@ -9,5 +10,10 @@ public class PosicionDefensa extends PosicionMonstruo {
     @Override
     public Resultado atacar(PosicionMonstruo otraPosicion) {
         return null;
+    }
+    
+    @Override
+    public void hacerDanioAJugador(Jugador unJugador, double vida) {
+    	
     }
 }

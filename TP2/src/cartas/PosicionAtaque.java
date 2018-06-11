@@ -1,6 +1,5 @@
 package cartas;
-
-import TP2.src.cartas.*;
+import jugabilidad.Jugador;
 
 public class PosicionAtaque extends PosicionMonstruo {
 
@@ -14,5 +13,8 @@ public class PosicionAtaque extends PosicionMonstruo {
 
     }
 
-
+    public void hacerDanioAJugador(Jugador unJugador, double vida) {
+    	
+    	unJugador.hacerDanio(vida);
+    }
 }
