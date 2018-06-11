@@ -19,7 +19,7 @@ public class Jugador {
     }
     
     public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
-    	campo.enviarMonstruoAlCementerio(unMonstruo);
+
     }
     
 }
