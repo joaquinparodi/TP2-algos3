@@ -4,11 +4,11 @@ import cartas.Carta;
 
 public class Cementerio{
 	
-	private static Cementerio instanciaDeCementerio;
+	private static Cementerio instanciaDeCementerio = null;
 	private LinkedList<Carta> listaDeCartas;
 	
 	private Cementerio () {
-		
+		listaDeCartas = new LinkedList<Carta> ();
 	}
 	
 	public static Cementerio obtenerCementerio () {
