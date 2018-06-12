@@ -11,8 +11,5 @@ public class AgujeroNegro extends Magica{
 	public void aplicarEfecto() {
 	}
 
-	@Override
-	public void enviarAlCementerio() {		
-	}
 	
 }

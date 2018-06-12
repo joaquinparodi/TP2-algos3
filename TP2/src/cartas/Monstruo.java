@@ -14,6 +14,7 @@ public class Monstruo extends Carta {
 		this.puntosAtaque = ataque;
 		this.puntosDefensa = defensa;
 		this.nivel = unNivel;
+		this.posicion = new PosicionAtaque(puntosAtaque);
 	}
 
 	public void atacar( Monstruo otroMonstruo ) {
