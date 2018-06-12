@@ -1,7 +1,6 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import cartas.Monstruo;
 import org.junit.jupiter.api.Test;
 import jugabilidad.Jugador;
@@ -12,32 +11,32 @@ class TestCarta {
 	
 	@Test
 	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosRestaPuntosDeVidaAlAtacante() {
-
-		Jugador unJugador = new Jugador (8000);
-		Jugador otroJugador = new Jugador (8000);
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
 
 		//La carta se inicializa en modo ataque
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1000, 2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500, 2000);
-
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1000, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2000);
+		
 		unaCarta.atacar( otraCarta );
 
-		assertEquals(7500,unJugador.obtenerVida());
+		assertEquals(7500, jugadorUno.obtenerVida());
 	}
 	
 	@Test
 	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosRestaPuntosDeVidaAlDefensor() {
-	
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
-
-		//La carta se incializa en modo ataque
+		
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
+		
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1600,2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,2000);
 
 		unaCarta.atacar(otraCarta);
-
-		assertEquals(7900,otroJugador.obtenerVida());
+		
+		assertEquals(7900, otroJugador.obtenerVida());
 	}
 	
 	@Test
@@ -45,14 +44,16 @@ class TestCarta {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
-		//La carta se inicializa en modo ataque
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
+		
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500, 2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500, 2000);
 
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000,unJugador.obtenerVida());
-		assertEquals(8000,otroJugador.obtenerVida());
+		assertEquals(8000, unJugador.obtenerVida());
+		assertEquals(8000, otroJugador.obtenerVida());
 	}
 	
 	@Test
@@ -60,54 +61,160 @@ class TestCarta {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
+		
+		//Las cartas se inician en modo ataque
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500,2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,2000);
 		
-		otraCarta.cambiarADefensa();
-		
+		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000,unJugador.obtenerVida());
-		assertEquals(8000,otroJugador.obtenerVida());
+		assertEquals(8000, unJugador.obtenerVida());
+		assertEquals(8000, otroJugador.obtenerVida());
 	}
 	
 	@Test
 	public void testCartaAtacaAOtraEnDefensaConMenosPuntosYNingunoPierdeVida() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
+		
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
 
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500,2000);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,1000);
 		
-		otraCarta.cambiarADefensa();
-		
+		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000,unJugador.obtenerVida());
-		assertEquals(8000,otroJugador.obtenerVida());
-
+		assertEquals(8000, unJugador.obtenerVida());
+		assertEquals(8000, otroJugador.obtenerVida());
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida () {
+	public void testCartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
+		
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
 
 		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 3000,3300);
 		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 2200,3000);
 		
-		otraCarta.cambiarADefensa();
-		
+		otraCarta.cambiarPosicion();	
 		unaCarta.atacar(otraCarta);
 
 		assertEquals(8000,unJugador.obtenerVida());
 		assertEquals(8000,otroJugador.obtenerVida());
-
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye () {
+	public void testCartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye() {
+		Jugador unJugador = new Jugador (8000);
+		Jugador otroJugador = new Jugador (8000);
 		
+		otroJugador.asignarRival( unJugador );
+		unJugador.asignarRival( otroJugador );
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1600,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,2000);
+
+		unaCarta.atacar(otraCarta);
+		
+		assertTrue( otroJugador.monstruoEstaMuerto(otraCarta) );
 	}
+	
+	@Test
+	public void testCartaAtacaAOtraEnAtaqueConMasPuntosYSeDestruye() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1000, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2000);
+
+		unaCarta.atacar( otraCarta );
+
+		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+	}
+	
+	@Test
+	public void testCartaAtacaAOtraEnAtaqueConIgualPuntosYSeDestruyenAmbas() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1500, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2000);
+
+		unaCarta.atacar( otraCarta );
+
+		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+	}
+	
+	@Test
+	public void testCartaAtacaAOtraEnDefensaConMenosPuntosYLaDestruye() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1500, 2500);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2000);
+		
+		otraCarta.cambiarPosicion();
+		unaCarta.atacar( otraCarta );
+
+		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+	}	
+	
+	@Test
+	public void testCartaAtacaAOtraEnDefensaConMasPuntosYSeDestruye() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1500, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2500);
+		
+		otraCarta.cambiarPosicion();
+		unaCarta.atacar( otraCarta );
+
+		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+	}	
+	
+	@Test
+	public void testCartaAtacaAOtraEnDefensaConIgualPuntosYSeDestruyenAmabas() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, 1500, 2500);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 1500, 2500);
+		
+		otraCarta.cambiarPosicion();
+		unaCarta.atacar( otraCarta );
+
+		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+	}	
 	
 }
