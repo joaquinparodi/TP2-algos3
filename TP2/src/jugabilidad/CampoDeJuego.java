@@ -25,8 +25,8 @@ public class CampoDeJuego {
 		carta.agregarseEnCampo();
 	}
 	
-	public void enviarCartaACementerio(Monstruo monstruo) {
-		cementerio.agregarCarta(monstruo);
+	public void enviarCartaACementerio(Carta unaCarta) {
+		cementerio.agregarCarta(unaCarta);
 	}
 	
 	public boolean cartaPerteneceAlCementerio(String nombreCarta) {

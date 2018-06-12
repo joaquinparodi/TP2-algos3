@@ -44,9 +44,6 @@ public class Monstruo extends Carta {
 		this.posicion = posicion;
 	}
 	
-	public void agregarseEnCampo() {
-		this.jugadorDuenio.agregarCartaMonstruoEnCampo(this);
-	}
-
+	public void agregarseEnCampo() {}
 }
 

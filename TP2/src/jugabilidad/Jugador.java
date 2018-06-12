@@ -1,6 +1,10 @@
 package jugabilidad;
 
 import cartas.Monstruo;
+import posiciones.PosicionMonstruo;
+
+import java.util.ArrayList;
+
 import cartas.Carta;
 import cartas.Magica;
 
@@ -56,7 +60,17 @@ public class Jugador {
     	campo.agregarCartaEnCampo( cartaBuscada );
     }
     
-    public void agregarCartaMonstruoEnCampo(Monstruo monstruo) {
+    public void agregarCartaMonstruoEnCampo(String unMonstruo, PosicionMonstruo unaPosicion, Baraja monstruosASacrificar) {
+    	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
+    	mano.eliminarCarta(monstruo);
+    	monstruo.asignarPosicion(unaPosicion);
+    	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
+			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+		} else if(monstruo.obtenerEstrellas() > 6) {
+			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+			monstruosASacrificar.eliminarCarta(monstruosASacrificar.obtenerPrimeraCarta());
+			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+		}
     	campo.agregarCartaMonstruo(monstruo);
     }
     

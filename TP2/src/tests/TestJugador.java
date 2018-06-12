@@ -1,8 +1,12 @@
 package tests;
+import jugabilidad.Baraja;
 import jugabilidad.Jugador;
+import posiciones.PosicionAtaque;
+
 import org.junit.jupiter.api.Test;
 
 import cartas.Monstruo;
+import cartas.Puntos;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,6 +80,67 @@ class TestJugador {
 		
 		assertFalse( jugador.monstruoEstaMuerto("Javir") );
 		assertFalse( jugador.monstruoEstaMuerto("Auriane") );
+	}
+	
+	@Test
+	public void testColocarMonstruoConNivel7Requiere2Sacrificios() {
+		Jugador jugador = new Jugador( 8000 );
+		
+		int nivel = 7;
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		Monstruo monstruoTres = new Monstruo("facu", jugador, nivel, 2000, 2000);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		jugador.repartirCarta(monstruoTres);
+		
+		Baraja monstruosASacrificar = new Baraja();
+		monstruosASacrificar.agregarCarta(monstruoDos);
+		monstruosASacrificar.agregarCarta(monstruoTres);
+		
+		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		
+		assert( jugador.monstruoEstaMuerto("javi") );
+		assert( jugador.monstruoEstaMuerto("facu") );
+	}
+	
+	@Test
+	public void testColocarMonstruoConNivel5Requiere1Sacrificio() {
+		Jugador jugador = new Jugador( 8000 );
+		
+		int nivel = 5;
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		
+		Baraja monstruosASacrificar = new Baraja();
+		monstruosASacrificar.agregarCarta(monstruoDos);
+		
+		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		
+		assert( jugador.monstruoEstaMuerto("javi") );
+	}
+	
+	@Test
+	public void testColocarMonstruoConNivel3NoRequiereSacrificio() {
+		Jugador jugador = new Jugador( 8000 );
+		
+		int nivel = 3;
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		
+		Baraja monstruosASacrificar = new Baraja();
+		monstruosASacrificar.agregarCarta(monstruoDos);
+		
+		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		
+		assertFalse( jugador.monstruoEstaMuerto("javi") );
 	}
 	
 }

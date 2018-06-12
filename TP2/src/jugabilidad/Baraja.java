@@ -18,6 +18,14 @@ public class Baraja {
 		contenedor.add(carta);
 	}
 	
+	public void eliminarCarta(Carta carta) {
+		contenedor.remove(carta);
+	}
+	
+	public Carta obtenerPrimeraCarta() {
+		return contenedor.get(0);
+	}
+	
 	public Carta obtenerCarta(String nombreCarta) {
 		Iterator<Carta> iter = contenedor.iterator();
 	    while(iter.hasNext()) {
