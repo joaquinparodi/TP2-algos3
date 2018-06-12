@@ -12,6 +12,7 @@ public class Monstruo extends Carta {
 		super( nombre, unJugador );
 		this.puntosAtaque = ataque;
 		this.puntosDefensa = defensa;
+		this.posicion = new PosicionAtaque(puntosAtaque);
 	}
 
 	public void atacar( Monstruo otroMonstruo ) {
