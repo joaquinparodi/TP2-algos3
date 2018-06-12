@@ -23,7 +23,7 @@ public class Jugador {
 
 
     public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
-
+    	
     }
     
 }

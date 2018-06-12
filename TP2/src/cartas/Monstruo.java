@@ -7,11 +7,13 @@ public class Monstruo extends Carta {
 	private double puntosAtaque;
 	private double puntosDefensa;
 	private PosicionMonstruo posicion;
+	private int nivel;
 
-	public Monstruo( String nombre, Jugador unJugador, double ataque, double defensa ) {
+	public Monstruo( String nombre, Jugador unJugador, int unNivel, double ataque, double defensa ) {
 		super( nombre, unJugador );
 		this.puntosAtaque = ataque;
 		this.puntosDefensa = defensa;
+		this.nivel = unNivel;
 	}
 
 	public void atacar( Monstruo otroMonstruo ) {
@@ -47,6 +49,10 @@ public class Monstruo extends Carta {
 
 	public void enviarAlCementerio() {
 		this.jugadorDuenio.enviarMonstruoAlCementerio(this);
+	}
+
+	public int obtenerNivel() {
+		return this.nivel;
 	}
 
 }
