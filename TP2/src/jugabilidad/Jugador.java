@@ -2,6 +2,8 @@ package jugabilidad;
 import cartas.Monstruo;
 import cartas.Magica;
 
+import cartas.Monstruo;
+
 public class Jugador {
 
     private double vida;
@@ -19,6 +21,8 @@ public class Jugador {
 	    this.vida = this.vida - danio ;
     }
     
+
+
     public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
 
     }

@@ -12,7 +12,6 @@ public class Monstruo extends Carta {
 		super( nombre, unJugador );
 		this.puntosAtaque = ataque;
 		this.puntosDefensa = defensa;
-		this.posicion = new PosicionAtaque( puntosAtaque );
 	}
 
 	public void atacar( Monstruo otroMonstruo ) {
@@ -41,8 +40,14 @@ public class Monstruo extends Carta {
 		posicion = new PosicionAtaque(puntosAtaque);
 	}
 	
+
+	public void asignarPosicion(PosicionMonstruo posicion) {
+		this.posicion = posicion;
+	}
+
 	public void enviarAlCementerio() {
 		this.jugadorDuenio.enviarMonstruoAlCementerio(this);
 	}
+
 }
 

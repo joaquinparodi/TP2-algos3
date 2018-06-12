@@ -1,3 +1,4 @@
+
 package cartas;
 
 import jugabilidad.Jugador;
@@ -14,3 +15,4 @@ public abstract class Magica extends Carta{
 		this.jugadorDuenio.enviarMagicaAlCementerio(this);
 	}
 }
+
