@@ -6,7 +6,6 @@ import cartas.Carta;
 import cartas.Magica;
 import cartas.Monstruo;
 import cartas.PosicionMonstruo;
-import eg.edu.guc.yugioh.cards.MonsterCard;
 
 
 public class CampoDeJuego {
