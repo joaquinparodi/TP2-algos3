@@ -17,8 +17,8 @@ class TestCarta {
 		Jugador otroJugador = new Jugador (8000);
 
 		//La carta se inicializa en modo ataque
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1000, 2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1500, 2000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1000, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500, 2000);
 
 		unaCarta.atacar( otraCarta );
 
@@ -32,8 +32,8 @@ class TestCarta {
 		Jugador otroJugador = new Jugador (8000);
 
 		//La carta se incializa en modo ataque
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1600,2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,2000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1600,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,2000);
 
 		unaCarta.atacar(otraCarta);
 
@@ -46,8 +46,8 @@ class TestCarta {
 		Jugador otroJugador = new Jugador (8000);
 
 		//La carta se inicializa en modo ataque
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1500, 2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1500, 2000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500, 2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500, 2000);
 
 		unaCarta.atacar(otraCarta);
 
@@ -60,8 +60,8 @@ class TestCarta {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1500,2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,2000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,2000);
 		
 		otraCarta.cambiarADefensa();
 		
@@ -76,8 +76,8 @@ class TestCarta {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,1500,2000);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,1500,1000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 1500,2000);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 1500,1000);
 		
 		otraCarta.cambiarADefensa();
 		
@@ -93,8 +93,8 @@ class TestCarta {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador,3000,3300);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador,2200,3000);
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, 3000,3300);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, 2200,3000);
 		
 		otraCarta.cambiarADefensa();
 		
