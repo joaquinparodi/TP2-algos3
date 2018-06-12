@@ -1,12 +1,9 @@
 package tests;
-import org.junit.jupiter.api.*;
 
+import org.junit.jupiter.api.*;
+import cartas.Monstruo;
+import jugabilidad.Jugador;
 
 public class TestCampoDeJuego {
-	
-	@Test
-	public void testColocarCartaEnElCampo() {
-
-	}
 	
 }

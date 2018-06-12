@@ -124,7 +124,7 @@ class TestCarta {
 
 		unaCarta.atacar(otraCarta);
 		
-		assertTrue( otroJugador.monstruoEstaMuerto(otraCarta) );
+		assertTrue( otroJugador.monstruoEstaMuerto("Javier") );
 	}
 	
 	@Test
@@ -141,7 +141,7 @@ class TestCarta {
 
 		unaCarta.atacar( otraCarta );
 
-		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
 	}
 	
 	@Test
@@ -158,8 +158,8 @@ class TestCarta {
 
 		unaCarta.atacar( otraCarta );
 
-		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
-		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
+		assertTrue( jugadorDos.monstruoEstaMuerto("Javier") );
 	}
 	
 	@Test
@@ -177,7 +177,7 @@ class TestCarta {
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
 
-		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+		assertTrue( jugadorDos.monstruoEstaMuerto("Javier") );
 	}	
 	
 	@Test
@@ -195,7 +195,7 @@ class TestCarta {
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
 
-		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
+		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
 	}	
 	
 	@Test
@@ -213,8 +213,8 @@ class TestCarta {
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
 
-		assertTrue( jugadorUno.monstruoEstaMuerto(unaCarta) );
-		assertTrue( jugadorDos.monstruoEstaMuerto(otraCarta) );
+		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
+		assertTrue( jugadorDos.monstruoEstaMuerto("Javier") );
 	}	
 	
 }

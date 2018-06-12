@@ -10,7 +10,12 @@ public abstract class Carta{
         nombreCarta = auxNombre;
         jugadorDuenio = auxJugador;
     }
-
+    
+    public boolean seLlama( String auxNombre ) {
+    	return auxNombre == nombreCarta;
+    }
+    
     public abstract void enviarAlCementerio();
     
+    public abstract void agregarseEnCampo();
 }

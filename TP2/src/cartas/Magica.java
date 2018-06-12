@@ -14,5 +14,11 @@ public abstract class Magica extends Carta{
 	public void enviarAlCementerio() {
 		this.jugadorDuenio.enviarMagicaAlCementerio(this);
 	}
+	
+	public void agregarseEnCampo() {
+		this.jugadorDuenio.agregarCartaMagicaEnCampo(this);
+	}
+	
+	
 }
 

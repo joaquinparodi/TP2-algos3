@@ -1,6 +1,7 @@
 package jugabilidad;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import cartas.Carta;
 import cartas.Magica;
@@ -10,36 +11,33 @@ import posiciones.PosicionMonstruo;
 
 public class CampoDeJuego {
 
-	private ArrayList<Monstruo> filaMonstruos = new ArrayList<Monstruo>();
-	private ArrayList<Magica> filaMagicas = new ArrayList<Magica>();
-	private ArrayList<Carta> mano = new ArrayList<Carta>();
-	private ArrayList<Carta> cementerio = new ArrayList<Carta>();
-	private Mazo mazo = new Mazo();
+	private Baraja filaMonstruos;
+	private Baraja filaMagicas;
+	private Baraja cementerio;
 
-	public void invocarMonstruo(Monstruo unMonstruo, PosicionMonstruo posicion) {
-		mano.remove(unMonstruo);
-		unMonstruo.asignarPosicion(posicion);
-		filaMonstruos.add(unMonstruo);		
+	public CampoDeJuego() {
+		filaMonstruos = new Baraja();
+		filaMagicas = new Baraja();
+		cementerio = new Baraja();
 	}
 
-	public void invocarMonstruo(Monstruo unMonstruo, PosicionMonstruo posicion, ArrayList<Monstruo> monstruosASacrificar) {
-		mano.remove(unMonstruo);
-		unMonstruo.asignarPosicion(posicion);
-		if (unMonstruo.obtenerEstrellas() == 5 || unMonstruo.obtenerEstrellas() == 6) {
-			monstruosASacrificar.remove(0);
-		} else if(unMonstruo.obtenerEstrellas() > 6) {
-			monstruosASacrificar.remove(0);
-			monstruosASacrificar.remove(0);
-		}
-		filaMonstruos.add(unMonstruo);		
+	public void agregarCartaEnCampo(Carta carta) {
+		carta.agregarseEnCampo();
 	}
 	
 	public void enviarCartaACementerio(Monstruo monstruo) {
-		cementerio.add(monstruo);
+		cementerio.agregarCarta(monstruo);
 	}
 	
-	public boolean cartaPerteneceAlCementerio(Monstruo monstruo) {
-		return cementerio.contains(monstruo);
+	public boolean cartaPerteneceAlCementerio(String nombreCarta) {
+		return cementerio.pertenece(nombreCarta);
 	}
 	
+	public void agregarCartaMonstruo(Monstruo monstruo) {
+		filaMonstruos.agregarCarta(monstruo);
+	}
+	
+	public void agregarCartaMagica(Magica cartaMagica) {
+		filaMagicas.agregarCarta(cartaMagica);
+	}
 }

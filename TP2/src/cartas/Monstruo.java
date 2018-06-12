@@ -9,11 +9,11 @@ public class Monstruo extends Carta {
 
 	private PosicionMonstruo posicion;
 	private Puntos puntos;
-	private int estrellas;
+	private int nivel;
 
-	public Monstruo( String nombre, Jugador unJugador, int auxEstrellas, double ataque, double defensa ) {
+	public Monstruo( String nombre, Jugador unJugador, int auxNivel, double ataque, double defensa ) {
 		super( nombre, unJugador );
-		this.estrellas = auxEstrellas;
+		this.nivel = auxNivel;
 		this.puntos = new Puntos (ataque, defensa);
 		this.posicion = new PosicionAtaque( puntos );
 	}
@@ -37,11 +37,15 @@ public class Monstruo extends Carta {
 	}
 	
 	public int obtenerEstrellas() {
-		return this.estrellas;
+		return this.nivel;
 	}
 	
 	public void asignarPosicion(PosicionMonstruo posicion) {
 		this.posicion = posicion;
+	}
+	
+	public void agregarseEnCampo() {
+		this.jugadorDuenio.agregarCartaMonstruoEnCampo(this);
 	}
 
 }
