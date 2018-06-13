@@ -1,14 +1,12 @@
 package tests;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
-import posiciones.PosicionAtaque;
 import cartas.AgujeroNegro;
 import cartas.Magica;
 
 import org.junit.jupiter.api.Test;
 
 import cartas.Monstruo;
-import cartas.Puntos;
 
 import static org.junit.jupiter.api.Assertions.*;
 

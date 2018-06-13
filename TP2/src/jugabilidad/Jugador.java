@@ -1,8 +1,6 @@
 package jugabilidad;
 
 import cartas.Monstruo;
-import posiciones.PosicionMonstruo;
-
 import cartas.Carta;
 import cartas.Magica;
 
