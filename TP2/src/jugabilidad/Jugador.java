@@ -52,16 +52,9 @@ public class Jugador {
     	campo.enviarMagicaACementerio(unaCartaMagica);
     }
     
-    public void agregarCartaEnCampo(String nombreCarta) {
-    	//Considerar caso que no exista
-    	Carta cartaBuscada = mano.obtenerCarta(nombreCarta);
-    	campo.agregarCartaEnCampo( cartaBuscada );
-    }
-    
-    public void agregarCartaMonstruoEnCampo(String unMonstruo, PosicionMonstruo unaPosicion, Baraja monstruosASacrificar) {
+    public void agregarCartaMonstruoEnCampo(String unMonstruo, Baraja monstruosASacrificar) {
     	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
     	mano.eliminarCarta(monstruo);
-    	monstruo.asignarPosicion(unaPosicion);
     	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 		} else if(monstruo.obtenerEstrellas() > 6) {

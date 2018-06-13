@@ -50,39 +50,16 @@ class TestJugador {
 		jugador.repartirCarta(monstruoDos);
 		jugador.repartirCarta(monstruoTres);
 		
-		jugador.agregarCartaEnCampo("Auriane");
-		jugador.agregarCartaEnCampo("Javir");
+		jugador.agregarCartaMonstruoEnCampo("Auriane", new Baraja());
+		jugador.agregarCartaMonstruoEnCampo("Javir", new Baraja());
 		
 		//Al agregar "Facundo", no se tendrian que borrar ninguno de los 2 mosntruos del tablero
-		jugador.agregarCartaEnCampo("Facundo");
+		jugador.agregarCartaMonstruoEnCampo("Facundo", new Baraja());
 		
 		assertFalse( jugador.monstruoEstaMuerto("Javir") );
 		assertFalse( jugador.monstruoEstaMuerto("Auriane") );
 	}
 	
-	@Test
-	public void testColocarMosnstruoConNivelCincoYSacrificaUnaCarta() {
-		Jugador jugador = new Jugador( 8000 );
-		
-		int nivel = 2;
-		int nivelAlto = 5;
-		Monstruo monstruoUno = new Monstruo("Auriane", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("Javir", jugador, nivel, 2000, 2000);
-		Monstruo monstruoTres = new Monstruo("Facundo", jugador, nivelAlto, 2000, 2000);
-		
-		jugador.repartirCarta(monstruoUno);
-		jugador.repartirCarta(monstruoDos);
-		jugador.repartirCarta(monstruoTres);
-		
-		jugador.agregarCartaEnCampo("Auriane");
-		jugador.agregarCartaEnCampo("Javir");
-		
-		//Al agregar "Facundo", no se tendria que borrar 1 carta
-		jugador.agregarCartaEnCampo("Facundo");
-		
-		assertFalse( jugador.monstruoEstaMuerto("Javir") );
-		assertFalse( jugador.monstruoEstaMuerto("Auriane") );
-	}
 	
 	@Test
 	public void testColocarMonstruoConNivel7Requiere2Sacrificios() {
@@ -101,7 +78,7 @@ class TestJugador {
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		monstruosASacrificar.agregarCarta(monstruoTres);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
 		
 		assert( jugador.monstruoEstaMuerto("javi") );
 		assert( jugador.monstruoEstaMuerto("facu") );
@@ -121,7 +98,7 @@ class TestJugador {
 		Baraja monstruosASacrificar = new Baraja();
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
 		
 		assert( jugador.monstruoEstaMuerto("javi") );
 	}
@@ -140,7 +117,7 @@ class TestJugador {
 		Baraja monstruosASacrificar = new Baraja();
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
+		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
 		
 		assertFalse( jugador.monstruoEstaMuerto("javi") );
 	}
@@ -163,8 +140,8 @@ class TestJugador {
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorDos.repartirCarta(monstruoDos);
 		
-		jugadorUno.agregarCartaMonstruoEnCampo("facu", new PosicionAtaque(new Puntos(2000,2000)), new Baraja());
-		jugadorDos.agregarCartaMonstruoEnCampo("javi", new PosicionAtaque(new Puntos(2000,2000)), new Baraja());
+		jugadorUno.agregarCartaMonstruoEnCampo("facu", new Baraja());
+		jugadorDos.agregarCartaMonstruoEnCampo("javi", new Baraja());
 		
 		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
 		
