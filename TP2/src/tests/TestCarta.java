@@ -216,5 +216,4 @@ class TestCarta {
 		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
 		assertTrue( jugadorDos.monstruoEstaMuerto("Javier") );
 	}	
-	
 }

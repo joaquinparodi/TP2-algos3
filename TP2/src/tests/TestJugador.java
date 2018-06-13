@@ -102,6 +102,25 @@ class TestJugador {
 	}
 	
 	@Test
+	public void testVerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
+		Jugador jugador = new Jugador( 8000 );
+		
+		int nivel = 5;
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		
+		Baraja monstruosASacrificar = new Baraja();
+		monstruosASacrificar.agregarCarta(monstruoDos);
+		
+		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
+		
+		assert ( ((jugador.obtenerCampo()).obtenerMonstruos()).pertenece("joaco") );
+	}
+	
+	@Test
 	public void testColocarMonstruoConNivel3NoRequiereSacrificio() {
 		Jugador jugador = new Jugador( 8000 );
 		
@@ -145,6 +164,25 @@ class TestJugador {
 		
 		assertTrue(jugadorUno.monstruoEstaMuerto("facu"));
 		assertTrue(jugadorDos.monstruoEstaMuerto("javi"));
+	}
+	
+	@Test
+	public void testAgregarAgujeroNegroNoQuitaVidaAJugadores () {
+		
+		Jugador jugadorUno = new Jugador ( 8000 );
+		Jugador jugadorDos = new Jugador ( 8000 );
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Magica agujeroNegro = new AgujeroNegro ("Agujero Negro", jugadorUno);
+		
+		jugadorUno.repartirCarta(agujeroNegro);
+		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
+		
+		assertTrue(jugadorUno.obtenerVida() == 8000);
+		assertTrue(jugadorDos.obtenerVida() == 8000);
+		
 	}
 	
 }
