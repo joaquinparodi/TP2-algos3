@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import cartas.Carta;
-import cartas.Monstruo;
 
 public class Baraja {
 
@@ -29,8 +28,8 @@ public class Baraja {
 	public Carta obtenerCarta(String nombreCarta) {
 		Iterator<Carta> iter = contenedor.iterator();
 	    while(iter.hasNext()) {
-	    	Monstruo monstruo = (Monstruo)iter.next();
-	    	if( monstruo.seLlama(nombreCarta) ) return monstruo;
+	    	Carta carta = iter.next();
+	    	if( carta.seLlama(nombreCarta) ) return carta;
 	    }
 	    //Lanzar excpecion
 	    return null;
@@ -39,10 +38,14 @@ public class Baraja {
 	public boolean pertenece(String nombreCarta) {
 		Iterator<Carta> iter = contenedor.iterator();
 	    while(iter.hasNext()) {
-	    	Monstruo monstruo = (Monstruo)iter.next();
-	    	if( monstruo.seLlama(nombreCarta) ) return true;
+	    	Carta carta = iter.next();
+	    	if( carta.seLlama(nombreCarta) ) return true;
 	    }
 	    return false;
+	}
+	
+	public boolean tieneCartas () {
+		return (contenedor.size() > 0);
 	}
 
 }

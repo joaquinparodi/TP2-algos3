@@ -3,12 +3,9 @@ package jugabilidad;
 import cartas.Monstruo;
 import posiciones.PosicionMonstruo;
 
-import java.util.ArrayList;
-
 import cartas.Carta;
 import cartas.Magica;
 
-import cartas.Monstruo;
 
 public class Jugador {
 
@@ -44,7 +41,7 @@ public class Jugador {
     }
     
     public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
-    	campo.enviarCartaACementerio(unMonstruo);
+    	campo.enviarMonstruoACementerio(unMonstruo);
     }
     
     public boolean monstruoEstaMuerto(String nombreMonstruo) {
@@ -52,6 +49,7 @@ public class Jugador {
     }
     
     public void enviarMagicaAlCementerio(Magica unaCartaMagica) {
+    	campo.enviarMagicaACementerio(unaCartaMagica);
     }
     
     public void agregarCartaEnCampo(String nombreCarta) {
@@ -65,16 +63,25 @@ public class Jugador {
     	mano.eliminarCarta(monstruo);
     	monstruo.asignarPosicion(unaPosicion);
     	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
-			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 		} else if(monstruo.obtenerEstrellas() > 6) {
-			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 			monstruosASacrificar.eliminarCarta(monstruosASacrificar.obtenerPrimeraCarta());
-			campo.enviarCartaACementerio(monstruosASacrificar.obtenerPrimeraCarta());
+			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 		}
     	campo.agregarCartaMonstruo(monstruo);
     }
     
-    public void agregarCartaMagicaEnCampo(Magica cartaMagica) {
-    	campo.agregarCartaMagica(cartaMagica);
+    public void agregarCartaMagicaEnCampo(String nombreDeCarta) {
+    	Magica cartaBuscada = (Magica) mano.obtenerCarta(nombreDeCarta);
+    	campo.agregarCartaMagica(cartaBuscada);
+    }
+    
+    public Jugador obtenerRival() {
+    	return this.jugadorRival;
+    }
+    
+    public CampoDeJuego obtenerCampo() {
+    	return this.campo;
     }
 }

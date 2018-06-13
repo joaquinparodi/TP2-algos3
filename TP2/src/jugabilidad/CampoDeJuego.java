@@ -1,12 +1,9 @@
 package jugabilidad;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import cartas.Carta;
 import cartas.Magica;
 import cartas.Monstruo;
-import posiciones.PosicionMonstruo;
+
 
 
 public class CampoDeJuego {
@@ -25,7 +22,13 @@ public class CampoDeJuego {
 		carta.agregarseEnCampo();
 	}
 	
-	public void enviarCartaACementerio(Carta unaCarta) {
+	public void enviarMonstruoACementerio(Carta unaCarta) {
+		filaMonstruos.eliminarCarta(unaCarta);
+		cementerio.agregarCarta(unaCarta);
+	}
+
+	public void enviarMagicaACementerio(Carta unaCarta) {
+		filaMagicas.eliminarCarta(unaCarta);
 		cementerio.agregarCarta(unaCarta);
 	}
 	
@@ -39,5 +42,10 @@ public class CampoDeJuego {
 	
 	public void agregarCartaMagica(Magica cartaMagica) {
 		filaMagicas.agregarCarta(cartaMagica);
+		cartaMagica.aplicarEfecto();
+	}
+	
+	public Baraja obtenerMonstruos () {
+		return this.filaMonstruos;
 	}
 }

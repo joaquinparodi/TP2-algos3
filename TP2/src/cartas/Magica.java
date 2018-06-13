@@ -16,9 +16,8 @@ public abstract class Magica extends Carta{
 	}
 	
 	public void agregarseEnCampo() {
-		this.jugadorDuenio.agregarCartaMagicaEnCampo(this);
+		this.jugadorDuenio.agregarCartaMagicaEnCampo(this.nombreCarta);
 	}
-	
 	
 }
 

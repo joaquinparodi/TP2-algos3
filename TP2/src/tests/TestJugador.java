@@ -2,6 +2,8 @@ package tests;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 import posiciones.PosicionAtaque;
+import cartas.AgujeroNegro;
+import cartas.Magica;
 
 import org.junit.jupiter.api.Test;
 
@@ -141,6 +143,33 @@ class TestJugador {
 		jugador.agregarCartaMonstruoEnCampo("joaco", new PosicionAtaque(new Puntos(2000, 2000)), monstruosASacrificar);
 		
 		assertFalse( jugador.monstruoEstaMuerto("javi") );
+	}
+	
+	@Test
+	public void testAgregarAgujeroNegroEliminaTodasLasCartas () {
+		
+		Jugador jugadorUno = new Jugador ( 8000 );
+		Jugador jugadorDos = new Jugador ( 8000 );
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, 2000, 2000);
+		
+		Magica agujeroNegro = new AgujeroNegro ("Agujero Negro", jugadorUno);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorUno.repartirCarta(agujeroNegro);
+		jugadorDos.repartirCarta(monstruoDos);
+		
+		jugadorUno.agregarCartaMonstruoEnCampo("facu", new PosicionAtaque(new Puntos(2000,2000)), new Baraja());
+		jugadorDos.agregarCartaMonstruoEnCampo("javi", new PosicionAtaque(new Puntos(2000,2000)), new Baraja());
+		
+		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
+		
+		assertTrue(jugadorUno.monstruoEstaMuerto("facu"));
+		assertTrue(jugadorDos.monstruoEstaMuerto("javi"));
 	}
 	
 }
