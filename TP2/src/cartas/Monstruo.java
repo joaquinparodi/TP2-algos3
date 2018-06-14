@@ -43,7 +43,8 @@ public class Monstruo extends Carta {
 	public void asignarPosicion(PosicionMonstruo posicion) {
 		this.posicion = posicion;
 	}
-	
-	public void agregarseEnCampo() {}
+
+	public void aplicarEfecto () {
+	}
 }
 

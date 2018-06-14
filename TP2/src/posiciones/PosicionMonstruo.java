@@ -13,4 +13,3 @@ public interface PosicionMonstruo {
 	public Resultado recibirAtaque(Puntos puntos);
 	
 }
-

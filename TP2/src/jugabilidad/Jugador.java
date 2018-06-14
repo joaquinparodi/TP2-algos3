@@ -1,6 +1,7 @@
 package jugabilidad;
 
 import cartas.Monstruo;
+import cartas.Trampa;
 import cartas.Carta;
 import cartas.Magica;
 
@@ -68,6 +69,11 @@ public class Jugador {
     	campo.agregarCartaMagica(cartaBuscada);
     }
     
+    public void agregarCartaTrampaEnCampo(String nombreDeCarta) {
+    	Trampa cartaBuscada = (Trampa) mano.obtenerCarta(nombreDeCarta);
+    	campo.agregarCartaTrampa(cartaBuscada);
+    }
+    
     public Jugador obtenerRival() {
     	return this.jugadorRival;
     }
@@ -75,4 +81,13 @@ public class Jugador {
     public CampoDeJuego obtenerCampo() {
     	return this.campo;
     }
+    
+    public void voltearCartaDeMano (String nombreDeCarta) {
+    	mano.voltearCarta(nombreDeCarta);
+    }
+
+	public void enviarTrampaAlCementerio(Trampa trampa) {
+		campo.enviarTrampaAlCementerio(trampa);
+	}
+
 }

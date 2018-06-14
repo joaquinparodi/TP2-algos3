@@ -4,16 +4,12 @@ import jugabilidad.Jugador;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Baraja;
 
-public class AgujeroNegro extends Magica{
-	
-	public AgujeroNegro(String auxNombre, Jugador auxJugador) {
-		super(auxNombre, auxJugador);
-	}
+public class EfectoAgujeroNegro implements Efecto{
 
-	public void aplicarEfecto() {
+	public void aplicar(Jugador unJugador) {
 		
-		Jugador jugador = this.jugadorDuenio;
-		Jugador rival = this.jugadorDuenio.obtenerRival();
+		Jugador jugador = unJugador;
+		Jugador rival = unJugador.obtenerRival();
 		
 		CampoDeJuego campoUno = jugador.obtenerCampo();
 		CampoDeJuego campoDos =	rival.obtenerCampo();

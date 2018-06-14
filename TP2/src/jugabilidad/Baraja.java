@@ -47,5 +47,10 @@ public class Baraja {
 	public boolean tieneCartas () {
 		return (contenedor.size() > 0);
 	}
+	
+	public void voltearCarta (String nombreDeCarta) {
+		Carta carta = this.obtenerCarta(nombreDeCarta);
+		carta.voltear();
+	}
 
 }

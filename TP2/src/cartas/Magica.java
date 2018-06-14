@@ -3,21 +3,19 @@ package cartas;
 
 import jugabilidad.Jugador;
 
-public abstract class Magica extends Carta{
-	
-	public Magica(String auxNombre, Jugador auxJugador) {
-		super(auxNombre, auxJugador);
-	}
+public class Magica extends Carta{
 
-	public abstract void aplicarEfecto();
+	public Magica(String auxNombre, Jugador auxJugador,Efecto unEfecto) {
+		super(auxNombre, auxJugador);
+		this.efecto = unEfecto;
+	}
 	
 	public void enviarAlCementerio() {
 		this.jugadorDuenio.enviarMagicaAlCementerio(this);
 	}
-	
-	public void agregarseEnCampo() {
-		this.jugadorDuenio.agregarCartaMagicaEnCampo(this.nombreCarta);
-	}
-	
+
+	public void aplicarEfecto() {
+		this.orientacion.aplicarEfecto(this.efecto,this.jugadorDuenio);
+	}	
 }
 

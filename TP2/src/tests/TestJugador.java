@@ -1,7 +1,8 @@
 package tests;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
-import cartas.AgujeroNegro;
+import cartas.Efecto;
+import cartas.EfectoAgujeroNegro;
 import cartas.Magica;
 
 import org.junit.jupiter.api.Test;
@@ -151,7 +152,8 @@ class TestJugador {
 		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, 2000, 2000);
 		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, 2000, 2000);
 		
-		Magica agujeroNegro = new AgujeroNegro ("Agujero Negro", jugadorUno);
+		Efecto efecto = new EfectoAgujeroNegro ();
+		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorUno.repartirCarta(agujeroNegro);
@@ -175,7 +177,8 @@ class TestJugador {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Magica agujeroNegro = new AgujeroNegro ("Agujero Negro", jugadorUno);
+		Efecto efecto = new EfectoAgujeroNegro ();
+		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);
 		
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
@@ -185,4 +188,34 @@ class TestJugador {
 		
 	}
 	
+	@Test
+	public void testAgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
+		
+		Jugador jugadorUno = new Jugador ( 8000 );
+		Jugador jugadorDos = new Jugador ( 8000 );
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, 2000, 2000);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, 2000, 2000);
+		
+		Efecto efecto = new EfectoAgujeroNegro ();
+		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorUno.repartirCarta(agujeroNegro);
+		jugadorDos.repartirCarta(monstruoDos);
+		
+		jugadorUno.voltearCartaDeMano("Agujero Negro");
+		
+		jugadorUno.agregarCartaMonstruoEnCampo("facu", new Baraja());
+		jugadorDos.agregarCartaMonstruoEnCampo("javi", new Baraja());
+		
+		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
+		
+		assertFalse(jugadorUno.monstruoEstaMuerto("facu"));
+		assertFalse(jugadorDos.monstruoEstaMuerto("javi"));
+		
+	}
 }
