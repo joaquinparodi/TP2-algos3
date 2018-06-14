@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import cartas.Carta;
+import errores.ErrorCartaNoEncontrada;
 
 public class Baraja {
 
@@ -35,8 +36,7 @@ public class Baraja {
 	    	Carta carta = iter.next();
 	    	if( carta.seLlama(nombreCarta) ) return carta;
 	    }
-	    //Lanzar excpecion
-	    return null;
+	    throw new ErrorCartaNoEncontrada();
 	}
 	
 	public boolean pertenece(String nombreCarta) {

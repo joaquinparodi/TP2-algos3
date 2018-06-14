@@ -2,6 +2,7 @@ package posiciones;
 
 import cartas.Monstruo;
 import cartas.Puntos;
+import errores.ErrorAtaqueDesdePosicionInvalidad;
 import resultados.Derrota;
 import resultados.Empate;
 import resultados.Resultado;
@@ -20,8 +21,7 @@ public class PosicionDefensa implements PosicionMonstruo {
 	}
 
 	public Resultado atacar(Monstruo monstruo) {
-		//Lanzar expcecion aca
-		return null;
+		throw new ErrorAtaqueDesdePosicionInvalidad();
 	}
 
 	public Resultado recibirAtaque(Puntos puntosAtacante) {

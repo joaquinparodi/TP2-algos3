@@ -9,9 +9,7 @@ public class Abajo implements OrientacionCarta {
 		return new Arriba ();
 	}
 
-	@Override
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) {
-
 	}
 
 
