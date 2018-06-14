@@ -7,8 +7,11 @@ import cartas.Magica;
 import org.junit.jupiter.api.Test;
 
 import cartas.Monstruo;
+import errores.ErrorSacrificiosInsuficientes;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
 
 class TestJugador {
 
@@ -118,6 +121,20 @@ class TestJugador {
 		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
 		
 		assert ( ((jugador.obtenerCampo()).obtenerMonstruos()).pertenece("joaco") );
+	}
+	
+	@Test
+	public void testInvocarMonstruoNivel5SinEnviarMonstruosASacrificarLanzaError() {
+		Jugador jugador = new Jugador( 8000 );
+		
+		int nivel = 5;
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		
+		jugador.repartirCarta(monstruoUno);
+		
+		Baraja monstruosASacrificar = new Baraja();
+		
+		Assertions.assertThrows(ErrorSacrificiosInsuficientes.class, () -> jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar));
 	}
 	
 	@Test

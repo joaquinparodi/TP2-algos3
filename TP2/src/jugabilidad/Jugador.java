@@ -1,6 +1,7 @@
 package jugabilidad;
 
 import cartas.Monstruo;
+import errores.ErrorSacrificiosInsuficientes;
 import cartas.Carta;
 import cartas.Magica;
 
@@ -49,13 +50,17 @@ public class Jugador {
     public void enviarMagicaAlCementerio(Magica unaCartaMagica) {
     	campo.enviarMagicaACementerio(unaCartaMagica);
     }
-    
+   
     public void agregarCartaMonstruoEnCampo(String unMonstruo, Baraja monstruosASacrificar) {
     	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
     	mano.eliminarCarta(monstruo);
     	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
+    		if ( monstruosASacrificar.obtenerCantidadDeCartas() < 1 )
+    			throw new ErrorSacrificiosInsuficientes();
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 		} else if(monstruo.obtenerEstrellas() > 6) {
+			if ( monstruosASacrificar.obtenerCantidadDeCartas() < 2 )
+				throw new ErrorSacrificiosInsuficientes();
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 			monstruosASacrificar.eliminarCarta(monstruosASacrificar.obtenerPrimeraCarta());
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
