@@ -13,6 +13,10 @@ public class Baraja {
 		contenedor = new ArrayList<Carta>();
 	}
 	
+	public int obtenerCantidadDeCartas() {
+		return contenedor.size();
+	}
+	
 	public void agregarCarta(Carta carta) {
 		contenedor.add(carta);
 	}
