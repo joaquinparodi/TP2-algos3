@@ -14,7 +14,7 @@ import jugabilidad.Jugador;
 public class TestBaraja {
 	
 	@Test
-	public void agregarCartaABarajaYPreguntarSiTienePorElNombreDevuelveCorrectamente() {
+	public void test01agregarCartaABarajaYPreguntarSiTienePorElNombreDevuelveCorrectamente() {
 		
 		Jugador jugador = new Jugador(8000);
 		Baraja baraja = new Baraja();
@@ -26,7 +26,7 @@ public class TestBaraja {
 	}
 	
 	@Test
-	public void testCartanoEncontrada(){
+	public void test02CartanoEncontrada(){
 		Baraja baraja = new Baraja();
 		
 		Assertions.assertThrows(ErrorCartaNoEncontrada.class, () -> baraja.obtenerCarta("CartaTest"));
