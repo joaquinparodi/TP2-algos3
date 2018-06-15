@@ -55,11 +55,14 @@ public class Jugador {
     public void agregarCartaMonstruoEnCampo(String unMonstruo, Baraja monstruosASacrificar) {
     	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
     	mano.eliminarCarta(monstruo);
+    	//Antes de agregar el monstruo en el campo se tien que verificar su nivel
     	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
+    		//Si el monstruo es de nivel 5 o 6, se necesita un sacrificio
     		if ( monstruosASacrificar.obtenerCantidadDeCartas() < 1 )
     			throw new ErrorSacrificiosInsuficientes();
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
 		} else if(monstruo.obtenerEstrellas() > 6) {
+			//Si el nivel es mas de 6, se necesita 2 sacrificios
 			if ( monstruosASacrificar.obtenerCantidadDeCartas() < 2 )
 				throw new ErrorSacrificiosInsuficientes();
 			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());

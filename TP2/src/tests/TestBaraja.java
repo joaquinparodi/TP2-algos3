@@ -3,8 +3,11 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
 import cartas.Carta;
 import cartas.Monstruo;
+import errores.ErrorCartaNoEncontrada;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 
@@ -20,6 +23,15 @@ public class TestBaraja {
 		baraja.agregarCarta(monstruo);
 		
 		assertTrue( baraja.pertenece("CartaDePrueba") );
+	}
+	
+	@Test
+	public void testCartanoEncontrada(){
+		Baraja baraja = new Baraja();
+		
+		Assertions.assertThrows(ErrorCartaNoEncontrada.class, () -> baraja.obtenerCarta("CartaTest"));
+		
+		
 	}
 	
 	

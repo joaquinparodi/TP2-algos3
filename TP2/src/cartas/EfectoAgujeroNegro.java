@@ -17,6 +17,7 @@ public class EfectoAgujeroNegro implements Efecto{
 		Baraja monstruosUno = campoUno.obtenerMonstruos();
 		Baraja monstruosDos = campoDos.obtenerMonstruos();
 		
+		//La carta envia todos los monstruos de los 2 jugadores en el cementario 
 		while (monstruosUno.tieneCartas()) {
 			campoUno.enviarMonstruoACementerio(monstruosUno.obtenerPrimeraCarta());			
 		}

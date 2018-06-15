@@ -1,3 +1,5 @@
 package errores;
 
-public class ErrorSacrificiosInsuficientes extends RuntimeException {}
+public class ErrorSacrificiosInsuficientes extends RuntimeException {
+	
+}
