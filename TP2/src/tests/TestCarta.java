@@ -1,7 +1,11 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Assertions;
+
 import cartas.Monstruo;
+import errores.ErrorAtaqueDesdePosicionInvalidad;
 import org.junit.jupiter.api.Test;
 import jugabilidad.Jugador;
 
@@ -10,7 +14,7 @@ class TestCarta {
 	//private static final double DELTA = 1e-2;
 	
 	@Test
-	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosRestaPuntosDeVidaAlAtacante() {
+	public void test01CartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosRestaPuntosDeVidaAlAtacante() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -24,7 +28,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosRestaPuntosDeVidaAlDefensor() {
+	public void test02CartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosRestaPuntosDeVidaAlDefensor() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 		
@@ -40,7 +44,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraConIgualPuntosDeAtaqueNoLeRestaANadie() {
+	public void test03CartaAtacaAOtraConIgualPuntosDeAtaqueNoLeRestaANadie() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
@@ -57,7 +61,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnModoDefensaConMasPuntosYNingunoPierdeVida () {
+	public void test04CartaAtacaAOtraEnModoDefensaConMasPuntosYNingunoPierdeVida () {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 
@@ -76,7 +80,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConMenosPuntosYNingunoPierdeVida() {
+	public void test05CartaAtacaAOtraEnDefensaConMenosPuntosYNingunoPierdeVida() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 		
@@ -94,7 +98,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida() {
+	public void test06CartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 		
@@ -112,7 +116,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye() {
+	public void test07CartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye() {
 		Jugador unJugador = new Jugador (8000);
 		Jugador otroJugador = new Jugador (8000);
 		
@@ -128,7 +132,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnAtaqueConMasPuntosYSeDestruye() {
+	public void test08CartaAtacaAOtraEnAtaqueConMasPuntosYSeDestruye() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -145,7 +149,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnAtaqueConIgualPuntosYSeDestruyenAmbas() {
+	public void test09CartaAtacaAOtraEnAtaqueConIgualPuntosYSeDestruyenAmbas() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -163,7 +167,7 @@ class TestCarta {
 	}
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConMenosPuntosYLaDestruye() {
+	public void test10CartaAtacaAOtraEnDefensaConMenosPuntosYLaDestruye() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -181,7 +185,7 @@ class TestCarta {
 	}	
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConMasPuntosYSeDestruye() {
+	public void test11CartaAtacaAOtraEnDefensaConMasPuntosYSeDestruye() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -199,7 +203,7 @@ class TestCarta {
 	}	
 	
 	@Test
-	public void testCartaAtacaAOtraEnDefensaConIgualPuntosYSeDestruyenAmabas() {
+	public void test12CartaAtacaAOtraEnDefensaConIgualPuntosYSeDestruyenAmabas() {
 		Jugador jugadorUno = new Jugador (8000);
 		Jugador jugadorDos = new Jugador (8000);
 
@@ -215,5 +219,25 @@ class TestCarta {
 
 		assertTrue( jugadorUno.monstruoEstaMuerto("Facundo") );
 		assertTrue( jugadorDos.monstruoEstaMuerto("Javier") );
-	}	
+	}
+	
+	@Test
+	public void test13AtaqueDesdePosicionInvalid() {
+		Jugador jugadorUno = new Jugador (8000);
+		Jugador jugadorDos = new Jugador (8000);
+
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		//La carta se inicializa en modo ataque
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 2, 2000, 2500);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, 2000, 2500);
+		
+		unaCarta.cambiarPosicion();
+		
+		//La carta ataqua cuando esta en posicion defensa
+		Assertions.assertThrows(ErrorAtaqueDesdePosicionInvalidad.class, () -> unaCarta.atacar( otraCarta ));
+
+	}
+	
 }

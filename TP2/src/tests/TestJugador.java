@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Assertions;
 class TestJugador {
 
     @Test
-    public void testJugadorNuevoTieneXPuntos (){
+    public void test01JugadorNuevoTieneXPuntos (){
         Jugador unJugador = new Jugador(8000);
 
         double vidaEsperada = 8000;
@@ -27,7 +27,7 @@ class TestJugador {
     }
 
     @Test
-    public void testJugadorRecibeDanio(){
+    public void test02JugadorRecibeDanio(){
 
         Jugador unJugador = new Jugador(8000);
 
@@ -40,7 +40,7 @@ class TestJugador {
     }
     
 	@Test
-	public void testColocarMosnstruoConNivelInferiorACincoYNoSacrificaANadie() {
+	public void test03ColocarMosnstruoConNivelInferiorACincoYNoSacrificaANadie() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 2;
@@ -64,7 +64,7 @@ class TestJugador {
 	
 	
 	@Test
-	public void testColocarMonstruoConNivel7Requiere2Sacrificios() {
+	public void test04ColocarMonstruoConNivel7Requiere2Sacrificios() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 7;
@@ -87,7 +87,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testColocarMonstruoConNivel5Requiere1Sacrificio() {
+	public void test05ColocarMonstruoConNivel5Requiere1Sacrificio() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 5;
@@ -106,7 +106,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testVerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
+	public void test06VerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 5;
@@ -125,7 +125,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testInvocarMonstruoNivel5SinEnviarMonstruosASacrificarLanzaError() {
+	public void test07InvocarMonstruoNivel5SinEnviarMonstruosASacrificarLanzaError() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 5;
@@ -139,7 +139,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testColocarMonstruoConNivel3NoRequiereSacrificio() {
+	public void test08ColocarMonstruoConNivel3NoRequiereSacrificio() {
 		Jugador jugador = new Jugador( 8000 );
 		
 		int nivel = 3;
@@ -158,7 +158,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testAgregarAgujeroNegroEliminaTodasLasCartas () {
+	public void test09AgregarAgujeroNegroEliminaTodasLasCartas () {
 		
 		Jugador jugadorUno = new Jugador ( 8000 );
 		Jugador jugadorDos = new Jugador ( 8000 );
@@ -186,7 +186,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testAgregarAgujeroNegroNoQuitaVidaAJugadores () {
+	public void test10AgregarAgujeroNegroNoQuitaVidaAJugadores () {
 		
 		Jugador jugadorUno = new Jugador ( 8000 );
 		Jugador jugadorDos = new Jugador ( 8000 );
@@ -206,7 +206,7 @@ class TestJugador {
 	}
 	
 	@Test
-	public void testAgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
+	public void test11AgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
 		
 		Jugador jugadorUno = new Jugador ( 8000 );
 		Jugador jugadorDos = new Jugador ( 8000 );
