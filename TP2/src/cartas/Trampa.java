@@ -13,7 +13,7 @@ public class Trampa extends Carta {
 	}
 
 	public void enviarAlCementerio() {
-		this.jugadorDuenio.enviarTrampaAlCementerio(this);	
+		this.jugadorDuenio.enviarAlCementerio(this);	
 	}
 
 	public void aplicarEfecto() {

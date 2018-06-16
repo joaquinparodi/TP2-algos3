@@ -28,9 +28,10 @@ public class TestBaraja {
 		Carta monstruo = new Monstruo("CartaDePrueba", jugador, estrellas, puntos);
 		baraja.agregarCarta(monstruo);
 		
-		assertTrue( baraja.pertenece("CartaDePrueba") );
+		assertTrue( baraja.pertenece(monstruo) );
 	}
 	
+	//Este de aca no se si sirve, xq si se manda el objeto no hay necesidad de obtener la carta
 	@Test
 	public void test02CartaNoEncontrada(){
 		Baraja baraja = new Baraja();

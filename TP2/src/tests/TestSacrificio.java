@@ -31,7 +31,7 @@ public class TestSacrificio {
 		sacrificio.agregarCarta( unaCarta );
 		sacrificio.enviarSacrificiosAlCementerio(campo);
 		
-		assertTrue( campo.cartaPerteneceAlCementerio("Facundo") );
+		assertTrue( campo.cartaPerteneceAlCementerio(unaCarta) );
 	}
 	
 	@Test
@@ -46,7 +46,7 @@ public class TestSacrificio {
 		
 		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
-		campo.agregarCartaMonstruo(unaCarta);
+		campo.agregarCarta(unaCarta);
 		
 		Sacrificio sacrificio = new Sacrificio();
 		sacrificio.agregarCarta( unaCarta );

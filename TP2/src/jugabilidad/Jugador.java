@@ -2,6 +2,7 @@ package jugabilidad;
 
 import cartas.Monstruo;
 import cartas.Trampa;
+import errores.ErrorCartaNoEncontrada;
 import errores.ErrorSacrificiosInsuficientes;
 import atributos.Sacrificio;
 import atributos.Vida;
@@ -30,10 +31,6 @@ public class Jugador {
 	public void repartirCarta(Carta carta) {
 		mano.agregarCarta(carta);
 	}
-	
-    public Vida obtenerVida() {
-	    return this.vida;
-    }
 
     public void hacerDanio(double danio) {
 	    this.vida.quitarVida( danio );
@@ -50,50 +47,62 @@ public class Jugador {
     public void enviarAlCementerio(Magica unaCartaMagica) {
     	campo.enviarAlCementerio(unaCartaMagica);
     }
-   
     
-    public boolean monstruoEstaMuerto(String nombreMonstruo) {
-    	return campo.cartaPerteneceAlCementerio(nombreMonstruo);
-    }
+	public void enviarAlCementerio(Trampa trampa) {
+		campo.enviarAlCementerio(trampa);
+	}
     
-    public void agregarCartaMonstruoEnCampo(String unMonstruo, Sacrificio sacrificios) {
-    	//Tirar exception si no tiene la carta! Tambien verificar si los sacrificos pertenecen al campo
-    	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
-    	mano.eliminarCarta(monstruo);
+    public void agregarCartaEnCampo(Monstruo cartaMonstruo, Sacrificio sacrificios) {
+    	//Tambien verificar si los sacrificos pertenecen al campo
+    
+    	if( !mano.pertenece(cartaMonstruo) ) throw new ErrorCartaNoEncontrada();	
+    	mano.eliminarCarta(cartaMonstruo);
 
-    	int sacrificiosNecesarios = monstruo.obtenerCantidadDeSacrificiosNecesarios();
+    	int sacrificiosNecesarios = cartaMonstruo.obtenerCantidadDeSacrificiosNecesarios();
     	
     	if ( sacrificios.obtenerCantidadDeCartas() != sacrificiosNecesarios ) {
     		throw new ErrorSacrificiosInsuficientes();
     	}    	
     	
     	sacrificios.enviarSacrificiosAlCementerio( campo );
-    	campo.agregarCartaMonstruo(monstruo);
+    	campo.agregarCarta(cartaMonstruo);
     }
     
-    public void agregarCartaMonstruoEnCampo(String unMonstruo) {
-    	//Tirar exception si no tiene la carta!
-    	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
-    	mano.eliminarCarta(monstruo);
+    public void agregarCartaEnCampo(Monstruo cartaMonstruo) {
+
+    	if( !mano.pertenece(cartaMonstruo) ) {
+    		throw new ErrorCartaNoEncontrada();
+    	}
     	
-    	if( monstruo.necesitaSacrificiosParaInvocacion() ) {
+    	mano.eliminarCarta(cartaMonstruo);
+    	
+    	if( cartaMonstruo.necesitaSacrificiosParaInvocacion() ) {
     		throw new ErrorSacrificiosInsuficientes();
     	}
-    	campo.agregarCartaMonstruo(monstruo);
+    	
+    	campo.agregarCarta(cartaMonstruo);
     }
     
-    public void agregarCartaMagicaEnCampo(String nombreDeCarta) {
-    	Magica cartaBuscada = (Magica) mano.obtenerCarta(nombreDeCarta);
-    	campo.agregarCartaMagica(cartaBuscada);
+    public void agregarCartaEnCampo(Magica cartaMagica) {
+    	//Verificar excepciones
+    	campo.agregarCarta(cartaMagica);
     }
     
-    public void agregarCartaTrampaEnCampo(String nombreDeCarta) {
-    	Trampa cartaBuscada = (Trampa) mano.obtenerCarta(nombreDeCarta);
-    	campo.agregarCartaTrampa(cartaBuscada);
+    public void agregarCartaEnCampo(Trampa cartaTrampa) {
+    	//verifica excpeciones
+    	campo.agregarCarta(cartaTrampa);
+    }
+    
+    public boolean cartaEstaMuerta(Carta carta) {
+    	return campo.cartaPerteneceAlCementerio(carta);
     }
     
     public Jugador obtenerRival() {
     	return this.jugadorRival;
+    }
+
+    public Vida obtenerVida() {
+	    return this.vida;
     }
     
     public CampoDeJuego obtenerCampo() {
@@ -103,9 +112,5 @@ public class Jugador {
     public void voltearCartaDeMano (String nombreDeCarta) {
     	mano.voltearCarta(nombreDeCarta);
     }
-
-	public void enviarTrampaAlCementerio(Trampa trampa) {
-		campo.enviarTrampaAlCementerio(trampa);
-	}
 
 }

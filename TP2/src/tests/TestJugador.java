@@ -63,14 +63,14 @@ class TestJugador {
 		jugador.repartirCarta(monstruoDos);
 		jugador.repartirCarta(monstruoTres);
 		
-		jugador.agregarCartaMonstruoEnCampo("Auriane");
-		jugador.agregarCartaMonstruoEnCampo("Javir");
+		jugador.agregarCartaEnCampo(monstruoUno);
+		jugador.agregarCartaEnCampo(monstruoDos);
 		
 		//Al agregar "Facundo", no se tendrian que borrar ninguno de los 2 mosntruos del tablero
-		jugador.agregarCartaMonstruoEnCampo("Facundo");
+		jugador.agregarCartaEnCampo(monstruoTres);
 		
-		assertFalse( jugador.monstruoEstaMuerto("Javir") );
-		assertFalse( jugador.monstruoEstaMuerto("Auriane") );
+		assertFalse( jugador.cartaEstaMuerta(monstruoUno) );
+		assertFalse( jugador.cartaEstaMuerta(monstruoDos) );
 	}
 	
 	
@@ -96,10 +96,10 @@ class TestJugador {
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		monstruosASacrificar.agregarCarta(monstruoTres);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
+		jugador.agregarCartaEnCampo(monstruoUno, monstruosASacrificar);
 		
-		assertTrue( jugador.monstruoEstaMuerto("javi") );
-		assertTrue( jugador.monstruoEstaMuerto("facu") );
+		assertTrue( jugador.cartaEstaMuerta(monstruoDos) );
+		assertTrue( jugador.cartaEstaMuerta(monstruoTres) );
 	}
 	
 	@Test
@@ -121,9 +121,9 @@ class TestJugador {
 		Sacrificio monstruosASacrificar = new Sacrificio();
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
+		jugador.agregarCartaEnCampo(monstruoUno, monstruosASacrificar);
 		
-		assert( jugador.monstruoEstaMuerto("javi") );
+		assert( jugador.cartaEstaMuerta(monstruoDos) );
 	}
 	
 	@Test
@@ -145,9 +145,9 @@ class TestJugador {
 		Sacrificio monstruosASacrificar = new Sacrificio();
 		monstruosASacrificar.agregarCarta(monstruoDos);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar);
+		jugador.agregarCartaEnCampo(monstruoUno, monstruosASacrificar);
 		
-		assert( ((jugador.obtenerCampo()).obtenerMonstruos()).pertenece("joaco") );
+		assert( ((jugador.obtenerCampo()).obtenerMonstruos()).pertenece(monstruoUno) );
 	}
 	
 	@Test
@@ -164,7 +164,7 @@ class TestJugador {
 		
 		Sacrificio monstruosASacrificar = new Sacrificio();
 		
-		Assertions.assertThrows(ErrorSacrificiosInsuficientes.class, () -> jugador.agregarCartaMonstruoEnCampo("joaco", monstruosASacrificar));
+		Assertions.assertThrows(ErrorSacrificiosInsuficientes.class, () -> jugador.agregarCartaEnCampo(monstruoUno, monstruosASacrificar));
 	}
 	
 	@Test
@@ -181,8 +181,8 @@ class TestJugador {
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
 		
-		jugador.agregarCartaMonstruoEnCampo("joaco");
-		assertFalse( jugador.monstruoEstaMuerto("javi") );
+		jugador.agregarCartaEnCampo(monstruoUno);
+		assertFalse( jugador.cartaEstaMuerta(monstruoDos) );
 	}
 	
 	@Test
@@ -209,13 +209,13 @@ class TestJugador {
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorDos.repartirCarta(monstruoDos);
 		
-		jugadorUno.agregarCartaMonstruoEnCampo("facu");
-		jugadorDos.agregarCartaMonstruoEnCampo("javi");
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
-		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
+		jugadorUno.agregarCartaEnCampo(agujeroNegro);
 		
-		assertTrue(jugadorUno.monstruoEstaMuerto("facu"));
-		assertTrue(jugadorDos.monstruoEstaMuerto("javi"));
+		assertTrue(jugadorUno.cartaEstaMuerta(monstruoUno));
+		assertTrue(jugadorDos.cartaEstaMuerta(monstruoDos));
 	}
 	
 	@Test
@@ -233,7 +233,7 @@ class TestJugador {
 		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);
 		
 		jugadorUno.repartirCarta(agujeroNegro);
-		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
+		jugadorUno.agregarCartaEnCampo(agujeroNegro);
 		
 		assertTrue(jugadorUno.obtenerVida().obtenerPuntosDeVida() == 8000);
 		assertTrue(jugadorDos.obtenerVida().obtenerPuntosDeVida() == 8000);
@@ -266,13 +266,12 @@ class TestJugador {
 		
 		jugadorUno.voltearCartaDeMano("Agujero Negro");
 		
-		jugadorUno.agregarCartaMonstruoEnCampo("facu");
-		jugadorDos.agregarCartaMonstruoEnCampo("javi");
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		jugadorUno.agregarCartaEnCampo(agujeroNegro);
 		
-		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
-		
-		assertFalse(jugadorUno.monstruoEstaMuerto("facu"));
-		assertFalse(jugadorDos.monstruoEstaMuerto("javi"));
+		assertFalse(jugadorUno.cartaEstaMuerta(monstruoUno) );
+		assertFalse(jugadorDos.cartaEstaMuerta(monstruoDos) );
 		
 	}
 }

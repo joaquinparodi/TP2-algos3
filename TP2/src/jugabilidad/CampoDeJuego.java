@@ -31,33 +31,34 @@ public class CampoDeJuego {
 		cementerio.agregarCarta(cartaMagica);
 	}
 	
-	public boolean cartaPerteneceAlCementerio(String nombreCarta) {
-		return cementerio.pertenece(nombreCarta);
+	public void enviarAlCementerio(Trampa trampa) {
+		filaTrampas.eliminarCarta(trampa);
+		cementerio.agregarCarta(trampa);
 	}
 	
-	public void agregarCartaMonstruo(Monstruo monstruo) {
+	public void agregarCarta(Monstruo monstruo) {
 		filaMonstruos.agregarCarta(monstruo);
 	}
 	
-	public void agregarCartaMagica(Magica cartaMagica) {
+	public void agregarCarta(Magica cartaMagica) {
 		filaMagicas.agregarCarta(cartaMagica);
 		cartaMagica.aplicarEfecto();
+	}
+	
+	public void agregarCarta(Trampa cartaTrampa) {
+		filaTrampas.agregarCarta(cartaTrampa);
+	}
+	
+	public boolean cartaPerteneceAlCementerio(Carta cartaBuscada) {
+		return cementerio.pertenece(cartaBuscada);
 	}
 	
 	public Baraja obtenerMonstruos() {
 		return this.filaMonstruos;
 	}
 
-	public void enviarTrampaAlCementerio(Trampa trampa) {
-		filaTrampas.eliminarCarta(trampa);
-		cementerio.agregarCarta(trampa);
-	}
-
-	public void agregarCartaTrampa(Trampa cartaTrampa) {
-		filaTrampas.agregarCarta(cartaTrampa);
-	}
-	
 	public Monstruo obtenerMonstruo(String nombreMonstruo) {
 		return (Monstruo)filaMonstruos.obtenerCarta(nombreMonstruo);
 	}
+
 }

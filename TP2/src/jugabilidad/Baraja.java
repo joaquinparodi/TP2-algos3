@@ -39,16 +39,11 @@ public class Baraja {
 	    throw new ErrorCartaNoEncontrada();
 	}
 	
-	public boolean pertenece(String nombreCarta) {
-		Iterator<Carta> iter = contenedor.iterator();
-	    while(iter.hasNext()) {
-	    	Carta carta = iter.next();
-	    	if( carta.seLlama(nombreCarta) ) return true;
-	    }
-	    return false;
+	public boolean pertenece(Carta cartaBuscada) {
+		return contenedor.contains(cartaBuscada);
 	}
 	
-	public boolean tieneCartas () {
+	public boolean tieneCartas() {
 		return (contenedor.size() > 0);
 	}
 	
