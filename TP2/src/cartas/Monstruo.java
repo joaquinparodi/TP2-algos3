@@ -31,7 +31,7 @@ public class Monstruo extends Carta {
 	}
 
 	public void enviarAlCementerio() {
-		this.jugadorDuenio.enviarMonstruoAlCementerio(this);
+		this.jugadorDuenio.enviarAlCementerio(this);
 	}
 
 	public void cambiarPosicion() {

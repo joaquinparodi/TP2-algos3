@@ -21,14 +21,14 @@ public class CampoDeJuego {
 		cementerio = new Baraja();
 	}
 	
-	public void enviarMonstruoACementerio(Carta unaCarta) {
-		filaMonstruos.eliminarCarta(unaCarta);
-		cementerio.agregarCarta(unaCarta);
+	public void enviarAlCementerio(Monstruo unMonstruo) {
+		filaMonstruos.eliminarCarta(unMonstruo);
+		cementerio.agregarCarta(unMonstruo);
 	}
 
-	public void enviarMagicaACementerio(Carta unaCarta) {
-		filaMagicas.eliminarCarta(unaCarta);
-		cementerio.agregarCarta(unaCarta);
+	public void enviarAlCementerio(Magica cartaMagica) {
+		filaMagicas.eliminarCarta(cartaMagica);
+		cementerio.agregarCarta(cartaMagica);
 	}
 	
 	public boolean cartaPerteneceAlCementerio(String nombreCarta) {

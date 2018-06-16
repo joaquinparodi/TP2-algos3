@@ -15,7 +15,7 @@ public class Magica extends Carta{
 	}
 	
 	public void enviarAlCementerio() {
-		this.jugadorDuenio.enviarMagicaAlCementerio(this);
+		this.jugadorDuenio.enviarAlCementerio(this);
 	}
 
 	public void aplicarEfecto() {

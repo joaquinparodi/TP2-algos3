@@ -16,7 +16,7 @@ public class Sacrificio extends Baraja {
 		Iterator<Carta> iter = contenedor.iterator();
 		while(iter.hasNext()) {
 		    	Monstruo monstruo = (Monstruo) iter.next();
-		    	campo.enviarMonstruoACementerio(monstruo);
+		    	campo.enviarAlCementerio(monstruo);
 		}
 	}
 

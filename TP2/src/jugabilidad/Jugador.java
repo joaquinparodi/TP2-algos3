@@ -43,18 +43,19 @@ public class Jugador {
     	jugadorRival.hacerDanio(danio);
     }
     
-    public void enviarMonstruoAlCementerio(Monstruo unMonstruo) {
-    	campo.enviarMonstruoACementerio(unMonstruo);
+    public void enviarAlCementerio(Monstruo unMonstruo) {
+    	campo.enviarAlCementerio(unMonstruo);
     }
+    
+    public void enviarAlCementerio(Magica unaCartaMagica) {
+    	campo.enviarAlCementerio(unaCartaMagica);
+    }
+   
     
     public boolean monstruoEstaMuerto(String nombreMonstruo) {
     	return campo.cartaPerteneceAlCementerio(nombreMonstruo);
     }
     
-    public void enviarMagicaAlCementerio(Magica unaCartaMagica) {
-    	campo.enviarMagicaACementerio(unaCartaMagica);
-    }
-   
     public void agregarCartaMonstruoEnCampo(String unMonstruo, Sacrificio sacrificios) {
     	//Tirar exception si no tiene la carta! Tambien verificar si los sacrificos pertenecen al campo
     	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);

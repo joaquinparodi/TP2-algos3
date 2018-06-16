@@ -2,6 +2,7 @@ package atributos;
 
 import jugabilidad.Jugador;
 import jugabilidad.CampoDeJuego;
+import cartas.Monstruo;
 import jugabilidad.Baraja;
 
 public class EfectoAgujeroNegro implements Efecto{
@@ -19,11 +20,11 @@ public class EfectoAgujeroNegro implements Efecto{
 		
 		//La carta envia todos los monstruos de los 2 jugadores en el cementario 
 		while (monstruosUno.tieneCartas()) {
-			campoUno.enviarMonstruoACementerio(monstruosUno.obtenerPrimeraCarta());			
+			campoUno.enviarAlCementerio((Monstruo)monstruosUno.obtenerPrimeraCarta());			
 		}
 		
 		while (monstruosDos.tieneCartas()) {
-			campoDos.enviarMonstruoACementerio(monstruosDos.obtenerPrimeraCarta());			
+			campoDos.enviarAlCementerio((Monstruo)monstruosDos.obtenerPrimeraCarta());			
 		}
 		
 	}
