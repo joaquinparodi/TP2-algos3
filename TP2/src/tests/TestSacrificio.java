@@ -9,6 +9,8 @@ import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Monstruo;
 import errores.ErrorCartaNoEncontrada;
+import factories.AbstractFabricaDeCartas;
+import factories.FabricaDeCartas;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;
 
@@ -17,6 +19,8 @@ public class TestSacrificio {
 	@Test
 	public void test01LasCartasSacrificadasVanAlCementerio() {
 		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
 		Vida vidaJugadorUno = new Vida (8000);
 		
 		//Jugador se usa para inicializar el mosntruo, para el test se usa otro campo
@@ -24,7 +28,7 @@ public class TestSacrificio {
 		Puntos puntosCartaUno = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		
 		Sacrificio sacrificio = new Sacrificio();
@@ -37,14 +41,16 @@ public class TestSacrificio {
 	@Test
 	public void test02LasCartasSacrificadasSeSacanDelCampoDeJuego() {
 		
-		Vida vidaJugadorUno = new Vida (8000);
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
+		Vida vidaJugadorUno = new Vida (8000);
+	
 		//Jugador se usa para inicializar el mosntruo, para el test se usa otro campo
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
 		Puntos puntosCartaUno = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		campo.agregarCarta(unaCarta);
 		

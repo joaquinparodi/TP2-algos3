@@ -11,6 +11,8 @@ import atributos.Vida;
 import cartas.Carta;
 import cartas.Monstruo;
 import errores.ErrorCartaNoEncontrada;
+import factories.AbstractFabricaDeCartas;
+import factories.FabricaDeCartas;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 
@@ -19,13 +21,15 @@ public class TestBaraja {
 	@Test
 	public void test01agregarCartaABarajaYPreguntarSiTienePorElNombreDevuelveCorrectamente() {
 		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
 		Vida vidaJugador = new Vida(8000);
 		Jugador jugador = new Jugador(vidaJugador);
 		Baraja baraja = new Baraja();
 		
 		Puntos puntos = new Puntos(1000, 1000);
 		Estrellas estrellas = new Estrellas(1);
-		Carta monstruo = new Monstruo("CartaDePrueba", jugador, estrellas, puntos);
+		Carta monstruo = fabricaDeCartas.crearCarta("CartaDePrueba", jugador, estrellas, puntos);
 		baraja.agregarCarta(monstruo);
 		
 		assertTrue( baraja.pertenece(monstruo) );
