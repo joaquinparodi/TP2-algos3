@@ -25,7 +25,6 @@ public class EfectoAgujeroNegro implements Efecto{
 			campoDos.enviarMonstruoACementerio(monstruosDos.obtenerPrimeraCarta());			
 		}
 		
-		
 	}
 
 	
