@@ -1,15 +1,16 @@
 package posiciones;
 
 import atributos.Puntos;
+import cartas.Atacable;
 import cartas.Monstruo;
 import resultados.Resultado;
 
 public interface Posicion {
 
-	public Posicion cambiarPosicion();
+	public abstract Posicion cambiarPosicion();
 		
-	public Resultado atacar(Monstruo monstruo);
+	public abstract Resultado atacar(Atacable otroMonstruo);
 	
-	public Resultado recibirAtaque(Puntos puntos);
+	public abstract Resultado recibirAtaque(Puntos puntos);
 	
 }

@@ -1,6 +1,6 @@
 package resultados;
 
-import cartas.Monstruo;
+import cartas.Atacable;
 import jugabilidad.Jugador;
 
 public class Empate implements Resultado {
@@ -12,9 +12,9 @@ public class Empate implements Resultado {
 		return; //No se le hace danio a nadie
 	}
 
-	public void aplicarACartas(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
-		monstruoAtacante.enviarAlCementerio();
-		monstruoAtacado.enviarAlCementerio();
+	public void aplicarACartas(Atacable atacante, Atacable atacado) {
+		atacante.enviarAlCementerio();
+		atacado.enviarAlCementerio();
 	}
 
 }

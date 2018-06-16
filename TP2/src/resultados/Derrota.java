@@ -1,5 +1,6 @@
 package resultados;
 
+import cartas.Atacable;
 import cartas.Monstruo;
 import jugabilidad.Jugador;
 
@@ -15,8 +16,8 @@ public class Derrota implements Resultado {
 		jugadorDerrotado.hacerDanio( diferenciaDePuntos );
 	}
 
-	public void aplicarACartas(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
-		monstruoAtacante.enviarAlCementerio();		
+	public void aplicarACartas(Atacable atacante, Atacable atacado) {
+		atacante.enviarAlCementerio();		
 	}
 	
 }

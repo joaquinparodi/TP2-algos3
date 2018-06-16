@@ -1,6 +1,7 @@
 package posiciones;
 
 import atributos.Puntos;
+import cartas.Atacable;
 import cartas.Monstruo;
 import resultados.Derrota;
 import resultados.Empate;
@@ -9,22 +10,22 @@ import resultados.Victoria;
 
 public class PosicionAtaque implements Posicion {
 
-	private Puntos puntosMonstruo;
+	private Puntos puntos;
 	
 	public PosicionAtaque( Puntos auxPuntosMonstruo ) {
-		this.puntosMonstruo = auxPuntosMonstruo;
+		this.puntos = auxPuntosMonstruo;
 	}
 	
 	public Posicion cambiarPosicion() {
-		return new PosicionDefensa( this.puntosMonstruo );
+		return new PosicionDefensa( this.puntos );
 	}
 	
-	public Resultado atacar(Monstruo monstruo) {
-		return monstruo.recibirAtaque( this.puntosMonstruo );
+	public Resultado atacar(Atacable atacable) {
+		return atacable.recibirAtaque( this.puntos );
 	}
 
 	public Resultado recibirAtaque(Puntos puntosAtacante) {		
-		double puntosDelDefensor = this.puntosMonstruo.obtenerPuntosDeAtaque();
+		double puntosDelDefensor = this.puntos.obtenerPuntosDeAtaque();
 		double puntosDelAtacante = puntosAtacante.obtenerPuntosDeAtaque();
 		return this.determinarResultado(puntosDelDefensor - puntosDelAtacante);
 	}

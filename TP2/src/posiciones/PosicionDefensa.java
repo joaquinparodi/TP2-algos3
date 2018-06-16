@@ -1,6 +1,7 @@
 package posiciones;
 
 import atributos.Puntos;
+import cartas.Atacable;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalidad;
 import resultados.Derrota;
@@ -20,7 +21,7 @@ public class PosicionDefensa implements Posicion {
 		return new PosicionAtaque(puntosMonstruo);
 	}
 
-	public Resultado atacar(Monstruo monstruo) {
+	public Resultado atacar(Atacable atacable) {
 		throw new ErrorAtaqueDesdePosicionInvalidad();
 	}
 

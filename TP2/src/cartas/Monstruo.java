@@ -7,7 +7,7 @@ import posiciones.PosicionAtaque;
 import posiciones.Posicion;
 import resultados.Resultado;
 
-public class Monstruo extends Carta {
+public class Monstruo extends Carta implements Atacable {
 
 	private Posicion posicion;
 	private Puntos puntos;
@@ -20,7 +20,7 @@ public class Monstruo extends Carta {
 		this.posicion = new PosicionAtaque( puntos );
 	}
 
-	public void atacar( Monstruo otroMonstruo ) {
+	public void atacar( Atacable otroMonstruo ) {
 		Resultado resultado = posicion.atacar( otroMonstruo );
 		resultado.aplicarAJugadores( jugadorDuenio );
 		resultado.aplicarACartas(this, otroMonstruo);

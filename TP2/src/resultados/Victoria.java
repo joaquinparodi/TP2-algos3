@@ -1,6 +1,6 @@
 package resultados;
 
-import cartas.Monstruo;
+import cartas.Atacable;
 import jugabilidad.Jugador;
 
 public class Victoria implements Resultado {
@@ -15,8 +15,8 @@ public class Victoria implements Resultado {
 		jugadorVencedor.hacerDanioAlRival(diferenciaDePuntos);
 	}
 
-	public void aplicarACartas(Monstruo monstruoAtacante, Monstruo monstruoAtacado) {
-		monstruoAtacado.enviarAlCementerio();
+	public void aplicarACartas(Atacable atacante, Atacable atacado) {
+		atacado.enviarAlCementerio();
 	}
 
 }
