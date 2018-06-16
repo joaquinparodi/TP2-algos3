@@ -7,7 +7,9 @@ import cartas.Magica;
 
 import org.junit.jupiter.api.Test;
 
+import atributos.Vida;
 import cartas.Monstruo;
+import cartas.Puntos;
 import errores.ErrorSacrificiosInsuficientes;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,10 +20,12 @@ class TestJugador {
 
     @Test
     public void test01JugadorNuevoTieneXPuntos (){
-        Jugador unJugador = new Jugador(8000);
+        
+    	Vida vida = new Vida(8000);
+    	Jugador unJugador = new Jugador(vida);
 
         double vidaEsperada = 8000;
-        double vidaObtenida = unJugador.obtenerVida();
+        double vidaObtenida = unJugador.obtenerVida().obtenerPuntosDeVida();
 
         assertEquals(vidaEsperada,vidaObtenida);
     }
@@ -29,24 +33,28 @@ class TestJugador {
     @Test
     public void test02JugadorRecibeDanio(){
 
-        Jugador unJugador = new Jugador(8000);
+    	Vida vida = new Vida(8000);
+    	Jugador unJugador = new Jugador(vida);
 
         unJugador.hacerDanio(2000);
 
         double vidaEsperada = 6000;
-        double vidaObtenida = unJugador.obtenerVida();
+        double vidaObtenida = unJugador.obtenerVida().obtenerPuntosDeVida();
 
         assertEquals(vidaEsperada,vidaObtenida);
     }
     
 	@Test
 	public void test03ColocarMosnstruoConNivelInferiorACincoYNoSacrificaANadie() {
-		Jugador jugador = new Jugador( 8000 );
+    	
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
-		int nivel = 2;
-		Monstruo monstruoUno = new Monstruo("Auriane", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("Javir", jugador, nivel, 2000, 2000);
-		Monstruo monstruoTres = new Monstruo("Facundo", jugador, nivel, 2000, 2000);
+    	int nivel = 2;
+    	Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("Auriane", jugador, nivel,puntos);
+		Monstruo monstruoDos = new Monstruo("Javir", jugador, nivel, puntos);
+		Monstruo monstruoTres = new Monstruo("Facundo", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -65,12 +73,15 @@ class TestJugador {
 	
 	@Test
 	public void test04ColocarMonstruoConNivel7Requiere2Sacrificios() {
-		Jugador jugador = new Jugador( 8000 );
+ 
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
 		int nivel = 7;
-		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
-		Monstruo monstruoTres = new Monstruo("facu", jugador, nivel, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, puntos);
+		Monstruo monstruoTres = new Monstruo("facu", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -88,11 +99,14 @@ class TestJugador {
 	
 	@Test
 	public void test05ColocarMonstruoConNivel5Requiere1Sacrificio() {
-		Jugador jugador = new Jugador( 8000 );
+    
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
 		int nivel = 5;
-		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -107,11 +121,14 @@ class TestJugador {
 	
 	@Test
 	public void test06VerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
-		Jugador jugador = new Jugador( 8000 );
+
+    	Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
 		int nivel = 5;
-		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -126,10 +143,12 @@ class TestJugador {
 	
 	@Test
 	public void test07InvocarMonstruoNivel5SinEnviarMonstruosASacrificarLanzaError() {
-		Jugador jugador = new Jugador( 8000 );
+    	Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
 		int nivel = 5;
-		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		
@@ -140,11 +159,13 @@ class TestJugador {
 	
 	@Test
 	public void test08ColocarMonstruoConNivel3NoRequiereSacrificio() {
-		Jugador jugador = new Jugador( 8000 );
+    	Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
 		
 		int nivel = 3;
-		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, nivel, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, nivel, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -160,14 +181,17 @@ class TestJugador {
 	@Test
 	public void test09AgregarAgujeroNegroEliminaTodasLasCartas () {
 		
-		Jugador jugadorUno = new Jugador ( 8000 );
-		Jugador jugadorDos = new Jugador ( 8000 );
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
 		
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, puntos);
 		
 		Efecto efecto = new EfectoAgujeroNegro ();
 		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);
@@ -187,9 +211,11 @@ class TestJugador {
 	
 	@Test
 	public void test10AgregarAgujeroNegroNoQuitaVidaAJugadores () {
-		
-		Jugador jugadorUno = new Jugador ( 8000 );
-		Jugador jugadorDos = new Jugador ( 8000 );
+			
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
 		
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
@@ -200,22 +226,25 @@ class TestJugador {
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorUno.agregarCartaMagicaEnCampo("Agujero Negro");
 		
-		assertTrue(jugadorUno.obtenerVida() == 8000);
-		assertTrue(jugadorDos.obtenerVida() == 8000);
+		assertTrue(jugadorUno.obtenerVida().obtenerPuntosDeVida() == 8000);
+		assertTrue(jugadorDos.obtenerVida().obtenerPuntosDeVida() == 8000);
 		
 	}
 	
 	@Test
 	public void test11AgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
-		
-		Jugador jugadorUno = new Jugador ( 8000 );
-		Jugador jugadorDos = new Jugador ( 8000 );
+				
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
 		
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, 2000, 2000);
-		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, 2000, 2000);
+		Puntos puntos = new Puntos(2000, 2000);
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, 1, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, 1, puntos);
 		
 		Efecto efecto = new EfectoAgujeroNegro ();
 		Magica agujeroNegro = new Magica ("Agujero Negro", jugadorUno, efecto);

@@ -4,9 +4,9 @@ import cartas.Monstruo;
 import cartas.Puntos;
 import resultados.Resultado;
 
-public interface PosicionMonstruo {
+public interface Posicion {
 
-	public PosicionMonstruo cambiarPosicion();
+	public Posicion cambiarPosicion();
 		
 	public Resultado atacar(Monstruo monstruo);
 	

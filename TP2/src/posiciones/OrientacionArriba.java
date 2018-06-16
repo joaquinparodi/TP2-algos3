@@ -3,10 +3,10 @@ package posiciones;
 import cartas.Efecto;
 import jugabilidad.Jugador;
 
-public class Arriba implements OrientacionCarta{
+public class OrientacionArriba implements Orientacion{
 	
-	public OrientacionCarta voltear () {
-		return new Abajo ();
+	public Orientacion voltear () {
+		return new OrientacionAbajo ();
 	}
 
 	@Override

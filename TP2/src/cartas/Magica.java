@@ -2,8 +2,11 @@
 package cartas;
 
 import jugabilidad.Jugador;
+import posiciones.Orientacion;
 
 public class Magica extends Carta{
+
+	private Efecto efecto;
 
 	public Magica(String auxNombre, Jugador auxJugador,Efecto unEfecto) {
 		super(auxNombre, auxJugador);

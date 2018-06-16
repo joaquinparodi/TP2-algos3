@@ -3,23 +3,25 @@ package jugabilidad;
 import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorSacrificiosInsuficientes;
+import atributos.Vida;
 import cartas.Carta;
 import cartas.Magica;
 
 
 public class Jugador {
 
-    private double vida;
+    private Vida vida;
     private CampoDeJuego campo;
     private Jugador jugadorRival;
     private Baraja mano;
+    
 
-	public Jugador(double vida) {
+	public Jugador(Vida vida) {
 	    this.vida = vida;
 	    this.campo = new CampoDeJuego();
 	    this.mano = new Baraja();
     }
-	
+
 	public void asignarRival(Jugador auxJugadorRival) {
 		this.jugadorRival = auxJugadorRival;
 	}
@@ -28,12 +30,12 @@ public class Jugador {
 		mano.agregarCarta(carta);
 	}
 	
-    public double obtenerVida() {
+    public Vida obtenerVida() {
 	    return this.vida;
     }
 
     public void hacerDanio(double danio) {
-	    this.vida = this.vida - danio ;
+	    this.vida.quitarVida( danio );
     }
     
     public void hacerDanioAlRival(double danio) {

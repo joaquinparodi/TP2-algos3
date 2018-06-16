@@ -2,9 +2,9 @@ package posiciones;
 import jugabilidad.Jugador;
 import cartas.Efecto;
 
-public interface OrientacionCarta {
+public interface Orientacion {
 	
-	public OrientacionCarta voltear ();	
+	public Orientacion voltear ();	
 	
 	public void aplicarEfecto (Efecto unEfecto, Jugador unJugador);
 }

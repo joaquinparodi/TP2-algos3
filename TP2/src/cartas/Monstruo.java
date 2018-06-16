@@ -2,19 +2,19 @@ package cartas;
 
 import jugabilidad.Jugador;
 import posiciones.PosicionAtaque;
-import posiciones.PosicionMonstruo;
+import posiciones.Posicion;
 import resultados.Resultado;
 
 public class Monstruo extends Carta {
 
-	private PosicionMonstruo posicion;
+	private Posicion posicion;
 	private Puntos puntos;
 	private int nivel;
-
-	public Monstruo( String nombre, Jugador unJugador, int auxNivel, double ataque, double defensa ) {
+	
+	public Monstruo( String nombre, Jugador unJugador, int auxNivel, Puntos puntos ) {
 		super( nombre, unJugador );
 		this.nivel = auxNivel;
-		this.puntos = new Puntos (ataque, defensa);
+		this.puntos = puntos;
 		this.posicion = new PosicionAtaque( puntos );
 	}
 
@@ -40,7 +40,7 @@ public class Monstruo extends Carta {
 		return this.nivel;
 	}
 	
-	public void asignarPosicion(PosicionMonstruo posicion) {
+	public void asignarPosicion(Posicion posicion) {
 		this.posicion = posicion;
 	}
 

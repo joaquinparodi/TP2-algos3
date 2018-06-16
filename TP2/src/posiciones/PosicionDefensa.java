@@ -8,7 +8,7 @@ import resultados.Empate;
 import resultados.Resultado;
 import resultados.Victoria;
 
-public class PosicionDefensa implements PosicionMonstruo {
+public class PosicionDefensa implements Posicion {
 
 	private Puntos puntosMonstruo;
 	
@@ -16,7 +16,7 @@ public class PosicionDefensa implements PosicionMonstruo {
 		this.puntosMonstruo = auxPuntosMonstruo;
 	}
 	
-	public PosicionMonstruo cambiarPosicion() {
+	public Posicion cambiarPosicion() {
 		return new PosicionAtaque(puntosMonstruo);
 	}
 

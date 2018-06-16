@@ -1,19 +1,19 @@
 package cartas;
 import jugabilidad.Jugador;
-import posiciones.Arriba;
-import posiciones.OrientacionCarta;
+import posiciones.OrientacionArriba;
+import posiciones.Orientacion;
 
 public abstract class Carta{
 
-    protected Jugador jugadorDuenio;
+	protected Jugador jugadorDuenio;
     protected String nombreCarta;
-    protected OrientacionCarta orientacion;
-    protected Efecto efecto;
+    protected Orientacion orientacion;
+    private Efecto efecto;
     
     public Carta( String auxNombre, Jugador auxJugador ) {
         nombreCarta = auxNombre;
         jugadorDuenio = auxJugador;
-        orientacion = new Arriba();
+        orientacion = new OrientacionArriba();
     }
     
     public boolean seLlama( String auxNombre ) {
