@@ -1,6 +1,6 @@
 package posiciones;
 
-import cartas.Efecto;
+import atributos.Efecto;
 import jugabilidad.Jugador;
 
 public class OrientacionAbajo implements Orientacion {
@@ -12,6 +12,5 @@ public class OrientacionAbajo implements Orientacion {
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) { 
 		return; //No aplica el efecto boca abajo
 	}
-
 
 }

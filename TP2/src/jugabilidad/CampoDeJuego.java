@@ -44,7 +44,7 @@ public class CampoDeJuego {
 		cartaMagica.aplicarEfecto();
 	}
 	
-	public Baraja obtenerMonstruos () {
+	public Baraja obtenerMonstruos() {
 		return this.filaMonstruos;
 	}
 
@@ -55,5 +55,9 @@ public class CampoDeJuego {
 
 	public void agregarCartaTrampa(Trampa cartaTrampa) {
 		filaTrampas.agregarCarta(cartaTrampa);
+	}
+	
+	public Monstruo obtenerMonstruo(String nombreMonstruo) {
+		return (Monstruo)filaMonstruos.obtenerCarta(nombreMonstruo);
 	}
 }

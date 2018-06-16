@@ -1,4 +1,4 @@
-package cartas;
+package atributos;
 
 public class Puntos {
 

@@ -1,4 +1,5 @@
 package cartas;
+import atributos.Efecto;
 import jugabilidad.Jugador;
 import posiciones.OrientacionArriba;
 import posiciones.Orientacion;

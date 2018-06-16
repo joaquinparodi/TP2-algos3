@@ -1,6 +1,6 @@
 package posiciones;
 
-import cartas.Efecto;
+import atributos.Efecto;
 import jugabilidad.Jugador;
 
 public class OrientacionArriba implements Orientacion{

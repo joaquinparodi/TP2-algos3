@@ -3,6 +3,7 @@ package jugabilidad;
 import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorSacrificiosInsuficientes;
+import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Carta;
 import cartas.Magica;
@@ -54,23 +55,29 @@ public class Jugador {
     	campo.enviarMagicaACementerio(unaCartaMagica);
     }
    
-    public void agregarCartaMonstruoEnCampo(String unMonstruo, Baraja monstruosASacrificar) {
+    public void agregarCartaMonstruoEnCampo(String unMonstruo, Sacrificio sacrificios) {
+    	//Tirar exception si no tiene la carta! Tambien verificar si los sacrificos pertenecen al campo
     	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
     	mano.eliminarCarta(monstruo);
-    	//Antes de agregar el monstruo en el campo se tien que verificar su nivel
-    	if (monstruo.obtenerEstrellas() == 5 || monstruo.obtenerEstrellas() == 6) {
-    		//Si el monstruo es de nivel 5 o 6, se necesita un sacrificio
-    		if ( monstruosASacrificar.obtenerCantidadDeCartas() < 1 )
-    			throw new ErrorSacrificiosInsuficientes();
-			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
-		} else if(monstruo.obtenerEstrellas() > 6) {
-			//Si el nivel es mas de 6, se necesita 2 sacrificios
-			if ( monstruosASacrificar.obtenerCantidadDeCartas() < 2 )
-				throw new ErrorSacrificiosInsuficientes();
-			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
-			monstruosASacrificar.eliminarCarta(monstruosASacrificar.obtenerPrimeraCarta());
-			campo.enviarMonstruoACementerio(monstruosASacrificar.obtenerPrimeraCarta());
-		}
+
+    	int sacrificiosNecesarios = monstruo.obtenerCantidadDeSacrificiosNecesarios();
+    	
+    	if ( sacrificios.obtenerCantidadDeCartas() != sacrificiosNecesarios ) {
+    		throw new ErrorSacrificiosInsuficientes();
+    	}    	
+    	
+    	sacrificios.enviarSacrificiosAlCementerio( campo );
+    	campo.agregarCartaMonstruo(monstruo);
+    }
+    
+    public void agregarCartaMonstruoEnCampo(String unMonstruo) {
+    	//Tirar exception si no tiene la carta!
+    	Monstruo monstruo = (Monstruo) mano.obtenerCarta(unMonstruo);
+    	mano.eliminarCarta(monstruo);
+    	
+    	if( monstruo.necesitaSacrificiosParaInvocacion() ) {
+    		throw new ErrorSacrificiosInsuficientes();
+    	}
     	campo.agregarCartaMonstruo(monstruo);
     }
     

@@ -8,7 +8,7 @@ import errores.ErrorCartaNoEncontrada;
 
 public class Baraja {
 
-	private ArrayList<Carta> contenedor; 
+	protected ArrayList<Carta> contenedor; 
 	
 	public Baraja() {
 		contenedor = new ArrayList<Carta>();

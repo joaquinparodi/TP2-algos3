@@ -1,5 +1,6 @@
 package cartas;
 
+import atributos.Efecto;
 import jugabilidad.Jugador;
 
 public class Trampa extends Carta {

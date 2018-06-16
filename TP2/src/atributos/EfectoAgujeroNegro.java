@@ -1,4 +1,4 @@
-package cartas;
+package atributos;
 
 import jugabilidad.Jugador;
 import jugabilidad.CampoDeJuego;

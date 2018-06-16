@@ -1,7 +1,7 @@
 package posiciones;
 
+import atributos.Puntos;
 import cartas.Monstruo;
-import cartas.Puntos;
 import errores.ErrorAtaqueDesdePosicionInvalidad;
 import resultados.Derrota;
 import resultados.Empate;

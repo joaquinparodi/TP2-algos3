@@ -1,5 +1,7 @@
 package cartas;
 
+import atributos.Estrellas;
+import atributos.Puntos;
 import jugabilidad.Jugador;
 import posiciones.PosicionAtaque;
 import posiciones.Posicion;
@@ -9,11 +11,11 @@ public class Monstruo extends Carta {
 
 	private Posicion posicion;
 	private Puntos puntos;
-	private int nivel;
+	private Estrellas estrellas;
 	
-	public Monstruo( String nombre, Jugador unJugador, int auxNivel, Puntos puntos ) {
+	public Monstruo( String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos ) {
 		super( nombre, unJugador );
-		this.nivel = auxNivel;
+		this.estrellas = estrellas;
 		this.puntos = puntos;
 		this.posicion = new PosicionAtaque( puntos );
 	}
@@ -36,8 +38,8 @@ public class Monstruo extends Carta {
 		posicion = posicion.cambiarPosicion();
 	}
 	
-	public int obtenerEstrellas() {
-		return this.nivel;
+	public Estrellas obtenerEstrellas() {
+		return this.estrellas;
 	}
 	
 	public void asignarPosicion(Posicion posicion) {
@@ -45,6 +47,14 @@ public class Monstruo extends Carta {
 	}
 
 	public void aplicarEfecto () {
+	}
+
+	public int obtenerCantidadDeSacrificiosNecesarios() {
+		return estrellas.cantidadDeSacrificionNecesarios();
+	}
+
+	public boolean necesitaSacrificiosParaInvocacion() {
+		return estrellas.necesitaSacrificiosParaInvocacion();
 	}
 }
 

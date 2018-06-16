@@ -1,14 +1,12 @@
 package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Assertions;
-
 import cartas.Monstruo;
-import cartas.Puntos;
 import errores.ErrorAtaqueDesdePosicionInvalidad;
 import org.junit.jupiter.api.Test;
-
+import atributos.Estrellas;
+import atributos.Puntos;
 import atributos.Vida;
 import jugabilidad.Jugador;
 
@@ -27,8 +25,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1000, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		unaCarta.atacar( otraCarta );
 
@@ -48,8 +48,10 @@ class TestCarta {
 		
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 		
@@ -69,8 +71,10 @@ class TestCarta {
 		
 		Puntos puntosUnaCarta = new Puntos(1500, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 
@@ -92,8 +96,10 @@ class TestCarta {
 		//Las cartas se inician en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
@@ -113,11 +119,12 @@ class TestCarta {
 		otroJugador.asignarRival( unJugador );
 		unJugador.asignarRival( otroJugador );
 
-		
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 1000);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
@@ -139,8 +146,10 @@ class TestCarta {
 
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();	
 		unaCarta.atacar(otraCarta);
@@ -162,8 +171,10 @@ class TestCarta {
 		
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", otroJugador, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 		
@@ -184,8 +195,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1000, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		unaCarta.atacar( otraCarta );
 
@@ -206,8 +219,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1500, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar( otraCarta );
 
@@ -229,8 +244,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1600, 2500);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -252,8 +269,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -275,8 +294,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1600, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -299,8 +320,10 @@ class TestCarta {
 		//La carta se inicializa en modo ataque
 		Puntos puntosUnaCarta = new Puntos(1600, 2000);
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
-		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, 1, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, 1, puntosOtraCarta);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = new Monstruo ("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo ("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		unaCarta.cambiarPosicion();
 		
