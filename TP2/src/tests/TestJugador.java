@@ -7,6 +7,7 @@ import cartas.Magica;
 import org.junit.jupiter.api.Test;
 import atributos.Efecto;
 import atributos.EfectoAgujeroNegro;
+import atributos.EfectoFisura;
 import atributos.EfectoSogen;
 import atributos.EfectoWasteland;
 import atributos.Estrellas;
@@ -470,4 +471,81 @@ class TestJugador {
 		
 		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2200 );
 	}
+	
+	@Test
+	public void test17CartaMagicaFisuraEliminaLaCartaDelCampoEnemigoConMenorAtaque() {
+		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosDosA = new Puntos(3000, 2000);
+		Puntos puntosDosB = new Puntos(1000, 2000);
+		
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoDosA = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntosDosA);
+		Monstruo monstruoDosB = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDosB);
+		
+		Efecto efecto = new EfectoFisura();
+		Magica fisura = new Magica("Fisura", jugadorUno, efecto);
+		
+		jugadorDos.repartirCarta(monstruoDosA);
+		jugadorDos.repartirCarta(monstruoDosB);
+		jugadorUno.repartirCarta(fisura);
+		
+		jugadorDos.agregarCartaEnCampo(monstruoDosA);
+		jugadorDos.agregarCartaEnCampo(monstruoDosB);
+		jugadorUno.agregarCartaEnCampo(fisura);
+		
+		//La carta con menos puntos de ataque (monstruoDosB) debe estar en el cementerio 
+		assertTrue( jugadorDos.cartaEstaMuerta(monstruoDosB) );
+		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosA) );
+		
+	}
+	
+	@Test
+	public void test18CartaMagicaFisuraNoAplicaElEfectoSiSeColocaHaciaAbajo() {
+		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosDosA = new Puntos(3000, 2000);
+		Puntos puntosDosB = new Puntos(1000, 2000);
+		
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoDosA = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntosDosA);
+		Monstruo monstruoDosB = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDosB);
+		
+		Efecto efecto = new EfectoFisura();
+		Magica fisura = new Magica("Fisura", jugadorUno, efecto);
+		fisura.voltear();
+		
+		jugadorDos.repartirCarta(monstruoDosA);
+		jugadorDos.repartirCarta(monstruoDosB);
+		jugadorUno.repartirCarta(fisura);
+		
+		jugadorDos.agregarCartaEnCampo(monstruoDosA);
+		jugadorDos.agregarCartaEnCampo(monstruoDosB);
+		jugadorUno.agregarCartaEnCampo(fisura);
+		
+		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosB) );
+		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosA) );
+		
+	}
+	
 }
