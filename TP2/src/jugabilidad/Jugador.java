@@ -17,18 +17,24 @@ public class Jugador {
     private CampoDeJuego campoDeJuego;
     private Jugador jugadorRival;
     private Baraja mano;
+    private Baraja mazo;
     
 
 	public Jugador(Vida vida) {
 	    this.vida = vida;
 	    this.campoDeJuego = new CampoDeJuego();
 	    this.mano = new Baraja();
+	    this.mazo = new Baraja();
     }
 
 	public void asignarRival(Jugador auxJugadorRival) {
 		this.jugadorRival = auxJugadorRival;
 	}
-
+	
+	public Carta obtenerCartaDelMazo() {
+		return mazo.obtenerPrimeraCarta();
+	}
+	
 	public void repartirCarta(Carta carta) {
 		mano.agregarCarta(carta);
 	}
