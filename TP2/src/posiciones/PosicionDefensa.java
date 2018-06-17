@@ -3,7 +3,7 @@ package posiciones;
 import atributos.Puntos;
 import cartas.Atacable;
 import cartas.Monstruo;
-import errores.ErrorAtaqueDesdePosicionInvalidad;
+import errores.ErrorAtaqueDesdePosicionInvalida;
 import resultados.Derrota;
 import resultados.Empate;
 import resultados.Resultado;
@@ -22,7 +22,7 @@ public class PosicionDefensa extends Posicion {
 	}
 
 	public Resultado atacar(Atacable atacable) {
-		throw new ErrorAtaqueDesdePosicionInvalidad();
+		throw new ErrorAtaqueDesdePosicionInvalida();
 	}
 
 	public Resultado recibirAtaque(Puntos puntosAtacante) {

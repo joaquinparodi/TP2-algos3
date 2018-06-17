@@ -9,9 +9,9 @@ import resultados.Resultado;
 
 public class Monstruo extends Carta implements Atacable {
 
-	private Posicion posicion;
-	private Puntos puntos;
-	private Estrellas estrellas;
+	protected Posicion posicion;
+	protected Puntos puntos;
+	protected Estrellas estrellas;
 	
 	public Monstruo( String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos ) {
 		super( nombre, unJugador );
