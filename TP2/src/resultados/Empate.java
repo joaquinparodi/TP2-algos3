@@ -3,7 +3,7 @@ package resultados;
 import cartas.Atacable;
 import jugabilidad.Jugador;
 
-public class Empate implements Resultado {
+public class Empate extends Resultado {
 	
 	public Empate(double auxDiferenciaDePuntos) {
 	}

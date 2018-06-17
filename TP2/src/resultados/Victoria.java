@@ -3,7 +3,7 @@ package resultados;
 import cartas.Atacable;
 import jugabilidad.Jugador;
 
-public class Victoria implements Resultado {
+public class Victoria extends Resultado {
 
 	private double diferenciaDePuntos;
 	

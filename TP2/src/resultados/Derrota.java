@@ -4,7 +4,7 @@ import cartas.Atacable;
 import cartas.Monstruo;
 import jugabilidad.Jugador;
 
-public class Derrota implements Resultado {
+public class Derrota extends Resultado {
 
 	private double diferenciaDePuntos;
 	
