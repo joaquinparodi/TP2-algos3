@@ -56,5 +56,14 @@ public class Monstruo extends Carta implements Atacable {
 	public boolean necesitaSacrificiosParaInvocacion() {
 		return estrellas.necesitaSacrificiosParaInvocacion();
 	}
+	
+	public void incrementarPuntosDeAtaque(double incremento) {
+		this.puntos.incrementarAtaque(incremento);
+	}
+	
+	public void incrementarPuntosDeDefensa(double incremento) {
+		this.puntos.incrementarDefensa(incremento);
+	}
+	
 }
 

@@ -5,7 +5,7 @@ import jugabilidad.CampoDeJuego;
 import cartas.Monstruo;
 import jugabilidad.Baraja;
 
-public class EfectoAgujeroNegro implements Efecto{
+public class EfectoAgujeroNegro extends Efecto{
 
 	public void aplicar(Jugador unJugador) {
 		
@@ -28,6 +28,5 @@ public class EfectoAgujeroNegro implements Efecto{
 		}
 		
 	}
-
 	
 }

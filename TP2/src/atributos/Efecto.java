@@ -1,8 +1,8 @@
 package atributos;
 import jugabilidad.Jugador;
 
-public interface Efecto {
+public abstract class Efecto {
 	
-	public void aplicar (Jugador unJugador);
+	public abstract void aplicar (Jugador unJugador);
 
 }

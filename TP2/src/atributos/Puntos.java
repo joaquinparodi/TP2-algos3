@@ -17,5 +17,13 @@ public class Puntos {
 	public double obtenerPuntosDeAtaque() {
 		return puntosAtaque;
 	}
+
+	public void incrementarAtaque(double incremento) {
+		puntosAtaque += incremento;
+	}
+	
+	public void incrementarDefensa(double incremento) {
+		 puntosDefensa += incremento;
+	}
 	
 }

@@ -23,9 +23,10 @@ public abstract class Carta {
 
     public abstract void enviarAlCementerio();
     
-    public abstract void aplicarEfecto ();
+    public abstract void aplicarEfecto();
     
-    public void voltear () {
+    public void voltear() {
     	orientacion = orientacion.voltear();
     }
+
 }

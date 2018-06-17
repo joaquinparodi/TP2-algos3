@@ -1,12 +1,14 @@
 package tests;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
+import cartas.Campo;
 import cartas.Magica;
 
 import org.junit.jupiter.api.Test;
 
 import atributos.Efecto;
 import atributos.EfectoAgujeroNegro;
+import atributos.EfectoWasteland;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Sacrificio;
@@ -294,5 +296,73 @@ class TestJugador {
 		assertFalse(jugadorUno.cartaEstaMuerta(monstruoUno) );
 		assertFalse(jugadorDos.cartaEstaMuerta(monstruoDos) );
 		
+	}
+	
+	@Test
+	public void test12AgregarCartaDeCampoWastelandAumentaPuntoDeAtaquesDeljugadorQuePusoLaCarta() {
+		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosUno = new Puntos(2000, 2000);
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		
+		Efecto efecto = new EfectoWasteland();
+		Campo wasteland = new Campo("Wasteland", jugadorUno, efecto);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorUno.repartirCarta(wasteland);
+		
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		jugadorUno.agregarCartaEnCampo(wasteland);
+		
+		assertEquals( puntosUno.obtenerPuntosDeAtaque(), 2300 );
+	}
+	
+	@Test
+	public void test13AgregarCartaDeCampoWastelandAumentaPuntoDeDefensaDeljugadorOponente() {
+		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosUno = new Puntos(2000, 2000);
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		
+		Efecto efecto = new EfectoWasteland();
+		Campo wasteland = new Campo("Wasteland", jugadorUno, efecto);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorUno.repartirCarta(wasteland);
+		
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		jugadorUno.agregarCartaEnCampo(wasteland);
+		
+		assertEquals( puntosDos.obtenerPuntosDeDefensa(), 2200 );
 	}
 }

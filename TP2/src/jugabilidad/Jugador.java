@@ -6,6 +6,7 @@ import errores.ErrorCartaNoEncontrada;
 import errores.ErrorSacrificiosInsuficientes;
 import atributos.Sacrificio;
 import atributos.Vida;
+import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
 
@@ -13,14 +14,14 @@ import cartas.Magica;
 public class Jugador {
 
     private Vida vida;
-    private CampoDeJuego campo;
+    private CampoDeJuego campoDeJuego;
     private Jugador jugadorRival;
     private Baraja mano;
     
 
 	public Jugador(Vida vida) {
 	    this.vida = vida;
-	    this.campo = new CampoDeJuego();
+	    this.campoDeJuego = new CampoDeJuego();
 	    this.mano = new Baraja();
     }
 
@@ -41,15 +42,19 @@ public class Jugador {
     }
     
     public void enviarAlCementerio(Monstruo unMonstruo) {
-    	campo.enviarAlCementerio(unMonstruo);
+    	campoDeJuego.enviarAlCementerio(unMonstruo);
     }
     
-    public void enviarAlCementerio(Magica unaCartaMagica) {
-    	campo.enviarAlCementerio(unaCartaMagica);
+    public void enviarAlCementerio(Magica cartaMagica) {
+    	campoDeJuego.enviarAlCementerio(cartaMagica);
     }
     
-	public void enviarAlCementerio(Trampa trampa) {
-		campo.enviarAlCementerio(trampa);
+	public void enviarAlCementerio(Trampa cartaTrampa) {
+		campoDeJuego.enviarAlCementerio(cartaTrampa);
+	}
+	
+	public void enviarAlCementerio(Campo cartaCampo) {
+		campoDeJuego.enviarAlCementerio(cartaCampo);
 	}
     
     public void agregarCartaEnCampo(Monstruo cartaMonstruo, Sacrificio sacrificios) {
@@ -64,8 +69,8 @@ public class Jugador {
     		throw new ErrorSacrificiosInsuficientes();
     	}    	
     	
-    	sacrificios.enviarSacrificiosAlCementerio( campo );
-    	campo.agregarCarta(cartaMonstruo);
+    	sacrificios.enviarSacrificiosAlCementerio( campoDeJuego );
+    	campoDeJuego.agregarCarta(cartaMonstruo);
     }
     
     public void agregarCartaEnCampo(Monstruo cartaMonstruo) {
@@ -80,21 +85,25 @@ public class Jugador {
     		throw new ErrorSacrificiosInsuficientes();
     	}
     	
-    	campo.agregarCarta(cartaMonstruo);
+    	campoDeJuego.agregarCarta(cartaMonstruo);
     }
     
     public void agregarCartaEnCampo(Magica cartaMagica) {
     	//Verificar excepciones
-    	campo.agregarCarta(cartaMagica);
+    	campoDeJuego.agregarCarta(cartaMagica);
     }
     
     public void agregarCartaEnCampo(Trampa cartaTrampa) {
     	//verifica excpeciones
-    	campo.agregarCarta(cartaTrampa);
+    	campoDeJuego.agregarCarta(cartaTrampa);
+    }
+    
+    public void agregarCartaEnCampo(Campo cartaCampo) {
+    	campoDeJuego.agregarCarta(cartaCampo);
     }
     
     public boolean cartaEstaMuerta(Carta carta) {
-    	return campo.cartaPerteneceAlCementerio(carta);
+    	return campoDeJuego.cartaPerteneceAlCementerio(carta);
     }
     
     public Jugador obtenerRival() {
@@ -106,7 +115,7 @@ public class Jugador {
     }
     
     public CampoDeJuego obtenerCampo() {
-    	return this.campo;
+    	return this.campoDeJuego;
     }
     
     public void voltearCartaDeMano (String nombreDeCarta) {
