@@ -3,7 +3,7 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import cartas.Monstruo;
-import errores.ErrorAtaqueDesdePosicionInvalidad;
+import errores.ErrorAtaqueDesdePosicionInvalida;
 import factories.AbstractFabricaDeCartas;
 import factories.FabricaDeCartas;
 
@@ -357,7 +357,7 @@ class TestCarta {
 		unaCarta.cambiarPosicion();
 		
 		//La carta ataca cuando esta en posicion defensa
-		Assertions.assertThrows(ErrorAtaqueDesdePosicionInvalidad.class, () -> unaCarta.atacar( otraCarta ));
+		Assertions.assertThrows(ErrorAtaqueDesdePosicionInvalida.class, () -> unaCarta.atacar( otraCarta ));
 
 	}
 	
