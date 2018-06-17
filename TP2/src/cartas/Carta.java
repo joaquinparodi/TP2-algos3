@@ -4,7 +4,7 @@ import jugabilidad.Jugador;
 import posiciones.OrientacionArriba;
 import posiciones.Orientacion;
 
-public abstract class Carta{
+public abstract class Carta {
 
 	protected Jugador jugadorDuenio;
     protected String nombreCarta;
@@ -20,9 +20,9 @@ public abstract class Carta{
     public boolean seLlama( String auxNombre ) {
     	return auxNombre == nombreCarta;
     }
-    
-    public abstract void enviarAlCementerio();
 
+    public abstract void enviarAlCementerio();
+    
     public abstract void aplicarEfecto ();
     
     public void voltear () {

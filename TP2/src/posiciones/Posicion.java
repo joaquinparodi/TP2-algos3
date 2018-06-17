@@ -5,7 +5,7 @@ import cartas.Atacable;
 import cartas.Monstruo;
 import resultados.Resultado;
 
-public interface Posicion {
+public abstract class Posicion {
 
 	public abstract Posicion cambiarPosicion();
 		

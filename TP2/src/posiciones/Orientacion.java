@@ -3,10 +3,10 @@ package posiciones;
 import atributos.Efecto;
 import jugabilidad.Jugador;
 
-public interface Orientacion {
+public abstract class Orientacion {
 	
-	public Orientacion voltear ();	
+	public abstract Orientacion voltear ();	
 	
-	public void aplicarEfecto (Efecto unEfecto, Jugador unJugador);
+	public abstract void aplicarEfecto (Efecto unEfecto, Jugador unJugador);
 	
 }

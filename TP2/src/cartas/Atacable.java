@@ -5,7 +5,10 @@ import resultados.Resultado;
 
 public interface Atacable {
 	
-	void atacar(Atacable otroAtacable);
 	void enviarAlCementerio();
+	
+	void atacar(Atacable otroAtacable);
+	
 	Resultado recibirAtaque(Puntos puntosAtacante);
+	
 }

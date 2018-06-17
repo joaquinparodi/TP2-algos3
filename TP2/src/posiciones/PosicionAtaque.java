@@ -8,7 +8,7 @@ import resultados.Empate;
 import resultados.Resultado;
 import resultados.Victoria;
 
-public class PosicionAtaque implements Posicion {
+public class PosicionAtaque extends Posicion {
 
 	private Puntos puntos;
 	
