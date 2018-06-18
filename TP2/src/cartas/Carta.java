@@ -9,7 +9,7 @@ public abstract class Carta {
 	protected Jugador jugadorDuenio;
     protected String nombreCarta;
     protected Orientacion orientacion;
-    private Efecto efecto;
+    protected Efecto efecto;
     
     public Carta( String auxNombre, Jugador auxJugador ) {
         nombreCarta = auxNombre;
