@@ -126,4 +126,6 @@ public class Jugador {
     public void agregarCartaDeCampoRival(Campo cartaCampo) {
     	this.campoDeJuego.agregarCartaDeCampoRival(cartaCampo);
     }
+
+
 }

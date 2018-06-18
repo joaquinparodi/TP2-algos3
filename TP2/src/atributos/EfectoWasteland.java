@@ -37,16 +37,12 @@ public class EfectoWasteland extends Efecto {
 	
 	}
 
-	@Override
 	public void aplicarACarta(Monstruo monstruo) {
-		// TODO Auto-generated method stub
-		
+		monstruo.incrementarPuntosDeAtaque(300);
 	}
 
-	@Override
 	public void aplicarACartaRival(Monstruo monstruo) {
-		// TODO Auto-generated method stub
-		
+		 monstruo.incrementarPuntosDeDefensa(200);
 	}
 
 }
