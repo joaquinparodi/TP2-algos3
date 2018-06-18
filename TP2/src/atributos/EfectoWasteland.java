@@ -2,7 +2,6 @@ package atributos;
 
 import java.util.Iterator;
 
-import cartas.Carta;
 import cartas.Monstruo;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;

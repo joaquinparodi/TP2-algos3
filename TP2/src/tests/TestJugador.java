@@ -1,6 +1,5 @@
 package tests;
 
-import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 import cartas.Campo;
 import cartas.Magica;
@@ -163,8 +162,6 @@ class TestJugador {
 	
 	@Test
 	public void test07InvocarMonstruoConCincoEstrellasSinEnviarMonstruosASacrificarLanzaError() {
-    	
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);

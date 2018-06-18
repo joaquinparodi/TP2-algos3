@@ -3,7 +3,6 @@ package posiciones;
 import atributos.Efecto;
 import atributos.Puntos;
 import cartas.Carta;
-import cartas.InsectoComeHombres;
 import jugabilidad.Jugador;
 import resultados.Derrota;
 import resultados.Resultado;

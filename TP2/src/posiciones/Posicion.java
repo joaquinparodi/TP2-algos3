@@ -2,7 +2,6 @@ package posiciones;
 
 import atributos.Puntos;
 import cartas.Atacable;
-import cartas.Monstruo;
 import resultados.Resultado;
 
 public abstract class Posicion {

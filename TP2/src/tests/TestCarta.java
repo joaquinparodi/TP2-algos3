@@ -3,8 +3,6 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 
-import cartas.Atacable;
-import cartas.Campo;
 import cartas.DragonBlancoOjoAzul;
 import cartas.DragonDefinitivo;
 import cartas.InsectoComeHombres;
@@ -17,8 +15,6 @@ import factories.FabricaDeMonstruosEspeciales;
 
 import org.junit.jupiter.api.Test;
 
-import atributos.Efecto;
-import atributos.EfectoSogen;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Sacrificio;

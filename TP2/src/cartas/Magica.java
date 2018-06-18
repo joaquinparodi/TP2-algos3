@@ -3,7 +3,6 @@ package cartas;
 
 import atributos.Efecto;
 import jugabilidad.Jugador;
-import posiciones.Orientacion;
 
 public class Magica extends Carta{
 

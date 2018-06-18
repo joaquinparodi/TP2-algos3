@@ -1,7 +1,6 @@
 package resultados;
 
 import cartas.Atacable;
-import cartas.Monstruo;
 import jugabilidad.Jugador;
 
 public class Derrota extends Resultado {

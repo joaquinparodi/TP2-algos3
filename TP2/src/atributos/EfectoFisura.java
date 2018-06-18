@@ -11,7 +11,6 @@ public class EfectoFisura extends Efecto {
 
 	public void aplicar(Jugador unJugador) {
 		
-		Jugador jugador = unJugador;
 		Jugador rival = unJugador.obtenerRival();
 		
 		CampoDeJuego campoRival = rival.obtenerCampo();
