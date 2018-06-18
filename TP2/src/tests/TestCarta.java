@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Assertions;
 
 import cartas.Atacable;
 import cartas.Campo;
+import cartas.DragonBlancoOjoAzul;
+import cartas.DragonDefinitivo;
 import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
+import errores.ErrorSacrificiosNoSonLosBuenos;
 import factories.FabricaDeCartas;
 import factories.FabricaDeMonstruosEspeciales;
 
@@ -17,6 +20,7 @@ import atributos.Efecto;
 import atributos.EfectoSogen;
 import atributos.Estrellas;
 import atributos.Puntos;
+import atributos.Sacrificio;
 import atributos.Vida;
 import jugabilidad.Jugador;
 
@@ -397,6 +401,97 @@ class TestCarta {
 		assertEquals(vidaObtenida.obtenerPuntosDeVida(),7500);
 				
 
+	}
+	
+	@Test
+	public void test15DragonBlancoOjosAzules() {
+		
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugador = new Vida (8000);
+		Jugador jugador = new Jugador (vidaJugador);
+		DragonBlancoOjoAzul dragon = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(2);
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("CartaUna", jugador, estrellas, puntos);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("CartaDos", jugador, estrellas, puntos);
+		
+		jugador.repartirCarta(dragon);
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		
+		
+		Sacrificio monstruosASacrificar = new Sacrificio();
+		monstruosASacrificar.agregarCarta(monstruoUno);
+		monstruosASacrificar.agregarCarta(monstruoDos);
+
+		
+		jugador.agregarCartaEnCampo(dragon, monstruosASacrificar);
+		
+		assertTrue(jugador.cartaEstaMuerta(monstruoUno));
+		assertTrue(jugador.cartaEstaMuerta(monstruoDos));
+		
+	}
+	@Test
+	public void test15DragonDefinitivo() {
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		
+		Vida vidaJugador = new Vida (8000);
+		Jugador jugador = new Jugador (vidaJugador);
+		DragonBlancoOjoAzul dragonUno = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		DragonBlancoOjoAzul dragonDos = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		DragonBlancoOjoAzul dragonTres = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		DragonDefinitivo dragonDefinitivo = fabricaDeMonstruosEspeciales.crearDragonDefinitivo(jugador);
+		
+		jugador.repartirCarta(dragonUno);
+		jugador.repartirCarta(dragonDos);
+		jugador.repartirCarta(dragonTres);
+		
+		jugador.repartirCarta(dragonDefinitivo);
+		
+		Sacrificio monstruosASacrificar = new Sacrificio();
+		monstruosASacrificar.agregarCarta(dragonUno);
+		monstruosASacrificar.agregarCarta(dragonDos);
+		monstruosASacrificar.agregarCarta(dragonTres);
+		
+		jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar);
+		
+		assertTrue(jugador.cartaEstaMuerta(dragonUno));
+		assertTrue(jugador.cartaEstaMuerta(dragonDos));
+		assertTrue(jugador.cartaEstaMuerta(dragonTres));
+
+	}
+	
+	@Test
+	public void test16DragonDefinitivoNoTieneLosBuenosSacrificios() {
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugador = new Vida (8000);
+		Jugador jugador = new Jugador (vidaJugador);
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(2);
+		
+		DragonBlancoOjoAzul dragonUno = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		DragonBlancoOjoAzul dragonDos = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		Monstruo monstruo = fabricaDeCartas.crearCarta("Monstruo", jugador, estrellas, puntos);
+		DragonDefinitivo dragonDefinitivo = fabricaDeMonstruosEspeciales.crearDragonDefinitivo(jugador);
+		
+		jugador.repartirCarta(dragonUno);
+		jugador.repartirCarta(dragonDos);
+		jugador.repartirCarta(monstruo);
+		
+		jugador.repartirCarta(dragonDefinitivo);
+		
+		Sacrificio monstruosASacrificar = new Sacrificio();
+		monstruosASacrificar.agregarCarta(dragonUno);
+		monstruosASacrificar.agregarCarta(dragonDos);
+		monstruosASacrificar.agregarCarta(monstruo);
+		
+		assertThrows(ErrorSacrificiosNoSonLosBuenos.class, () -> jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar));
+		
 	}
 	
 }
