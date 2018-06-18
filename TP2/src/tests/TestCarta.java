@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 
 import cartas.Atacable;
 import cartas.Campo;
+import cartas.InsectoComeHombres;
 import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
@@ -393,10 +394,45 @@ class TestCarta {
 		//Se le restaron 500 puntos de vida al jugador atacado por mas que tenia 2000 puntos de ataque.
 		
 		Vida vidaObtenida = jugadorDos.obtenerVida();
-		
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),7500);
+		Vida vidaEsperada = new Vida(7500);
+		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
 				
 
+	}
+	
+	@Test
+	public void test15InsesctoComeHombresDestruyeAlMonstruoAtacanteSiEstaBocaAbajo() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(2);
+		
+		InsectoComeHombres insecto = fabricaDeMonstruosEspeciales.crearInsectoComeHombres(jugadorUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		
+		insecto.voltear();
+		
+		monstruoDos.atacar(insecto);
+		
+		//muere el monstruo atacante y no el insecto come hombres
+		assertFalse(jugadorUno.cartaEstaMuerta(insecto));
+		assertTrue(jugadorDos.cartaEstaMuerta(monstruoDos));
+		
+		//el jugador del monstruo que murio no pierde vida
+		Vida vidaEsperada = new Vida (8000);
+		Vida vidaObtenida = jugadorUno.obtenerVida();
+		
+		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
 	}
 	
 }
