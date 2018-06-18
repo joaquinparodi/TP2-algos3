@@ -20,4 +20,8 @@ public class Sacrificio extends Baraja {
 		}
 	}
 
+	public Iterator<Carta> iterator() {
+		return contenedor.iterator();
+	}
+
 }

@@ -6,19 +6,17 @@ import cartas.Carta;
 import jugabilidad.Jugador;
 import resultados.Resultado;
 
-public class OrientacionArriba extends Orientacion{
+public class InsectoArriba extends Orientacion{
+
+	public Resultado recibirAtaque (Carta cartaInsecto, Posicion posicionInsecto, Puntos puntosAtacante) {
+		return posicionInsecto.recibirAtaque(puntosAtacante);
+	}
 	
 	public Orientacion voltear () {
-		return new OrientacionAbajo ();
+		return new InsectoAbajo();
 	}
 
+	@Override
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) {
-		unEfecto.aplicar(unJugador);
 	}
-
-	public Resultado recibirAtaque(Carta carta, Posicion posicion, Puntos puntosAtacante) {
-		return null;
-	}
-
-
 }

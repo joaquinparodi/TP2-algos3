@@ -52,7 +52,7 @@ public class Baraja {
 		carta.voltear();
 	}
 
-	public Iterator obtenerIteradorDeBaraja() {
+	public Iterator<Carta> obtenerIteradorDeBaraja() {
 		Iterator<Carta> iter = contenedor.iterator();
 		return iter;	 
 	}

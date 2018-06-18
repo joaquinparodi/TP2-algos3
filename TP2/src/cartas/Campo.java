@@ -28,4 +28,9 @@ public class Campo extends Carta {
 		efecto.aplicarACartaRival(monstruoEnemigo);
 	}
 	
+	public void voltear() {
+		this.orientacion = orientacion.voltear();
+		orientacion.aplicarEfecto(this.efecto, this.jugadorDuenio);
+	}
+
 }

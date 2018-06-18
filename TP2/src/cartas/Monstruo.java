@@ -2,6 +2,7 @@ package cartas;
 
 import atributos.Estrellas;
 import atributos.Puntos;
+import atributos.Sacrificio;
 import jugabilidad.Jugador;
 import posiciones.PosicionAtaque;
 import posiciones.Posicion;
@@ -66,6 +67,10 @@ public class Monstruo extends Carta implements Atacable {
 	
 	public Puntos obtenerPuntos() {
 		return this.puntos;
+	}
+
+	public boolean verificarSacrificios(Sacrificio sacrificios) {
+		return true;
 	}
 	
 }

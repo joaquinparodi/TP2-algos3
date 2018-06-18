@@ -4,6 +4,7 @@ import atributos.Estrellas;
 import atributos.Puntos;
 import cartas.DragonBlancoOjoAzul;
 import cartas.DragonDefinitivo;
+import cartas.InsectoComeHombres;
 import cartas.Jinzo7;
 import jugabilidad.Jugador;
 
@@ -21,5 +22,8 @@ public class FabricaDeMonstruosEspeciales {
 		return new DragonDefinitivo("Dragon Definitivo", jugador, new Estrellas(12), new Puntos(4500, 3800));
 	}
 	
+	public InsectoComeHombres crearInsectoComeHombres(Jugador unJugador) {
+		return new InsectoComeHombres("Insecto Come-Hombres", unJugador, new Estrellas(2), new Puntos(450,600));
+	}
 	
 }

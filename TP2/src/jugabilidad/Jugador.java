@@ -4,6 +4,7 @@ import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorCartaNoEncontrada;
 import errores.ErrorSacrificiosInsuficientes;
+import errores.ErrorSacrificiosNoSonLosBuenos;
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Campo;
@@ -67,7 +68,11 @@ public class Jugador {
     	
     	if ( sacrificios.obtenerCantidadDeCartas() != sacrificiosNecesarios ) {
     		throw new ErrorSacrificiosInsuficientes();
-    	}    	
+    	}
+    	
+    	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {
+    		throw new ErrorSacrificiosNoSonLosBuenos();
+    	}
     	
     	sacrificios.enviarSacrificiosAlCementerio( campoDeJuego );
     	campoDeJuego.agregarCarta(cartaMonstruo);
@@ -126,4 +131,6 @@ public class Jugador {
     public void agregarCartaDeCampoRival(Campo cartaCampo) {
     	this.campoDeJuego.agregarCartaDeCampoRival(cartaCampo);
     }
+
+
 }
