@@ -546,5 +546,51 @@ class TestJugador {
 		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosA) );
 		
 	}
+
+	@Test
+	public void test19EfectoDeLaCartaDeCampoSogenPerduraACartarAgregadasDespues() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosUno = new Puntos(2000, 2000);
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Puntos puntosTres = new Puntos(2000, 2000);
+		Puntos puntosCuatro = new Puntos(2000, 2000);
+		
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		
+		Efecto efecto = new EfectoSogen();
+		Campo sogen = new Campo("Sogen", jugadorUno, efecto);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorUno.repartirCarta(sogen);
+		
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		jugadorUno.agregarCartaEnCampo(sogen);
+		
+		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosTres);
+		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosCuatro);		
+		
+		jugadorUno.repartirCarta(monstruoTres);
+		jugadorDos.repartirCarta(monstruoCuatro);
+		jugadorUno.agregarCartaEnCampo(monstruoTres);
+		jugadorDos.agregarCartaEnCampo(monstruoCuatro);
+		
+		assertEquals( 2500, puntosTres.obtenerPuntosDeDefensa() );
+		assertEquals( 2200, puntosCuatro.obtenerPuntosDeAtaque() );
+	}
 	
 }

@@ -35,4 +35,8 @@ public class EfectoFisura extends Efecto {
 		rival.enviarAlCementerio( monstruo );
 	}
 	
+	public void aplicarACarta(Monstruo unMonstruo) {}
+
+	public void aplicarACartaRival(Monstruo monstruo) {}
+	
 }

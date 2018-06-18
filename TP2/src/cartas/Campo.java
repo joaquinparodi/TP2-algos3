@@ -20,4 +20,12 @@ public class Campo extends Carta {
 		this.orientacion.aplicarEfecto(this.efecto, this.jugadorDuenio);
 	}
 	
+	public void aplicarEfectoACarta(Monstruo monstruo) {
+		efecto.aplicarACarta(monstruo);
+	}
+	
+	public void aplicarEfectoACartaRival(Monstruo monstruoEnemigo) {
+		efecto.aplicarACartaRival(monstruoEnemigo);
+	}
+	
 }
