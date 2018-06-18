@@ -523,6 +523,5 @@ class TestCarta {
 		Vida vidaObtenida = jugadorUno.obtenerVida();
 		
 		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
-	}
-	
+	}	
 }

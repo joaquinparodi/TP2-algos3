@@ -145,6 +145,12 @@ public class Jugador {
     public void agregarCartaDeCampoRival(Campo cartaCampo) {
     	this.campoDeJuego.agregarCartaDeCampoRival(cartaCampo);
     }
+    
+    public boolean contieneCartaEnMano (Carta unaCarta) {
+    	return this.mano.pertenece(unaCarta);
+    }
 
-
+    public void repartirCartaDelMazo () {
+    	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
+    }
 }

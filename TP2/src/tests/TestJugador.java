@@ -1,5 +1,6 @@
 package tests;
 
+import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 import cartas.Campo;
 import cartas.Magica;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import atributos.Efecto;
 import atributos.EfectoAgujeroNegro;
 import atributos.EfectoFisura;
+import atributos.EfectoOllaDeLaCodicia;
 import atributos.EfectoSogen;
 import atributos.EfectoWasteland;
 import atributos.Estrellas;
@@ -901,6 +903,76 @@ class TestJugador {
 		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2000 );
 		assertEquals( puntosUno.obtenerPuntosDeDefensa(), 2000 );
 		
+	}
+	
+	@Test
+	public void test27SeTomaron2CartasDelMazoLuegoDeInvocarOllaDeLaCodicia() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo3", jugadorDos, estrellas, puntos);
+		
+		Efecto efecto = new EfectoOllaDeLaCodicia();
+		Magica ollaDeLaCodicia = new Magica ("olla de la codicia", jugadorUno, efecto);
+		
+		Baraja cartasACargarEnMazo = new Baraja();
+		cartasACargarEnMazo.agregarCarta(monstruo1);
+		cartasACargarEnMazo.agregarCarta(monstruo2);
+		jugadorUno.obtenerCampo().cargarMazo(cartasACargarEnMazo);
+		
+		jugadorUno.repartirCarta(ollaDeLaCodicia);
+		
+		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
+		
+		assertTrue(jugadorUno.contieneCartaEnMano(monstruo1));
+		assertTrue(jugadorUno.contieneCartaEnMano(monstruo2));
+	}
+	
+	@Test
+	public void test28InvocarOllaDeLaCodiciaBocaAbajoNoSeRetiranCartas() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo3", jugadorDos, estrellas, puntos);
+		
+		Efecto efecto = new EfectoOllaDeLaCodicia();
+		Magica ollaDeLaCodicia = new Magica ("olla de la codicia", jugadorUno, efecto);
+		
+		Baraja cartasACargarEnMazo = new Baraja();
+		cartasACargarEnMazo.agregarCarta(monstruo1);
+		cartasACargarEnMazo.agregarCarta(monstruo2);
+		jugadorUno.obtenerCampo().cargarMazo(cartasACargarEnMazo);
+		
+		ollaDeLaCodicia.voltear();
+		jugadorUno.repartirCarta(ollaDeLaCodicia);
+		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
+		
+		assertFalse(jugadorUno.contieneCartaEnMano(monstruo1));
+		assertFalse(jugadorUno.contieneCartaEnMano(monstruo2));
 	}
 
 

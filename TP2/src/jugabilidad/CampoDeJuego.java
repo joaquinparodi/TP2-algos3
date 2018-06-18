@@ -1,5 +1,7 @@
 package jugabilidad;
 
+import java.util.Iterator;
+
 import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
@@ -14,6 +16,7 @@ public class CampoDeJuego {
 	private Campo cartaDeCampo;
 	private Campo cartaDeCampoRival;
 	
+	private Baraja mazo;
 	private Baraja cementerio;
 	private Baraja filaTrampas;
 
@@ -22,6 +25,7 @@ public class CampoDeJuego {
 		filaMagicas = new Baraja();
 		filaTrampas = new Baraja();
 		cementerio = new Baraja();
+		mazo = new Baraja();
 	}
 	
 	public void enviarAlCementerio(Monstruo unMonstruo) {
@@ -81,6 +85,20 @@ public class CampoDeJuego {
 
 	public void agregarCartaDeCampoRival(Campo cartaCampoRival) {
 		this.cartaDeCampoRival = cartaCampoRival;
+	}
+	
+	public void cargarMazo(Baraja cartasACargar) {
+		Iterator<Carta> iterador = cartasACargar.obtenerIteradorDeBaraja();
+		while(iterador.hasNext()) {
+		    Carta carta = iterador.next();
+		    mazo.agregarCarta(carta);
+		}
+	}
+
+	public Carta obtenerCartaDelMazo() {
+		Carta carta = mazo.obtenerPrimeraCarta();
+		mazo.eliminarCarta(carta);
+		return carta;
 	}
 
 }
