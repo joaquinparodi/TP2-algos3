@@ -2,12 +2,20 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
+
+import cartas.Atacable;
+import cartas.Campo;
+import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
 import factories.AbstractFabricaDeCartas;
 import factories.FabricaDeCartas;
+import factories.FabricaDeMonstruosEspeciales;
 
 import org.junit.jupiter.api.Test;
+
+import atributos.Efecto;
+import atributos.EfectoSogen;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Vida;
@@ -361,6 +369,35 @@ class TestCarta {
 
 	}
 	
-	
+	@Test
+	public void test14jinzo7AtacaDirectamenteAPuntosDeVida() {
+		
+		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(2);
+		
+		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+
+		jinzo7.atacar(monstruoDos);
+		
+		//Se le restaron 500 puntos de vida al jugador atacado por mas que tenia 2000 puntos de ataque.
+		
+		Vida vidaObtenida = jugadorDos.obtenerVida();
+		
+		assertEquals(vidaObtenida.obtenerPuntosDeVida(),7500);
+				
+
+	}
 	
 }

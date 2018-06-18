@@ -9,6 +9,8 @@ public interface Atacable {
 	
 	void atacar(Atacable otroAtacable);
 	
+	void cambiarPosicion();
+	
 	Resultado recibirAtaque(Puntos puntosAtacante);
 	
 }
