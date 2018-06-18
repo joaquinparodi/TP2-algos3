@@ -8,7 +8,6 @@ import cartas.Campo;
 import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
-import factories.AbstractFabricaDeCartas;
 import factories.FabricaDeCartas;
 import factories.FabricaDeMonstruosEspeciales;
 
@@ -28,7 +27,7 @@ class TestCarta {
 	@Test
 	public void test01CartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosRestaPuntosDeVidaAlAtacante() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -51,7 +50,7 @@ class TestCarta {
 	@Test
 	public void test02CartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosRestaPuntosDeVidaAlDefensor() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -76,7 +75,7 @@ class TestCarta {
 	@Test
 	public void test03CartaAtacaAOtraConIgualPuntosDeAtaqueNoLeRestaANadie() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -102,7 +101,7 @@ class TestCarta {
 	@Test
 	public void test04CartaAtacaAOtraEnModoDefensaConMasPuntosYNingunoPierdeVida () {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -130,7 +129,7 @@ class TestCarta {
 	@Test
 	public void test05CartaAtacaAOtraEnDefensaConMenosPuntosYNingunoPierdeVida() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -157,7 +156,7 @@ class TestCarta {
 	@Test
 	public void test06CartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -184,7 +183,7 @@ class TestCarta {
 	@Test
 	public void test07CartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -209,7 +208,7 @@ class TestCarta {
 	@Test
 	public void test08CartaAtacaAOtraEnAtaqueConMasPuntosYSeDestruye() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -235,7 +234,7 @@ class TestCarta {
 	@Test
 	public void test09CartaAtacaAOtraEnAtaqueConIgualPuntosYSeDestruyenAmbas() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -262,7 +261,7 @@ class TestCarta {
 	@Test
 	public void test10CartaAtacaAOtraEnDefensaConMenosPuntosYLaDestruye() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -289,7 +288,7 @@ class TestCarta {
 	@Test
 	public void test11CartaAtacaAOtraEnDefensaConMasPuntosYSeDestruye() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -316,7 +315,7 @@ class TestCarta {
 	@Test
 	public void test12CartaAtacaAOtraEnDefensaConIgualPuntosYSeDestruyenAmabas() {
 
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -344,7 +343,7 @@ class TestCarta {
 	@Test
 	public void test13AtaqueDesdePosicionInvalid() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -372,7 +371,7 @@ class TestCarta {
 	@Test
 	public void test14jinzo7AtacaDirectamenteAPuntosDeVida() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
 		
 		Vida vidaJugadorUno = new Vida (8000);

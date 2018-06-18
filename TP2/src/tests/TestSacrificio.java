@@ -9,7 +9,6 @@ import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Monstruo;
 import errores.ErrorCartaNoEncontrada;
-import factories.AbstractFabricaDeCartas;
 import factories.FabricaDeCartas;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;
@@ -19,7 +18,7 @@ public class TestSacrificio {
 	@Test
 	public void test01LasCartasSacrificadasVanAlCementerio() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		
@@ -41,7 +40,7 @@ public class TestSacrificio {
 	@Test
 	public void test02LasCartasSacrificadasSeSacanDelCampoDeJuego() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 	

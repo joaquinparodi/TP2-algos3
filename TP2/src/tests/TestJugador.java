@@ -16,7 +16,6 @@ import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Monstruo;
 import errores.ErrorSacrificiosInsuficientes;
-import factories.AbstractFabricaDeCartas;
 import factories.FabricaDeCartas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -54,7 +53,7 @@ class TestJugador {
 	@Test
 	public void test03ColocarMosnstruoConEstrellasInferiorACincoYNoSacrificaANadie() {
     	
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -83,7 +82,7 @@ class TestJugador {
 	@Test
 	public void test04ColocarMonstruoConSiesteEstrellasRequiereDosSacrificios() {
  
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -113,7 +112,7 @@ class TestJugador {
 	@Test
 	public void test05ColocarMonstruoConCincoEstrellasRequiere1Sacrificio() {
     
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -139,7 +138,7 @@ class TestJugador {
 	@Test
 	public void test06VerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
 
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
     	Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -165,7 +164,7 @@ class TestJugador {
 	@Test
 	public void test07InvocarMonstruoConCincoEstrellasSinEnviarMonstruosASacrificarLanzaError() {
     	
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -184,7 +183,7 @@ class TestJugador {
 	@Test
 	public void test08ColocarMonstruoConTresEstrellasNoRequiereSacrificio() {
     	
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
@@ -205,7 +204,7 @@ class TestJugador {
 	@Test
 	public void test09AgregarAgujeroNegroEliminaTodasLasCartas () {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -240,7 +239,7 @@ class TestJugador {
 	@Test
 	public void test10AgregarAgujeroNegroNoQuitaVidaAJugadores () {
 			
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -264,7 +263,7 @@ class TestJugador {
 	@Test
 	public void test11AgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
 				
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -301,7 +300,7 @@ class TestJugador {
 	@Test
 	public void test12AgregarCartaDeCampoWastelandAumenta300PuntoDeAtaquesDeljugadorQuePusoLaCarta() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -335,7 +334,7 @@ class TestJugador {
 	@Test
 	public void test13AgregarCartaDeCampoWastelandAumenta200PuntoDeDefensaDeljugadorOponente() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -369,7 +368,7 @@ class TestJugador {
 	@Test
 	public void test14CartaDeCampoWastelandNoAplicaNingunEfectoSiSeAgregaAlCampoBocaAcabjo() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -407,7 +406,7 @@ class TestJugador {
 	@Test
 	public void test15CartaDeCampoSogenAumenta500PuntosDeDefensaDelJugadorQuePusoLaCarta() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -441,7 +440,7 @@ class TestJugador {
 	@Test
 	public void test16CartaDeCampoSogenAumenta200PuntosDeAtaqueDelJugadorOponente() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -475,7 +474,7 @@ class TestJugador {
 	@Test
 	public void test17CartaMagicaFisuraEliminaLaCartaDelCampoEnemigoConMenorAtaque() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -513,7 +512,7 @@ class TestJugador {
 	@Test
 	public void test18CartaMagicaFisuraNoAplicaElEfectoSiSeColocaHaciaAbajo() {
 		
-		AbstractFabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);

@@ -7,7 +7,7 @@ import cartas.Magica;
 import cartas.Monstruo;
 import jugabilidad.Jugador;
 
-public class FabricaDeCartas extends AbstractFabricaDeCartas{
+public class FabricaDeCartas {
 
 	public Monstruo crearCarta(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {
 		return new Monstruo(nombre, unJugador, estrellas, puntos);
