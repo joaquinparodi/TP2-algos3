@@ -10,7 +10,7 @@ public class OrientacionAbajo extends Orientacion {
 	}
 
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) { 
-		return; //No aplica el efecto boca abajo
+		unEfecto.desaplicar(unJugador);
 	}
 
 }

@@ -849,8 +849,6 @@ class TestJugador {
 		jugadorDos.repartirCarta(monstruoDos);
 		jugadorUno.repartirCarta(wasteland);
 		
-		wasteland.voltear();
-		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		jugadorUno.agregarCartaEnCampo(wasteland);
@@ -865,5 +863,48 @@ class TestJugador {
 		assertEquals( puntosUno.obtenerPuntosDeAtaque(), 2000 );
 		
 	}
+	
+	@Test
+	public void test26AgregarCartaDeCampoSogenHaciaArribaYVoltearlaDesaplicaElEfecto() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosUno = new Puntos(2000, 2000);
+		Puntos puntosDos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		
+		Efecto efecto = new EfectoSogen();
+		Campo sogen = new Campo("sogen", jugadorUno, efecto);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorUno.repartirCarta(sogen);
+		
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		jugadorUno.agregarCartaEnCampo(sogen);
+		
+		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2200 );
+		assertEquals( puntosUno.obtenerPuntosDeDefensa(), 2500 );
+		
+		sogen.voltear();
+		
+		//Desaplico el efecto sobre las cartas
+		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2000 );
+		assertEquals( puntosUno.obtenerPuntosDeDefensa(), 2000 );
+		
+	}
+
 
 }
