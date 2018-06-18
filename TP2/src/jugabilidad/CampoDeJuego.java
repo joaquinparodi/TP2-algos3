@@ -7,8 +7,6 @@ import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorCampoVacio;
 
-
-
 public class CampoDeJuego {
 
 	private Baraja filaMonstruos;

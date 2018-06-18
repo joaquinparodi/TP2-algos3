@@ -46,8 +46,7 @@ public class Monstruo extends Carta implements Atacable {
 		this.posicion = posicion;
 	}
 
-	public void aplicarEfecto () {
-	}
+	public void aplicarEfecto () {}
 
 	public int obtenerCantidadDeSacrificiosNecesarios() {
 		return estrellas.cantidadDeSacrificionNecesarios();
@@ -63,6 +62,10 @@ public class Monstruo extends Carta implements Atacable {
 	
 	public void incrementarPuntosDeDefensa(double incremento) {
 		this.puntos.incrementarDefensa(incremento);
+	}
+	
+	public Puntos obtenerPuntos() {
+		return this.puntos;
 	}
 	
 }

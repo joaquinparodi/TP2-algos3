@@ -56,4 +56,5 @@ public class Baraja {
 		Iterator<Carta> iter = contenedor.iterator();
 		return iter;	 
 	}
+
 }
