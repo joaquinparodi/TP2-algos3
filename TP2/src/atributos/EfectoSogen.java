@@ -36,5 +36,12 @@ public class EfectoSogen extends Efecto {
 	
 	}
 
+	public void aplicarACarta(Monstruo monstruo) { 
+		monstruo.incrementarPuntosDeDefensa(500);
+	}
 	
+	public void aplicarACartaRival(Monstruo monstruo) {
+		monstruo.incrementarPuntosDeAtaque(200);	
+	}
+
 }

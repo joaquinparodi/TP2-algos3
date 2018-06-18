@@ -100,6 +100,7 @@ public class Jugador {
     
     public void agregarCartaEnCampo(Campo cartaCampo) {
     	campoDeJuego.agregarCarta(cartaCampo);
+    	jugadorRival.agregarCartaDeCampoRival(cartaCampo);
     }
     
     public boolean cartaEstaMuerta(Carta carta) {
@@ -121,5 +122,10 @@ public class Jugador {
     public void voltearCartaDeMano (String nombreDeCarta) {
     	mano.voltearCarta(nombreDeCarta);
     }
+    	
+    public void agregarCartaDeCampoRival(Campo cartaCampo) {
+    	this.campoDeJuego.agregarCartaDeCampoRival(cartaCampo);
+    }
+
 
 }

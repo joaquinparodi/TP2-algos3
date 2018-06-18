@@ -37,4 +37,12 @@ public class EfectoWasteland extends Efecto {
 	
 	}
 
+	public void aplicarACarta(Monstruo monstruo) {
+		monstruo.incrementarPuntosDeAtaque(300);
+	}
+
+	public void aplicarACartaRival(Monstruo monstruo) {
+		 monstruo.incrementarPuntosDeDefensa(200);
+	}
+
 }

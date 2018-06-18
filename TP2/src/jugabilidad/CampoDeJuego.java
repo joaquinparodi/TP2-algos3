@@ -11,7 +11,10 @@ public class CampoDeJuego {
 
 	private Baraja filaMonstruos;
 	private Baraja filaMagicas;
+	
 	private Campo cartaDeCampo;
+	private Campo cartaDeCampoRival;
+	
 	private Baraja cementerio;
 	private Baraja filaTrampas;
 
@@ -44,6 +47,9 @@ public class CampoDeJuego {
 	
 	public void agregarCarta(Monstruo monstruo) {
 		filaMonstruos.agregarCarta(monstruo);
+		//Cambiar las compartaciones con Null!
+		if( cartaDeCampo != null ) cartaDeCampo.aplicarEfectoACarta(monstruo);
+		if( cartaDeCampoRival != null ) cartaDeCampoRival.aplicarEfectoACartaRival(monstruo);
 	}
 	
 	public void agregarCarta(Magica cartaMagica) {
@@ -72,6 +78,10 @@ public class CampoDeJuego {
 
 	public Monstruo obtenerMonstruo(String nombreMonstruo) {
 		return (Monstruo)filaMonstruos.obtenerCarta(nombreMonstruo);
+	}
+
+	public void agregarCartaDeCampoRival(Campo cartaCampoRival) {
+		this.cartaDeCampoRival = cartaCampoRival;
 	}
 
 }
