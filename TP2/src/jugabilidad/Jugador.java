@@ -71,6 +71,7 @@ public class Jugador {
     	}
     	
     	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {
+    		//Algunas cartas necesitan sacrificios especificos
     		throw new ErrorSacrificiosNoSonLosBuenos();
     	}
     	
@@ -94,16 +95,29 @@ public class Jugador {
     }
     
     public void agregarCartaEnCampo(Magica cartaMagica) {
-    	//Verificar excepciones
+    	if( !mano.pertenece(cartaMagica) ) {
+    		throw new ErrorCartaNoEncontrada();
+    	}
+    	
+    	mano.eliminarCarta(cartaMagica);
     	campoDeJuego.agregarCarta(cartaMagica);
     }
     
     public void agregarCartaEnCampo(Trampa cartaTrampa) {
-    	//verifica excpeciones
+    	if( !mano.pertenece(cartaTrampa) ) {
+    		throw new ErrorCartaNoEncontrada();
+    	}
+    	
+    	mano.eliminarCarta(cartaTrampa);
     	campoDeJuego.agregarCarta(cartaTrampa);
     }
     
     public void agregarCartaEnCampo(Campo cartaCampo) {
+    	if( !mano.pertenece(cartaCampo) ) {
+    		throw new ErrorCartaNoEncontrada();
+    	}
+    	
+    	mano.eliminarCarta(cartaCampo);
     	campoDeJuego.agregarCarta(cartaCampo);
     	jugadorRival.agregarCartaDeCampoRival(cartaCampo);
     }

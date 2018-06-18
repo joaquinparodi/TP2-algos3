@@ -493,7 +493,8 @@ class TestCarta {
 		
 		assertThrows(ErrorSacrificiosNoSonLosBuenos.class, () -> jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar));
 	}
-
+	
+	@Test
 	public void test18InsesctoComeHombresDestruyeAlMonstruoAtacanteSiEstaBocaAbajo() {
 		
 		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
