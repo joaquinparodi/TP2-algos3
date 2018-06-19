@@ -2,10 +2,15 @@ package factories;
 
 import atributos.Estrellas;
 import atributos.Puntos;
+import cartas.BrazoDerechoExodia;
+import cartas.BrazoIzquierdoExodia;
+import cartas.CabezaExodia;
 import cartas.DragonBlancoOjoAzul;
 import cartas.DragonDefinitivo;
 import cartas.InsectoComeHombres;
 import cartas.Jinzo7;
+import cartas.PiernaDerechaExodia;
+import cartas.PiernaIzquierdaExodia;
 import jugabilidad.Jugador;
 
 public class FabricaDeMonstruosEspeciales {
@@ -24,6 +29,26 @@ public class FabricaDeMonstruosEspeciales {
 	
 	public InsectoComeHombres crearInsectoComeHombres(Jugador unJugador) {
 		return new InsectoComeHombres("Insecto Come-Hombres", unJugador, new Estrellas(2), new Puntos(450,600));
+	}
+	
+	public CabezaExodia crearCabezaExodia(Jugador unJugador) {
+		return new CabezaExodia("Cabeza Exodia", unJugador, new Estrellas(3), new Puntos(450,600));
+	}
+	
+	public BrazoIzquierdoExodia crearBrazoIzquierdoExodia(Jugador unJugador) {
+		return new BrazoIzquierdoExodia("Brazo Izquierdo Exodia", unJugador, new Estrellas(3), new Puntos(450,600));
+	}
+	
+	public BrazoDerechoExodia crearBrazoDerechoExodia(Jugador unJugador) {
+		return new BrazoDerechoExodia("Brazo Derecho Exodia", unJugador, new Estrellas(3), new Puntos(450,600));
+	}
+	
+	public PiernaIzquierdaExodia crearPiernaIzquierdaExodia(Jugador unJugador) {
+		return new PiernaIzquierdaExodia("Pierna Izquierda Exodia", unJugador, new Estrellas(3), new Puntos(450,600));
+	}
+	
+	public PiernaDerechaExodia crearPiernaDerechaExodia(Jugador unJugador) {
+		return new PiernaDerechaExodia("Pierna Derecha Exodia", unJugador, new Estrellas(3), new Puntos(450,600));
 	}
 	
 }

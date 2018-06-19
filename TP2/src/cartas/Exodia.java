@@ -6,10 +6,9 @@ import errores.ErrorAtaqueDesdePosicionInvalida;
 import jugabilidad.Jugador;
 
 public class Exodia extends Monstruo {
-
-	public Exodia(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {
+	
+	public Exodia(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {		
 		super(nombre, unJugador, estrellas, puntos);
-
 	}
 	
 	public void atacar (Atacable otroMonstruo) {
