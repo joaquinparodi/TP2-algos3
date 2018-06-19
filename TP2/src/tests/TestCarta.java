@@ -372,7 +372,6 @@ class TestCarta {
 	@Test
 	public void test14jinzo7AtacaDirectamenteAPuntosDeVida() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
 		
 		Vida vidaJugadorUno = new Vida (8000);
@@ -383,15 +382,9 @@ class TestCarta {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Puntos puntosDos = new Puntos(2000, 2000);
-		Estrellas estrellas = new Estrellas(2);
-		
 		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
-
-		jinzo7.atacar(monstruoDos);
 		
-		//Se le restaron 500 puntos de vida al jugador atacado por mas que tenia 2000 puntos de ataque.
+		jinzo7.atacarRival();
 		
 		Vida vidaObtenida = jugadorDos.obtenerVida();
 		Vida vidaEsperada = new Vida(7500);
@@ -523,5 +516,5 @@ class TestCarta {
 		Vida vidaObtenida = jugadorUno.obtenerVida();
 		
 		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
-	}	
+	}
 }

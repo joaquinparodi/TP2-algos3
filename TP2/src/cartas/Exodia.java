@@ -19,8 +19,6 @@ public class Exodia extends Monstruo {
 				throw new ErrorAtaqueDesdePosicionInvalida();
 			}
 			
-			this.jugadorDuenio.hacerDanioAlRival(puntos.obtenerPuntosDeAtaque());
-			
 		}
 
 }

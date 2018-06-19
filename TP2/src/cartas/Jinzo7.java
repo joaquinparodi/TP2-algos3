@@ -19,6 +19,10 @@ public class Jinzo7 extends Monstruo {
 			throw new ErrorAtaqueDesdePosicionInvalida();
 		}
 		
+	}
+	
+	public void atacarRival () {
+		
 		this.jugadorDuenio.hacerDanioAlRival(puntos.obtenerPuntosDeAtaque());
 		
 	}
