@@ -72,6 +72,10 @@ public class Monstruo extends Carta implements Atacable {
 	public boolean verificarSacrificios(Sacrificio sacrificios) {
 		return true;
 	}
+
+	public boolean lePerteneceA(Jugador jugador) {
+		return (jugadorDuenio == jugador);
+	}
 	
 }
 

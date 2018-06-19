@@ -1,6 +1,7 @@
 package cartas;
 
 import atributos.Puntos;
+import jugabilidad.Jugador;
 import resultados.Resultado;
 
 public interface Atacable {
@@ -12,5 +13,7 @@ public interface Atacable {
 	void cambiarPosicion();
 	
 	Resultado recibirAtaque(Puntos puntosAtacante);
+
+	boolean lePerteneceA(Jugador jugador);
 	
 }

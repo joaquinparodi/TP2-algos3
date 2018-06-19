@@ -2,11 +2,15 @@ package jugabilidad;
 
 import cartas.Monstruo;
 import cartas.Trampa;
+import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
+import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorCartaNoEncontrada;
+import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorSacrificiosNoSonLosBuenos;
 import atributos.Sacrificio;
 import atributos.Vida;
+import cartas.Atacable;
 import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
@@ -153,4 +157,30 @@ public class Jugador {
     public void repartirCartaDelMazo () {
     	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
     }
+    
+    public void atacarCartaConCarta(Atacable cartaAAtacar, Atacable cartaAUsar) {
+    	
+    	if (!cartaAUsar.lePerteneceA(this)) {
+    		throw new ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar();
+    	}
+    	
+    	if (cartaAAtacar.lePerteneceA(this)) {
+    		throw new ErrorIntentaAtacarACartaPropia();
+    	}
+    	
+    	if ( mano.pertenece((Carta) cartaAUsar) ){
+    		throw new ErrorCartaEnManoNoPuedeAtacar();
+    	}
+    	
+    	jugadorRival.recibirAtaqueDeCarta(cartaAUsar,cartaAAtacar);
+    	
+    }
+    
+//    aca hay que cambiarlo para que se fije en las cartas trampa
+//    que tiene y que las trampas hagan su trabajo
+//    (segun la consigna tiene que usar solamente la primera carta trampa
+//    		de izquierda a derecha)
+	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
+		cartaAtacante.atacar(cartaAtacada);
+	}
 }

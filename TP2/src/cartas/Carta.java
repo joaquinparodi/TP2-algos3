@@ -12,7 +12,7 @@ public abstract class Carta {
     protected Efecto efecto;
     
     public Carta( String nombre, Jugador jugador ) {
-        nombreCarta = nombre;
+        nombreCarta =nombre;
         jugadorDuenio = jugador;
         orientacion = new OrientacionArriba();
     }

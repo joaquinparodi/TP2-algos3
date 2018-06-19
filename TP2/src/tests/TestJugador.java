@@ -16,6 +16,9 @@ import atributos.Puntos;
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Monstruo;
+import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
+import errores.ErrorCartaEnManoNoPuedeAtacar;
+import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import factories.FabricaDeCartas;
 
@@ -973,6 +976,144 @@ class TestJugador {
 		
 		assertFalse(jugadorUno.contieneCartaEnMano(monstruo1));
 		assertFalse(jugadorUno.contieneCartaEnMano(monstruo2));
+	}
+	
+	@Test
+	public void test29jugadorPierdeVidaAlAtacarConCartaDebilAOtraMasFuerte() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugaforDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugaforDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+
+		//La carta se inicializa en modo ataque
+		Puntos puntosUnaCarta = new Puntos(1000, 2000);
+		Puntos puntosOtraCarta = new Puntos(1500, 2500);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		
+		jugadorUno.repartirCarta(unaCarta);
+		jugadorDos.repartirCarta(otraCarta);
+		
+		jugadorUno.agregarCartaEnCampo(unaCarta);
+		jugadorDos.agregarCartaEnCampo(otraCarta);
+		
+		jugadorUno.atacarCartaConCarta(otraCarta, unaCarta);
+		
+		double vidaObtenida = jugadorUno.obtenerVida().obtenerPuntosDeVida();
+		double vidaEsperada = 7500;
+		
+		assertEquals(vidaEsperada,vidaObtenida);
+		
+	}
+	
+	@Test
+	public void test30jugadoNoPuedeAtacarConCartaEnMano () {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugaforDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugaforDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+
+		//La carta se inicializa en modo ataque
+		Puntos puntosUnaCarta = new Puntos(1000, 2000);
+		Puntos puntosOtraCarta = new Puntos(1500, 2500);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		
+		jugadorUno.repartirCarta(unaCarta);
+		jugadorDos.repartirCarta(otraCarta);
+		
+		try {
+			jugadorUno.atacarCartaConCarta(otraCarta, unaCarta);	
+			assertTrue(false);
+		}catch (ErrorCartaEnManoNoPuedeAtacar error) {
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	public void test31jugadorNoPuedeAtacarConCartaAjena() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugaforDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugaforDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+
+		//La carta se inicializa en modo ataque
+		Puntos puntosUnaCarta = new Puntos(1000, 2000);
+		Puntos puntosOtraCarta = new Puntos(1500, 2500);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		
+		jugadorUno.repartirCarta(unaCarta);
+		jugadorDos.repartirCarta(otraCarta);
+		
+		jugadorUno.agregarCartaEnCampo(unaCarta);
+		jugadorDos.agregarCartaEnCampo(otraCarta);
+		
+		try {
+			jugadorUno.atacarCartaConCarta(unaCarta, otraCarta);
+			assertTrue(false);
+		}catch (ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar error) {
+			assertTrue(true);
+		}
+	}
+	@Test
+	public void test32jugadorNoPuedeAtacarCartaPropia () {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugaforDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugaforDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+
+		//La carta se inicializa en modo ataque
+		Puntos puntosUnaCarta = new Puntos(1000, 2000);
+		Puntos puntosOtraCarta = new Puntos(1500, 2500);
+		Estrellas estrellas = new Estrellas(1);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorUno, estrellas, puntosOtraCarta);
+		
+		jugadorUno.repartirCarta(unaCarta);
+		jugadorUno.repartirCarta(otraCarta);
+		
+		jugadorUno.agregarCartaEnCampo(unaCarta);
+		jugadorUno.agregarCartaEnCampo(otraCarta);
+		
+		try {
+			jugadorUno.atacarCartaConCarta(unaCarta, otraCarta);
+			assertTrue(false);
+		}catch (ErrorIntentaAtacarACartaPropia error) {
+			assertTrue(true);
+		}
+
 	}
 
 
