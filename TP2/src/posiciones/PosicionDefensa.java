@@ -12,8 +12,8 @@ public class PosicionDefensa extends Posicion {
 
 	private Puntos puntosMonstruo;
 	
-	public PosicionDefensa(Puntos auxPuntosMonstruo) {
-		this.puntosMonstruo = auxPuntosMonstruo;
+	public PosicionDefensa(Puntos puntosMonstruo) {
+		this.puntosMonstruo = puntosMonstruo;
 	}
 	
 	public Posicion cambiarPosicion() {

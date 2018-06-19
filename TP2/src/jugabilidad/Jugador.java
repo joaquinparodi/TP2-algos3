@@ -26,8 +26,8 @@ public class Jugador {
 	    this.mano = new Baraja();
     }
 
-	public void asignarRival(Jugador auxJugadorRival) {
-		this.jugadorRival = auxJugadorRival;
+	public void asignarRival(Jugador jugadorRival) {
+		this.jugadorRival = jugadorRival;
 	}
 
 	public void repartirCarta(Carta carta) {

@@ -7,8 +7,8 @@ public class Victoria extends Resultado {
 
 	private double diferenciaDePuntos;
 	
-	public Victoria(double auxDiferenciaDePuntos) {
-		diferenciaDePuntos = Math.abs( auxDiferenciaDePuntos );
+	public Victoria(double diferenciaDePuntos) {
+		this.diferenciaDePuntos = Math.abs( diferenciaDePuntos );
 	}
 
 	public void aplicarAJugadores(Jugador jugadorVencedor) {

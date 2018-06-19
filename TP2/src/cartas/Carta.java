@@ -11,14 +11,14 @@ public abstract class Carta {
     protected Orientacion orientacion;
     protected Efecto efecto;
     
-    public Carta( String auxNombre, Jugador auxJugador ) {
-        nombreCarta = auxNombre;
-        jugadorDuenio = auxJugador;
+    public Carta( String nombre, Jugador jugador ) {
+        nombreCarta = nombre;
+        jugadorDuenio = jugador;
         orientacion = new OrientacionArriba();
     }
     
-    public boolean seLlama( String auxNombre ) {
-    	return auxNombre == nombreCarta;
+    public boolean seLlama( String nombre ) {
+    	return nombre == nombreCarta;
     }
 
     public abstract void enviarAlCementerio();

@@ -5,7 +5,7 @@ import jugabilidad.Jugador;
 
 public class Empate extends Resultado {
 	
-	public Empate(double auxDiferenciaDePuntos) {
+	public Empate(double diferenciaDePuntos) {
 	}
 	
 	public void aplicarAJugadores(Jugador jugadorVencedor) {

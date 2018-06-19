@@ -7,8 +7,8 @@ public class Derrota extends Resultado {
 
 	private double diferenciaDePuntos;
 	
-	public Derrota(double auxDiferenciaDePuntos) {
-		diferenciaDePuntos = Math.abs( auxDiferenciaDePuntos );
+	public Derrota(double diferenciaDePuntos) {
+		this.diferenciaDePuntos = Math.abs( diferenciaDePuntos );
 	}
 	
 	public void aplicarAJugadores( Jugador jugadorDerrotado ) {

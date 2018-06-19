@@ -3,14 +3,14 @@ package cartas;
 import atributos.Estrellas;
 import atributos.Puntos;
 import jugabilidad.Jugador;
-import posiciones.InsectoArriba;
+import posiciones.InsectoComeHombresArriba;
 import resultados.Resultado;
 
 public class InsectoComeHombres extends Monstruo {
 
 	public InsectoComeHombres(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {
 		super(nombre, unJugador, estrellas, puntos);
-		this.orientacion = new InsectoArriba ();
+		this.orientacion = new InsectoComeHombresArriba ();
 	}
 	
 	public Resultado recibirAtaque (Puntos puntosAtacante) {

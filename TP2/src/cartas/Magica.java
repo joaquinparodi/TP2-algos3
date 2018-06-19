@@ -6,8 +6,8 @@ import jugabilidad.Jugador;
 
 public class Magica extends Carta{
 
-	public Magica(String auxNombre, Jugador auxJugador,Efecto unEfecto) {
-		super(auxNombre, auxJugador);
+	public Magica(String nombre, Jugador jugador,Efecto unEfecto) {
+		super(nombre, jugador);
 		this.efecto = unEfecto;
 	}
 	

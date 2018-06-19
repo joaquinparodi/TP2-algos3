@@ -4,19 +4,21 @@ import atributos.Efecto;
 import atributos.Puntos;
 import cartas.Carta;
 import jugabilidad.Jugador;
+import resultados.Derrota;
 import resultados.Resultado;
 
-public class InsectoArriba extends Orientacion{
-
+public class InsectoComeHombresAbajo extends Orientacion {
+	
 	public Resultado recibirAtaque (Carta cartaInsecto, Posicion posicionInsecto, Puntos puntosAtacante) {
-		return posicionInsecto.recibirAtaque(puntosAtacante);
+		cartaInsecto.voltear();
+		return new Derrota(0);		
 	}
 	
-	public Orientacion voltear () {
-		return new InsectoAbajo();
+	public Orientacion voltear() {
+		return new InsectoComeHombresArriba();
 	}
 
-	@Override
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) {
 	}
+	
 }
