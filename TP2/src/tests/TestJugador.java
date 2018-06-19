@@ -925,7 +925,7 @@ class TestJugador {
 		Estrellas estrellas = new Estrellas(3);
 		
 		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo3", jugadorDos, estrellas, puntos);
+		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
 		
 		Efecto efecto = new EfectoOllaDeLaCodicia();
 		Magica ollaDeLaCodicia = new Magica ("olla de la codicia", jugadorUno, efecto);
@@ -960,7 +960,7 @@ class TestJugador {
 		Estrellas estrellas = new Estrellas(3);
 		
 		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo3", jugadorDos, estrellas, puntos);
+		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
 		
 		Efecto efecto = new EfectoOllaDeLaCodicia();
 		Magica ollaDeLaCodicia = new Magica ("olla de la codicia", jugadorUno, efecto);
@@ -1115,6 +1115,4 @@ class TestJugador {
 		}
 
 	}
-
-
 }
