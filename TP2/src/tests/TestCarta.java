@@ -445,9 +445,9 @@ class TestCarta {
 		monstruosASacrificar.agregarCarta(dragonUno);
 		monstruosASacrificar.agregarCarta(dragonDos);
 		monstruosASacrificar.agregarCarta(dragonTres);
-		
+
 		jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar);
-		
+
 		assertTrue(jugador.cartaEstaMuerta(dragonUno));
 		assertTrue(jugador.cartaEstaMuerta(dragonDos));
 		assertTrue(jugador.cartaEstaMuerta(dragonTres));
