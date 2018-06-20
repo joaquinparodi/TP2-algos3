@@ -9,7 +9,7 @@ import cartas.InsectoComeHombres;
 import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
-import errores.ErrorSacrificiosNoSonLosBuenos;
+import errores.ErrorCartasSacrificadasIncorrectas;
 import factories.FabricaDeCartas;
 import factories.FabricaDeMonstruosEspeciales;
 
@@ -480,7 +480,7 @@ class TestCarta {
 		monstruosASacrificar.agregarCarta(dragonDos);
 		monstruosASacrificar.agregarCarta(monstruo);
 		
-		assertThrows(ErrorSacrificiosNoSonLosBuenos.class, () -> jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar));
+		assertThrows(ErrorCartasSacrificadasIncorrectas.class, () -> jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar));
 	}
 	
 	@Test
