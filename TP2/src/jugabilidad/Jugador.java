@@ -7,7 +7,7 @@ import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorCartaNoEncontrada;
 import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
-import errores.ErrorSacrificiosNoSonLosBuenos;
+import errores.ErrorCartasSacrificadasIncorrectas;
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Atacable;
@@ -76,7 +76,7 @@ public class Jugador {
     	
     	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {
     		//Algunas cartas necesitan sacrificios especificos
-    		throw new ErrorSacrificiosNoSonLosBuenos();
+    		throw new ErrorCartasSacrificadasIncorrectas();
     	}
     	
     	sacrificios.enviarSacrificiosAlCementerio( campoDeJuego );
