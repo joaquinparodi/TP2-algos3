@@ -59,7 +59,7 @@ public class ControladorDelJuego {
 
 		//primero cargo 20 monstruos para asegurarme de que no hallan muchas magicas
 		for(int i = 0; i < 20; i++) {
-			int numeroAlAzar = (int) (Math.random() * 16) + 1;
+			int numeroAlAzar = (int) (Math.random() * 9) + 1;
 			switch (numeroAlAzar) {
             case 1: cartaAAgregar = fabricaDeMonstruosEspeciales.crearJinzo7(jugador);
                     break;

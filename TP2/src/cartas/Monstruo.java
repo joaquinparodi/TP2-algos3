@@ -110,5 +110,8 @@ public class Monstruo extends Carta implements Atacable {
 		puntos.restaurarPuntos();
 	}
 	
+	public String obtenerNombre() {
+		return nombreCarta;
+	}
 }
 

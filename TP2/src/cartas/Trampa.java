@@ -1,6 +1,5 @@
 package cartas;
 
-import atributos.Efecto;
 import atributos.EfectoDeTrampa;
 import jugabilidad.Jugador;
 

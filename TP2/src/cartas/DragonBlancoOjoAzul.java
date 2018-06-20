@@ -2,7 +2,6 @@ package cartas;
 
 import atributos.Estrellas;
 import atributos.Puntos;
-import errores.ErrorAtaqueDesdePosicionInvalida;
 import jugabilidad.Jugador;
 
 public class DragonBlancoOjoAzul extends Monstruo{

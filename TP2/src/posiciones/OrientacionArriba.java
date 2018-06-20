@@ -4,7 +4,6 @@ import atributos.Efecto;
 import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
-import cartas.Carta;
 import jugabilidad.Jugador;
 import resultados.Resultado;
 

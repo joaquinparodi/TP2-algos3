@@ -5,7 +5,6 @@ import java.util.Iterator;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Sacrificio;
-import errores.ErrorAtaqueDesdePosicionInvalida;
 import jugabilidad.Jugador;
 
 public class DragonDefinitivo extends Monstruo{
@@ -25,7 +24,7 @@ public class DragonDefinitivo extends Monstruo{
 		Iterator<Carta> iter = sacrificios.iterator();
 		while(iter.hasNext()) {
 		    Monstruo monstruo = (Monstruo) iter.next();
-		    if (!(monstruo instanceof DragonBlancoOjoAzul)) {
+		    if (monstruo.obtenerNombre() != "Dragon Blanco Ojos Azules") {
 		    	return false;
 		    }  	
 		}
