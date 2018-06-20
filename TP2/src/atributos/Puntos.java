@@ -30,4 +30,13 @@ public class Puntos {
 		this.plusDefensa = incremento;
 	}
 	
+	public void anularPuntos() {
+		this.plusAtaque = -this.puntosAtaque;
+		this.plusDefensa = -this.puntosDefensa;
+	}
+
+	public void restaurarPuntos() {
+		this.plusAtaque = 0;
+		this.plusDefensa = 0;
+	}
 }

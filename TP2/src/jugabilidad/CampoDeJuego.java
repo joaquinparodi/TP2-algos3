@@ -110,13 +110,21 @@ public class CampoDeJuego {
 		return carta;
 	}
 
-	public void aplicarTrampa(Atacable monstruoAtacante, Jugador jugadorRival) {
+	public void aplicarTrampa(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
 		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
-		cartaTrampa.aplicarEfecto(monstruoAtacante, jugadorRival);
+		cartaTrampa.aplicarEfecto( atacante, atacado, jugadorRival);
+		cartasTrampas.agregarCartaPrimero(cartaTrampa);
+	}
+
+	public void desaplicarTrampa(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
+		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
+		cartaTrampa.desaplicarEfecto(atacante, atacado, jugadorRival);
 		this.enviarAlCementerio(cartaTrampa);
 	}
 	
 	public boolean hayTrampasEnCampo() {
 		return cartasTrampas.tieneCartas();
 	}
+
+
 }

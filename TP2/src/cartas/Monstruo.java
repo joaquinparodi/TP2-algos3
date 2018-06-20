@@ -101,6 +101,14 @@ public class Monstruo extends Carta implements Atacable {
 	public Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante) {
 		return this.recibirAtaqueBocaArriba(puntosAtacante);
 	}
+
+	public void anularPuntos() {
+		puntos.anularPuntos();
+	}
+
+	public void restaurarPuntos() {
+		puntos.restaurarPuntos();
+	}
 	
 }
 

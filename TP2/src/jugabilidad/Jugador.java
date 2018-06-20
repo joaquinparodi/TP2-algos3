@@ -176,10 +176,11 @@ public class Jugador {
     	
     }
     
+    //Estaria bueno sacar estos ifs de aca!
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
-		if(campoDeJuego.hayTrampasEnCampo()) {
-			campoDeJuego.aplicarTrampa(cartaAtacante, jugadorRival);
-		} else cartaAtacante.atacar(cartaAtacada);
+		if(campoDeJuego.hayTrampasEnCampo()) campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
+		cartaAtacante.atacar(cartaAtacada);
+		if(campoDeJuego.hayTrampasEnCampo()) campoDeJuego.desaplicarTrampa(cartaAtacante, cartaAtacada,jugadorRival);
 	}
 
 }

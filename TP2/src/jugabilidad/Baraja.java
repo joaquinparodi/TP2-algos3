@@ -22,6 +22,10 @@ public class Baraja {
 		contenedor.add(carta);
 	}
 	
+	public void agregarCartaPrimero(Carta carta) {
+		contenedor.add(0, carta);
+	}
+	
 	public void eliminarCarta(Carta carta) {
 		contenedor.remove(carta);
 	}

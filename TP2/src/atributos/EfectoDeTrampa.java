@@ -3,8 +3,10 @@ package atributos;
 import cartas.Atacable;
 import jugabilidad.Jugador;
 
-public class EfectoDeTrampa {
+public abstract class EfectoDeTrampa {
 	
-	public void aplicar(Atacable monstruoAtacante, Jugador jugadorRival) {}
+	public abstract void aplicar(Atacable atacante, Atacable atacado, Jugador jugadorRival);
+
+	public abstract void desaplicar(Atacable atacante, Atacable atacado, Jugador jugadorRival);
 
 }

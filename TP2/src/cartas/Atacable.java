@@ -28,4 +28,12 @@ public interface Atacable {
 	
 	public Puntos obtenerPuntos();
 	
+	public void anularPuntos();
+
+	public void restaurarPuntos();
+	
+	public void incrementarPuntosDeAtaque(double incremento);
+	
+	public void incrementarPuntosDeDefensa(double incremento);
+			
 }

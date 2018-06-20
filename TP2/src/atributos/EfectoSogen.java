@@ -61,12 +61,12 @@ public class EfectoSogen extends EfectoDeCampo {
 	
 		while(iterUno.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterUno.next();
-		    monstruo.incrementarPuntosDeDefensa(0);
+		    monstruo.restaurarPuntos();
 		}
 	
 		while(iterDos.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterDos.next();
-		    monstruo.incrementarPuntosDeAtaque(0);
+		    monstruo.restaurarPuntos();
 		}
 	
 	}

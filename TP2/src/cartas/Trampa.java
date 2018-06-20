@@ -19,9 +19,12 @@ public class Trampa extends Carta {
 		this.jugadorDuenio.enviarAlCementerio(this);	
 	}
 
-	public void aplicarEfecto(Atacable monstruoAtacante, Jugador jugadorRival) {
-		this.efecto.aplicar(monstruoAtacante, jugadorRival);
+	public void aplicarEfecto(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
+		this.efecto.aplicar( atacante,  atacado,  jugadorRival);
 	}
 
+	public void desaplicarEfecto(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
+		this.efecto.desaplicar( atacante,  atacado,  jugadorRival);
+	}
 
 }

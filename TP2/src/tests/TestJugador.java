@@ -12,6 +12,7 @@ import atributos.EfectoDeCampo;
 import atributos.EfectoDeTrampa;
 import atributos.EfectoFisura;
 import atributos.EfectoOllaDeLaCodicia;
+import atributos.EfectoReinforcements;
 import atributos.EfectoSogen;
 import atributos.EfectoWasteland;
 import atributos.Estrellas;
@@ -1195,4 +1196,80 @@ class TestJugador {
 		
 	} 
 	
+	@Test
+	public void test35AtacarJugadorConCilindroMataLaCartaAtacante() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		
+		EfectoDeTrampa efecto = new EfectoCilindroMagico();
+		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
+		
+		jugadorDos.repartirCarta(cilindroMagico);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorDos.agregarCartaEnCampo(cilindroMagico);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		
+		jugadorUno.atacarCartaConCarta(monstruoDos, monstruoUno);
+		
+		assertTrue(jugadorUno.cartaEstaMuerta(monstruoUno));
+		
+	} 
+	
+
+	@Test
+	public void test36AtacarJugadorConReinforcementAumentaLosPuntosDeAtaqueDeLaCartaAtacada() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntosUno = new Puntos(400, 2000);
+		Puntos puntosDos = new Puntos(0, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntosDos);
+		
+		EfectoDeTrampa efecto = new EfectoReinforcements();
+		Trampa reinforcements = fabricaDeCartas.crearCarta("Reinforcements", jugadorDos, efecto);
+		
+		jugadorDos.repartirCarta(reinforcements);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorDos.agregarCartaEnCampo(reinforcements);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		
+		jugadorUno.atacarCartaConCarta(monstruoDos, monstruoUno);
+		
+		//Aumenta de 0 a 500 el ataque, y por diferencia de puntos resta 100 al juagdorUno 
+		assertEquals(jugadorUno.obtenerVida().obtenerPuntosDeVida(), 7900);
+		
+	} 
+	
+
 }
