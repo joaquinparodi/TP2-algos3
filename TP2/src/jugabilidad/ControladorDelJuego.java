@@ -56,8 +56,35 @@ public class ControladorDelJuego {
 		Baraja mazo = jugador.obtenerCampo().obtenerMazo();
 		Carta cartaAAgregar;
 		Efecto efecto;
+
+		//primero cargo 20 monstruos para asegurarme de que no hallan muchas magicas
+		for(int i = 0; i < 20; i++) {
+			int numeroAlAzar = (int) (Math.random() * 16) + 1;
+			switch (numeroAlAzar) {
+            case 1: cartaAAgregar = fabricaDeMonstruosEspeciales.crearJinzo7(jugador);
+                    break;
+            case 2: cartaAAgregar = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+            		break;
+            case 3: cartaAAgregar = fabricaDeMonstruosEspeciales.crearDragonDefinitivo(jugador);
+            		break;
+            case 4: cartaAAgregar = fabricaDeMonstruosEspeciales.crearInsectoComeHombres(jugador);
+            		break;
+            case 5: cartaAAgregar = fabricaDeMonstruosEspeciales.crearCabezaExodia(jugador);
+            		break;
+            case 6: cartaAAgregar = fabricaDeMonstruosEspeciales.crearBrazoIzquierdoExodia(jugador);
+    				break;
+            case 7: cartaAAgregar = fabricaDeMonstruosEspeciales.crearBrazoDerechoExodia(jugador);
+					break;
+            case 8: cartaAAgregar = fabricaDeMonstruosEspeciales.crearPiernaDerechaExodia(jugador);
+					break;
+            default: cartaAAgregar = fabricaDeMonstruosEspeciales.crearPiernaIzquierdaExodia(jugador);
+					break;			
+			}
+            mazo.agregarCarta(cartaAAgregar);          
+		}
 		
-		for(int i = 0; i < 40; i++) {
+		//ahora cargo 20 cartas cualquiera
+		for(int i = 0; i < 20; i++) {
 			int numeroAlAzar = (int) (Math.random() * 16) + 1;
 			switch (numeroAlAzar) {
             case 1: cartaAAgregar = fabricaDeMonstruosEspeciales.crearJinzo7(jugador);
@@ -102,5 +129,6 @@ public class ControladorDelJuego {
 			}
             mazo.agregarCarta(cartaAAgregar);          
 		}
+		mazo.mezclarBaraja();
 	}
 }
