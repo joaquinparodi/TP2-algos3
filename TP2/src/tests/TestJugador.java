@@ -7,7 +7,7 @@ import cartas.Magica;
 import org.junit.jupiter.api.Test;
 import atributos.Efecto;
 import atributos.EfectoAgujeroNegro;
-import atributos.EfectoCilindro;
+import atributos.EfectoCilindroMagico;
 import atributos.EfectoDeCampo;
 import atributos.EfectoDeTrampa;
 import atributos.EfectoFisura;
@@ -1140,7 +1140,7 @@ class TestJugador {
 		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
 		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
 		
-		EfectoDeTrampa efecto = new EfectoCilindro();
+		EfectoDeTrampa efecto = new EfectoCilindroMagico();
 		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
 		
 		jugadorDos.repartirCarta(cilindroMagico);
@@ -1155,6 +1155,43 @@ class TestJugador {
 		
 		//Pierde 2000 de vida, que era el ataque del monstruoUno
 		assertEquals(jugadorUno.obtenerVida().obtenerPuntosDeVida(), 6000);
+		
+	} 
+	
+	@Test
+	public void test34CartaTrampaCilindroMagicoDespuesDelAtaqueVaAlCementerio() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Puntos puntos = new Puntos(2000, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		
+		EfectoDeTrampa efecto = new EfectoCilindroMagico();
+		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
+		
+		jugadorDos.repartirCarta(cilindroMagico);
+		jugadorDos.repartirCarta(monstruoDos);
+		jugadorDos.agregarCartaEnCampo(cilindroMagico);
+		jugadorDos.agregarCartaEnCampo(monstruoDos);
+		
+		jugadorUno.repartirCarta(monstruoUno);
+		jugadorUno.agregarCartaEnCampo(monstruoUno);
+		
+		jugadorUno.atacarCartaConCarta(monstruoDos, monstruoUno);
+		
+		//Pierde 2000 de vida, que era el ataque del monstruoUno
+		assertTrue(jugadorDos.cartaEstaMuerta(cilindroMagico));
 		
 	} 
 	

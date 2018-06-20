@@ -13,17 +13,15 @@ public class Trampa extends Carta {
 		this.efecto = unEfecto;
 	}
 	
-	//redefinir voltear
+	//redefinir voltear con una excpecion de que no se pueda
 
 	public void enviarAlCementerio() {
 		this.jugadorDuenio.enviarAlCementerio(this);	
 	}
 
-	//Habria que poder redefinir o hacer algo para no tener el metodo vacio
 	public void aplicarEfecto(Atacable monstruoAtacante, Jugador jugadorRival) {
 		this.efecto.aplicar(monstruoAtacante, jugadorRival);
 	}
 
-	public void aplicarEfecto() {}
 
 }

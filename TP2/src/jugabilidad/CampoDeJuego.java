@@ -113,6 +113,7 @@ public class CampoDeJuego {
 	public void aplicarTrampa(Atacable monstruoAtacante, Jugador jugadorRival) {
 		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
 		cartaTrampa.aplicarEfecto(monstruoAtacante, jugadorRival);
+		this.enviarAlCementerio(cartaTrampa);
 	}
 	
 	public boolean hayTrampasEnCampo() {
