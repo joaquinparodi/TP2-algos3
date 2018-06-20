@@ -3,6 +3,7 @@ package tests;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 
+import cartas.Atacable;
 import cartas.DragonBlancoOjoAzul;
 import cartas.DragonDefinitivo;
 import cartas.InsectoComeHombres;
@@ -373,24 +374,72 @@ class TestCarta {
 	public void test14jinzo7AtacaDirectamenteAPuntosDeVida() {
 		
 		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
+		
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
 		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		Estrellas estrellas = new Estrellas(2);
+		
+		Puntos puntos = new Puntos (2000,2000);
 		
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
 		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
+		Atacable otroMonstruo = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntos);
 		
-		jinzo7.atacarRival();
+		jinzo7.atacar(otroMonstruo);
 		
+		//jinzo 7 inicializa boca arriba (efecto activado)
+		//le resto 500 puntos de vida al rival a pesar de que el monstruo que ataco era mas poderoso
 		Vida vidaObtenida = jugadorDos.obtenerVida();
 		Vida vidaEsperada = new Vida(7500);
 		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
-				
+		
+		//jinzo 7 no murio
+		assertFalse(jugadorUno.cartaEstaMuerta(jinzo7));
 
+	}
+	
+	@Test
+	public void test14bisJinzo7BocaAbajoAtacaComoUnMonstruoCualquiera () {	
+		
+		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		Estrellas estrellas = new Estrellas(2);
+		
+		Puntos puntos = new Puntos (2000,2000);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
+		Atacable otroMonstruo = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntos);
+		
+		jinzo7.voltear();
+		
+		jinzo7.atacar(otroMonstruo);
+		
+		//jinzo 7 esta boca abajo (efecto desactivado)
+		//el jugador que ataca pierde vida
+		Vida vidaObtenida = jugadorUno.obtenerVida();
+		Vida vidaEsperada = new Vida(6500);
+		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		
+		//jinzo 7 murio
+		assertTrue(jugadorUno.cartaEstaMuerta(jinzo7));
+	
 	}
 	
 	@Test
