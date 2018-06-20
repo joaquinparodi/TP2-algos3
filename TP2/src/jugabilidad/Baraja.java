@@ -1,6 +1,7 @@
 package jugabilidad;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 
 import cartas.Carta;
@@ -61,4 +62,7 @@ public class Baraja {
 		return iter;	 
 	}
 
+	public void mezclarBaraja() {
+		Collections.shuffle(contenedor);
+	}
 }

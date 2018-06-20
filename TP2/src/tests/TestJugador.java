@@ -1,6 +1,7 @@
 package tests;
 
 import jugabilidad.Baraja;
+import jugabilidad.ControladorDelJuego;
 import jugabilidad.Jugador;
 import cartas.Campo;
 import cartas.Magica;
@@ -1270,6 +1271,30 @@ class TestJugador {
 		assertEquals(jugadorUno.obtenerVida().obtenerPuntosDeVida(), 7900);
 		
 	} 
+	
+	@Test
+	public void test37AlIniciarElJuegoCadaJugadorDebeTener5CartasEnLaMano() {
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+		
+		ControladorDelJuego controladorDelJuego = new ControladorDelJuego(jugadorUno, jugadorDos);
+		
+		Jugador jugadorActivo = controladorDelJuego.obtenerJugadorActivo();
+		Jugador jugadorPasivo = controladorDelJuego.obtenerJugadorPasivo();
+		
+		//verifica la contidad de cartas en mano
+		assertEquals(jugadorActivo.obtenerCantidadDeCartasEnMano(), 6);
+		assertEquals(jugadorPasivo.obtenerCantidadDeCartasEnMano(), 5);
+		
+	} 
+	
+	
 	
 
 }

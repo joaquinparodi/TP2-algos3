@@ -182,5 +182,13 @@ public class Jugador {
 		cartaAtacante.atacar(cartaAtacada);
 		if(campoDeJuego.hayTrampasEnCampo()) campoDeJuego.desaplicarTrampa(cartaAtacante, cartaAtacada,jugadorRival);
 	}
+	
+	public int obtenerCantidadDeCartasEnMano() {
+		return mano.obtenerCantidadDeCartas();
+	}
+	
+	public void tomarCartaDelMazo() {
+		mano.agregarCarta(campoDeJuego.obtenerCartaDelMazo());
+	}
 
 }

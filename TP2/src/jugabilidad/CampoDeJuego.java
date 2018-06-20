@@ -109,6 +109,14 @@ public class CampoDeJuego {
 		mazo.eliminarCarta(carta);
 		return carta;
 	}
+	
+	public int obtenerTamanioDelMazo() {
+		return mazo.obtenerCantidadDeCartas();
+	}
+	
+	public Baraja obtenerMazo() {
+		return mazo;
+	}
 
 	public void aplicarTrampa(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
 		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();

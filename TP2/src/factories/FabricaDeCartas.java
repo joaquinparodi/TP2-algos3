@@ -27,8 +27,5 @@ public class FabricaDeCartas {
 	
 	public Campo crearCarta(String nombre, Jugador jugador, EfectoDeCampo efecto ) {
 		return new Campo(nombre, jugador, efecto);
-	} 
-	
-	
-	
+	}	
 }
