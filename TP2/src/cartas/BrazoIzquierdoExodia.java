@@ -10,4 +10,8 @@ public class BrazoIzquierdoExodia extends Monstruo {
 		super(nombre, unJugador, estrellas, puntos);
 	}
 	
+	public boolean esParteDeExodia() {
+		return true;
+	}
+	
 }

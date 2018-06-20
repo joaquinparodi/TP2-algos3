@@ -1,7 +1,7 @@
 package tests;
 
 import jugabilidad.Baraja;
-import jugabilidad.ControladorDelJuego;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import cartas.Campo;
 import cartas.Magica;
@@ -1283,7 +1283,7 @@ class TestJugador {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		ControladorDelJuego controladorDelJuego = new ControladorDelJuego(jugadorUno, jugadorDos);
+		Controlador controladorDelJuego = new Controlador(jugadorUno, jugadorDos);
 		
 		Jugador jugadorActivo = controladorDelJuego.obtenerJugadorActivo();
 		Jugador jugadorPasivo = controladorDelJuego.obtenerJugadorPasivo();

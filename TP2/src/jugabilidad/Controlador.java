@@ -13,24 +13,24 @@ import cartas.Carta;
 import factories.FabricaDeCartas;
 import factories.FabricaDeMonstruosEspeciales;
 
-public class ControladorDelJuego {
+public class Controlador {
 	
 	Jugador jugadorPasivo;
 	Jugador jugadorActivo;
 
-	public ControladorDelJuego(Jugador jugador1, Jugador jugador2) {
+	public Controlador(Jugador jugadorUno, Jugador jugadorDos) {
 
-		this.cargarMazo(jugador1);
-		this.cargarMazo(jugador2);
+		this.cargarMazo(jugadorUno);
+		this.cargarMazo(jugadorDos);
 		
 		//se decide al azar quien arranca
 		int numeroAlAzar = (int) (Math.random() * 2) + 1;
 		if(numeroAlAzar == 1) {
-			jugadorActivo = jugador1;
-			jugadorPasivo = jugador2;
-		}else {
-			jugadorActivo = jugador2;
-			jugadorPasivo = jugador1;
+			jugadorActivo = jugadorUno;
+			jugadorPasivo = jugadorDos;
+		} else {
+			jugadorActivo = jugadorDos;
+			jugadorPasivo = jugadorUno;
 		}
 		
 		for(int i = 0; i < 5; i++) {
@@ -49,6 +49,7 @@ public class ControladorDelJuego {
 		return jugadorPasivo;
 	}
 	
+	//Esta mal el cargar mazo xq pide el mazo
 	private void cargarMazo(Jugador jugador) {
 		
 		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
@@ -87,7 +88,7 @@ public class ControladorDelJuego {
 		for(int i = 0; i < 20; i++) {
 			int numeroAlAzar = (int) (Math.random() * 16) + 1;
 			switch (numeroAlAzar) {
-            case 1: cartaAAgregar = fabricaDeMonstruosEspeciales.crearJinzo7(jugador);
+			case 1: cartaAAgregar = fabricaDeMonstruosEspeciales.crearJinzo7(jugador);
                     break;
             case 2: cartaAAgregar = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
             		break;
@@ -131,4 +132,19 @@ public class ControladorDelJuego {
 		}
 		mazo.mezclarBaraja();
 	}
+	
+	private boolean restanCartasEnMazo() { 
+		return jugadorActivo.poseeCartarEnMazo(); 
+	}
+	
+	private boolean exodiaEstaCompleto() {
+		return jugadorActivo.poseeExodiaCompleto(); 
+	}
+	
+	private boolean hayJugadorSinVida() { return false; }
+	
+	public boolean hayGanador() {
+		return !this.restanCartasEnMazo() || this.exodiaEstaCompleto() || this.hayJugadorSinVida();
+	}
+	
 }

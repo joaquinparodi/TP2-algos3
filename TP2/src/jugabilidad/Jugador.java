@@ -8,6 +8,9 @@ import errores.ErrorCartaNoEncontrada;
 import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorCartasSacrificadasIncorrectas;
+
+import java.util.Iterator;
+
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Atacable;
@@ -191,4 +194,18 @@ public class Jugador {
 		mano.agregarCarta(campoDeJuego.obtenerCartaDelMazo());
 	}
 
+	public boolean poseeCartarEnMazo() {
+		return campoDeJuego.hayCartasEnMazo();
+	}
+
+	public boolean poseeExodiaCompleto() {
+		Iterator iter = mano.obtenerIteradorDeBaraja();
+		Boolean esExodia;
+		while(iter.hasNext()) {
+			Monstruo monstruo = (Monstruo) iter.next();
+			if( !monstruo.esParteDeExodia() ) return false;
+		}
+		return true;
+	}
+	
 }

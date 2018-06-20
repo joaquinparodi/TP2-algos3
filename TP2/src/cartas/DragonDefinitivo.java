@@ -24,7 +24,7 @@ public class DragonDefinitivo extends Monstruo{
 		Iterator<Carta> iter = sacrificios.iterator();
 		while(iter.hasNext()) {
 		    Monstruo monstruo = (Monstruo) iter.next();
-		    if (monstruo.obtenerNombre() != "Dragon Blanco Ojos Azules") {
+		    if (monstruo.seLlama("Dragon Blanco Ojos Azules")) {
 		    	return false;
 		    }  	
 		}

@@ -134,5 +134,7 @@ public class CampoDeJuego {
 		return cartasTrampas.tieneCartas();
 	}
 
-
+	public boolean hayCartasEnMazo() {
+		return mazo.tieneCartas();
+	}
 }
