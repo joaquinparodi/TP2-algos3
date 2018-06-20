@@ -16,4 +16,13 @@ public interface Atacable {
 
 	boolean lePerteneceA(Jugador jugador);
 	
+	public void aplicarAtaque (Atacable otroMonstruo);
+	
+	public void atacarConEfecto (Atacable otroMonstruo);
+	
+	public void atacarSinEfecto (Atacable otroMonstruo);
+
+	Resultado recibirAtaqueBocaArriba(Puntos puntosAtacante);
+
+	Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante);
 }
