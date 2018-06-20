@@ -11,17 +11,5 @@ public class DragonBlancoOjoAzul extends Monstruo{
 		super(nombre, unJugador, estrellas, puntos);
 
 	}
-	
-	public void atacar (Atacable otroMonstruo) {
-			
-			try {
-				this.posicion.atacar(otroMonstruo);
-			}catch (ErrorAtaqueDesdePosicionInvalida error) {
-				throw new ErrorAtaqueDesdePosicionInvalida();
-			}
-			
-			this.jugadorDuenio.hacerDanioAlRival(puntos.obtenerPuntosDeAtaque());
-			
-		}
 
 }

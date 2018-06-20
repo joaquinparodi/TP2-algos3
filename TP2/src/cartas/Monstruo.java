@@ -22,13 +22,30 @@ public class Monstruo extends Carta implements Atacable {
 	}
 
 	public void atacar( Atacable otroMonstruo ) {
-		Resultado resultado = posicion.atacar( otroMonstruo );
+		
+		posicion.verificarAtaque(this, otroMonstruo);
+		
+	}
+	
+	public void aplicarAtaque (Atacable otroMonstruo) {
+		
+		orientacion.atacarAplicandoEfecto(this, otroMonstruo);
+		
+	}
+	
+	public void atacarConEfecto (Atacable otroMonstruo) {
+		this.atacarSinEfecto(otroMonstruo);
+	}
+	
+	public void atacarSinEfecto (Atacable otroMonstruo) {
+		Resultado resultado = otroMonstruo.recibirAtaque(puntos);
 		resultado.aplicarAJugadores( jugadorDuenio );
 		resultado.aplicarACartas(this, otroMonstruo);
-	}
 
+	}
+	
 	public Resultado recibirAtaque( Puntos puntosAtacante ) {
-		return posicion.recibirAtaque( puntosAtacante );
+		return orientacion.recibirAtaque(this,puntosAtacante);
 	}
 
 	public void enviarAlCementerio() {
@@ -75,6 +92,16 @@ public class Monstruo extends Carta implements Atacable {
 
 	public boolean lePerteneceA(Jugador jugador) {
 		return (jugadorDuenio == jugador);
+	}
+
+	@Override
+	public Resultado recibirAtaqueBocaArriba(Puntos puntosAtacante) {
+		return posicion.recibirAtaque(puntosAtacante);
+	}
+
+	@Override
+	public Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante) {
+		return this.recibirAtaqueBocaArriba(puntosAtacante);
 	}
 	
 }

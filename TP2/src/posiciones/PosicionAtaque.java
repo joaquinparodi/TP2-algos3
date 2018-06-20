@@ -35,4 +35,9 @@ public class PosicionAtaque extends Posicion {
 		return new Empate(diferenciaDePuntos);
 	}
 
+	@Override
+	public void verificarAtaque(Atacable atacante, Atacable atacado) {
+		atacante.aplicarAtaque(atacado);
+	}
+
 }

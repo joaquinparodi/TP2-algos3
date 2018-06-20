@@ -2,6 +2,7 @@ package posiciones;
 
 import atributos.Efecto;
 import atributos.Puntos;
+import cartas.Atacable;
 import cartas.Carta;
 import jugabilidad.Jugador;
 import resultados.Resultado;
@@ -16,8 +17,13 @@ public class OrientacionArriba extends Orientacion{
 		unEfecto.aplicar(unJugador);
 	}
 
-	public Resultado recibirAtaque(Carta carta, Posicion posicion, Puntos puntosAtacante) {
-		return null;
+	public Resultado recibirAtaque(Atacable atacado, Puntos puntosAtacante) {
+		return atacado.recibirAtaqueBocaArriba(puntosAtacante);
+	}
+
+	@Override
+	public void atacarAplicandoEfecto(Atacable monstruo, Atacable otroMonstruo) {
+		monstruo.atacarConEfecto(otroMonstruo);
 	}
 
 
