@@ -936,15 +936,12 @@ class TestJugador {
 		Efecto efecto = new EfectoOllaDeLaCodicia();
 		Magica ollaDeLaCodicia = fabricaDeCartas.crearCarta("olla de la codicia", jugadorUno, efecto);
 		
-		Baraja cartasACargarEnMazo = new Baraja();
+		Baraja mazo = new Baraja();
+		mazo.agregarCarta(monstruo1);
+		mazo.agregarCarta(monstruo2);
+		jugadorUno.obtenerCampo().cargarMazo(mazo);
 		
-		cartasACargarEnMazo.agregarCarta(monstruo1);
-		cartasACargarEnMazo.agregarCarta(monstruo2);
-		
-		jugadorUno.obtenerCampo().cargarMazo(cartasACargarEnMazo);
-		
-		jugadorUno.repartirCarta(ollaDeLaCodicia);
-		
+		jugadorUno.repartirCarta(ollaDeLaCodicia);	
 		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
 		
 		assertTrue(jugadorUno.contieneCartaEnMano(monstruo1));
