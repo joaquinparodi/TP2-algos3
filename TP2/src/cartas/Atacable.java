@@ -12,7 +12,7 @@ public interface Atacable {
 	
 	void cambiarPosicion();
 	
-	Resultado recibirAtaque(Puntos puntosAtacante);
+	public Resultado recibirAtaque(Puntos puntosAtacante);
 
 	boolean lePerteneceA(Jugador jugador);
 	
@@ -22,7 +22,10 @@ public interface Atacable {
 	
 	public void atacarSinEfecto (Atacable otroMonstruo);
 
-	Resultado recibirAtaqueBocaArriba(Puntos puntosAtacante);
+	public Resultado recibirAtaqueBocaArriba(Puntos puntosAtacante);
 
-	Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante);
+	public Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante);
+	
+	public Puntos obtenerPuntos();
+	
 }

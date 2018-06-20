@@ -94,12 +94,10 @@ public class Monstruo extends Carta implements Atacable {
 		return (jugadorDuenio == jugador);
 	}
 
-	@Override
 	public Resultado recibirAtaqueBocaArriba(Puntos puntosAtacante) {
 		return posicion.recibirAtaque(puntosAtacante);
 	}
 
-	@Override
 	public Resultado recibirAtaqueBocaAbajo(Puntos puntosAtacante) {
 		return this.recibirAtaqueBocaArriba(puntosAtacante);
 	}

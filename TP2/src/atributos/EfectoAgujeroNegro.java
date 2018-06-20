@@ -29,10 +29,4 @@ public class EfectoAgujeroNegro extends Efecto{
 		
 	}
 
-	public void aplicarACarta(Monstruo unMonstruo) {}
-
-	public void aplicarACartaRival(Monstruo monstruo) {}
-
-	public void desaplicar(Jugador unJugador) {}
-	
 }

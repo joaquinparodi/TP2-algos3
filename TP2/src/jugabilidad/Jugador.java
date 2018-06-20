@@ -22,7 +22,7 @@ public class Jugador {
     private CampoDeJuego campoDeJuego;
     private Jugador jugadorRival;
     private Baraja mano;
-    
+  
 
 	public Jugador(Vida vida) {
 	    this.vida = vida;
@@ -154,7 +154,7 @@ public class Jugador {
     	return this.mano.pertenece(unaCarta);
     }
 
-    public void repartirCartaDelMazo () {
+    public void repartirCartaDelMazo() {
     	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
     }
     
@@ -176,11 +176,10 @@ public class Jugador {
     	
     }
     
-//    aca hay que cambiarlo para que se fije en las cartas trampa
-//    que tiene y que las trampas hagan su trabajo
-//    (segun la consigna tiene que usar solamente la primera carta trampa
-//    		de izquierda a derecha)
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
-		cartaAtacante.atacar(cartaAtacada);
+		if(campoDeJuego.hayTrampasEnCampo()) {
+			campoDeJuego.aplicarTrampa(cartaAtacante, jugadorRival);
+		} else cartaAtacante.atacar(cartaAtacada);
 	}
+
 }

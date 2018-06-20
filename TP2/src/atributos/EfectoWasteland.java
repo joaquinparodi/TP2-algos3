@@ -7,7 +7,7 @@ import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;
 
-public class EfectoWasteland extends Efecto {
+public class EfectoWasteland extends EfectoDeCampo {
 
 	public void aplicar(Jugador unJugador) {
 		

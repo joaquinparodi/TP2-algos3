@@ -2,6 +2,7 @@ package jugabilidad;
 
 import java.util.Iterator;
 
+import cartas.Atacable;
 import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
@@ -11,21 +12,25 @@ import cartas.Trampa;
 public class CampoDeJuego {
 
 	private Baraja filaMonstruos;
-	private Baraja filaMagicas;
+	private Baraja filaMagicasYTrampas;
 	
 	private Campo cartaDeCampo;
 	private Campo cartaDeCampoRival;
 	
 	private Baraja mazo;
 	private Baraja cementerio;
-	private Baraja filaTrampas;
+
+	//Para uso interno del campo de juego
+	private Baraja cartasMagicas;
+	private Baraja cartasTrampas;
 
 	public CampoDeJuego() {
 		filaMonstruos = new Baraja();
-		filaMagicas = new Baraja();
-		filaTrampas = new Baraja();
+		filaMagicasYTrampas = new Baraja();
 		cementerio = new Baraja();
 		mazo = new Baraja();
+		cartasMagicas = new Baraja();
+		cartasTrampas = new Baraja();
 	}
 	
 	public void enviarAlCementerio(Monstruo unMonstruo) {
@@ -34,12 +39,14 @@ public class CampoDeJuego {
 	}
 
 	public void enviarAlCementerio(Magica cartaMagica) {
-		filaMagicas.eliminarCarta(cartaMagica);
+		filaMagicasYTrampas.eliminarCarta(cartaMagica);
+		cartasMagicas.eliminarCarta(cartaMagica);
 		cementerio.agregarCarta(cartaMagica);
 	}
 	
 	public void enviarAlCementerio(Trampa trampa) {
-		filaTrampas.eliminarCarta(trampa);
+		filaMagicasYTrampas.eliminarCarta(trampa);
+		cartasTrampas.eliminarCarta(trampa);
 		cementerio.agregarCarta(trampa);
 	}
 	
@@ -50,18 +57,20 @@ public class CampoDeJuego {
 	
 	public void agregarCarta(Monstruo monstruo) {
 		filaMonstruos.agregarCarta(monstruo);
-		//Cambiar las compartaciones con Null!
+		//Cambiar las compartaciones con Null!-> ErrorCampoVacio
 		if( cartaDeCampo != null ) cartaDeCampo.aplicarEfectoACarta(monstruo);
 		if( cartaDeCampoRival != null ) cartaDeCampoRival.aplicarEfectoACartaRival(monstruo);
 	}
 	
 	public void agregarCarta(Magica cartaMagica) {
-		filaMagicas.agregarCarta(cartaMagica);
+		filaMagicasYTrampas.agregarCarta(cartaMagica);
+		cartasMagicas.agregarCarta(cartaMagica);
 		cartaMagica.aplicarEfecto();
 	}
 	
 	public void agregarCarta(Trampa cartaTrampa) {
-		filaTrampas.agregarCarta(cartaTrampa);
+		filaMagicasYTrampas.agregarCarta(cartaTrampa);
+		cartasTrampas.agregarCarta(cartaTrampa);
 	}
 	
 	public void agregarCarta(Campo cartaCampo) {
@@ -101,4 +110,12 @@ public class CampoDeJuego {
 		return carta;
 	}
 
+	public void aplicarTrampa(Atacable monstruoAtacante, Jugador jugadorRival) {
+		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
+		cartaTrampa.aplicarEfecto(monstruoAtacante, jugadorRival);
+	}
+	
+	public boolean hayTrampasEnCampo() {
+		return cartasTrampas.tieneCartas();
+	}
 }

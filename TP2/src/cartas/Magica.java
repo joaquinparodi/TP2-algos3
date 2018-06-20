@@ -18,5 +18,6 @@ public class Magica extends Carta{
 	public void aplicarEfecto() {
 		this.orientacion.aplicarEfecto(this.efecto,this.jugadorDuenio);
 	}	
+	
 }
 

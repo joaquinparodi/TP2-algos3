@@ -1,13 +1,14 @@
 package cartas;
 
 import atributos.Efecto;
+import atributos.EfectoDeCampo;
 import jugabilidad.Jugador;
 
 public class Campo extends Carta {
 	
-	private Efecto efecto;
+	private EfectoDeCampo efecto;
 	
-	public Campo( String nombre, Jugador jugador, Efecto efecto ) {
+	public Campo( String nombre, Jugador jugador, EfectoDeCampo efecto ) {
 		super(nombre, jugador);
 		this.efecto = efecto;
 	}

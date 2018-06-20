@@ -1,6 +1,7 @@
 package posiciones;
 
 import atributos.Efecto;
+import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
 import cartas.Carta;
@@ -16,15 +17,17 @@ public class OrientacionArriba extends Orientacion{
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) {
 		unEfecto.aplicar(unJugador);
 	}
+	
+	public void aplicarEfecto(EfectoDeCampo unEfecto, Jugador unJugador) {
+		unEfecto.aplicar(unJugador);
+	}
 
 	public Resultado recibirAtaque(Atacable atacado, Puntos puntosAtacante) {
 		return atacado.recibirAtaqueBocaArriba(puntosAtacante);
 	}
 
-	@Override
 	public void atacarAplicandoEfecto(Atacable monstruo, Atacable otroMonstruo) {
 		monstruo.atacarConEfecto(otroMonstruo);
 	}
-
-
+	
 }

@@ -36,7 +36,6 @@ public class PosicionDefensa extends Posicion {
 		return new Empate(0);
 	}
 
-	@Override
 	public void verificarAtaque(Atacable atacante, Atacable atacado) {
 		throw new ErrorAtaqueDesdePosicionInvalida();
 	}

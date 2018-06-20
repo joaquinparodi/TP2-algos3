@@ -7,7 +7,7 @@ import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;
 
-public class EfectoSogen extends Efecto {
+public class EfectoSogen extends EfectoDeCampo {
 
 	public void aplicar(Jugador unJugador) {
 		

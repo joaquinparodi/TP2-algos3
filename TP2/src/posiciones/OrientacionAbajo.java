@@ -1,6 +1,7 @@
 package posiciones;
 
 import atributos.Efecto;
+import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
 import cartas.Carta;
@@ -15,6 +16,9 @@ public class OrientacionAbajo extends Orientacion {
 	}
 
 	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) { 
+	}
+	
+	public void aplicarEfecto(EfectoDeCampo unEfecto, Jugador unJugador) {
 		unEfecto.desaplicar(unJugador);
 	}
 
