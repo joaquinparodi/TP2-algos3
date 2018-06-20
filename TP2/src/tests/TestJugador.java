@@ -930,10 +930,10 @@ class TestJugador {
 		Efecto efecto = new EfectoOllaDeLaCodicia();
 		Magica ollaDeLaCodicia = new Magica ("olla de la codicia", jugadorUno, efecto);
 		
-		Baraja cartasACargarEnMazo = new Baraja();
-		cartasACargarEnMazo.agregarCarta(monstruo1);
-		cartasACargarEnMazo.agregarCarta(monstruo2);
-		jugadorUno.obtenerCampo().cargarMazo(cartasACargarEnMazo);
+		Baraja mazo = new Baraja();
+		mazo.agregarCarta(monstruo1);
+		mazo.agregarCarta(monstruo2);
+		jugadorUno.obtenerCampo().cargarMazo(mazo);
 		
 		jugadorUno.repartirCarta(ollaDeLaCodicia);
 		
