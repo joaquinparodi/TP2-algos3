@@ -14,17 +14,6 @@ public class DragonDefinitivo extends Monstruo{
 		super(nombre, unJugador, estrellas, puntos);
 	}
 	
-	public void atacar (Atacable otroMonstruo) {
-			
-			try {
-				this.posicion.atacar(otroMonstruo);
-			}catch (ErrorAtaqueDesdePosicionInvalida error) {
-				throw new ErrorAtaqueDesdePosicionInvalida();
-			}
-			
-			this.jugadorDuenio.hacerDanioAlRival(puntos.obtenerPuntosDeAtaque());
-			
-		}
 	
 	@Override
 	public int obtenerCantidadDeSacrificiosNecesarios() {
@@ -36,7 +25,7 @@ public class DragonDefinitivo extends Monstruo{
 		Iterator<Carta> iter = sacrificios.iterator();
 		while(iter.hasNext()) {
 		    Monstruo monstruo = (Monstruo) iter.next();
-		    if (monstruo.getClass() != DragonBlancoOjoAzul.class) {
+		    if (!(monstruo instanceof DragonBlancoOjoAzul)) {
 		    	return false;
 		    }  	
 		}
