@@ -76,7 +76,7 @@ public class Controlador {
 	}
 	
 	public boolean hayGanador() {
-		return !this.restanCartasEnMazo() || this.exodiaEstaCompleto() || this.hayJugadorSinVida();
+		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
 	}
 	
 }

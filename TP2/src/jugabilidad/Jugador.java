@@ -1,4 +1,4 @@
-package jugabilidad;
+ package jugabilidad;
 
 import cartas.Monstruo;
 import cartas.Trampa;
@@ -40,7 +40,8 @@ public class Jugador {
 		mano.agregarCarta(carta);
 	}
 
-    public void repartirCarta() {
+
+	public void repartirCarta() {
     	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
     }
 	
@@ -178,7 +179,7 @@ public class Jugador {
     	
     }
     
-    //Estaria bueno sacar estos ifs de aca!
+    
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
 		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
@@ -186,7 +187,8 @@ public class Jugador {
 	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
-
+	
+		
 	public boolean poseeExodiaCompleto() {
 		Iterator<Carta> iterador = mano.obtenerIteradorDeBaraja();
 		int contador = 0;

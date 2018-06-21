@@ -70,4 +70,5 @@ public class Baraja {
 	public void mezclarBaraja() {
 		Collections.shuffle(contenedor);
 	}
+
 }

@@ -26,6 +26,7 @@ import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
 import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
+import errores.ErrorYaHayCartaDeCampoInvocada;
 import factories.FabricaDeCartas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -1109,6 +1110,33 @@ class TestJugador {
 		assertEquals(jugadorUno.obtenerVida().obtenerPuntosDeVida(), 7900);
 		
 	} 
+	
+	@Test
+	public void test37AgregarCartaDeCampoCuandoYaHayUnaCartaCampo() {
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vidaJugadorUno = new Vida (8000);
+		Vida vidaJugadorDos = new Vida (8000);
+		Jugador jugadorUno = new Jugador (vidaJugadorUno);
+		Jugador jugadorDos = new Jugador (vidaJugadorDos);
+		
+		jugadorUno.asignarRival(jugadorDos);
+		jugadorDos.asignarRival(jugadorUno);
+
+		
+		EfectoDeCampo efecto = new EfectoWasteland();
+		Campo wastelandUno = fabricaDeCartas.crearCarta("Wasteland", jugadorUno, efecto);
+		Campo wastelandDos = fabricaDeCartas.crearCarta("Wasteland", jugadorDos, efecto);
+		
+		jugadorUno.repartirCarta(wastelandUno);
+		jugadorUno.agregarCartaEnCampo(wastelandUno);
+		
+		jugadorUno.repartirCarta(wastelandDos);
+
+		
+		assertThrows(ErrorYaHayCartaDeCampoInvocada.class, () -> jugadorUno.agregarCartaEnCampo(wastelandDos));
+	}
 	
 	
 	

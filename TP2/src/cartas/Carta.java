@@ -28,5 +28,5 @@ public abstract class Carta {
     public void voltear() {
     	orientacion = orientacion.voltear();
     }
-    
+
 }
