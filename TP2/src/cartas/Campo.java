@@ -1,6 +1,7 @@
 package cartas;
 
 import atributos.EfectoDeCampo;
+import errores.ErrorCartaNoVolteable;
 import jugabilidad.Jugador;
 
 public class Campo extends Carta {
@@ -29,8 +30,7 @@ public class Campo extends Carta {
 	}
 	
 	public void voltear() {
-		this.orientacion = orientacion.voltear();
-		orientacion.aplicarEfecto(this.efecto, this.jugadorDuenio);
+		throw new ErrorCartaNoVolteable();
 	}
 
 }

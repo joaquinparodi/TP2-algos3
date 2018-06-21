@@ -17,7 +17,6 @@ public class OrientacionAbajo extends Orientacion {
 	}
 	
 	public void aplicarEfecto(EfectoDeCampo unEfecto, Jugador unJugador) {
-		unEfecto.desaplicar(unJugador);
 	}
 
 	public Resultado recibirAtaque(Atacable atacado, Puntos puntosAtacante) {

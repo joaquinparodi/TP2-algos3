@@ -109,10 +109,9 @@ public class Monstruo extends Carta implements Atacable {
 	public void restaurarPuntos() {
 		puntos.restaurarPuntos();
 	}
-
-	public boolean esParteDeExodia() {
-		return false;
-	}
 	
+	public String obtenerNombre() {
+		return nombreCarta;
+	}
 }
 

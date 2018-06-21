@@ -1,5 +1,7 @@
 package atributos;
 
+import jugabilidad.Jugador;
+
 public class Puntos {
 
 	private double puntosAtaque;
@@ -15,19 +17,19 @@ public class Puntos {
 	}
 	
 	public double obtenerPuntosDeDefensa() {
-		return puntosDefensa + plusDefensa;
+		return (puntosDefensa + plusDefensa);
 	}
 	
 	public double obtenerPuntosDeAtaque() {
-		return puntosAtaque + plusAtaque;
+		return (puntosAtaque + plusAtaque);
 	}
 
 	public void incrementarAtaque(double incremento) {
-		this.plusAtaque = incremento;
+		this.plusAtaque = (plusAtaque + incremento);
 	}
 	
 	public void incrementarDefensa(double incremento) {
-		this.plusDefensa = incremento;
+		this.plusDefensa = (plusDefensa + incremento);
 	}
 	
 	public void anularPuntos() {

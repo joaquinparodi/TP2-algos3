@@ -26,14 +26,14 @@ public class EfectoWasteland extends EfectoDeCampo {
 	
 		while(iterUno.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterUno.next();
-		    monstruo.incrementarPuntosDeAtaque(300);
+		    monstruo.incrementarPuntosDeAtaque(200);
 		}
-	
+		
 		while(iterDos.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterDos.next();
-		    monstruo.incrementarPuntosDeDefensa(200);
+		    monstruo.incrementarPuntosDeDefensa(300);
 		}
-	
+		
 	}
 
 	public void aplicarACarta(Monstruo monstruo) {

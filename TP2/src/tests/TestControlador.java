@@ -47,7 +47,7 @@ public class TestControlador {
 		assertTrue( controlador.hayGanador() );
 		
 	} */
-	
+
 	/*@Test
 	public void test02ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
 		

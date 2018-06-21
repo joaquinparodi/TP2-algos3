@@ -2,12 +2,15 @@ package jugabilidad;
 
 import java.util.Iterator;
 
+import atributos.EfectoDeTrampa;
 import cartas.Atacable;
 import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
 import cartas.Monstruo;
 import cartas.Trampa;
+import errores.ErrorNoHayCartasEnLaBaraja;
+import errores.ErrorYaHayCartaDeCampoInvocada;
 
 public class CampoDeJuego {
 
@@ -78,7 +81,10 @@ public class CampoDeJuego {
 	
 	public void agregarCarta(Campo cartaCampo) {
 		//Mato la carta atenrior
-		this.enviarAlCementerio(this.cartaDeCampo); 			
+		if (this.cartaDeCampo != null) {
+			throw new ErrorYaHayCartaDeCampoInvocada();
+		}
+		
 		this.cartaDeCampo = cartaCampo;
 		this.cartaDeCampo.aplicarEfecto();
 	}
@@ -114,15 +120,24 @@ public class CampoDeJuego {
 	}
 
 	public void aplicarTrampa(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
-		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
-		cartaTrampa.aplicarEfecto( atacante, atacado, jugadorRival);
-		cartasTrampas.agregarCartaPrimero(cartaTrampa);
+			
+		try {
+			
+			Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
+			cartaTrampa.aplicarEfecto( atacante, atacado, jugadorRival);
+			cartasTrampas.agregarCartaPrimero(cartaTrampa);
+			
+		}catch (ErrorNoHayCartasEnLaBaraja error) {
+			
+			atacante.atacar(atacado);
+			
+		}
+		
 	}
 
-	public void desaplicarTrampa(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
+	public void eliminarTrampa() {
 		Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
-		cartaTrampa.desaplicarEfecto(atacante, atacado, jugadorRival);
-		this.enviarAlCementerio(cartaTrampa);
+		cartaTrampa.enviarAlCementerio();
 	}
 	
 	public boolean hayTrampasEnCampo() {
