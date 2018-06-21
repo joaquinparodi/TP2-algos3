@@ -19,11 +19,7 @@ public class Trampa extends Carta {
 	}
 
 	public void aplicarEfecto(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
-		this.efecto.aplicar( atacante,  atacado,  jugadorRival);
-	}
-
-	public void desaplicarEfecto(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
-		this.efecto.desaplicar( atacante,  atacado,  jugadorRival);
+		this.efecto.aplicar( atacante,  atacado,  jugadorRival, this);
 	}
 
 }

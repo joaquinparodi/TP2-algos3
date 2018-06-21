@@ -181,9 +181,7 @@ public class Jugador {
     
     //Estaria bueno sacar estos ifs de aca!
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
-		if(campoDeJuego.hayTrampasEnCampo()) campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
-		cartaAtacante.atacar(cartaAtacada);
-		if(campoDeJuego.hayTrampasEnCampo()) campoDeJuego.desaplicarTrampa(cartaAtacante, cartaAtacada,jugadorRival);
+		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
 	
 	public int obtenerCantidadDeCartasEnMano() {
@@ -198,14 +196,14 @@ public class Jugador {
 		return campoDeJuego.hayCartasEnMazo();
 	}
 
-	public boolean poseeExodiaCompleto() {
-		Iterator iter = mano.obtenerIteradorDeBaraja();
-		Boolean esExodia;
-		while(iter.hasNext()) {
-			Monstruo monstruo = (Monstruo) iter.next();
-			if( !monstruo.esParteDeExodia() ) return false;
-		}
-		return true;
-	}
+//	public boolean poseeExodiaCompleto() {
+//		Iterator iter = mano.obtenerIteradorDeBaraja();
+//		Boolean esExodia;
+//		while(iter.hasNext()) {
+//			Monstruo monstruo = (Monstruo) iter.next();
+//			if( !monstruo.esParteDeExodia() ) return false;
+//		}
+//		return true;
+//	}
 	
 }

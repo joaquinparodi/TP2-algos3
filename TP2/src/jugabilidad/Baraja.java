@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import cartas.Carta;
 import errores.ErrorCartaNoEncontrada;
+import errores.ErrorNoHayCartasEnLaBaraja;
 
 public class Baraja {
 
@@ -32,7 +33,11 @@ public class Baraja {
 	}
 	
 	public Carta obtenerPrimeraCarta() {
-		return contenedor.get(0);
+		try {
+			return contenedor.get(0);
+		}catch(IndexOutOfBoundsException error) {
+			throw new ErrorNoHayCartasEnLaBaraja();
+		}
 	}
 	
 	public Carta obtenerCarta(String nombreCarta) {

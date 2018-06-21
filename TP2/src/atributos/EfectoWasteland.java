@@ -26,49 +26,22 @@ public class EfectoWasteland extends EfectoDeCampo {
 	
 		while(iterUno.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterUno.next();
-		    monstruo.incrementarPuntosDeAtaque(300);
+		    monstruo.incrementarPuntosDeAtaque(200);
 		}
-	
+		
 		while(iterDos.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterDos.next();
-		    monstruo.incrementarPuntosDeDefensa(200);
+		    monstruo.incrementarPuntosDeDefensa(300);
 		}
-	
+		
 	}
 
 	public void aplicarACarta(Monstruo monstruo) {
-		monstruo.incrementarPuntosDeAtaque(300);
+		monstruo.incrementarPuntosDeAtaque(200);
 	}
 
 	public void aplicarACartaRival(Monstruo monstruo) {
-		 monstruo.incrementarPuntosDeDefensa(200);
-	}
-	
-	public void desaplicar(Jugador unJugador) {
-		
-		Jugador jugador = unJugador;
-		Jugador rival = unJugador.obtenerRival();
-		
-		CampoDeJuego campoUno = jugador.obtenerCampo();
-		CampoDeJuego campoDos =	rival.obtenerCampo();
-		
-		Baraja monstruosUno = campoUno.obtenerMonstruos();
-		Baraja monstruosDos = campoDos.obtenerMonstruos();
-		
-		//La carta cambia los puntos de los monstruos de ambos lados
-		Iterator iterUno = monstruosUno.obtenerIteradorDeBaraja();
-		Iterator iterDos = monstruosDos.obtenerIteradorDeBaraja();
-	
-		while(iterUno.hasNext()) {
-		    Monstruo monstruo = (Monstruo)iterUno.next();
-		    monstruo.restaurarPuntos();
-		}
-	
-		while(iterDos.hasNext()) {
-		    Monstruo monstruo = (Monstruo)iterDos.next();
-		    monstruo.restaurarPuntos();
-		}
-	
+		 monstruo.incrementarPuntosDeDefensa(300);
 	}
 
 }

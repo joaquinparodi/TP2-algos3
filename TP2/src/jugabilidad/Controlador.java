@@ -137,14 +137,14 @@ public class Controlador {
 		return jugadorActivo.poseeCartarEnMazo(); 
 	}
 	
-	private boolean exodiaEstaCompleto() {
-		return jugadorActivo.poseeExodiaCompleto(); 
-	}
+//	private boolean exodiaEstaCompleto() {
+//		return jugadorActivo.poseeExodiaCompleto(); 
+//	}
 	
 	private boolean hayJugadorSinVida() { return false; }
 	
-	public boolean hayGanador() {
-		return !this.restanCartasEnMazo() || this.exodiaEstaCompleto() || this.hayJugadorSinVida();
-	}
-	
+//	public boolean hayGanador() {
+//		return !this.restanCartasEnMazo() || this.exodiaEstaCompleto() || this.hayJugadorSinVida();
+//	}
+//	
 }
