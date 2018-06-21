@@ -1,4 +1,4 @@
-package jugabilidad;
+ package jugabilidad;
 
 import cartas.Monstruo;
 import cartas.Trampa;
@@ -196,7 +196,7 @@ public class Jugador {
 	}
 	
     private void verificarExodia(Carta carta) {
-		if (carta.verificarTipoExodia()) {
+		if (carta.esParteDeExodia()) {
 			if (!exodia.pertenece(carta)) exodia.agregarCarta(carta);
 		}
 		
