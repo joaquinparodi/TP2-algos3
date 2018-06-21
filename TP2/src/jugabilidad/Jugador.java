@@ -26,7 +26,6 @@ public class Jugador {
     private Jugador jugadorRival;
     private Baraja mano;
   
-
 	public Jugador(Vida vida) {
 	    this.vida = vida;
 	    this.campoDeJuego = new CampoDeJuego();
@@ -41,6 +40,10 @@ public class Jugador {
 		mano.agregarCarta(carta);
 	}
 
+    public void repartirCarta() {
+    	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
+    }
+	
     public void hacerDanio(double danio) {
 	    this.vida.quitarVida( danio );
     }
@@ -156,10 +159,6 @@ public class Jugador {
     public boolean contieneCartaEnMano (Carta unaCarta) {
     	return this.mano.pertenece(unaCarta);
     }
-
-    public void repartirCartaDelMazo() {
-    	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
-    }
     
     public void atacarCartaConCarta(Atacable cartaAAtacar, Atacable cartaAUsar) {
     	
@@ -188,22 +187,20 @@ public class Jugador {
 		return mano.obtenerCantidadDeCartas();
 	}
 	
-	public void tomarCartaDelMazo() {
-		mano.agregarCarta(campoDeJuego.obtenerCartaDelMazo());
-	}
-
-	public boolean poseeCartarEnMazo() {
+	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
 
-//	public boolean poseeExodiaCompleto() {
-//		Iterator iter = mano.obtenerIteradorDeBaraja();
-//		Boolean esExodia;
-//		while(iter.hasNext()) {
-//			Monstruo monstruo = (Monstruo) iter.next();
-//			if( !monstruo.esParteDeExodia() ) return false;
-//		}
-//		return true;
-//	}
+	public boolean poseeExodiaCompleto() {
+		return false;
+	}
 	
+	public boolean fueDerrotado() {
+		return vida.estaVacia();
+	}
+	
+	public void asignarMazo(Baraja mazo) {
+		campoDeJuego.agregarMazo(mazo);
+	}
+
 }

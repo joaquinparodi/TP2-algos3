@@ -14,19 +14,15 @@ public class DragonDefinitivo extends Monstruo{
 	}
 	
 	
-	@Override
 	public int obtenerCantidadDeSacrificiosNecesarios() {
 		return 3;
 	}
 	
-	@Override
 	public boolean verificarSacrificios(Sacrificio sacrificios) {
 		Iterator<Carta> iter = sacrificios.iterator();
 		while(iter.hasNext()) {
 		    Monstruo monstruo = (Monstruo) iter.next();
-		    if (monstruo.seLlama("Dragon Blanco Ojos Azules")) {
-		    	return false;
-		    }  	
+		    if (!monstruo.seLlama("Dragon Blanco Ojos Azules")) return false;  	
 		}
 		return true;
 	}

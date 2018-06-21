@@ -777,7 +777,7 @@ class TestJugador {
 		Baraja mazo = new Baraja();
 		mazo.agregarCarta(monstruo1);
 		mazo.agregarCarta(monstruo2);
-		jugadorUno.obtenerCampo().cargarMazo(mazo);
+		jugadorUno.asignarMazo(mazo);
 		
 		jugadorUno.repartirCarta(ollaDeLaCodicia);	
 		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
@@ -808,10 +808,10 @@ class TestJugador {
 		Efecto efecto = new EfectoOllaDeLaCodicia();
 		Magica ollaDeLaCodicia = fabricaDeCartas.crearCarta("olla de la codicia", jugadorUno, efecto);
 		
-		Baraja cartasACargarEnMazo = new Baraja();
-		cartasACargarEnMazo.agregarCarta(monstruo1);
-		cartasACargarEnMazo.agregarCarta(monstruo2);
-		jugadorUno.obtenerCampo().cargarMazo(cartasACargarEnMazo);
+		Baraja mazo = new Baraja();
+		mazo.agregarCarta(monstruo1);
+		mazo.agregarCarta(monstruo2);
+		jugadorUno.asignarMazo(mazo);
 		
 		ollaDeLaCodicia.voltear();
 		jugadorUno.repartirCarta(ollaDeLaCodicia);
@@ -1110,27 +1110,6 @@ class TestJugador {
 		
 	} 
 	
-	@Test
-	public void test37AlIniciarElJuegoCadaJugadorDebeTener5CartasEnLaMano() {
-		
-		Vida vidaJugadorUno = new Vida (8000);
-		Vida vidaJugadorDos = new Vida (8000);
-		Jugador jugadorUno = new Jugador (vidaJugadorUno);
-		Jugador jugadorDos = new Jugador (vidaJugadorDos);
-		
-		jugadorUno.asignarRival(jugadorDos);
-		jugadorDos.asignarRival(jugadorUno);
-		
-		Controlador controladorDelJuego = new Controlador(jugadorUno, jugadorDos);
-		
-		Jugador jugadorActivo = controladorDelJuego.obtenerJugadorActivo();
-		Jugador jugadorPasivo = controladorDelJuego.obtenerJugadorPasivo();
-		
-		//verifica la contidad de cartas en mano
-		assertEquals(jugadorActivo.obtenerCantidadDeCartasEnMano(), 6);
-		assertEquals(jugadorPasivo.obtenerCantidadDeCartasEnMano(), 5);
-		
-	} 
 	
 	
 	
