@@ -1,7 +1,6 @@
 package tests;
 
 import jugabilidad.Baraja;
-import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import cartas.Campo;
 import cartas.Magica;
@@ -62,7 +61,7 @@ class TestJugador {
     }
     
 	@Test
-	public void test03ColocarMosnstruoConEstrellasInferiorACincoYNoSacrificaANadie() {
+	public void test03ColocarMonstruoConEstrellasInferiorACincoYNoSacrificaANadie() {
     	
 		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		

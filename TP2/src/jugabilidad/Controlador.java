@@ -1,17 +1,5 @@
 package jugabilidad;
 
-import atributos.Efecto;
-import atributos.EfectoAgujeroNegro;
-import atributos.EfectoCilindroMagico;
-import atributos.EfectoDeTrampa;
-import atributos.EfectoFisura;
-import atributos.EfectoOllaDeLaCodicia;
-import atributos.EfectoReinforcements;
-import atributos.EfectoSogen;
-import atributos.EfectoWasteland;
-import cartas.Carta;
-import factories.FabricaDeCartas;
-import factories.FabricaDeMonstruosEspeciales;
 
 public class Controlador {
 	

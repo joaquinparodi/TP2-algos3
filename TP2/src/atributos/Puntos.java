@@ -1,7 +1,5 @@
 package atributos;
 
-import jugabilidad.Jugador;
-
 public class Puntos {
 
 	private double puntosAtaque;
