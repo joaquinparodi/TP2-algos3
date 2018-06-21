@@ -1,8 +1,5 @@
 package jugabilidad;
 
-import java.util.Iterator;
-
-import atributos.EfectoDeTrampa;
 import cartas.Atacable;
 import cartas.Campo;
 import cartas.Carta;

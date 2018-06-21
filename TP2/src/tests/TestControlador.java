@@ -144,7 +144,6 @@ public class TestControlador {
 		controlador.asignarMazos(mazoUno, mazoDos);	
 		
 		//Saco las cartas del mazo del atacante
-		Jugador atacante = controlador.obtenerJugadorAtacante();
 		
 		Iterator iter = mazoUno.obtenerIteradorDeBaraja();
 		while(mazoUno.tieneCartas()) iter.next();

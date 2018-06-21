@@ -1,6 +1,5 @@
 package atributos;
 
-import cartas.Monstruo;
 import jugabilidad.Jugador;
 
 public class EfectoOllaDeLaCodicia extends Efecto {

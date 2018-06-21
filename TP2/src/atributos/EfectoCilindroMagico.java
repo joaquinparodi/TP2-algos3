@@ -1,7 +1,6 @@
 package atributos;
 
 import cartas.Atacable;
-import cartas.Monstruo;
 import cartas.Trampa;
 import jugabilidad.Jugador;
 

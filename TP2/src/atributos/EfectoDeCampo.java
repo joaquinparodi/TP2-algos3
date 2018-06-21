@@ -1,7 +1,6 @@
 package atributos;
 
 import cartas.Monstruo;
-import jugabilidad.Jugador;
 
 public abstract class EfectoDeCampo extends Efecto {
 
