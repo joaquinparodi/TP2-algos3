@@ -18,7 +18,7 @@ public class Campo extends Carta {
 	}
 
 	public void aplicarEfecto() {
-		this.orientacion.aplicarEfecto(this.efecto, this.jugadorDuenio);
+		efecto.aplicar(this.jugadorDuenio);;
 	}
 	
 	public void aplicarEfectoACarta(Monstruo monstruo) {
