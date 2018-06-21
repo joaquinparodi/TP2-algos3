@@ -23,12 +23,10 @@ public abstract class Carta {
 
     public abstract void enviarAlCementerio();
     
-    public boolean esParteDeExodia() {
-    	return false;
-    }
+    public abstract boolean esParteDeExodia();
     
     public void voltear() {
     	orientacion = orientacion.voltear();
     }
-
+    
 }

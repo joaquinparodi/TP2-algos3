@@ -22,4 +22,9 @@ public class Trampa extends Carta {
 		this.efecto.aplicar( atacante,  atacado,  jugadorRival, this);
 	}
 
+	@Override
+	public boolean esParteDeExodia() {
+		return false;
+	}
+
 }

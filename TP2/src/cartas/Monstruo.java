@@ -13,12 +13,14 @@ public class Monstruo extends Carta implements Atacable {
 	protected Posicion posicion;
 	protected Puntos puntos;
 	protected Estrellas estrellas;
+	protected boolean componeAExodia;
 	
 	public Monstruo( String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos ) {
 		super( nombre, unJugador );
 		this.estrellas = estrellas;
 		this.puntos = puntos;
 		this.posicion = new PosicionAtaque( puntos );
+		this.componeAExodia = false;
 	}
 
 	public void atacar( Atacable otroMonstruo ) {
@@ -112,6 +114,11 @@ public class Monstruo extends Carta implements Atacable {
 	
 	public String obtenerNombre() {
 		return nombreCarta;
+	}
+
+	@Override
+	public boolean esParteDeExodia() {
+		return componeAExodia;
 	}
 }
 

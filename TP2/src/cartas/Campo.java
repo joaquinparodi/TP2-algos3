@@ -33,4 +33,9 @@ public class Campo extends Carta {
 		throw new ErrorCartaNoVolteable();
 	}
 
+	@Override
+	public boolean esParteDeExodia() {
+		return false;
+	}
+
 }

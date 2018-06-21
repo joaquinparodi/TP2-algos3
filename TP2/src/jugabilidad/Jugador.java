@@ -183,16 +183,17 @@ public class Jugador {
 		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
 	
-	public int obtenerCantidadDeCartasEnMano() {
-		return mano.obtenerCantidadDeCartas();
-	}
-	
 	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
 
 	public boolean poseeExodiaCompleto() {
-		return false;
+		Iterator<Carta> iterador = mano.obtenerIteradorDeBaraja();
+		int contador = 0;
+		while ( iterador.hasNext() ){
+			if (iterador.next().esParteDeExodia()) contador++;
+		}
+		return (contador == 5);
 	}
 	
 	public boolean fueDerrotado() {

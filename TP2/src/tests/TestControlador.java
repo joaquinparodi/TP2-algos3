@@ -17,7 +17,7 @@ import jugabilidad.Jugador;
 
 public class TestControlador {
 
-/*	@Test
+	@Test
 	public void test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
 		
 		Vida vidaUno = new Vida(8000);
@@ -28,54 +28,38 @@ public class TestControlador {
 				
 		Controlador controlador = new Controlador(jugadorUno, jugadorDos);
 		
-		FabricaDeMonstruosEspeciales fabrica = new FabricaDeMonstruosEspeciales();
+		FabricaDeMonstruosEspeciales fabricaEspecial = new FabricaDeMonstruosEspeciales();
+		FabricaDeCartas fabrica = new FabricaDeCartas();
 		
-		BrazoIzquierdoExodia brazoIzq = fabrica.crearBrazoIzquierdoExodia(jugadorUno);
-		BrazoDerechoExodia brazoDer = fabrica.crearBrazoDerechoExodia(jugadorUno);
-		PiernaDerechaExodia piernaDer = fabrica.crearPiernaDerechaExodia(jugadorUno);
-		PiernaIzquierdaExodia piernaIzq = fabrica.crearPiernaIzquierdaExodia(jugadorUno);
-		CabezaExodia cabeza = fabrica.crearCabezaExodia(jugadorUno);
+		Baraja mazoUno = new Baraja();
+		Baraja mazoDos = new Baraja();
 		
-		Jugador jugadorActivo = controlador.obtenerJugadorActivo();
+		Puntos puntosUno = new Puntos(200, 200);
+		Puntos puntosDos = new Puntos(50, 50);
+		Estrellas estrellas = new Estrellas(3);
 		
-		jugadorActivo.repartirCarta(brazoIzq);
-		jugadorActivo.repartirCarta(brazoDer);
-		jugadorActivo.repartirCarta(piernaIzq);
-		jugadorActivo.repartirCarta(piernaDer);
-		jugadorActivo.repartirCarta(cabeza);
-		
-		assertTrue( controlador.hayGanador() );
-		
-	} */
+		//el mazo esta construido en orden para que los exodias se agreguen a la mano (sin mezclar)
+		mazoUno.agregarCarta(fabricaEspecial.crearBrazoIzquierdoExodia(jugadorUno));
+		mazoUno.agregarCarta(fabricaEspecial.crearBrazoDerechoExodia(jugadorUno));
+		mazoUno.agregarCarta(fabricaEspecial.crearPiernaDerechaExodia(jugadorUno));
+		mazoUno.agregarCarta(fabricaEspecial.crearPiernaIzquierdaExodia(jugadorUno));
+		mazoUno.agregarCarta(fabricaEspecial.crearCabezaExodia(jugadorUno));
+		mazoUno.agregarCarta(fabrica.crearCarta("monstruo1", jugadorUno, estrellas, puntosDos));
+		mazoUno.agregarCarta(fabrica.crearCarta("monstruo2", jugadorUno, estrellas, puntosDos));
 
-	/*@Test
-	public void test02ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoA", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoB", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoC", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoD", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoE", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoF", jugadorDos, estrellas, puntosDos));
+		mazoDos.agregarCarta(fabrica.crearCarta("monstruoG", jugadorDos, estrellas, puntosDos));
 		
-		Vida vidaUno = new Vida(8000);
-		Vida vidaDos = new Vida(8000);
-		
-		Jugador jugadorUno = new Jugador(vidaUno);
-		Jugador jugadorDos = new Jugador(vidaDos);
-				
-		Controlador controlador = new Controlador(jugadorUno, jugadorDos);
-		
-		FabricaDeMonstruosEspeciales fabrica = new FabricaDeMonstruosEspeciales();
-		
-		BrazoIzquierdoExodia brazoIzq = fabrica.crearBrazoIzquierdoExodia(jugadorUno);
-		BrazoDerechoExodia brazoDer = fabrica.crearBrazoDerechoExodia(jugadorUno);
-		PiernaDerechaExodia piernaDer = fabrica.crearPiernaDerechaExodia(jugadorUno);
-		PiernaIzquierdaExodia piernaIzq = fabrica.crearPiernaIzquierdaExodia(jugadorUno);
-		CabezaExodia cabeza = fabrica.crearCabezaExodia(jugadorUno);
-		
-		jugadorUno.repartirCarta(brazoIzq);
-		jugadorUno.repartirCarta(brazoDer);
-		jugadorUno.repartirCarta(piernaIzq);
-		jugadorUno.repartirCarta(piernaDer);
-		jugadorUno.repartirCarta(cabeza);
+		controlador.asignarMazos(mazoUno, mazoDos);	
 		
 		assertTrue( controlador.hayGanador() );
 		
-	}*/
+	} 
 	
 	@Test
 	public void test03AtacarJugadorYDejarloSinVidaGanaElDuelo() {

@@ -8,10 +8,7 @@ public class PiernaIzquierdaExodia extends Monstruo {
 
 	public PiernaIzquierdaExodia(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {
 		super(nombre, unJugador, estrellas, puntos);
-	}
-	
-	public boolean esParteDeExodia() {
-		return true;
+		this.componeAExodia = true;
 	}
 	
 }
