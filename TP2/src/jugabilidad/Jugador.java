@@ -25,11 +25,13 @@ public class Jugador {
     private CampoDeJuego campoDeJuego;
     private Jugador jugadorRival;
     private Baraja mano;
+    private Baraja exodia;
   
 	public Jugador(Vida vida) {
 	    this.vida = vida;
 	    this.campoDeJuego = new CampoDeJuego();
 	    this.mano = new Baraja();
+	    this.exodia = new Baraja();
     }
 
 	public void asignarRival(Jugador jugadorRival) {
@@ -38,9 +40,11 @@ public class Jugador {
 
 	public void repartirCarta(Carta carta) {
 		mano.agregarCarta(carta);
-	}
+		this.verificarExodia(carta);
+		}
 
-    public void repartirCarta() {
+
+	public void repartirCarta() {
     	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
     }
 	
@@ -178,7 +182,7 @@ public class Jugador {
     	
     }
     
-    //Estaria bueno sacar estos ifs de aca!
+    
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
 		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
@@ -190,8 +194,15 @@ public class Jugador {
 	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
-
+	
+    private void verificarExodia(Carta carta) {
+		if (carta.verificarTipoExodia()) {
+			if (!exodia.pertenece(carta)) exodia.agregarCarta(carta);
+		}
+		
+	}
 	public boolean poseeExodiaCompleto() {
+		if (exodia.obtenerCantidadDeCartas() == 5) return true;
 		return false;
 	}
 	

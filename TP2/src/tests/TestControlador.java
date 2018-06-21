@@ -17,7 +17,7 @@ import jugabilidad.Jugador;
 
 public class TestControlador {
 
-/*	@Test
+	@Test
 	public void test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
 		
 		Vida vidaUno = new Vida(8000);
@@ -36,19 +36,18 @@ public class TestControlador {
 		PiernaIzquierdaExodia piernaIzq = fabrica.crearPiernaIzquierdaExodia(jugadorUno);
 		CabezaExodia cabeza = fabrica.crearCabezaExodia(jugadorUno);
 		
-		Jugador jugadorActivo = controlador.obtenerJugadorActivo();
+		Jugador jugadorActivo = controlador.obtenerJugadorAtacante();
 		
 		jugadorActivo.repartirCarta(brazoIzq);
 		jugadorActivo.repartirCarta(brazoDer);
 		jugadorActivo.repartirCarta(piernaIzq);
 		jugadorActivo.repartirCarta(piernaDer);
 		jugadorActivo.repartirCarta(cabeza);
-		
 		assertTrue( controlador.hayGanador() );
 		
-	} */
+	} 
 
-	/*@Test
+	@Test
 	public void test02ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
 		
 		Vida vidaUno = new Vida(8000);
@@ -75,7 +74,7 @@ public class TestControlador {
 		
 		assertTrue( controlador.hayGanador() );
 		
-	}*/
+	}
 	
 	@Test
 	public void test03AtacarJugadorYDejarloSinVidaGanaElDuelo() {

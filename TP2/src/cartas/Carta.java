@@ -30,5 +30,14 @@ public abstract class Carta {
     public void voltear() {
     	orientacion = orientacion.voltear();
     }
+    
+    public boolean verificarTipoExodia() {
+		if (this.seLlama("Cabeza Exodia")) return true;
+		if (this.seLlama("Brazo Izquierdo Exodia")) return true;
+		if (this.seLlama("Brazo Derecho Exodia")) return true;
+		if (this.seLlama("Pierna Izquierda Exodia")) return true;
+		if (this.seLlama("Pierna Derecha Exodia")) return true;
+		return false;
+	}
 
 }
