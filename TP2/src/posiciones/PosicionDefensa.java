@@ -20,10 +20,6 @@ public class PosicionDefensa extends Posicion {
 		return new PosicionAtaque(puntosMonstruo);
 	}
 
-	public Resultado atacar(Atacable atacable) {
-		throw new ErrorAtaqueDesdePosicionInvalida();
-	}
-
 	public Resultado recibirAtaque(Puntos puntosAtacante) {
 		double puntosDelDefensor = this.puntosMonstruo.obtenerPuntosDeDefensa();
 		double puntosDelAtacante = puntosAtacante.obtenerPuntosDeDefensa();
@@ -36,7 +32,7 @@ public class PosicionDefensa extends Posicion {
 		return new Empate(0);
 	}
 
-	public void verificarAtaque(Atacable atacante, Atacable atacado) {
+	public void atacar(Atacable atacante, Atacable atacado) {
 		throw new ErrorAtaqueDesdePosicionInvalida();
 	}
 

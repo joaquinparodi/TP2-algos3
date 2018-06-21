@@ -19,7 +19,7 @@ public class InsectoComeHombres extends Monstruo {
 	}
 	
 	public Resultado recibirAtaqueBocaAbajo (Puntos puntosAtacante) {
-		orientacion = new OrientacionArriba();
+		this.voltear();
 		return new Derrota(0);
 	}
 	

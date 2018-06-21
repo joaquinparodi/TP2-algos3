@@ -18,10 +18,6 @@ public class PosicionAtaque extends Posicion {
 	public Posicion cambiarPosicion() {
 		return new PosicionDefensa( this.puntos );
 	}
-	
-	public Resultado atacar(Atacable atacable) {
-		return atacable.recibirAtaque( this.puntos );
-	}
 
 	public Resultado recibirAtaque(Puntos puntosAtacante) {		
 		double puntosDelDefensor = this.puntos.obtenerPuntosDeAtaque();
@@ -35,8 +31,7 @@ public class PosicionAtaque extends Posicion {
 		return new Empate(diferenciaDePuntos);
 	}
 
-	@Override
-	public void verificarAtaque(Atacable atacante, Atacable atacado) {
+	public void atacar(Atacable atacante, Atacable atacado) {
 		atacante.aplicarAtaque(atacado);
 	}
 

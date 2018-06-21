@@ -10,6 +10,6 @@ public abstract class Posicion {
 	
 	public abstract Resultado recibirAtaque(Puntos puntos);
 
-	public abstract void verificarAtaque(Atacable atacante, Atacable atacado);
+	public abstract void atacar(Atacable atacante, Atacable atacado);
 	
 }
