@@ -25,7 +25,7 @@ public class Monstruo extends Carta implements Atacable {
 
 	public void atacar( Atacable otroMonstruo ) {
 		
-		posicion.verificarAtaque(this, otroMonstruo);
+		posicion.atacar(this, otroMonstruo);
 		
 	}
 	

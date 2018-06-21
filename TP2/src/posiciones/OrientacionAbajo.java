@@ -23,11 +23,8 @@ public class OrientacionAbajo extends Orientacion {
 		return atacado.recibirAtaqueBocaAbajo(puntosAtacante);
 	}
 
-	@Override
 	public void atacarAplicandoEfecto(Atacable monstruo, Atacable otroMonstruo) {
-		
 		monstruo.atacarSinEfecto(otroMonstruo);
-		
 	}
 
 }
