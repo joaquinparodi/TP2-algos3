@@ -9,6 +9,8 @@ import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorCartasSacrificadasIncorrectas;
 
+import java.util.Iterator;
+
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Atacable;
