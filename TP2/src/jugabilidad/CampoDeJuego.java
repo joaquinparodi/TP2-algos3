@@ -28,9 +28,12 @@ public class CampoDeJuego {
 		filaMonstruos = new Baraja();
 		filaMagicasYTrampas = new Baraja();
 		cementerio = new Baraja();
-		mazo = new Baraja();
 		cartasMagicas = new Baraja();
 		cartasTrampas = new Baraja();
+	}
+	
+	public void agregarMazo(Baraja nuevoMazo) {
+		this.mazo = nuevoMazo;
 	}
 	
 	public void enviarAlCementerio(Monstruo unMonstruo) {
@@ -96,14 +99,6 @@ public class CampoDeJuego {
 		this.cartaDeCampoRival = cartaCampoRival;
 	}
 	
-	public void cargarMazo(Baraja cartasACargar) {
-		Iterator<Carta> iterador = cartasACargar.obtenerIteradorDeBaraja();
-		while(iterador.hasNext()) {
-		    Carta carta = iterador.next();
-		    mazo.agregarCarta(carta);
-		}
-	}
-
 	public Carta obtenerCartaDelMazo() {
 		Carta carta = mazo.obtenerPrimeraCarta();
 		mazo.eliminarCarta(carta);
@@ -137,4 +132,5 @@ public class CampoDeJuego {
 	public boolean hayCartasEnMazo() {
 		return mazo.tieneCartas();
 	}
+	
 }

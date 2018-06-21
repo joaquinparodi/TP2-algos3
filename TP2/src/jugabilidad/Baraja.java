@@ -49,7 +49,7 @@ public class Baraja {
 	}
 	
 	public boolean tieneCartas() {
-		return (contenedor.size() > 0);
+		return !contenedor.isEmpty();
 	}
 	
 	public void voltearCarta (String nombreDeCarta) {

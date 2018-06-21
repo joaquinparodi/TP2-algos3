@@ -17,4 +17,8 @@ public class Vida {
 		return this.vida;
 	}
 
+	 public boolean estaVacia() {
+		return vida <= 0;
+	}
+
 }

@@ -8,8 +8,8 @@ public class EfectoOllaDeLaCodicia extends Efecto {
 	public void aplicar(Jugador unJugador) {
 		
 		Jugador jugador = unJugador;
-		jugador.repartirCartaDelMazo();
-		jugador.repartirCartaDelMazo();
+		jugador.repartirCarta();
+		jugador.repartirCarta();
 		
 	}
 
