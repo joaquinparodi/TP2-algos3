@@ -8,6 +8,7 @@ import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorNoHayCartasEnLaBaraja;
 import errores.ErrorYaHayCartaDeCampoInvocada;
+import errores.ErrorYaHayCincoCartasEnLaFila;
 
 public class CampoDeJuego {
 
@@ -59,6 +60,9 @@ public class CampoDeJuego {
 	}
 	
 	public void agregarCarta(Monstruo monstruo) {
+		if (filaMonstruos.obtenerCantidadDeCartas()==5) {
+			throw new ErrorYaHayCincoCartasEnLaFila();
+		}
 		filaMonstruos.agregarCarta(monstruo);
 		//Cambiar las compartaciones con Null!-> ErrorCampoVacio
 		if( cartaDeCampo != null ) cartaDeCampo.aplicarEfectoACarta(monstruo);
@@ -66,12 +70,18 @@ public class CampoDeJuego {
 	}
 	
 	public void agregarCarta(Magica cartaMagica) {
+		if (filaMagicasYTrampas.obtenerCantidadDeCartas()==5) {
+			throw new ErrorYaHayCincoCartasEnLaFila();
+		}
 		filaMagicasYTrampas.agregarCarta(cartaMagica);
 		cartasMagicas.agregarCarta(cartaMagica);
 		cartaMagica.aplicarEfecto();
 	}
 	
 	public void agregarCarta(Trampa cartaTrampa) {
+		if (filaMagicasYTrampas.obtenerCantidadDeCartas()==5) {
+			throw new ErrorYaHayCincoCartasEnLaFila();
+		}
 		filaMagicasYTrampas.agregarCarta(cartaTrampa);
 		cartasTrampas.agregarCarta(cartaTrampa);
 	}

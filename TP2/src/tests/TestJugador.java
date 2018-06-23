@@ -26,6 +26,7 @@ import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
+import errores.ErrorYaHayCincoCartasEnLaFila;
 import factories.FabricaDeCartas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -1138,6 +1139,39 @@ class TestJugador {
 	}
 	
 	
+	@Test
+	public void test38Agregar6CartasMonstruosLanzaExcepcion() {
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
+		
+		Vida vida = new Vida (8000);
+		Jugador jugador = new Jugador (vida);
+
+		Puntos puntosUno = new Puntos(400, 2000);
+		Estrellas estrellas = new Estrellas(3);
+		
+		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugador, estrellas, puntosUno);
+		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugador, estrellas, puntosUno);
+		Monstruo monstruoTres = fabricaDeCartas.crearCarta("monstruo3", jugador, estrellas, puntosUno);
+		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("monstruo4", jugador, estrellas, puntosUno);
+		Monstruo monstruoCinco = fabricaDeCartas.crearCarta("monstruo5", jugador, estrellas, puntosUno);
+		Monstruo monstruoSeis = fabricaDeCartas.crearCarta("monstruo6", jugador, estrellas, puntosUno);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		jugador.repartirCarta(monstruoTres);
+		jugador.repartirCarta(monstruoCuatro);
+		jugador.repartirCarta(monstruoCinco);
+		jugador.repartirCarta(monstruoSeis);
+		
+		jugador.agregarCartaEnCampo(monstruoUno);
+		jugador.agregarCartaEnCampo(monstruoDos);
+		jugador.agregarCartaEnCampo(monstruoTres);
+		jugador.agregarCartaEnCampo(monstruoCuatro);
+		jugador.agregarCartaEnCampo(monstruoCinco);
+		
+		assertThrows(ErrorYaHayCincoCartasEnLaFila.class, () -> jugador.agregarCartaEnCampo(monstruoSeis));
+		
+	}
 	
 	
 
