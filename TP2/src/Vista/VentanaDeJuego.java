@@ -167,7 +167,7 @@ public class VentanaDeJuego {
 		
 		gridPane.add(P2Lzone, 0, 4); gridPane.add(P2cemetery, 6, 4);
 		
-		gridPane.setGridLinesVisible(true);
+		//gridPane.setGridLinesVisible(true); //->para prueba
 		return gridPane;
 	}
 	
@@ -181,11 +181,43 @@ public class VentanaDeJuego {
 		gridPane.setBackground(background);
 		
 		gridPane.setHgap(0);
-		gridPane.setVgap(0);
+		gridPane.setVgap(14);
 		
+		double with = 70; double height = 100;
+		Rectangle P1card1 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1card2 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1card3 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1card4 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1card5 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1mount = new Rectangle(with, height, Color.DARKCYAN); 
+
+		Rectangle P2card1 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2card2 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2card3 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2card4 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2mount = new Rectangle(with, height, Color.DARKCYAN); 
+
+		gridPane.setMargin(P1card1, new Insets(10)); gridPane.setMargin(P2card1, new Insets(10)); 
+		gridPane.setMargin(P1card2, new Insets(10)); gridPane.setMargin(P2card2, new Insets(10)); 
+		gridPane.setMargin(P1card3, new Insets(10)); gridPane.setMargin(P2card3, new Insets(10)); 
+		gridPane.setMargin(P1card4, new Insets(10)); gridPane.setMargin(P2card4, new Insets(10)); 
+		gridPane.setMargin(P1card5, new Insets(10)); gridPane.setMargin(P2card5, new Insets(10)); 
 		
+		gridPane.setMargin(P1mount, new Insets(10,10,10,30)); 
+		gridPane.setMargin(P2mount, new Insets(10,10,10,30)); 
+		
+		gridPane.add(P2card1, 1, 34); gridPane.add(P1card1, 1, 0); 
+		gridPane.add(P2card2, 2, 34); gridPane.add(P1card2, 2, 0);
+		gridPane.add(P2card3, 3, 34); gridPane.add(P1card3, 3, 0);
+		gridPane.add(P2card4, 4, 34); gridPane.add(P1card4, 4, 0);
+		gridPane.add(P2card5, 5, 34); gridPane.add(P1card5, 5, 0);
+		gridPane.add(P2mount, 6, 34); gridPane.add(P1mount, 6, 0);
+		
+		//gridPane.setGridLinesVisible(true); //->para prueba
 		
 		return gridPane;
 	}
+	
 	
 }
