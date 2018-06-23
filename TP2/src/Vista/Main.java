@@ -5,14 +5,14 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	VentanaDeJuego ventanaDeJuego = new VentanaDeJuego();
+	VentanaDeJuego ventanaInicial = new VentanaDeJuego();
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	public void start( Stage stage ) throws Exception {
-		ventanaDeJuego.cargarVentanaDeJuego(stage);
+		ventanaInicial.cargar(stage);
 	}
 
 }
