@@ -7,9 +7,5 @@
 	</classpathentry>
 	<classpathentry kind="src" path="TP2/src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="jfxrt.jar"/>
-	<classpathentry kind="lib" path="jfxswt.jar"/>
-	<classpathentry kind="lib" path="javafx-mx.jar"/>
-	<classpathentry kind="lib" path="ant-javafx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
