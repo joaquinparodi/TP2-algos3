@@ -96,7 +96,7 @@ public class FabricaDeCartas {
 		return new PiernaIzquierdaExodia("Pierna Izquierda Exodia", jugador, new Estrellas(3), new Puntos(450,600));
 	}
 	
-	public Monstruo crearMonstruoPersonalizado(String nombre, Jugador unJugador, Estrellas estrellas, Puntos puntos) {
-		return new Monstruo(nombre, unJugador, estrellas, puntos);
+	public Monstruo crearMonstruoPersonalizado(String nombre, Estrellas estrellas, Puntos puntos) {
+		return new Monstruo(nombre, jugador, estrellas, puntos);
 	}
 }

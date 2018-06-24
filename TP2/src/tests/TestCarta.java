@@ -13,6 +13,7 @@ import factories.CreadorDeDragonBlanco;
 import factories.CreadorDeDragonDefinitivo;
 import factories.CreadorDeInsectoComeHombres;
 import factories.CreadorDeJinzo7;
+import factories.FabricaDeCartas;
 
 import org.junit.jupiter.api.Test;
 
@@ -39,8 +40,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		unaCarta.atacar( otraCarta );
 
@@ -62,8 +65,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", otroJugador, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 		
@@ -85,8 +90,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", otroJugador, estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 
@@ -110,8 +117,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
@@ -135,8 +144,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 1000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
@@ -160,8 +171,10 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = new Monstruo("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = new Monstruo("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", unJugador, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas.crearMonstruoPersonalizado("Javier", otroJugador, estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();	
 		unaCarta.atacar(otraCarta);

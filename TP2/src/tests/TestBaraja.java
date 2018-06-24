@@ -19,15 +19,15 @@ public class TestBaraja {
 	@Test
 	public void test01agregarCartaABarajaYPreguntarSiTienePorElNombreDevuelveCorrectamente() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugador = new Vida(8000);
 		Jugador jugador = new Jugador(vidaJugador);
 		Baraja baraja = new Baraja();
 		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		
 		Puntos puntos = new Puntos(1000, 1000);
 		Estrellas estrellas = new Estrellas(1);
-		Carta monstruo = fabricaDeCartas.crearCarta("CartaDePrueba", jugador, estrellas, puntos);
+		Carta monstruo = fabricaDeCartas.crearMonstruoPersonalizado("CartaDePrueba", jugador, estrellas, puntos);
 		baraja.agregarCarta(monstruo);
 		
 		assertTrue( baraja.pertenece(monstruo) );
