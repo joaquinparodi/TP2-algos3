@@ -21,9 +21,7 @@ import javafx.scene.text.Text;
 
 public class VentanaDeJuego {
 	
-	public void cargar(Stage stage) {
-		
-		stage.setTitle("Yu-Gi-Oh! The Game");
+	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
 		
 	    /* Creacion de la escena */
@@ -31,10 +29,7 @@ public class VentanaDeJuego {
 	    double with = 1360; double height = 1280;
 	    Scene scene = new Scene(rootBorderPane, with, height, backgroundColor);
 	    
-	    /*Agrego la escena a la pantalla*/
-	    stage.setScene(scene);
-	    
-		stage.show();
+	    return scene;
 	}
 	
 	private BorderPane createBorderPane() {
