@@ -39,6 +39,10 @@ public class VentanaDeJuego {
 		playerTwoName.setText(playerTwo.obtenerNombre());
 	}
 	
+	public void actualizarManos() {
+		
+	}
+	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
 		

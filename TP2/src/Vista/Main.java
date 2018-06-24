@@ -4,6 +4,7 @@ import atributos.Vida;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import jugabilidad.Randomizador;
 
@@ -15,6 +16,8 @@ public class Main extends Application {
 	Jugador jugadorUno;
 	Jugador jugadorDos;
 	
+	Controlador controlador;
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -22,7 +25,8 @@ public class Main extends Application {
 	public void start( Stage stage ) throws Exception {
 		this.inicializarJugadores();
 		this.inicializarVentanas();
-		this.cargarMazoAJugadores();
+		
+		controlador = new Controlador (jugadorUno,jugadorDos);
 		
 		stage.setTitle("Yu-Gi-Oh! The Game");	
 		
@@ -33,22 +37,17 @@ public class Main extends Application {
 		stage.show();
 	}
 	
-	private void cargarMazoAJugadores() {
-		Randomizador randomizador = new Randomizador();
-		randomizador.cargarMazo(jugadorUno);
-		randomizador.cargarMazo(jugadorDos);
-	}
 	
-	private void inicializarJugadores() {
-		Randomizador randomizador = new Randomizador();
-		randomizador.cargarMazo(jugadorUno);
-		randomizador.cargarMazo(jugadorDos);
-		
+	private void inicializarJugadores() {	
 		Vida vidaJugadorUno = new Vida(8000);
 		Vida vidaJugadorDos = new Vida(8000);
 		
 		this.jugadorUno = new Jugador(vidaJugadorUno);
 		this.jugadorDos = new Jugador(vidaJugadorDos);
+		
+		Randomizador randomizador = new Randomizador();
+		randomizador.cargarMazo(jugadorUno);
+		randomizador.cargarMazo(jugadorDos);
 	}
 	
 	private void inicializarVentanas() {

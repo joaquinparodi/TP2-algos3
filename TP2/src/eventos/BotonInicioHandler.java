@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import jugabilidad.Jugador;
+import jugabilidad.Randomizador;
 
 public class BotonInicioHandler implements EventHandler<ActionEvent>  {
 
@@ -29,11 +30,14 @@ public class BotonInicioHandler implements EventHandler<ActionEvent>  {
 	}
 	
 	public void handle(ActionEvent event) {
-		jugador1.asignarNombre(nombreJugador1.getText());
-		jugador2.asignarNombre(nombreJugador2.getText());
+		Randomizador randomizador = new Randomizador();
+		Jugador jugadorRandom1 = randomizador.queJugadorEmpieza(jugador1, jugador2);
+		jugadorRandom1.asignarNombre(nombreJugador1.getText());
+		jugadorRandom1.obtenerRival().asignarNombre(nombreJugador2.getText());
         stage.setScene(nextScene);
         stage.setFullScreen(true);
         ventanaDeJuego.actualizarNombres();
+        ventanaDeJuego.actualizarManos();
 	}
 
 }
