@@ -78,8 +78,6 @@ public class VentanaDeJuego {
 			iterTwo.next().setFill(image);
 			actualCards++;
 		}
-
-
 	} 
 	
 	public Scene createGameScene() {
