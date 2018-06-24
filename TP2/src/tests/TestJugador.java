@@ -6,16 +6,6 @@ import cartas.Campo;
 import cartas.Carta;
 import cartas.Magica;
 import org.junit.jupiter.api.Test;
-import atributos.Efecto;
-import atributos.EfectoAgujeroNegro;
-import atributos.EfectoCilindroMagico;
-import atributos.EfectoDeCampo;
-import atributos.EfectoDeTrampa;
-import atributos.EfectoFisura;
-import atributos.EfectoOllaDeLaCodicia;
-import atributos.EfectoReinforcements;
-import atributos.EfectoSogen;
-import atributos.EfectoWasteland;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Sacrificio;
@@ -28,15 +18,6 @@ import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
 import errores.ErrorYaHayCincoCartasEnLaFila;
-import factories.BuilderDeCartas;
-import factories.CreadorDeAgujeroNegro;
-import factories.CreadorDeCilindroMagico;
-import factories.CreadorDeDragonBlanco;
-import factories.CreadorDeFisura;
-import factories.CreadorDeOllaDeLaCodicia;
-import factories.CreadorDeReinforcements;
-import factories.CreadorDeSogen;
-import factories.CreadorDeWasteland;
 import factories.FabricaDeCartas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -782,7 +763,7 @@ class TestJugador {
 		Estrellas estrellas = new Estrellas(3);
 		
 		Monstruo monstruo1 = fabricaUno.crearMonstruoPersonalizado("monstruo1", estrellas, puntos);
-		Monstruo monstruo2 = fabricaUno.crearMonstruoPersonalizado("monstruo2", estrellas, puntos);
+		Monstruo monstruo2 = fabricaDos.crearMonstruoPersonalizado("monstruo2", estrellas, puntos);
 		
 		Magica ollaDeLaCodicia = fabricaUno.crearOllaDeLaCodicia();
 		
@@ -816,7 +797,7 @@ class TestJugador {
 		Estrellas estrellas = new Estrellas(3);
 		
 		Monstruo monstruo1 = fabricaUno.crearMonstruoPersonalizado("monstruo1", estrellas, puntos);
-		Monstruo monstruo2 = fabricaUno.crearMonstruoPersonalizado("monstruo2", estrellas, puntos);
+		Monstruo monstruo2 = fabricaDos.crearMonstruoPersonalizado("monstruo2", estrellas, puntos);
 		
 		Magica ollaDeLaCodicia = fabricaUno.crearOllaDeLaCodicia();
 		

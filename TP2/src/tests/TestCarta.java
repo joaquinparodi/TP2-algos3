@@ -4,15 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 
 import cartas.Atacable;
-import cartas.Carta;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
 import errores.ErrorCartasSacrificadasIncorrectas;
-import factories.BuilderDeCartas;
-import factories.CreadorDeDragonBlanco;
-import factories.CreadorDeDragonDefinitivo;
-import factories.CreadorDeInsectoComeHombres;
-import factories.CreadorDeJinzo7;
 import factories.FabricaDeCartas;
 
 import org.junit.jupiter.api.Test;
