@@ -14,6 +14,8 @@ import javafx.scene.text.Text;
 
 public class VentanaDeJuego {
 	
+	
+	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
 		

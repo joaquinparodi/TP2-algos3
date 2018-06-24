@@ -67,9 +67,6 @@ public class VentanaInicial {
 		
 		Button enterButton = new Button("Comenzar");
 		enterButton.setDisable(true);
-		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage);
-		enterButton.setOnAction(buttonHandler);
-		
 		TextField namePlayerOne = new TextField();
 		TextField namePlayerTwo = new TextField();
 		
@@ -86,6 +83,9 @@ public class VentanaInicial {
 		
 		TextFieldNombreHandler nameTwoHandler = new TextFieldNombreHandler(playerTwo);
 		nameTwoHandler.asignarNombreObtenido(namePlayerTwo.getText());
+		
+		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage, playerOne, playerTwo, namePlayerOne, namePlayerTwo);
+		enterButton.setOnAction(buttonHandler);
 		
 		gridPane.add(namePlayerOne, 0, 0);
 		gridPane.add(namePlayerTwo, 0, 1);
