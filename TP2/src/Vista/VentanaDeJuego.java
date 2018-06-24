@@ -11,10 +11,17 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import jugabilidad.Jugador;
 
 public class VentanaDeJuego {
 	
+	Jugador playerOne;
+	Jugador playerTwo;
 	
+	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
+		this.playerOne = playerOne;
+		this.playerTwo = playerTwo;
+	}
 	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
@@ -66,8 +73,8 @@ public class VentanaDeJuego {
 		square1.setArcWidth(15); square1.setArcHeight(15);
 		square2.setArcWidth(15); square2.setArcHeight(15);
 		
-		Text playerOne = new Text("PlayerOne"); //Hay que modificarlos
-		Text playerTwo = new Text("PlayerTwo"); //Hay que modificarlos
+		Text playerOneName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
+		Text playerTwoName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
 		Text playerOneLife = new Text("8000");
 		Text playerTwoLife = new Text("8000");
 		
@@ -80,8 +87,8 @@ public class VentanaDeJuego {
 		gridPane.setMargin(P1Deck, new Insets(10,10,10,30));
 		gridPane.setMargin(P2Deck, new Insets(10,10,10,30));
 		
-		gridPane.setMargin(playerOne, new Insets(0,0,0,10));
-		gridPane.setMargin(playerTwo, new Insets(0,0,0,10));
+		gridPane.setMargin(playerOneName, new Insets(0,0,0,10));
+		gridPane.setMargin(playerTwoName, new Insets(0,0,0,10));
 		gridPane.setMargin(playerOneLife, new Insets(0,0,0,-30));
 		gridPane.setMargin(playerTwoLife, new Insets(0,0,0,-30));
 		
@@ -89,14 +96,14 @@ public class VentanaDeJuego {
 		gridPane.setMargin(P2life, new Insets(0,0,0,-10));
 		
 		gridPane.add(square1, 0, 0);
-		gridPane.add(playerOne, 0, 1);
+		gridPane.add(playerOneName, 0, 1);
 		gridPane.add(playerOneLife, 1, 1);
 		gridPane.add(P1Deck, 0, 5);
 		gridPane.add(P1life, 1, 0);
 		
 		gridPane.add(P2Deck, 0, 15);
 		gridPane.add(playerTwoLife, 1, 19);
-		gridPane.add(playerTwo, 0, 19);
+		gridPane.add(playerTwoName, 0, 19);
 		gridPane.add(square2, 0, 20);
 		gridPane.add(P2life, 1, 20);
 		

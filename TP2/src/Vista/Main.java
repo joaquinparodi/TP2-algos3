@@ -29,17 +29,13 @@ public class Main extends Application {
 		Scene gameScene = ventanaDeJuego.createGameScene();
 		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage);
 		
+
 		stage.setScene(initialScene);
 		stage.show();
-		
-		System.out.println(jugadorUno.obtenerNombre());
-		System.out.println(jugadorDos.obtenerNombre());
 	}
 	
 	private void determinarJugadorInicial() {
 		Randomizador randomizador = new Randomizador();
-		
-		
 	}
 	
 	private void inicializarJugadores() {
@@ -52,6 +48,6 @@ public class Main extends Application {
 	
 	private void inicializarVentanas() {
 		ventanaInicial = new VentanaInicial(jugadorUno, jugadorDos);
-		ventanaDeJuego = new VentanaDeJuego();
+		ventanaDeJuego = new VentanaDeJuego(jugadorUno, jugadorDos);
 	}
 }
