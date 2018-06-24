@@ -22,12 +22,13 @@ import javafx.scene.text.Text;
 public class VentanaDeJuego {
 	
 	public void cargar(Stage stage) {
+		
 		stage.setTitle("Yu-Gi-Oh! The Game");
 	    BorderPane rootBorderPane = this.createBorderPane();
 		
 	    /* Creacion de la escena */
 	    Color backgroundColor = Color.GREEN;
-	    double with = 800; double height = 600;
+	    double with = 1360; double height = 1280;
 	    Scene scene = new Scene(rootBorderPane, with, height, backgroundColor);
 	    
 	    /*Agrego la escena a la pantalla*/
@@ -65,25 +66,46 @@ public class VentanaDeJuego {
 		Rectangle P1Deck = new Rectangle(70, 100, Color.PERU);
 		Rectangle P2Deck = new Rectangle(70, 100, Color.PERU);
 		
+		double lifeOne = 100; double lifeTwo = 100;
+		Rectangle P1life = new Rectangle(10, lifeOne, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
+		Rectangle P2life = new Rectangle(10, lifeTwo, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
+		
 		square1.setArcWidth(15); square1.setArcHeight(15);
 		square2.setArcWidth(15); square2.setArcHeight(15);
 		
 		Text playerOne = new Text("PlayerOne"); //Hay que modificarlos
 		Text playerTwo = new Text("PlayerTwo"); //Hay que modificarlos
+		Text playerOneLife = new Text("8000");
+		Text playerTwoLife = new Text("8000");
 		
 		gridPane.setHgap(10);
-		gridPane.setVgap(10);
+		gridPane.setVgap(9);
 		
-		gridPane.setMargin(square1, new Insets(10)); gridPane.setMargin(P1Deck, new Insets(10));
-		gridPane.setMargin(square2, new Insets(10)); gridPane.setMargin(P2Deck, new Insets(10));
+		gridPane.setMargin(square1, new Insets(10)); 
+		gridPane.setMargin(square2, new Insets(10)); 
+		
+		gridPane.setMargin(P1Deck, new Insets(10,10,10,30));
+		gridPane.setMargin(P2Deck, new Insets(10,10,10,30));
+		
+		gridPane.setMargin(playerOne, new Insets(0,0,0,10));
+		gridPane.setMargin(playerTwo, new Insets(0,0,0,10));
+		gridPane.setMargin(playerOneLife, new Insets(0,0,0,-30));
+		gridPane.setMargin(playerTwoLife, new Insets(0,0,0,-30));
+		
+		gridPane.setMargin(P1life, new Insets(0,0,0,-10));
+		gridPane.setMargin(P2life, new Insets(0,0,0,-10));
+		
 		gridPane.add(square1, 0, 0);
 		gridPane.add(playerOne, 0, 1);
+		gridPane.add(playerOneLife, 1, 1);
 		gridPane.add(P1Deck, 0, 5);
-		
+		gridPane.add(P1life, 1, 0);
 		
 		gridPane.add(P2Deck, 0, 15);
+		gridPane.add(playerTwoLife, 1, 19);
 		gridPane.add(playerTwo, 0, 19);
 		gridPane.add(square2, 0, 20);
+		gridPane.add(P2life, 1, 20);
 		
 		//gridPane.setGridLinesVisible(true); //->Solo para guiarse,despues lo sacamos
 		
@@ -204,8 +226,8 @@ public class VentanaDeJuego {
 		gridPane.setMargin(P1card4, new Insets(10)); gridPane.setMargin(P2card4, new Insets(10)); 
 		gridPane.setMargin(P1card5, new Insets(10)); gridPane.setMargin(P2card5, new Insets(10)); 
 		
-		gridPane.setMargin(P1mount, new Insets(10,10,10,30)); 
-		gridPane.setMargin(P2mount, new Insets(10,10,10,30)); 
+		gridPane.setMargin(P1mount, new Insets(10,10,10,25)); 
+		gridPane.setMargin(P2mount, new Insets(10,10,10,25)); 
 		
 		gridPane.add(P2card1, 1, 34); gridPane.add(P1card1, 1, 0); 
 		gridPane.add(P2card2, 2, 34); gridPane.add(P1card2, 2, 0);
@@ -218,6 +240,5 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
-	
 	
 }

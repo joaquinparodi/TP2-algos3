@@ -5,7 +5,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	
-	VentanaDeJuego ventanaInicial = new VentanaDeJuego();
+	VentanaInicial ventanaInicial = new VentanaInicial();
+	VentanaDeJuego ventanaDeJuego = new VentanaDeJuego();
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -13,6 +14,7 @@ public class Main extends Application {
 
 	public void start( Stage stage ) throws Exception {
 		ventanaInicial.cargar(stage);
+		ventanaDeJuego.cargar(stage);
 	}
 
 }
