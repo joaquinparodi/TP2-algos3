@@ -99,4 +99,34 @@ public class FabricaDeCartas {
 	public Monstruo crearMonstruoPersonalizado(String nombre, Estrellas estrellas, Puntos puntos) {
 		return new Monstruo(nombre, jugador, estrellas, puntos);
 	}
+	
+	//monstruos normales
+	
+	public Monstruo crearSangan() {
+		return new Monstruo("Sangan", jugador, new Estrellas(3), new Puntos(1000,600));
+	}
+	
+	public Monstruo crearParasitoParacida() {
+		return new Monstruo("Paracito Paracida", jugador, new Estrellas(2), new Puntos(500,300));
+	}
+	
+	public Monstruo crearGusanoAguja() {
+		return new Monstruo("Gusano Aguja", jugador, new Estrellas(2), new Puntos(750,600));
+	}
+	
+	public Monstruo crearDevoradorDeNiveles() {
+		return new Monstruo("Devorador De Niveles", jugador, new Estrellas(1), new Puntos(600,0));
+	}
+	
+	public Monstruo crearCapulloEvolutivo() {
+		return new Monstruo("Capullo Evolutivo", jugador, new Estrellas(3), new Puntos(0,2000));
+	}
+	
+	public Monstruo crearGigobyte() {
+		return new Monstruo("Gigobyte", jugador, new Estrellas(1), new Puntos(350,300));
+	}
+	
+	public Monstruo crearJiraiGumo() {
+		return new Monstruo("Jirai Gumo", jugador, new Estrellas(4), new Puntos(2200,100));
+	}
 }
