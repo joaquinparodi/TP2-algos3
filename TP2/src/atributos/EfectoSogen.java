@@ -2,6 +2,7 @@ package atributos;
 
 import java.util.Iterator;
 
+import cartas.Carta;
 import cartas.Monstruo;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
@@ -21,8 +22,8 @@ public class EfectoSogen extends EfectoDeCampo {
 		Baraja monstruosDos = campoDos.obtenerMonstruos();
 		
 		//La carta cambia los puntos de los monstruos de ambos lados
-		Iterator iterUno = monstruosUno.obtenerIteradorDeBaraja();
-		Iterator iterDos = monstruosDos.obtenerIteradorDeBaraja();
+		Iterator<Carta> iterUno = monstruosUno.obtenerIteradorDeBaraja();
+		Iterator<Carta> iterDos = monstruosDos.obtenerIteradorDeBaraja();
 	
 		while(iterUno.hasNext()) {
 		    Monstruo monstruo = (Monstruo)iterUno.next();

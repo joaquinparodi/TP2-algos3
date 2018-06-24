@@ -2,6 +2,7 @@ package atributos;
 
 import java.util.Iterator;
 
+import cartas.Carta;
 import cartas.Monstruo;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
@@ -16,7 +17,7 @@ public class EfectoFisura extends Efecto {
 		CampoDeJuego campoRival = rival.obtenerCampo();
 		Baraja monstruosRival = campoRival.obtenerMonstruos();
 		
-		Iterator iter = monstruosRival.obtenerIteradorDeBaraja();
+		Iterator<Carta> iter = monstruosRival.obtenerIteradorDeBaraja();
 		//Lanzar exception si esta vacio el campo de monstruo rival!
 		
 		//Busco la carta con menos puntos
