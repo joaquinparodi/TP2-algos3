@@ -12,6 +12,6 @@ public class CreadorDeJinzo7 extends CreadorDeCartas {
 		}
 
 		public void crearCarta() {
-			carta = new Jinzo7("Jinzo 7",this.jugador, new Estrellas(2), new Puntos(500,400));
+			carta = new Jinzo7("Jinzo 7",jugador, new Estrellas(2), new Puntos(500,400));
 		}
 }

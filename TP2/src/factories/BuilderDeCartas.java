@@ -2,19 +2,16 @@ package factories;
 
 import cartas.Carta;
 
-public class FabricaCartas {
+public class BuilderDeCartas {
 
 		private CreadorDeCartas creadorDeCartas;
 		
-		public void asignarCreadorDeCartas(CreadorDeCartas creador) {
+		public BuilderDeCartas(CreadorDeCartas creador) {
 			creadorDeCartas = creador;
+			creadorDeCartas.crearCarta();
 		}
 		
 		public Carta obtenerCarta() {
 			return creadorDeCartas.obtenerCarta();
-		}
-		
-		public void construirCarta() {
-			creadorDeCartas.crearCarta();
 		}
 }

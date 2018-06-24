@@ -3,6 +3,7 @@ package tests;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 import cartas.Campo;
+import cartas.Carta;
 import cartas.Magica;
 import org.junit.jupiter.api.Test;
 import atributos.Efecto;
@@ -27,6 +28,15 @@ import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
 import errores.ErrorYaHayCincoCartasEnLaFila;
+import factories.BuilderDeCartas;
+import factories.CreadorDeAgujeroNegro;
+import factories.CreadorDeCilindroMagico;
+import factories.CreadorDeDragonBlanco;
+import factories.CreadorDeFisura;
+import factories.CreadorDeOllaDeLaCodicia;
+import factories.CreadorDeReinforcements;
+import factories.CreadorDeSogen;
+import factories.CreadorDeWasteland;
 import factories.FabricaDeCartas;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,18 +73,16 @@ class TestJugador {
     
 	@Test
 	public void test03ColocarMonstruoConEstrellasInferiorACincoYNoSacrificaANadie() {
-    	
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
 		
 		Estrellas estrellas = new Estrellas(1);
     	Puntos puntos = new Puntos(2000, 2000);
     	
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Auriane", jugador, estrellas,puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javir", jugador, estrellas, puntos);
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Facundo", jugador, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("Auriane", jugador, estrellas,puntos);
+		Monstruo monstruoDos = new Monstruo("Javir", jugador, estrellas, puntos);
+		Monstruo monstruoTres = new Monstruo("Facundo", jugador, estrellas, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -92,9 +100,7 @@ class TestJugador {
 	
 	@Test
 	public void test04ColocarMonstruoConSiesteEstrellasRequiereDosSacrificios() {
- 
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
 		
@@ -102,9 +108,9 @@ class TestJugador {
 		Estrellas estrellasMonstruoUno = new Estrellas(7);
 		Puntos puntos = new Puntos(2000, 2000);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("joaco", jugador, estrellasMonstruoUno, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugador, estrellas, puntos);
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("facu", jugador, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, estrellasMonstruoUno, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, estrellas, puntos);
+		Monstruo monstruoTres = new Monstruo("facu", jugador, estrellas, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -122,9 +128,7 @@ class TestJugador {
 	
 	@Test
 	public void test05ColocarMonstruoConCincoEstrellasRequiere1Sacrificio() {
-    
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
 		
@@ -132,8 +136,8 @@ class TestJugador {
 		Estrellas estrellasMonstruoUno = new Estrellas(5);
 		Puntos puntos = new Puntos(2000, 2000);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("joaco", jugador, estrellasMonstruoUno, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugador, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, estrellasMonstruoUno, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, estrellas, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -149,8 +153,6 @@ class TestJugador {
 	@Test
 	public void test06VerificarSiElMonstroColocadoSeEncuentraEnElCampoLuegoDeSacrificio() {
 
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
     	Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
 		
@@ -158,8 +160,8 @@ class TestJugador {
 		Estrellas estrellas = new Estrellas(1);
 		Estrellas estrellasMonstruoUno = new Estrellas(5);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("joaco", jugador, estrellasMonstruoUno, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugador, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, estrellasMonstruoUno, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, estrellas, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -181,8 +183,7 @@ class TestJugador {
 		Estrellas estrellasMonstruoUno = new Estrellas(5);
 		Puntos puntos = new Puntos(2000, 2000);
 	
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("joaco", jugador, estrellasMonstruoUno, puntos);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, estrellasMonstruoUno, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		
@@ -193,17 +194,15 @@ class TestJugador {
 	
 	@Test
 	public void test08ColocarMonstruoConTresEstrellasNoRequiereSacrificio() {
-    	
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vida = new Vida(8000);
     	Jugador jugador = new Jugador(vida);
 		
 		Estrellas estrellas = new Estrellas(3);
 		Puntos puntos = new Puntos(2000, 2000);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("joaco", jugador, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugador, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("joaco", jugador, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugador, estrellas, puntos);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
@@ -214,8 +213,6 @@ class TestJugador {
 	
 	@Test
 	public void test09AgregarAgujeroNegroEliminaTodasLasCartas () {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
@@ -228,11 +225,12 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("facu", jugadorUno, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugadorDos, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, estrellas, puntos);
 		
-		Efecto efecto = new EfectoAgujeroNegro ();
-		Magica agujeroNegro = fabricaDeCartas.crearCarta("Agujero Negro", jugadorUno, efecto);
+		CreadorDeAgujeroNegro creador = new CreadorDeAgujeroNegro(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta agujeroNegro = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorUno.repartirCarta(agujeroNegro);
@@ -241,7 +239,7 @@ class TestJugador {
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
-		jugadorUno.agregarCartaEnCampo(agujeroNegro);
+		jugadorUno.agregarCartaEnCampo((Magica) agujeroNegro);
 		
 		assertTrue(jugadorUno.cartaEstaMuerta(monstruoUno));
 		assertTrue(jugadorDos.cartaEstaMuerta(monstruoDos));
@@ -273,9 +271,7 @@ class TestJugador {
 	
 	@Test
 	public void test11AgujeroNegroBocaAbajoNoEnviaMonstruosAlCementerio () {
-				
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -287,11 +283,12 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("facu", jugadorUno, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("javi", jugadorDos, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("facu", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("javi", jugadorDos, estrellas, puntos);
 		
-		Efecto efecto = new EfectoAgujeroNegro ();
-		Magica agujeroNegro = fabricaDeCartas.crearCarta("Agujero Negro", jugadorUno, efecto);
+		CreadorDeAgujeroNegro creador = new CreadorDeAgujeroNegro(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta agujeroNegro = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorUno.repartirCarta(agujeroNegro);
@@ -301,7 +298,7 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(agujeroNegro);
+		jugadorUno.agregarCartaEnCampo((Magica) agujeroNegro);
 		
 		assertFalse(jugadorUno.cartaEstaMuerta(monstruoUno) );
 		assertFalse(jugadorDos.cartaEstaMuerta(monstruoDos) );
@@ -310,9 +307,7 @@ class TestJugador {
 	
 	@Test
 	public void test12AgregarCartaDeCampoWastelandAumenta200PuntoDeAtaquesDeljugadorQuePusoLaCarta() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -325,11 +320,12 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoWasteland();
-		Campo wasteland = fabricaDeCartas.crearCarta("Wasteland", jugadorUno, efecto);
+		CreadorDeWasteland creador = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta wasteland = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -337,16 +333,14 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(wasteland);
+		jugadorUno.agregarCartaEnCampo((Campo) wasteland);
 		
 		assertEquals( puntosUno.obtenerPuntosDeAtaque(), 2200 );
 	}
 	
 	@Test
 	public void test13AgregarCartaDeCampoWastelandAumenta300PuntoDeDefensaDeljugadorOponente() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -359,11 +353,12 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoWasteland();
-		Campo wasteland = fabricaDeCartas.crearCarta("Wasteland", jugadorUno, efecto);
+		CreadorDeWasteland creador = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta wasteland = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -371,7 +366,7 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(wasteland);
+		jugadorUno.agregarCartaEnCampo((Campo) wasteland);
 		
 		assertEquals( 2300, puntosDos.obtenerPuntosDeDefensa());
 	}
@@ -379,9 +374,7 @@ class TestJugador {
 
 	@Test
 	public void test15CartaDeCampoSogenAumenta500PuntosDeDefensaDelJugadorQuePusoLaCarta() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -394,11 +387,12 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoSogen();
-		Campo sogen = fabricaDeCartas.crearCarta("Sogen", jugadorUno, efecto);
+		CreadorDeSogen creador = new CreadorDeSogen(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta sogen = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -406,16 +400,14 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(sogen);
+		jugadorUno.agregarCartaEnCampo((Campo) sogen);
 		
 		assertEquals( puntosUno.obtenerPuntosDeDefensa(), 2500 );
 	}
 	
 	@Test
 	public void test16CartaDeCampoSogenAumenta200PuntosDeAtaqueDelJugadorOponente() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -428,11 +420,12 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoSogen();
-		Campo sogen = fabricaDeCartas.crearCarta("Sogen", jugadorUno, efecto);
+		CreadorDeSogen creador = new CreadorDeSogen(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta sogen = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -440,16 +433,13 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(sogen);
+		jugadorUno.agregarCartaEnCampo((Campo) sogen);
 		
 		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2200 );
 	}
 	
 	@Test
 	public void test17CartaMagicaFisuraEliminaLaCartaDelCampoEnemigoConMenorAtaque() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -463,11 +453,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoDosA = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntosDosA);
-		Monstruo monstruoDosB = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDosB);
+		Monstruo monstruoDosA = new Monstruo("Facu", jugadorDos, estrellas, puntosDosA);
+		Monstruo monstruoDosB = new Monstruo("Javi", jugadorDos, estrellas, puntosDosB);
 		
-		Efecto efecto = new EfectoFisura();
-		Magica fisura = fabricaDeCartas.crearCarta("Fisura", jugadorUno, efecto);
+		CreadorDeFisura creador = new CreadorDeFisura(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta fisura = builder.obtenerCarta();
 		
 		jugadorDos.repartirCarta(monstruoDosA);
 		jugadorDos.repartirCarta(monstruoDosB);
@@ -475,7 +466,7 @@ class TestJugador {
 		
 		jugadorDos.agregarCartaEnCampo(monstruoDosA);
 		jugadorDos.agregarCartaEnCampo(monstruoDosB);
-		jugadorUno.agregarCartaEnCampo(fisura);
+		jugadorUno.agregarCartaEnCampo((Magica) fisura);
 		
 		//La carta con menos puntos de ataque (monstruoDosB) debe estar en el cementerio 
 		assertTrue( jugadorDos.cartaEstaMuerta(monstruoDosB) );
@@ -485,9 +476,7 @@ class TestJugador {
 	
 	@Test
 	public void test18CartaMagicaFisuraNoAplicaElEfectoSiSeColocaHaciaAbajo() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -501,11 +490,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoDosA = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntosDosA);
-		Monstruo monstruoDosB = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDosB);
+		Monstruo monstruoDosA = new Monstruo("Facu", jugadorDos, estrellas, puntosDosA);
+		Monstruo monstruoDosB = new Monstruo("Javi", jugadorDos, estrellas, puntosDosB);
 		
-		Efecto efecto = new EfectoFisura();
-		Magica fisura = fabricaDeCartas.crearCarta("Fisura", jugadorUno, efecto);
+		CreadorDeFisura creador = new CreadorDeFisura(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta fisura = builder.obtenerCarta();
 		fisura.voltear();
 		
 		jugadorDos.repartirCarta(monstruoDosA);
@@ -514,7 +504,7 @@ class TestJugador {
 		
 		jugadorDos.agregarCartaEnCampo(monstruoDosA);
 		jugadorDos.agregarCartaEnCampo(monstruoDosB);
-		jugadorUno.agregarCartaEnCampo(fisura);
+		jugadorUno.agregarCartaEnCampo((Magica) fisura);
 		
 		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosB) );
 		assertFalse( jugadorDos.cartaEstaMuerta(monstruoDosA) );
@@ -523,9 +513,7 @@ class TestJugador {
 
 	@Test
 	public void test19EfectoDeLaCartaDeCampoSogenPerduraACartarAgregadasDespues() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -541,11 +529,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoSogen();
-		Campo sogen = fabricaDeCartas.crearCarta("Sogen", jugadorUno, efecto);
+		CreadorDeSogen creador = new CreadorDeSogen(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta sogen = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -553,10 +542,10 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(sogen);
+		jugadorUno.agregarCartaEnCampo((Campo) sogen);
 		
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosTres);
-		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosCuatro);		
+		Monstruo monstruoTres = new Monstruo("Facu", jugadorUno, estrellas, puntosTres);
+		Monstruo monstruoCuatro = new Monstruo("Javi", jugadorDos, estrellas, puntosCuatro);		
 		
 		jugadorUno.repartirCarta(monstruoTres);
 		jugadorDos.repartirCarta(monstruoCuatro);
@@ -569,9 +558,7 @@ class TestJugador {
 	
 	@Test
 	public void test20EfectoDeLaCartaDeCampoSogenNoModificaLasCartasQueYaSeLesAplicoElEfecto() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -587,11 +574,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoSogen();
-		Campo sogen = fabricaDeCartas.crearCarta("Sogen", jugadorUno, efecto);
+		CreadorDeSogen creador = new CreadorDeSogen(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta sogen = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -599,10 +587,10 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(sogen);
+		jugadorUno.agregarCartaEnCampo((Campo) sogen);
 		
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosTres);
-		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosCuatro);		
+		Monstruo monstruoTres = new Monstruo("Facu", jugadorUno, estrellas, puntosTres);
+		Monstruo monstruoCuatro = new Monstruo("Javi", jugadorDos, estrellas, puntosCuatro);		
 		
 		jugadorUno.repartirCarta(monstruoTres);
 		jugadorDos.repartirCarta(monstruoCuatro);
@@ -616,9 +604,7 @@ class TestJugador {
 	
 	@Test
 	public void test21EfectoDeLaCartaDeCampoWastelandPerduraACartarAgregadasDespues() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -634,11 +620,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoWasteland();
-		Campo wasteland = fabricaDeCartas.crearCarta("Wasteland", jugadorUno, efecto);
+		CreadorDeWasteland creador = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta wasteland = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -646,10 +633,10 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(wasteland);
+		jugadorUno.agregarCartaEnCampo((Campo) wasteland);
 		
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Joaco", jugadorUno, estrellas, puntosTres);
-		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("Auriane", jugadorDos, estrellas, puntosCuatro);		
+		Monstruo monstruoTres = new Monstruo("Joaco", jugadorUno, estrellas, puntosTres);
+		Monstruo monstruoCuatro = new Monstruo("Auriane", jugadorDos, estrellas, puntosCuatro);		
 		
 		jugadorUno.repartirCarta(monstruoTres);
 		jugadorDos.repartirCarta(monstruoCuatro);
@@ -662,9 +649,7 @@ class TestJugador {
 	
 	@Test
 	public void test22EfectoDeLaCartaDeCampoWastelandNoModificaLasCartasQueYaSeLesAplicoElEfecto() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -680,11 +665,12 @@ class TestJugador {
 		
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efecto = new EfectoWasteland();
-		Campo wasteland = fabricaDeCartas.crearCarta("wasteland", jugadorUno, efecto);
+		CreadorDeWasteland creador = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta wasteland = builder.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -692,10 +678,10 @@ class TestJugador {
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
-		jugadorUno.agregarCartaEnCampo(wasteland);
+		jugadorUno.agregarCartaEnCampo((Campo) wasteland);
 		
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosTres);
-		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosCuatro);		
+		Monstruo monstruoTres = new Monstruo("Facu", jugadorUno, estrellas, puntosTres);
+		Monstruo monstruoCuatro = new Monstruo("Javi", jugadorDos, estrellas, puntosCuatro);		
 		
 		jugadorUno.repartirCarta(monstruoTres);
 		jugadorDos.repartirCarta(monstruoCuatro);
@@ -709,9 +695,7 @@ class TestJugador {
 
 	@Test
 	public void test24CadaJugadorAgregaUnaCartaCampoYSeAplicaElEfectoDeAmbas() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -724,13 +708,16 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(2000, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("Facu", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("Facu", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("Javi", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeCampo efectoSogen = new EfectoSogen();
-		EfectoDeCampo efectoWasteland = new EfectoWasteland();
-		Campo sogen = fabricaDeCartas.crearCarta("sogen", jugadorUno, efectoSogen);
-		Campo wasteland = fabricaDeCartas.crearCarta("wasteland", jugadorDos, efectoWasteland);
+		CreadorDeSogen creador = new CreadorDeSogen(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta sogen = builder.obtenerCarta();
+		
+		CreadorDeWasteland creador2 = new CreadorDeWasteland(jugadorDos);
+		BuilderDeCartas builder2 = new BuilderDeCartas(creador2);
+		Carta wasteland = builder2.obtenerCarta();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorDos.repartirCarta(monstruoDos);
@@ -741,8 +728,8 @@ class TestJugador {
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
-		jugadorUno.agregarCartaEnCampo(sogen);
-		jugadorDos.agregarCartaEnCampo(wasteland);
+		jugadorUno.agregarCartaEnCampo((Campo) sogen);
+		jugadorDos.agregarCartaEnCampo((Campo) wasteland);
 		
 		
 		assertEquals( puntosDos.obtenerPuntosDeAtaque(), 2400 );
@@ -755,9 +742,7 @@ class TestJugador {
 	
 	@Test
 	public void test27SeTomaron2CartasDelMazoLuegoDeInvocarOllaDeLaCodicia() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -769,11 +754,12 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		Monstruo monstruo1 = new Monstruo("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruo2 = new Monstruo("monstruo2", jugadorDos, estrellas, puntos);
 		
-		Efecto efecto = new EfectoOllaDeLaCodicia();
-		Magica ollaDeLaCodicia = fabricaDeCartas.crearCarta("olla de la codicia", jugadorUno, efecto);
+		CreadorDeOllaDeLaCodicia creador = new CreadorDeOllaDeLaCodicia(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta ollaDeLaCodicia = builder.obtenerCarta();
 		
 		Baraja mazo = new Baraja();
 		mazo.agregarCarta(monstruo1);
@@ -781,7 +767,7 @@ class TestJugador {
 		jugadorUno.asignarMazo(mazo);
 		
 		jugadorUno.repartirCarta(ollaDeLaCodicia);	
-		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
+		jugadorUno.agregarCartaEnCampo((Magica) ollaDeLaCodicia);
 		
 		assertTrue(jugadorUno.contieneCartaEnMano(monstruo1));
 		assertTrue(jugadorUno.contieneCartaEnMano(monstruo2));
@@ -789,9 +775,7 @@ class TestJugador {
 	
 	@Test
 	public void test28InvocarOllaDeLaCodiciaBocaAbajoNoSeRetiranCartas() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -803,11 +787,12 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruo1 = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruo2 = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		Monstruo monstruo1 = new Monstruo("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruo2 = new Monstruo("monstruo2", jugadorDos, estrellas, puntos);
 		
-		Efecto efecto = new EfectoOllaDeLaCodicia();
-		Magica ollaDeLaCodicia = fabricaDeCartas.crearCarta("olla de la codicia", jugadorUno, efecto);
+		CreadorDeOllaDeLaCodicia creador = new CreadorDeOllaDeLaCodicia(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta ollaDeLaCodicia = builder.obtenerCarta();
 		
 		Baraja mazo = new Baraja();
 		mazo.agregarCarta(monstruo1);
@@ -816,7 +801,7 @@ class TestJugador {
 		
 		ollaDeLaCodicia.voltear();
 		jugadorUno.repartirCarta(ollaDeLaCodicia);
-		jugadorUno.agregarCartaEnCampo(ollaDeLaCodicia);
+		jugadorUno.agregarCartaEnCampo((Magica) ollaDeLaCodicia);
 		
 		assertFalse(jugadorUno.contieneCartaEnMano(monstruo1));
 		assertFalse(jugadorUno.contieneCartaEnMano(monstruo2));
@@ -824,9 +809,7 @@ class TestJugador {
 	
 	@Test
 	public void test29jugadorPierdeVidaAlAtacarConCartaDebilAOtraMasFuerte() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -840,8 +823,8 @@ class TestJugador {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		Monstruo unaCarta = new Monstruo("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		jugadorUno.repartirCarta(unaCarta);
 		jugadorDos.repartirCarta(otraCarta);
@@ -860,9 +843,7 @@ class TestJugador {
 	
 	@Test
 	public void test30jugadoNoPuedeAtacarConCartaEnMano () {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -876,8 +857,8 @@ class TestJugador {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		Monstruo unaCarta = new Monstruo("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		jugadorUno.repartirCarta(unaCarta);
 		jugadorDos.repartirCarta(otraCarta);
@@ -892,9 +873,7 @@ class TestJugador {
 	
 	@Test
 	public void test31jugadorNoPuedeAtacarConCartaAjena() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -908,8 +887,8 @@ class TestJugador {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		Monstruo unaCarta = new Monstruo("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo("Javier", jugadorDos, estrellas, puntosOtraCarta);
 		
 		jugadorUno.repartirCarta(unaCarta);
 		jugadorDos.repartirCarta(otraCarta);
@@ -926,9 +905,7 @@ class TestJugador {
 	}
 	@Test
 	public void test32jugadorNoPuedeAtacarCartaPropia () {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -942,8 +919,8 @@ class TestJugador {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorUno, estrellas, puntosOtraCarta);
+		Monstruo unaCarta = new Monstruo("Facundo", jugadorUno, estrellas, puntosUnaCarta);
+		Monstruo otraCarta = new Monstruo("Javier", jugadorUno, estrellas, puntosOtraCarta);
 		
 		jugadorUno.repartirCarta(unaCarta);
 		jugadorUno.repartirCarta(otraCarta);
@@ -962,9 +939,7 @@ class TestJugador {
 	
 	@Test
 	public void test33AtacarJugadorConCilindroInflinjeDanioDelAtaqueAlAtacante() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -976,15 +951,16 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("monstruo2", jugadorDos, estrellas, puntos);
 		
-		EfectoDeTrampa efecto = new EfectoCilindroMagico();
-		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
+		CreadorDeCilindroMagico creador = new CreadorDeCilindroMagico(jugadorDos);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta cilindroMagico = builder.obtenerCarta();
 		
 		jugadorDos.repartirCarta(cilindroMagico);
 		jugadorDos.repartirCarta(monstruoDos);
-		jugadorDos.agregarCartaEnCampo(cilindroMagico);
+		jugadorDos.agregarCartaEnCampo((Trampa) cilindroMagico);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
 		jugadorUno.repartirCarta(monstruoUno);
@@ -1002,8 +978,6 @@ class TestJugador {
 	@Test
 	public void test34CartaTrampaCilindroMagicoDespuesDelAtaqueVaAlCementerio() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -1015,15 +989,16 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("monstruo2", jugadorDos, estrellas, puntos);
 		
-		EfectoDeTrampa efecto = new EfectoCilindroMagico();
-		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
+		CreadorDeCilindroMagico creador = new CreadorDeCilindroMagico(jugadorDos);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta cilindroMagico = builder.obtenerCarta();
 		
 		jugadorDos.repartirCarta(cilindroMagico);
 		jugadorDos.repartirCarta(monstruoDos);
-		jugadorDos.agregarCartaEnCampo(cilindroMagico);
+		jugadorDos.agregarCartaEnCampo((Trampa) cilindroMagico);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
 		jugadorUno.repartirCarta(monstruoUno);
@@ -1038,9 +1013,7 @@ class TestJugador {
 	
 	@Test
 	public void test35AtacarJugadorConCilindroMataLaCartaAtacante() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -1052,15 +1025,16 @@ class TestJugador {
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntos);
+		Monstruo monstruoUno = new Monstruo("monstruo1", jugadorUno, estrellas, puntos);
+		Monstruo monstruoDos = new Monstruo("monstruo2", jugadorDos, estrellas, puntos);
 		
-		EfectoDeTrampa efecto = new EfectoCilindroMagico();
-		Trampa cilindroMagico = fabricaDeCartas.crearCarta("Cilindro Magico", jugadorDos, efecto);
+		CreadorDeCilindroMagico creador = new CreadorDeCilindroMagico(jugadorDos);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta cilindroMagico = builder.obtenerCarta();
 		
 		jugadorDos.repartirCarta(cilindroMagico);
 		jugadorDos.repartirCarta(monstruoDos);
-		jugadorDos.agregarCartaEnCampo(cilindroMagico);
+		jugadorDos.agregarCartaEnCampo((Trampa) cilindroMagico);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
 		jugadorUno.repartirCarta(monstruoUno);
@@ -1075,9 +1049,7 @@ class TestJugador {
 
 	@Test
 	public void test36AtacarJugadorConReinforcementAumentaLosPuntosDeAtaqueDeLaCartaAtacada() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -1090,15 +1062,16 @@ class TestJugador {
 		Puntos puntosDos = new Puntos(0, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugadorUno, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugadorDos, estrellas, puntosDos);
+		Monstruo monstruoUno = new Monstruo("monstruo1", jugadorUno, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("monstruo2", jugadorDos, estrellas, puntosDos);
 		
-		EfectoDeTrampa efecto = new EfectoReinforcements();
-		Trampa reinforcements = fabricaDeCartas.crearCarta("Reinforcements", jugadorDos, efecto);
+		CreadorDeReinforcements creador = new CreadorDeReinforcements(jugadorDos);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta reinforcements = builder.obtenerCarta();
 		
 		jugadorDos.repartirCarta(reinforcements);
 		jugadorDos.repartirCarta(monstruoDos);
-		jugadorDos.agregarCartaEnCampo(reinforcements);
+		jugadorDos.agregarCartaEnCampo((Trampa) reinforcements);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);
 		
 		jugadorUno.repartirCarta(monstruoUno);
@@ -1113,9 +1086,7 @@ class TestJugador {
 	
 	@Test
 	public void test37AgregarCartaDeCampoCuandoYaHayUnaCartaCampo() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -1124,24 +1095,26 @@ class TestJugador {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 
+		CreadorDeWasteland creador = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder = new BuilderDeCartas(creador);
+		Carta wastelandUno = builder.obtenerCarta();
 		
-		EfectoDeCampo efecto = new EfectoWasteland();
-		Campo wastelandUno = fabricaDeCartas.crearCarta("Wasteland", jugadorUno, efecto);
-		Campo wastelandDos = fabricaDeCartas.crearCarta("Wasteland", jugadorDos, efecto);
+		CreadorDeWasteland creador2 = new CreadorDeWasteland(jugadorUno);
+		BuilderDeCartas builder2 = new BuilderDeCartas(creador2);
+		Carta wastelandDos = builder2.obtenerCarta();
 		
 		jugadorUno.repartirCarta(wastelandUno);
-		jugadorUno.agregarCartaEnCampo(wastelandUno);
+		jugadorUno.agregarCartaEnCampo((Campo) wastelandUno);
 		
 		jugadorUno.repartirCarta(wastelandDos);
 
 		
-		assertThrows(ErrorYaHayCartaDeCampoInvocada.class, () -> jugadorUno.agregarCartaEnCampo(wastelandDos));
+		assertThrows(ErrorYaHayCartaDeCampoInvocada.class, () -> jugadorUno.agregarCartaEnCampo((Campo) wastelandDos));
 	}
 	
 	
 	@Test
 	public void test38Agregar6CartasMonstruosLanzaExcepcion() {
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vida = new Vida (8000);
 		Jugador jugador = new Jugador (vida);
@@ -1149,12 +1122,12 @@ class TestJugador {
 		Puntos puntosUno = new Puntos(400, 2000);
 		Estrellas estrellas = new Estrellas(3);
 		
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("monstruo1", jugador, estrellas, puntosUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("monstruo2", jugador, estrellas, puntosUno);
-		Monstruo monstruoTres = fabricaDeCartas.crearCarta("monstruo3", jugador, estrellas, puntosUno);
-		Monstruo monstruoCuatro = fabricaDeCartas.crearCarta("monstruo4", jugador, estrellas, puntosUno);
-		Monstruo monstruoCinco = fabricaDeCartas.crearCarta("monstruo5", jugador, estrellas, puntosUno);
-		Monstruo monstruoSeis = fabricaDeCartas.crearCarta("monstruo6", jugador, estrellas, puntosUno);
+		Monstruo monstruoUno = new Monstruo("monstruo1", jugador, estrellas, puntosUno);
+		Monstruo monstruoDos = new Monstruo("monstruo2", jugador, estrellas, puntosUno);
+		Monstruo monstruoTres = new Monstruo("monstruo3", jugador, estrellas, puntosUno);
+		Monstruo monstruoCuatro = new Monstruo("monstruo4", jugador, estrellas, puntosUno);
+		Monstruo monstruoCinco = new Monstruo("monstruo5", jugador, estrellas, puntosUno);
+		Monstruo monstruoSeis = new Monstruo("monstruo6", jugador, estrellas, puntosUno);
 		
 		jugador.repartirCarta(monstruoUno);
 		jugador.repartirCarta(monstruoDos);
