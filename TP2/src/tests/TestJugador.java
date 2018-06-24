@@ -245,9 +245,7 @@ class TestJugador {
 		Monstruo monstruoUno = fabricaUno.crearMonstruoPersonalizado("facu", estrellas, puntos);
 		Monstruo monstruoDos = fabricaDos.crearMonstruoPersonalizado("javi", estrellas, puntos);
 		
-		CreadorDeAgujeroNegro creador = new CreadorDeAgujeroNegro(jugadorUno);
-		BuilderDeCartas builder = new BuilderDeCartas(creador);
-		Carta agujeroNegro = builder.obtenerCarta();
+		Magica agujeroNegro = fabricaUno.crearAgujeroNegro();
 		
 		jugadorUno.repartirCarta(monstruoUno);
 		jugadorUno.repartirCarta(agujeroNegro);
