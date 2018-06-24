@@ -35,5 +35,5 @@ public class BotonInicioHandler implements EventHandler<ActionEvent>  {
         stage.setFullScreen(true);
         ventanaDeJuego.actualizarNombres();
 	}
-	
+
 }

@@ -24,8 +24,7 @@ public class EventoActivarBoton implements EventHandler<KeyEvent> {
 		if ((esteCampo.getText().length() != 0) && (elOtroCampo.getText().length() !=0 )) {
 				botonAActivar.setDisable(false);
 		}
-		else {
-			
+		else {	
 			botonAActivar.setDisable(true);
 		}
 	}

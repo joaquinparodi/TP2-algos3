@@ -1,5 +1,6 @@
 package Vista;
 
+import java.util.ArrayList;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
@@ -17,13 +18,18 @@ public class VentanaDeJuego {
 	
 	Jugador playerOne;
 	Jugador playerTwo;
+	
 	private Text playerOneName;
 	private Text playerTwoName;
 	private Text playerOneLife;
 	private Text playerTwoLife;
 	
+	ArrayList<Rectangle> handOne;
+	ArrayList<Rectangle> handTwo;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
+		handOne = new ArrayList<Rectangle>();
+		handTwo = new ArrayList<Rectangle>();
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
 	}
@@ -83,8 +89,8 @@ public class VentanaDeJuego {
 		square1.setArcWidth(15); square1.setArcHeight(15);
 		square2.setArcWidth(15); square2.setArcHeight(15);
 		
-		playerOneName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
-		playerTwoName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
+		playerOneName = new Text(playerOne.obtenerNombre()); 
+		playerTwoName = new Text(playerOne.obtenerNombre()); 
 		playerOneLife = new Text("8000");
 		playerTwoLife = new Text("8000");
 		
@@ -222,13 +228,19 @@ public class VentanaDeJuego {
 		Rectangle P1card4 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1card5 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1mount = new Rectangle(with, height, Color.DARKCYAN); 
-
+		
 		Rectangle P2card1 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2card2 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2card3 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2card4 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2mount = new Rectangle(with, height, Color.DARKCYAN); 
+		
+		handOne.add(P1card1); handTwo.add(P2card2); 
+		handOne.add(P1card2); handTwo.add(P2card2); 
+		handOne.add(P1card3); handTwo.add(P2card2); 
+		handOne.add(P1card4); handTwo.add(P2card2); 
+		handOne.add(P1card5); handTwo.add(P2card2); 
 
 		gridPane.setMargin(P1card1, new Insets(10)); gridPane.setMargin(P2card1, new Insets(10)); 
 		gridPane.setMargin(P1card2, new Insets(10)); gridPane.setMargin(P2card2, new Insets(10)); 

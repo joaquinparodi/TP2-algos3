@@ -22,7 +22,7 @@ public class Main extends Application {
 	public void start( Stage stage ) throws Exception {
 		this.inicializarJugadores();
 		this.inicializarVentanas();
-		this.determinarJugadorInicial();
+		this.cargarMazoAJugadores();
 		
 		stage.setTitle("Yu-Gi-Oh! The Game");	
 		
@@ -33,11 +33,17 @@ public class Main extends Application {
 		stage.show();
 	}
 	
-	private void determinarJugadorInicial() {
+	private void cargarMazoAJugadores() {
 		Randomizador randomizador = new Randomizador();
+		randomizador.cargarMazo(jugadorUno);
+		randomizador.cargarMazo(jugadorDos);
 	}
 	
 	private void inicializarJugadores() {
+		Randomizador randomizador = new Randomizador();
+		randomizador.cargarMazo(jugadorUno);
+		randomizador.cargarMazo(jugadorDos);
+		
 		Vida vidaJugadorUno = new Vida(8000);
 		Vida vidaJugadorDos = new Vida(8000);
 		
