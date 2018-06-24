@@ -1,6 +1,7 @@
 package Vista;
 
 import eventos.BotonInicioHandler;
+import eventos.EventoActivarBoton;
 import eventos.TextFieldNombreHandler;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -65,6 +66,7 @@ public class VentanaInicial {
 		gridPane.setVgap(10);
 		
 		Button enterButton = new Button("Comenzar");
+		enterButton.setDisable(true);
 		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage);
 		enterButton.setOnAction(buttonHandler);
 		
@@ -74,16 +76,21 @@ public class VentanaInicial {
 		namePlayerOne.setPromptText("Nombre jugador uno");
 		namePlayerTwo.setPromptText("Nombre jugador dos");
 		
+		EventoActivarBoton activarBotonHandler = new EventoActivarBoton(enterButton,namePlayerOne,namePlayerTwo);
+		
+		namePlayerOne.setOnKeyPressed(activarBotonHandler);
+		namePlayerTwo.setOnKeyPressed(activarBotonHandler);
+		
 		TextFieldNombreHandler nameOneHandler = new TextFieldNombreHandler(playerOne);
 		nameOneHandler.asignarNombreObtenido(namePlayerOne.getText());
 		
 		TextFieldNombreHandler nameTwoHandler = new TextFieldNombreHandler(playerTwo);
 		nameTwoHandler.asignarNombreObtenido(namePlayerTwo.getText());
 		
-		gridPane.add(enterButton, 0, 0);
-		gridPane.add(namePlayerOne, 0, 1);
-		gridPane.add(namePlayerTwo, 0, 2);
-		
+		gridPane.add(namePlayerOne, 0, 0);
+		gridPane.add(namePlayerTwo, 0, 1);
+		gridPane.add(enterButton, 0, 2);
+
 		return gridPane;
 	}
 	
