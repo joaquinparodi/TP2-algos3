@@ -27,7 +27,7 @@ public class TestBaraja {
 		
 		Puntos puntos = new Puntos(1000, 1000);
 		Estrellas estrellas = new Estrellas(1);
-		Carta monstruo = fabricaDeCartas.crearMonstruoPersonalizado("CartaDePrueba", jugador, estrellas, puntos);
+		Carta monstruo = fabricaDeCartas.crearMonstruoPersonalizado("CartaDePrueba", estrellas, puntos);
 		baraja.agregarCarta(monstruo);
 		
 		assertTrue( baraja.pertenece(monstruo) );

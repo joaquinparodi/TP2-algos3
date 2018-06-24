@@ -27,7 +27,7 @@ public class TestSacrificio {
 		
 		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		
 		Sacrificio sacrificio = new Sacrificio();
@@ -49,7 +49,7 @@ public class TestSacrificio {
 		
 		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		campo.agregarCarta(unaCarta);
 		
