@@ -17,10 +17,20 @@ public class VentanaDeJuego {
 	
 	Jugador playerOne;
 	Jugador playerTwo;
+	private Text playerOneName;
+	private Text playerTwoName;
+	private Text playerOneLife;
+	private Text playerTwoLife;
+	
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
+	}
+	
+	public void actualizarNombres() {
+		playerOneName.setText(playerOne.obtenerNombre());
+		playerTwoName.setText(playerTwo.obtenerNombre());
 	}
 	
 	public Scene createGameScene() {
@@ -73,10 +83,10 @@ public class VentanaDeJuego {
 		square1.setArcWidth(15); square1.setArcHeight(15);
 		square2.setArcWidth(15); square2.setArcHeight(15);
 		
-		Text playerOneName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
-		Text playerTwoName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
-		Text playerOneLife = new Text("8000");
-		Text playerTwoLife = new Text("8000");
+		playerOneName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
+		playerTwoName = new Text(playerOne.obtenerNombre()); //Hay que modificarlos
+		playerOneLife = new Text("8000");
+		playerTwoLife = new Text("8000");
 		
 		gridPane.setHgap(10);
 		gridPane.setVgap(9);

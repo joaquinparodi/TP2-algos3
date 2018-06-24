@@ -29,15 +29,17 @@ public class VentanaInicial {
 	private Stage stage;
 	private Jugador playerOne;
 	private Jugador playerTwo;
+	private VentanaDeJuego ventanaDeJuego;
 	
 	public VentanaInicial(Jugador playerOne, Jugador playerTwo) {
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
 	}
 	
-	public Scene createInitialScene( Scene nextScene, Stage stage) {
+	public Scene createInitialScene( Scene nextScene, Stage stage, VentanaDeJuego ventanaDeJuego) {
 		this.nextScene = nextScene;
 		this.stage = stage;
+		this.ventanaDeJuego = ventanaDeJuego;
 		
 		BorderPane rootBorderPane = this.createBorderPane();
 		
@@ -84,7 +86,7 @@ public class VentanaInicial {
 		TextFieldNombreHandler nameTwoHandler = new TextFieldNombreHandler(playerTwo);
 		nameTwoHandler.asignarNombreObtenido(namePlayerTwo.getText());
 		
-		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage, playerOne, playerTwo, namePlayerOne, namePlayerTwo);
+		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage, playerOne, playerTwo, namePlayerOne, namePlayerTwo, ventanaDeJuego);
 		enterButton.setOnAction(buttonHandler);
 		
 		gridPane.add(namePlayerOne, 0, 0);
