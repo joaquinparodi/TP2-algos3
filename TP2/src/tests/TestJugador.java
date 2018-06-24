@@ -33,9 +33,8 @@ class TestJugador {
     	Jugador unJugador = new Jugador(vida);
 
         double vidaEsperada = 8000;
-        double vidaObtenida = unJugador.obtenerVida();
 
-        assertEquals(vidaEsperada,vidaObtenida);
+        assertTrue(unJugador.tieneVida(vidaEsperada));
     }
 
     @Test
@@ -47,9 +46,8 @@ class TestJugador {
         unJugador.hacerDanio(2000);
 
         double vidaEsperada = 6000;
-        double vidaObtenida = unJugador.obtenerVida();
 
-        assertEquals(vidaEsperada,vidaObtenida);
+        assertTrue(unJugador.tieneVida(vidaEsperada));
     }
     
 	@Test
@@ -259,8 +257,8 @@ class TestJugador {
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorUno.agregarCartaEnCampo(agujeroNegro);
 		
-		assertTrue(jugadorUno.obtenerVida() == 8000);
-		assertTrue(jugadorDos.obtenerVida() == 8000);
+		assertTrue(jugadorUno.tieneVida(8000));
+		assertTrue(jugadorDos.tieneVida(8000));
 		
 	}
 	
@@ -844,10 +842,9 @@ class TestJugador {
 		
 		jugadorUno.atacarCartaConCarta(otraCarta, unaCarta);
 		
-		double vidaObtenida = jugadorUno.obtenerVida();
 		double vidaEsperada = 7500;
 		
-		assertEquals(vidaEsperada,vidaObtenida);
+		assertTrue(jugadorUno.tieneVida(vidaEsperada));
 		
 	}
 	
@@ -988,9 +985,9 @@ class TestJugador {
 		jugadorUno.atacarCartaConCarta(monstruoDos, monstruoUno);
 		
 		//Pierde 2000 de vida, que era el ataque del monstruoUno
-		assertEquals(jugadorUno.obtenerVida(), 6000);
+		assertTrue(jugadorUno.tieneVida(6000));
 		//El jugador atacado no pierde puntos de vida
-		assertEquals(jugadorDos.obtenerVida(), 8000);
+		assertTrue(jugadorDos.tieneVida(8000));
 
 	} 
 	
@@ -1101,7 +1098,7 @@ class TestJugador {
 		jugadorUno.atacarCartaConCarta(monstruoDos, monstruoUno);
 		
 		//Aumenta de 0 a 500 el ataque, y por diferencia de puntos resta 100 al juagdorUno 
-		assertEquals(jugadorUno.obtenerVida(), 7900);
+		assertTrue(jugadorUno.tieneVida(7900));
 		
 	} 
 	

@@ -207,4 +207,8 @@ public class Jugador {
 		return mano.tieneExodiaCompleto();
 	}
 
+	public boolean tieneVida(double vida) {
+		return (this.vida.obtenerPuntosDeVida() == vida);
+	}
+
 }
