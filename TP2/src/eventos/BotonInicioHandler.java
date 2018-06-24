@@ -17,7 +17,7 @@ public class BotonInicioHandler implements EventHandler<ActionEvent>  {
 	
 	public void handle(ActionEvent event) {
         stage.setScene(nextScene);
-        //stage.setFullScreen(true);
+        stage.setFullScreen(true);
 	}
 	
 }

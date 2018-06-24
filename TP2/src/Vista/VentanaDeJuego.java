@@ -39,9 +39,12 @@ public class VentanaDeJuego {
 		GridPane centerGridPane = this.createCenterGridPane();
 		GridPane rightGridPane = this.createRightGridPane();
 		
+		ToolBar toolbar = new ToolBar();
+		
 		rootBorderPane.setLeft(leftGridPane);
 		rootBorderPane.setCenter(centerGridPane);
 		rootBorderPane.setRight(rightGridPane);
+		rootBorderPane.setTop(toolbar);
 		
 		return rootBorderPane;
 	}

@@ -25,12 +25,21 @@ public class Jugador {
     private CampoDeJuego campoDeJuego;
     private Jugador jugadorRival;
     private Baraja mano;
+    private String nombreJugador;
   
 	public Jugador(Vida vida) {
 	    this.vida = vida;
 	    this.campoDeJuego = new CampoDeJuego();
 	    this.mano = new Baraja();
     }
+	
+	public void asignarNombre(String nombreJugador) {
+		this.nombreJugador = nombreJugador;
+	}
+	
+	public String obtenerNombre() {
+		return nombreJugador;
+	}
 
 	public void asignarRival(Jugador jugadorRival) {
 		this.jugadorRival = jugadorRival;
