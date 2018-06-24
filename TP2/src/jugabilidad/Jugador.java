@@ -215,4 +215,8 @@ public class Jugador {
 		campoDeJuego.agregarMazo(mazo);
 	}
 
+	public boolean tieneVida(double vida) {
+		return (this.vida.obtenerPuntosDeVida() == vida);
+	}
+
 }
