@@ -5,7 +5,7 @@ import cartas.Carta;
 public class BuilderDeCartas {
 
 		private CreadorDeCartas creadorDeCartas;
-		
+
 		public BuilderDeCartas(CreadorDeCartas creador) {
 			creadorDeCartas = creador;
 			creadorDeCartas.crearCarta();
