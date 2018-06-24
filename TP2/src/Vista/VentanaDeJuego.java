@@ -1,18 +1,25 @@
 package Vista;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+
+import cartas.Carta;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
-import jugabilidad.Jugador;
+import jugabilidad.Baraja;
+import jugabilidad.Jugador;		
+
 
 public class VentanaDeJuego {
 	
@@ -27,7 +34,10 @@ public class VentanaDeJuego {
 	ArrayList<Rectangle> handOne;
 	ArrayList<Rectangle> handTwo;
 	
+	BaseDeDatosDeCartas database;
+	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
+		database = new BaseDeDatosDeCartas();
 		handOne = new ArrayList<Rectangle>();
 		handTwo = new ArrayList<Rectangle>();
 		this.playerOne = playerOne;
@@ -39,9 +49,38 @@ public class VentanaDeJuego {
 		playerTwoName.setText(playerTwo.obtenerNombre());
 	}
 	
+	
 	public void actualizarManos() {
+		Iterator<Rectangle> iterOne = handOne.iterator();
+		Iterator<Rectangle> iterTwo = handTwo.iterator();		
 		
-	}
+		Baraja deckOne = playerOne.obtenerMano();
+		Baraja deckTwo = playerTwo.obtenerMano();
+		
+		Iterator<Carta> iterDeckOne = deckOne.obtenerIteradorDeBaraja();
+		Iterator<Carta> iterDeckTwo = deckTwo.obtenerIteradorDeBaraja();
+		
+		final int maxCardHand = 5;
+		int actualCards = 0;
+		
+		String URL; ImagePattern image;
+		while(iterOne.hasNext() && actualCards <= maxCardHand && iterDeckOne.hasNext()) {
+			URL = database.getURL(iterDeckOne.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterOne.next().setFill(image);
+			actualCards++;
+		}
+		
+		actualCards = 0;
+		while(iterTwo.hasNext() && actualCards <= maxCardHand && iterDeckTwo.hasNext()) {
+			URL = database.getURL(iterDeckTwo.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterTwo.next().setFill(image);
+			actualCards++;
+		}
+
+
+	} 
 	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
@@ -53,6 +92,7 @@ public class VentanaDeJuego {
 	    
 	    return scene;
 	}
+	
 	
 	private BorderPane createBorderPane() {
 		BorderPane rootBorderPane = new BorderPane();
@@ -70,6 +110,7 @@ public class VentanaDeJuego {
 		
 		return rootBorderPane;
 	}
+	
 	
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
@@ -132,6 +173,7 @@ public class VentanaDeJuego {
 		return gridPane;
 	}
 	
+
 	private GridPane createCenterGridPane() {		
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
@@ -213,6 +255,7 @@ public class VentanaDeJuego {
 		return gridPane;
 	}
 	
+	
 	private GridPane createRightGridPane() {
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
@@ -226,6 +269,7 @@ public class VentanaDeJuego {
 		gridPane.setVgap(14);
 		
 		double with = 70; double height = 100;
+		
 		Rectangle P1card1 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1card2 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1card3 = new Rectangle(with, height, Color.DARKCYAN); 
@@ -240,11 +284,11 @@ public class VentanaDeJuego {
 		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2mount = new Rectangle(with, height, Color.DARKCYAN); 
 		
-		handOne.add(P1card1); handTwo.add(P2card2); 
+		handOne.add(P1card1); handTwo.add(P2card1); 
 		handOne.add(P1card2); handTwo.add(P2card2); 
-		handOne.add(P1card3); handTwo.add(P2card2); 
-		handOne.add(P1card4); handTwo.add(P2card2); 
-		handOne.add(P1card5); handTwo.add(P2card2); 
+		handOne.add(P1card3); handTwo.add(P2card3); 
+		handOne.add(P1card4); handTwo.add(P2card4); 
+		handOne.add(P1card5); handTwo.add(P2card5); 
 
 		gridPane.setMargin(P1card1, new Insets(10)); gridPane.setMargin(P2card1, new Insets(10)); 
 		gridPane.setMargin(P1card2, new Insets(10)); gridPane.setMargin(P2card2, new Insets(10)); 

@@ -107,7 +107,7 @@ public class FabricaDeCartas {
 	}
 	
 	public Monstruo crearParasitoParacida() {
-		return new Monstruo("Paracito Paracida", jugador, new Estrellas(2), new Puntos(500,300));
+		return new Monstruo("Parasito Paracida", jugador, new Estrellas(2), new Puntos(500,300));
 	}
 	
 	public Monstruo crearGusanoAguja() {

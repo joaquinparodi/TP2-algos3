@@ -49,7 +49,6 @@ public class Jugador {
 		mano.agregarCarta(carta);
 	}
 
-
 	public void repartirCarta() {
     	this.repartirCarta(this.campoDeJuego.obtenerCartaDelMazo());
     }
@@ -149,10 +148,6 @@ public class Jugador {
     public Jugador obtenerRival() {
     	return this.jugadorRival;
     }
-
-    public double obtenerVida() {
-	    return this.vida.obtenerPuntosDeVida();
-    }
     
     public CampoDeJuego obtenerCampo() {
     	return this.campoDeJuego;
@@ -188,7 +183,6 @@ public class Jugador {
     	
     }
     
-    
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
 		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
@@ -196,7 +190,6 @@ public class Jugador {
 	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
-	
 		
 	public boolean poseeExodiaCompleto() {
 		Iterator<Carta> iterador = mano.obtenerIteradorDeBaraja();
@@ -214,5 +207,15 @@ public class Jugador {
 	public void asignarMazo(Baraja mazo) {
 		campoDeJuego.agregarMazo(mazo);
 	}
+
+	/*Metodos utilizados para actualizar la interfaz*/
+	
+	public Baraja obtenerMano() {
+		return mano;
+	}
+	
+    public double obtenerVida() {
+	    return this.vida.obtenerPuntosDeVida();
+    }
 
 }

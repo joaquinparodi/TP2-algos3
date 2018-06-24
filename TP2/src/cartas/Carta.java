@@ -12,7 +12,7 @@ public abstract class Carta {
     protected Efecto efecto;
     
     public Carta( String nombre, Jugador jugador ) {
-        nombreCarta =nombre;
+        nombreCarta = nombre;
         jugadorDuenio = jugador;
         orientacion = new OrientacionArriba();
     }
@@ -28,5 +28,11 @@ public abstract class Carta {
     public void voltear() {
     	orientacion = orientacion.voltear();
     }
-
+    
+    /* metodos usados para actualizar la interfaz */
+    
+    public String obtenerNombre() {
+    	return this.nombreCarta;
+    }
 }
+	
