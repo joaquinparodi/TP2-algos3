@@ -42,7 +42,7 @@ class TestCarta {
 		
 		unaCarta.atacar( otraCarta );
 
-		assertEquals(7500, jugadorUno.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(7500, jugadorUno.obtenerVida() );
 	}
 	
 	@Test
@@ -68,7 +68,7 @@ class TestCarta {
 
 		unaCarta.atacar(otraCarta);
 		
-		assertEquals(7900, otroJugador.obtenerVida().obtenerPuntosDeVida());
+		assertEquals(7900, otroJugador.obtenerVida());
 	}
 	
 	@Test
@@ -94,8 +94,8 @@ class TestCarta {
 
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
@@ -123,8 +123,8 @@ class TestCarta {
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
@@ -151,8 +151,8 @@ class TestCarta {
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
@@ -179,8 +179,8 @@ class TestCarta {
 		otraCarta.cambiarPosicion();	
 		unaCarta.atacar(otraCarta);
 
-		assertEquals( 8000,unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals( 8000,otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals( 8000,unJugador.obtenerVida() );
+		assertEquals( 8000,otroJugador.obtenerVida() );
 	}
 	
 	@Test
@@ -404,9 +404,9 @@ class TestCarta {
 		
 		//jinzo 7 inicializa boca arriba (efecto activado)
 		//le resto 500 puntos de vida al rival a pesar de que el monstruo que ataco era mas poderoso
-		Vida vidaObtenida = jugadorDos.obtenerVida();
-		Vida vidaEsperada = new Vida(7500);
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		double vidaObtenida = jugadorDos.obtenerVida();
+		double vidaEsperada = 7500;
+		assertEquals(vidaObtenida,vidaEsperada);
 		
 		//jinzo 7 no murio
 		assertFalse(jugadorUno.cartaEstaMuerta(jinzo7));
@@ -441,9 +441,9 @@ class TestCarta {
 		
 		//jinzo 7 esta boca abajo (efecto desactivado)
 		//el jugador que ataca pierde vida
-		Vida vidaObtenida = jugadorUno.obtenerVida();
-		Vida vidaEsperada = new Vida(6500);
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		double vidaObtenida = jugadorUno.obtenerVida();
+		double vidaEsperada = 6500;
+		assertEquals(vidaObtenida,vidaEsperada);
 		
 		//jinzo 7 murio
 		assertTrue(jugadorUno.cartaEstaMuerta(jinzo7));
@@ -570,9 +570,9 @@ class TestCarta {
 		assertTrue(jugadorDos.cartaEstaMuerta(monstruoDos));
 		
 		//el jugador del monstruo que murio no pierde vida
-		Vida vidaEsperada = new Vida (8000);
-		Vida vidaObtenida = jugadorUno.obtenerVida();
+		double vidaEsperada = 8000;
+		double vidaObtenida = jugadorUno.obtenerVida();
 		
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		assertEquals(vidaObtenida,vidaEsperada);
 	}
 }

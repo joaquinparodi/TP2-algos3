@@ -141,8 +141,8 @@ public class Jugador {
     	return this.jugadorRival;
     }
 
-    public Vida obtenerVida() {
-	    return this.vida;
+    public double obtenerVida() {
+	    return this.vida.obtenerPuntosDeVida();
     }
     
     public CampoDeJuego obtenerCampo() {
