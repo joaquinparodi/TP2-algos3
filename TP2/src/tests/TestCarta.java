@@ -4,15 +4,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 
 import cartas.Atacable;
-import cartas.DragonBlancoOjoAzul;
-import cartas.DragonDefinitivo;
-import cartas.InsectoComeHombres;
-import cartas.Jinzo7;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
 import errores.ErrorCartasSacrificadasIncorrectas;
 import factories.FabricaDeCartas;
-import factories.FabricaDeMonstruosEspeciales;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,8 +24,6 @@ class TestCarta {
 	@Test
 	public void test01CartaAtacaAOtraEnPosicionDeAtaqueConMasPuntosRestaPuntosDeVidaAlAtacante() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -41,18 +34,19 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		unaCarta.atacar( otraCarta );
 
-		assertEquals(7500, jugadorUno.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(7500, jugadorUno.obtenerVida() );
 	}
 	
 	@Test
 	public void test02CartaAtacaAOtraEnPosicionDeAtaqueConMenosPuntosRestaPuntosDeVidaAlDefensor() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
@@ -66,19 +60,20 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 		
-		assertEquals(7900, otroJugador.obtenerVida().obtenerPuntosDeVida());
+		assertEquals(7900, otroJugador.obtenerVida());
 	}
 	
 	@Test
 	public void test03CartaAtacaAOtraConIgualPuntosDeAtaqueNoLeRestaANadie() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador unJugador = new Jugador (vidaJugadorUno);
@@ -91,20 +86,21 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
 	public void test04CartaAtacaAOtraEnModoDefensaConMasPuntosYNingunoPierdeVida () {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador unJugador = new Jugador (vidaJugadorUno);
@@ -118,21 +114,22 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
 	public void test05CartaAtacaAOtraEnDefensaConMenosPuntosYNingunoPierdeVida() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador unJugador = new Jugador (vidaJugadorUno);
@@ -145,21 +142,22 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 1000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar(otraCarta);
 
-		assertEquals(8000, unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals(8000, otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals(8000, unJugador.obtenerVida() );
+		assertEquals(8000, otroJugador.obtenerVida() );
 	}
 	
 	@Test
 	public void test06CartaAtacaAOtraEnDefensaConIgualPuntosYNingunoPierdeVida() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador unJugador = new Jugador (vidaJugadorUno);
@@ -172,21 +170,22 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();	
 		unaCarta.atacar(otraCarta);
 
-		assertEquals( 8000,unJugador.obtenerVida().obtenerPuntosDeVida() );
-		assertEquals( 8000,otroJugador.obtenerVida().obtenerPuntosDeVida() );
+		assertEquals( 8000,unJugador.obtenerVida() );
+		assertEquals( 8000,otroJugador.obtenerVida() );
 	}
 	
 	@Test
 	public void test07CartaAtacaAOtraEnAtaqueConMenosPuntosYLaDestruye() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador unJugador = new Jugador (vidaJugadorUno);
@@ -199,8 +198,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", unJugador, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", otroJugador, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(unJugador);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(otroJugador);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 
 		unaCarta.atacar(otraCarta);
 		
@@ -209,9 +211,7 @@ class TestCarta {
 	
 	@Test
 	public void test08CartaAtacaAOtraEnAtaqueConMasPuntosYSeDestruye() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -225,8 +225,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		unaCarta.atacar( otraCarta );
 
@@ -235,9 +238,7 @@ class TestCarta {
 	
 	@Test
 	public void test09CartaAtacaAOtraEnAtaqueConIgualPuntosYSeDestruyenAmbas() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -251,8 +252,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 
 		unaCarta.atacar( otraCarta );
 
@@ -262,9 +266,7 @@ class TestCarta {
 	
 	@Test
 	public void test10CartaAtacaAOtraEnDefensaConMenosPuntosYLaDestruye() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -278,8 +280,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -289,9 +294,7 @@ class TestCarta {
 	
 	@Test
 	public void test11CartaAtacaAOtraEnDefensaConMasPuntosYSeDestruye() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -305,8 +308,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2500);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -317,8 +323,6 @@ class TestCarta {
 	@Test
 	public void test12CartaAtacaAOtraEnDefensaConIgualPuntosYSeDestruyenAmabas() {
 
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -332,8 +336,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1600, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta =fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		otraCarta.cambiarPosicion();
 		unaCarta.atacar( otraCarta );
@@ -344,9 +351,7 @@ class TestCarta {
 	
 	@Test
 	public void test13AtaqueDesdePosicionInvalid() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugaforDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -360,8 +365,11 @@ class TestCarta {
 		Puntos puntosOtraCarta = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosUnaCarta);
-		Monstruo otraCarta = fabricaDeCartas.crearCarta("Javier", jugadorDos, estrellas, puntosOtraCarta);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosUnaCarta);
+		Monstruo otraCarta = fabricaDeCartas2.crearMonstruoPersonalizado("Javier", estrellas, puntosOtraCarta);
 		
 		unaCarta.cambiarPosicion();
 		
@@ -373,9 +381,6 @@ class TestCarta {
 	@Test
 	public void test14jinzo7AtacaDirectamenteAPuntosDeVida() {
 		
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		
@@ -389,16 +394,19 @@ class TestCarta {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
-		Atacable otroMonstruo = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntos);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo jinzo7 = fabricaDeCartas.crearJinzo7();
+		Monstruo otroMonstruo = fabricaDeCartas2.crearMonstruoPersonalizado("Facu", estrellas, puntos);
 		
 		jinzo7.atacar(otroMonstruo);
 		
 		//jinzo 7 inicializa boca arriba (efecto activado)
 		//le resto 500 puntos de vida al rival a pesar de que el monstruo que ataco era mas poderoso
-		Vida vidaObtenida = jugadorDos.obtenerVida();
-		Vida vidaEsperada = new Vida(7500);
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		double vidaObtenida = jugadorDos.obtenerVida();
+		double vidaEsperada = 7500;
+		assertEquals(vidaObtenida,vidaEsperada);
 		
 		//jinzo 7 no murio
 		assertFalse(jugadorUno.cartaEstaMuerta(jinzo7));
@@ -408,9 +416,6 @@ class TestCarta {
 	@Test
 	public void test14bisJinzo7BocaAbajoAtacaComoUnMonstruoCualquiera () {	
 		
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		
@@ -424,18 +429,21 @@ class TestCarta {
 		jugadorUno.asignarRival(jugadorDos);
 		jugadorDos.asignarRival(jugadorUno);
 		
-		Jinzo7 jinzo7 = fabricaDeMonstruosEspeciales.crearJinzo7(jugadorUno);
-		Atacable otroMonstruo = fabricaDeCartas.crearCarta("Facu", jugadorDos, estrellas, puntos);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		
+		Monstruo jinzo7 = fabricaDeCartas.crearJinzo7();
+		Monstruo otroMonstruo = fabricaDeCartas2.crearMonstruoPersonalizado("Facu", estrellas, puntos);
 		
 		jinzo7.voltear();
 		
-		jinzo7.atacar(otroMonstruo);
+		((Atacable) jinzo7).atacar(otroMonstruo);
 		
 		//jinzo 7 esta boca abajo (efecto desactivado)
 		//el jugador que ataca pierde vida
-		Vida vidaObtenida = jugadorUno.obtenerVida();
-		Vida vidaEsperada = new Vida(6500);
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		double vidaObtenida = jugadorUno.obtenerVida();
+		double vidaEsperada = 6500;
+		assertEquals(vidaObtenida,vidaEsperada);
 		
 		//jinzo 7 murio
 		assertTrue(jugadorUno.cartaEstaMuerta(jinzo7));
@@ -445,17 +453,16 @@ class TestCarta {
 	@Test
 	public void test15DragonBlancoOjosAzules() {
 		
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugador = new Vida (8000);
 		Jugador jugador = new Jugador (vidaJugador);
-		DragonBlancoOjoAzul dragon = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		Monstruo dragon = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
 		
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(2);
-		Monstruo monstruoUno = fabricaDeCartas.crearCarta("CartaUna", jugador, estrellas, puntos);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("CartaDos", jugador, estrellas, puntos);
+		Monstruo monstruoUno = fabricaDeCartas.crearMonstruoPersonalizado("CartaUna", estrellas, puntos);
+		Monstruo monstruoDos = fabricaDeCartas.crearMonstruoPersonalizado("CartaDos", estrellas, puntos);
 		
 		jugador.repartirCarta(dragon);
 		jugador.repartirCarta(monstruoUno);
@@ -467,7 +474,7 @@ class TestCarta {
 		monstruosASacrificar.agregarCarta(monstruoDos);
 
 		
-		jugador.agregarCartaEnCampo(dragon, monstruosASacrificar);
+		jugador.agregarCartaEnCampo((Monstruo) dragon, monstruosASacrificar);
 		
 		assertTrue(jugador.cartaEstaMuerta(monstruoUno));
 		assertTrue(jugador.cartaEstaMuerta(monstruoDos));
@@ -475,14 +482,15 @@ class TestCarta {
 	}
 	@Test
 	public void test16DragonDefinitivo() {
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		
+
 		Vida vidaJugador = new Vida (8000);
 		Jugador jugador = new Jugador (vidaJugador);
-		DragonBlancoOjoAzul dragonUno = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
-		DragonBlancoOjoAzul dragonDos = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
-		DragonBlancoOjoAzul dragonTres = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
-		DragonDefinitivo dragonDefinitivo = fabricaDeMonstruosEspeciales.crearDragonDefinitivo(jugador);
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		Monstruo dragonUno = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
+		Monstruo dragonDos = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
+		Monstruo dragonTres = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
+		Monstruo dragonDefinitivo = fabricaDeCartas.crearDragonDefinitivo();
 		
 		jugador.repartirCarta(dragonUno);
 		jugador.repartirCarta(dragonDos);
@@ -495,7 +503,7 @@ class TestCarta {
 		monstruosASacrificar.agregarCarta(dragonDos);
 		monstruosASacrificar.agregarCarta(dragonTres);
 
-		jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar);
+		jugador.agregarCartaEnCampo((Monstruo) dragonDefinitivo, monstruosASacrificar);
 
 		assertTrue(jugador.cartaEstaMuerta(dragonUno));
 		assertTrue(jugador.cartaEstaMuerta(dragonDos));
@@ -505,18 +513,19 @@ class TestCarta {
 	
 	@Test
 	public void test17DragonDefinitivoNoTieneLosBuenosSacrificios() {
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
 		
 		Vida vidaJugador = new Vida (8000);
 		Jugador jugador = new Jugador (vidaJugador);
 		Puntos puntos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(2);
 		
-		DragonBlancoOjoAzul dragonUno = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
-		DragonBlancoOjoAzul dragonDos = fabricaDeMonstruosEspeciales.crearDragonBlanco(jugador);
-		Monstruo monstruo = fabricaDeCartas.crearCarta("Monstruo", jugador, estrellas, puntos);
-		DragonDefinitivo dragonDefinitivo = fabricaDeMonstruosEspeciales.crearDragonDefinitivo(jugador);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		Monstruo dragonUno = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
+		Monstruo dragonDos = fabricaDeCartas.crearDragonBlancoDeOjosAzules();
+		
+		Monstruo monstruo = fabricaDeCartas.crearMonstruoPersonalizado("Monstruo", estrellas, puntos);
+		
+		Monstruo dragonDefinitivo = fabricaDeCartas.crearDragonDefinitivo();
 		
 		jugador.repartirCarta(dragonUno);
 		jugador.repartirCarta(dragonDos);
@@ -529,15 +538,12 @@ class TestCarta {
 		monstruosASacrificar.agregarCarta(dragonDos);
 		monstruosASacrificar.agregarCarta(monstruo);
 		
-		assertThrows(ErrorCartasSacrificadasIncorrectas.class, () -> jugador.agregarCartaEnCampo(dragonDefinitivo, monstruosASacrificar));
+		assertThrows(ErrorCartasSacrificadasIncorrectas.class, () -> jugador.agregarCartaEnCampo((Monstruo) dragonDefinitivo, monstruosASacrificar));
 	}
 	
 	@Test
 	public void test18InsesctoComeHombresDestruyeAlMonstruoAtacanteSiEstaBocaAbajo() {
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		FabricaDeMonstruosEspeciales fabricaDeMonstruosEspeciales = new FabricaDeMonstruosEspeciales();
-		
+
 		Vida vidaJugadorUno = new Vida (8000);
 		Vida vidaJugadorDos = new Vida (8000);
 		Jugador jugadorUno = new Jugador (vidaJugadorUno);
@@ -549,21 +555,24 @@ class TestCarta {
 		Puntos puntosDos = new Puntos(2000, 2000);
 		Estrellas estrellas = new Estrellas(2);
 		
-		InsectoComeHombres insecto = fabricaDeMonstruosEspeciales.crearInsectoComeHombres(jugadorUno);
-		Monstruo monstruoDos = fabricaDeCartas.crearCarta("Javi", jugadorDos, estrellas, puntosDos);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugadorDos);
+		Monstruo insecto = fabricaDeCartas.crearInsectoComeHombres();
+		
+		Monstruo monstruoDos = fabricaDeCartas2.crearMonstruoPersonalizado("Javi", estrellas, puntosDos);
 		
 		insecto.voltear();
 		
-		monstruoDos.atacar(insecto);
+		monstruoDos.atacar((Atacable) insecto);
 		
 		//muere el monstruo atacante y no el insecto come hombres
 		assertFalse(jugadorUno.cartaEstaMuerta(insecto));
 		assertTrue(jugadorDos.cartaEstaMuerta(monstruoDos));
 		
 		//el jugador del monstruo que murio no pierde vida
-		Vida vidaEsperada = new Vida (8000);
-		Vida vidaObtenida = jugadorUno.obtenerVida();
+		double vidaEsperada = 8000;
+		double vidaObtenida = jugadorUno.obtenerVida();
 		
-		assertEquals(vidaObtenida.obtenerPuntosDeVida(),vidaEsperada.obtenerPuntosDeVida());
+		assertEquals(vidaObtenida,vidaEsperada);
 	}
 }

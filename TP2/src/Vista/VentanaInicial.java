@@ -22,7 +22,7 @@ import jugabilidad.Jugador;
 
 public class VentanaInicial {
 	
-	private static final String backgroundURL = "file:/home/facundotorraca/git/TP2-algos3/images/background_initial_scene.jpg";
+	private static final String backgroundURL = "file:images/background_initial_scene.jpg";
 	
 	private Scene nextScene;
 	private Stage stage;

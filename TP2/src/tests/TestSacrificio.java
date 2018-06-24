@@ -18,8 +18,6 @@ public class TestSacrificio {
 	@Test
 	public void test01LasCartasSacrificadasVanAlCementerio() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 		
 		//Jugador se usa para inicializar el mosntruo, para el test se usa otro campo
@@ -27,7 +25,9 @@ public class TestSacrificio {
 		Puntos puntosCartaUno = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		
 		Sacrificio sacrificio = new Sacrificio();
@@ -40,8 +40,6 @@ public class TestSacrificio {
 	@Test
 	public void test02LasCartasSacrificadasSeSacanDelCampoDeJuego() {
 		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas();
-		
 		Vida vidaJugadorUno = new Vida (8000);
 	
 		//Jugador se usa para inicializar el mosntruo, para el test se usa otro campo
@@ -49,7 +47,9 @@ public class TestSacrificio {
 		Puntos puntosCartaUno = new Puntos(1500, 2000);
 		Estrellas estrellas = new Estrellas(1);
 		
-		Monstruo unaCarta = fabricaDeCartas.crearCarta("Facundo", jugadorUno, estrellas, puntosCartaUno);
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
+		
+		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosCartaUno);
 		CampoDeJuego campo = new CampoDeJuego();
 		campo.agregarCarta(unaCarta);
 		
