@@ -70,5 +70,14 @@ public class Baraja {
 	public void mezclarBaraja() {
 		Collections.shuffle(contenedor);
 	}
+	
+	public boolean tieneExodiaCompleto() {
+		Iterator<Carta> iterador = this.obtenerIteradorDeBaraja();
+		int contador = 0;
+		while ( iterador.hasNext() ){
+			if (iterador.next().esParteDeExodia()) contador++;
+		}
+		return (contador == 5);
+	}
 
 }
