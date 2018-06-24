@@ -9,7 +9,6 @@ import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorCartasSacrificadasIncorrectas;
 
-import java.util.Iterator;
 
 import atributos.Sacrificio;
 import atributos.Vida;
@@ -187,8 +186,7 @@ public class Jugador {
     	jugadorRival.recibirAtaqueDeCarta(cartaAUsar,cartaAAtacar);
     	
     }
-    
-    
+
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
 		campoDeJuego.aplicarTrampa(cartaAtacante, cartaAtacada, jugadorRival);
 	}
@@ -197,22 +195,16 @@ public class Jugador {
 		return campoDeJuego.hayCartasEnMazo();
 	}
 	
-		
-	public boolean poseeExodiaCompleto() {
-		Iterator<Carta> iterador = mano.obtenerIteradorDeBaraja();
-		int contador = 0;
-		while ( iterador.hasNext() ){
-			if (iterador.next().esParteDeExodia()) contador++;
-		}
-		return (contador == 5);
-	}
-	
 	public boolean fueDerrotado() {
 		return vida.estaVacia();
 	}
 	
 	public void asignarMazo(Baraja mazo) {
 		campoDeJuego.agregarMazo(mazo);
+	}
+	
+	public boolean poseeExodiaCompleto() {
+		return mano.tieneExodiaCompleto();
 	}
 
 }
