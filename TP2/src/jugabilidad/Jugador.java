@@ -237,4 +237,12 @@ public class Jugador {
 	    return this.vida.obtenerPuntosDeVida();
     }
 
+	public Baraja obtenerMazo() {
+		return campoDeJuego.obtenerMazo();
+	}
+
+	public boolean pertenece(Monstruo monstruoUno) {
+		return campoDeJuego.obtenerMonstruos().pertenece(monstruoUno);
+	}
+
 }

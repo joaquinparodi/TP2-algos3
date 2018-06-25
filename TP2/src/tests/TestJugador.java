@@ -159,7 +159,7 @@ class TestJugador {
 		
 		jugador.agregarCartaEnCampo(monstruoUno, monstruosASacrificar);
 		
-		assert( ((jugador.obtenerCampo()).obtenerMonstruos()).pertenece(monstruoUno) );
+		assert( ((jugador.pertenece(monstruoUno))) );
 	}
 	
 	@Test

@@ -24,7 +24,7 @@ public class Randomizador {
 	public void cargarMazo(Jugador jugador) {
 
 		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
-		Baraja mazo = jugador.obtenerCampo().obtenerMazo();
+		Baraja mazo = jugador.obtenerMazo();
 	
 		
 		for(int i = 0; i < 20; i++) {
