@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
@@ -59,6 +60,14 @@ public class VentanaDeJuego {
 	private ArrayList<Rectangle> P1MZone;
 	private ArrayList<Rectangle> P2MZone;
 	
+	private Rectangle P1mount;
+	private Rectangle P2mount;
+	private GridPane gridScrollPlayer1;
+	private GridPane gridScrollPlayer2;
+	private ScrollPane scrollPane1;
+	private ScrollPane scrollPane2;
+	private ScrollPane scrollPlayer1;
+	private ScrollPane scrollPlayer2;
 	private Rectangle cementerioJugadorUno;
 	private Rectangle cementerioJugadorDos;
 	private Rectangle cartaDeCampoUno;
@@ -99,9 +108,27 @@ public class VentanaDeJuego {
 	}
 	
 	public void actualizarManos() {
-		Iterator<Rectangle> iterOne = handOne.iterator();
-		Iterator<Rectangle> iterTwo = handTwo.iterator();		
 		
+		handOne.clear();
+		handTwo.clear();
+		
+		this.gridScrollPlayer1 = new GridPane();
+		this.gridScrollPlayer2 = new GridPane();
+		
+		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
+		Background background =  new Background(fill);
+		gridScrollPlayer1.setBackground(background);
+		gridScrollPlayer2.setBackground(background);
+		gridScrollPlayer1.setPrefWidth(480);gridScrollPlayer1.setPrefHeight(180);
+		gridScrollPlayer2.setPrefWidth(480);gridScrollPlayer2.setPrefHeight(180);
+		scrollPlayer1.setContent(gridScrollPlayer1);
+		scrollPlayer2.setContent(gridScrollPlayer2);
+		
+		scrollPlayer1.setMaxWidth(480);scrollPlayer1.setMinWidth(480);
+		scrollPlayer2.setMaxWidth(480);scrollPlayer2.setMinWidth(480);
+		scrollPlayer1.setMaxHeight(200);scrollPlayer1.setMinHeight(150);
+		scrollPlayer2.setMaxHeight(200);scrollPlayer2.setMinHeight(150);
+
 		Iterator<Carta> iterDeckOne = manoJugadorUno.obtenerIteradorDeBaraja();
 		Iterator<Carta> iterDeckTwo = manoJugadorDos.obtenerIteradorDeBaraja();
 		
@@ -109,21 +136,42 @@ public class VentanaDeJuego {
 		int actualCards = 0;
 		
 		String URL; ImagePattern image;
-		while(iterOne.hasNext() && actualCards <= maxCardHand && iterDeckOne.hasNext()) {
+//		while(iterDeckOne.hasNext()) {
+//			URL = database.getURL(iterDeckOne.next().obtenerNombre());
+//			image = new ImagePattern( new Image(URL) );
+//			iterOne.next().setFill(image);
+//		}
+
+		actualCards = 0;
+		while(iterDeckOne.hasNext()) {
 			URL = database.getURL(iterDeckOne.next().obtenerNombre());
+			Rectangle rectangulo = new Rectangle(70, 100, Color.DARKCYAN); 
+			this.gridScrollPlayer1.add(rectangulo, actualCards, 0);
+			this.gridScrollPlayer1.setMargin(rectangulo, new Insets(30,30,30,30));
+			handOne.add(rectangulo);
 			image = new ImagePattern( new Image(URL) );
-			iterOne.next().setFill(image);
+			rectangulo.setFill(image);
 			actualCards++;
-		}
+		} 
+		
+		
 		
 		actualCards = 0;
-		while(iterTwo.hasNext() && actualCards <= maxCardHand && iterDeckTwo.hasNext()) {
+		while(iterDeckTwo.hasNext()) {
 			URL = database.getURL(iterDeckTwo.next().obtenerNombre());
+			Rectangle rectangulo = new Rectangle(70, 100, Color.DARKCYAN); 
+			this.gridScrollPlayer2.add(rectangulo, actualCards, 0);
+			this.gridScrollPlayer2.setMargin(rectangulo, new Insets(30,30,30,30));
+			handTwo.add(rectangulo);
 			image = new ImagePattern( new Image(URL) );
-			iterTwo.next().setFill(image);
+			rectangulo.setFill(image);
 			actualCards++;
 		} 
 
+		scrollPlayer1.setBackground(background);
+		scrollPlayer2.setBackground(background);
+
+		setActionToHand();
 		//Repartir mas cartas no solo 5
 	} 
 	
@@ -164,7 +212,7 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterZone = P1STZone.iterator();		
 		Iterator<Carta> iterFila = filaMagicasYTrampas.obtenerIteradorDeBaraja();
 
-		final int maxCardHand = 5;
+		final int maxCardHand = 5;		
 		int actualCards = 0;
 		
 		String URL; ImagePattern image;
@@ -467,63 +515,69 @@ public class VentanaDeJuego {
 		gridPane.setHgap(0);
 		gridPane.setVgap(14);
 		
-		double width = 70; double height = 100;
+		this.scrollPlayer1 = new ScrollPane(); 
+		this.scrollPlayer2 = new ScrollPane(); 
+		this.gridScrollPlayer1 = new GridPane();
+		this.gridScrollPlayer2 = new GridPane();
 		
-		Rectangle P1card1 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P1card2 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P1card3 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P1card4 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P1card5 = new Rectangle(width, height, Color.DARKCYAN);  
+		gridPane.add(scrollPlayer1, 1, 0);
+		gridPane.add(scrollPlayer2, 1, 26);
 		
-		Rectangle P2card1 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P2card2 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P2card3 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P2card4 = new Rectangle(width, height, Color.DARKCYAN); 
-		Rectangle P2card5 = new Rectangle(width, height, Color.DARKCYAN); 
-		
-		handOne.add(P1card1); handTwo.add(P2card1); 
-		handOne.add(P1card2); handTwo.add(P2card2); 
-		handOne.add(P1card3); handTwo.add(P2card3); 
-		handOne.add(P1card4); handTwo.add(P2card4); 
-		handOne.add(P1card5); handTwo.add(P2card5); 
+//		Rectangle P1card1 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P1card2 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P1card3 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P1card4 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P1card5 = new Rectangle(with, height, Color.DARKCYAN);  
+//		
+//		Rectangle P2card1 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P2card2 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P2card3 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P2card4 = new Rectangle(with, height, Color.DARKCYAN); 
+//		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
+//		
+//		handOne.add(P1card1); handTwo.add(P2card1); 
+//		handOne.add(P1card2); handTwo.add(P2card2); 
+//		handOne.add(P1card3); handTwo.add(P2card3); 
+//		handOne.add(P1card4); handTwo.add(P2card4); 
+//		handOne.add(P1card5); handTwo.add(P2card5); 
 
-		this.setActionToHand();
-
-		gridPane.setMargin(P1card1, new Insets(30,10,10,10)); gridPane.setMargin(P2card1, new Insets(10)); 
-		gridPane.setMargin(P1card2, new Insets(30,10,10,10)); gridPane.setMargin(P2card2, new Insets(10)); 
-		gridPane.setMargin(P1card3, new Insets(30,10,10,10)); gridPane.setMargin(P2card3, new Insets(10)); 
-		gridPane.setMargin(P1card4, new Insets(30,10,10,10)); gridPane.setMargin(P2card4, new Insets(10)); 
-		gridPane.setMargin(P1card5, new Insets(30,10,10,10)); gridPane.setMargin(P2card5, new Insets(10)); 
+//		gridPane.setMargin(P1card1, new Insets(30,10,10,10)); gridPane.setMargin(P2card1, new Insets(10)); 
+//		gridPane.setMargin(P1card2, new Insets(30,10,10,10)); gridPane.setMargin(P2card2, new Insets(10)); 
+//		gridPane.setMargin(P1card3, new Insets(30,10,10,10)); gridPane.setMargin(P2card3, new Insets(10)); 
+//		gridPane.setMargin(P1card4, new Insets(30,10,10,10)); gridPane.setMargin(P2card4, new Insets(10)); 
+//		gridPane.setMargin(P1card5, new Insets(30,10,10,10)); gridPane.setMargin(P2card5, new Insets(10)); 
+//		
+//		gridScroll1.add(P2card1, 1, 34); gridScroll2.add(P1card1, 1, 0); 
+//		gridScroll1.add(P2card2, 2, 34); gridScroll2.add(P1card2, 2, 0);
+//		gridScroll1.add(P2card3, 3, 34); gridScroll2.add(P1card3, 3, 0);
+//		gridScroll1.add(P2card4, 4, 34); gridScroll2.add(P1card4, 4, 0);
+//		gridScroll1.add(P2card5, 5, 34); gridScroll2.add(P1card5, 5, 0);
+//		
 		
-		gridPane.add(P2card1, 1, 34); gridPane.add(P1card1, 1, 0); 
-		gridPane.add(P2card2, 2, 34); gridPane.add(P1card2, 2, 0);
-		gridPane.add(P2card3, 3, 34); gridPane.add(P1card3, 3, 0);
-		gridPane.add(P2card4, 4, 34); gridPane.add(P1card4, 4, 0);
-		gridPane.add(P2card5, 5, 34); gridPane.add(P1card5, 5, 0);
-
 		//gridPane.setGridLinesVisible(true); //->para prueba
-		
 		return gridPane;
 	}
 		
 	private void setActionToHand() {
-		CartasManoHandler handler01 = new CartasManoHandler(this, manoJugadorUno, playerOne, 0, handOne.get(0));
-		CartasManoHandler handler02 = new CartasManoHandler(this, manoJugadorUno, playerOne, 1, handOne.get(1));
-		CartasManoHandler handler03 = new CartasManoHandler(this, manoJugadorUno, playerOne, 2, handOne.get(2));
-		CartasManoHandler handler04 = new CartasManoHandler(this, manoJugadorUno, playerOne, 3, handOne.get(3));
-		CartasManoHandler handler05 = new CartasManoHandler(this, manoJugadorUno, playerOne, 4, handOne.get(4));
 		
-		CartasManoHandler handler06 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 0, handTwo.get(0));
-		CartasManoHandler handler07 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 1, handTwo.get(1));
-		CartasManoHandler handler08 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 2, handTwo.get(2));
-		CartasManoHandler handler09 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 3, handTwo.get(3));
-		CartasManoHandler handler10 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 4, handTwo.get(4));
+		Iterator<Rectangle> iterador = handOne.iterator();
 		
-		handOne.get(0).setOnContextMenuRequested(handler01); handTwo.get(0).setOnContextMenuRequested(handler06);
-		handOne.get(1).setOnContextMenuRequested(handler02); handTwo.get(1).setOnContextMenuRequested(handler07);
-		handOne.get(2).setOnContextMenuRequested(handler03); handTwo.get(2).setOnContextMenuRequested(handler08);
-		handOne.get(3).setOnContextMenuRequested(handler04); handTwo.get(3).setOnContextMenuRequested(handler09);
-		handOne.get(4).setOnContextMenuRequested(handler05); handTwo.get(4).setOnContextMenuRequested(handler10);
+		int i=0;
+		while (i < handOne.size()) {
+			CartasManoHandler handler = new CartasManoHandler (this,manoJugadorUno,playerOne,i,iterador.next());
+			handOne.get(i).setOnContextMenuRequested(handler);
+			i++;
+		}
+		
+		iterador = handTwo.iterator();
+		
+		i=0;
+		while (i < handTwo.size()) {
+			CartasManoHandler handler = new CartasManoHandler (this,manoJugadorDos,playerTwo,i,iterador.next());
+			handTwo.get(i).setOnContextMenuRequested(handler);
+			i++;
+		}
+
 	}
 	
 	private void setActionToMZone() {

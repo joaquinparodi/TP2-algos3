@@ -65,12 +65,19 @@ public class Main extends Application {
 		Carta sogen1 = fabrica1.crearSogen();
 		Carta jirai1 = fabrica1.crearJiraiGumo();
 		Carta parasito1 = fabrica1.crearParasitoParacida();
+		Carta parasito12 = fabrica1.crearParasitoParacida();
+		Carta parasito13 = fabrica1.crearParasitoParacida();
+		Carta parasito14 = fabrica1.crearParasitoParacida();
+
 		
 		jugadorUno.repartirCarta(fisura1);
 		jugadorUno.repartirCarta(devNiveles1);
 		jugadorUno.repartirCarta(sogen1);
 		jugadorUno.repartirCarta(jirai1);
 		jugadorUno.repartirCarta(parasito1);
+		jugadorUno.repartirCarta(parasito12);
+		jugadorUno.repartirCarta(parasito13);
+		jugadorUno.repartirCarta(parasito14);
 		
 		Carta fisura2 = fabrica2.crearFisura();
 		Carta devNiveles2 = fabrica2.crearDevoradorDeNiveles();
