@@ -19,4 +19,6 @@ public abstract class Orientacion {
 
 	public abstract void atacarAplicandoEfecto(Atacable monstruo, Atacable otroMonstruo);
 	
+	public abstract boolean estaVolteada();
+	
 }

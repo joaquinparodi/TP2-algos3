@@ -60,12 +60,8 @@ public class VentanaDeJuego {
 	private ArrayList<Rectangle> P1MZone;
 	private ArrayList<Rectangle> P2MZone;
 	
-	private Rectangle P1mount;
-	private Rectangle P2mount;
 	private GridPane gridScrollPlayer1;
 	private GridPane gridScrollPlayer2;
-	private ScrollPane scrollPane1;
-	private ScrollPane scrollPane2;
 	private ScrollPane scrollPlayer1;
 	private ScrollPane scrollPlayer2;
 	private Rectangle cementerioJugadorUno;
@@ -188,6 +184,7 @@ public class VentanaDeJuego {
 			actualRect = iterZone.next();
 			actualRect.setFill(image);
 			if(monstruoActual.estaRotado()) actualRect.setRotate(90);
+			if(monstruoActual.estaVolteada()) this.voltearCarta(actualRect);
 		}
 	}
 	
@@ -204,6 +201,7 @@ public class VentanaDeJuego {
 			actualRect = iterZone.next();
 			actualRect.setFill(image);
 			if(monstruoActual.estaRotado()) actualRect.setRotate(90);
+			if(monstruoActual.estaVolteada()) this.voltearCarta(actualRect);
 		}
 	}
 
@@ -212,16 +210,16 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterZone = P1STZone.iterator();		
 		Iterator<Carta> iterFila = filaMagicasYTrampas.obtenerIteradorDeBaraja();
 
-		final int maxCardHand = 5;		
-		int actualCards = 0;
-		
-		String URL; ImagePattern image;
+		String URL; ImagePattern image; Carta carta; Rectangle actualRect;
 		while(iterZone.hasNext() && iterFila.hasNext()) {
-			URL = database.getURL(iterFila.next().obtenerNombre());
+			carta = iterFila.next();
+			URL = database.getURL(carta.obtenerNombre());
 			image = new ImagePattern( new Image(URL) );
-			iterZone.next().setFill(image);
-			actualCards++;
+			actualRect = iterZone.next();
+			actualRect.setFill(image);
+			if(carta.estaVolteada()) this.voltearCarta(actualRect);
 		}
+		
 	}
 	
 	private void actualizarFilaMagicasYTrampasJugadorDos() {
@@ -232,12 +230,14 @@ public class VentanaDeJuego {
 		final int maxCardHand = 5;
 		int actualCards = 0;
 		
-		String URL; ImagePattern image;
+		String URL; ImagePattern image; Carta carta; Rectangle actualRect;
 		while(iterZone.hasNext() && iterFila.hasNext()) {
-			URL = database.getURL(iterFila.next().obtenerNombre());
+			carta = iterFila.next();
+			URL = database.getURL(carta.obtenerNombre());
 			image = new ImagePattern( new Image(URL) );
-			iterZone.next().setFill(image);
-			actualCards++;
+			actualRect = iterZone.next();
+			actualRect.setFill(image);
+			if(carta.estaVolteada()) this.voltearCarta(actualRect);
 		}
 	}
 	
@@ -303,6 +303,11 @@ public class VentanaDeJuego {
 		
 	}
 
+	private void voltearCarta(Rectangle rect) {
+		ImagePattern image = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
+		rect.setFill(image);
+	}
+	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
@@ -599,6 +604,5 @@ public class VentanaDeJuego {
 		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
 	}
-
 
 }

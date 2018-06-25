@@ -27,4 +27,8 @@ public class OrientacionAbajo extends Orientacion {
 		monstruo.atacarSinEfecto(otroMonstruo);
 	}
 
+	public boolean estaVolteada() {
+		return true;
+	}
+
 }

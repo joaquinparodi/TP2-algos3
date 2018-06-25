@@ -21,6 +21,10 @@ public abstract class Carta {
     	return nombre == nombreCarta;
     }
 
+    public boolean estaVolteada() {
+    	return orientacion.estaVolteada();
+    }
+    
     public abstract void enviarAlCementerio();
 
     public abstract void agregarseEnCampo();

@@ -202,8 +202,6 @@ public class Jugador {
 		return (this.vida.obtenerPuntosDeVida() == vida);
 	}
 
-	
-	
 	/*Metodos nuevos que faltarian probar*/
 	
 	
@@ -224,6 +222,11 @@ public class Jugador {
 		carta.cambiarPosicion();
 	}
 	
+	public void voltearCartaEnMano(int index) {
+		Carta carta = mano.obtenerCartaDePosicion(index);
+		carta.voltear();
+	}
+	
 	/*Metodos utilizados para actualizar la interfaz*/
 	
 	public Baraja obtenerMano() {
@@ -232,10 +235,6 @@ public class Jugador {
 	
     public double obtenerVida() {
 	    return this.vida.obtenerPuntosDeVida();
-    }
-
-    public int cantidadDeMonstruosAgregados() {
-    	return campoDeJuego.cantidadDeCartasMonstruosAgregados();
     }
 
 }

@@ -28,5 +28,9 @@ public class OrientacionArriba extends Orientacion{
 	public void atacarAplicandoEfecto(Atacable monstruo, Atacable otroMonstruo) {
 		monstruo.atacarConEfecto(otroMonstruo);
 	}
+
+	public boolean estaVolteada() {
+		return false;
+	}
 	
 }
