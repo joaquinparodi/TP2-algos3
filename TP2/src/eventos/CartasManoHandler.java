@@ -13,24 +13,23 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
+import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 
 public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 
-	private ArrayList<Rectangle> STZone;
-	private ArrayList<Rectangle> MZone;
-	private Jugador jugador;
-	private Node duenio;
 	private VentanaDeJuego ventanaDeJuego;
+	private Jugador jugador;
+	private Baraja manoJugador;
+	private Node nodo;
 	private int index;
 	
-	public CartasManoHandler(VentanaDeJuego juego, ArrayList<Rectangle> STZone, ArrayList<Rectangle> MZone, Node duenio, Jugador jugador, int index ) {
-		this.STZone = STZone;
-		this.MZone = MZone;		
+	public CartasManoHandler(VentanaDeJuego ventana, Baraja manoJugador, Jugador jugador, int index, Node nodo) {
 		this.jugador = jugador;
-		this.duenio = duenio;
+		this.nodo = nodo;
 		this.index = index;
-		this.ventanaDeJuego = juego;
+		this.ventanaDeJuego = ventana;
+		this.manoJugador = manoJugador;
 	}
 	
 	public void handle(ContextMenuEvent event) {
@@ -41,10 +40,10 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 		MenuItem voltear = new MenuItem("Voltear");
 		menuDesplegable.getItems().addAll(agregarEnCampo, rotar, voltear);
 
-		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego ,STZone, MZone, jugador, index);
+		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, manoJugador, jugador, index);
 		agregarEnCampo.setOnAction(handlerAgregar);
 		
-		menuDesplegable.show(duenio, event.getScreenX(), event.getScreenY());
+		menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
 	}
 
 }

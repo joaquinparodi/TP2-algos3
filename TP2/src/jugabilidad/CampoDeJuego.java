@@ -151,4 +151,14 @@ public class CampoDeJuego {
 		return mazo.tieneCartas();
 	}
 	
+	/*--------------------Metodos utilizados en la interfaz------------------------------------*/
+	
+	public Baraja obtenerFilaDeMonstruos() {
+		return filaMonstruos;
+	}
+	
+	public Baraja obtenerFilaDeMagicasYTrampas() {
+		return filaMagicasYTrampas;
+	}
+		
 }

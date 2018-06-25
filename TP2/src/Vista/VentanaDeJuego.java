@@ -24,6 +24,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import jugabilidad.Baraja;
+import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
 
 
@@ -31,6 +32,10 @@ public class VentanaDeJuego {
 	
 	Jugador playerOne;
 	Jugador playerTwo;
+	CampoDeJuego campoDeJuegoUno;
+	CampoDeJuego campoDeJuegoDos;
+	Baraja manoJugadorUno;
+	Baraja manoJugadorDos;
 	
 	private Text playerOneName;
 	private Text playerTwoName;
@@ -58,6 +63,10 @@ public class VentanaDeJuego {
 		P2MZone = new ArrayList<Rectangle>();
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
+		this.campoDeJuegoUno = playerOne.obtenerCampo();
+		this.campoDeJuegoDos = playerTwo.obtenerCampo();
+		this.manoJugadorUno = playerOne.obtenerMano();
+		this.manoJugadorDos = playerTwo.obtenerMano();
 	}
 	
 	public void actualizarNombres() {
@@ -65,15 +74,21 @@ public class VentanaDeJuego {
 		playerTwoName.setText(playerTwo.obtenerNombre());
 	}
 	
+	public void actualizarCampoDeJuego() {
+		this.restaurarPosiciones();
+		this.actualizarFilaMonstruosJugadorUno();
+		this.actualizarFilaMonstruosJugadorDos();
+		this.actualizarFilaMagicasYTrampasJugadorUno();
+		this.actualizarFilaMagicasYTrampasJugadorDos();
+		this.actualizarManos();
+	}
+	
 	public void actualizarManos() {
 		Iterator<Rectangle> iterOne = handOne.iterator();
 		Iterator<Rectangle> iterTwo = handTwo.iterator();		
 		
-		Baraja deckOne = playerOne.obtenerMano();
-		Baraja deckTwo = playerTwo.obtenerMano();
-		
-		Iterator<Carta> iterDeckOne = deckOne.obtenerIteradorDeBaraja();
-		Iterator<Carta> iterDeckTwo = deckTwo.obtenerIteradorDeBaraja();
+		Iterator<Carta> iterDeckOne = manoJugadorUno.obtenerIteradorDeBaraja();
+		Iterator<Carta> iterDeckTwo = manoJugadorDos.obtenerIteradorDeBaraja();
 		
 		final int maxCardHand = 5;
 		int actualCards = 0;
@@ -96,10 +111,100 @@ public class VentanaDeJuego {
 
 		//Repartir mas cartas no solo 5
 	} 
+	
+	private void actualizarFilaMonstruosJugadorUno() {
+		Baraja filaMonstruos = campoDeJuegoUno.obtenerFilaDeMonstruos();
+		Iterator<Rectangle> iterZone = P1MZone.iterator();		
+		Iterator<Carta> iterFila = filaMonstruos.obtenerIteradorDeBaraja();
 
-	public void agregarCartaEnZonaMonstruos() {
+		final int maxCardHand = 5;
+		int actualCards = 0;
+		
+		String URL; ImagePattern image;
+		while(iterZone.hasNext() && iterFila.hasNext()) {
+			URL = database.getURL(iterFila.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterZone.next().setFill(image);
+			actualCards++;
+		}
+	}
+	
+	private void actualizarFilaMonstruosJugadorDos() {
+		Baraja filaMonstruos = campoDeJuegoDos.obtenerFilaDeMonstruos();
+		Iterator<Rectangle> iterZone = P2MZone.iterator();		
+		Iterator<Carta> iterFila = filaMonstruos.obtenerIteradorDeBaraja();
+
+		final int maxCardHand = 5;
+		int actualCards = 0;
+		
+		String URL; ImagePattern image;
+		while(iterZone.hasNext() && iterFila.hasNext()) {
+			URL = database.getURL(iterFila.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterZone.next().setFill(image);
+			actualCards++;
+		}
+	}
+
+	private void actualizarFilaMagicasYTrampasJugadorUno() {
+		Baraja filaMagicasYTrampas = campoDeJuegoUno.obtenerFilaDeMagicasYTrampas();
+		Iterator<Rectangle> iterZone = P1STZone.iterator();		
+		Iterator<Carta> iterFila = filaMagicasYTrampas.obtenerIteradorDeBaraja();
+
+		final int maxCardHand = 5;
+		int actualCards = 0;
+		
+		String URL; ImagePattern image;
+		while(iterZone.hasNext() && iterFila.hasNext()) {
+			URL = database.getURL(iterFila.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterZone.next().setFill(image);
+			actualCards++;
+		}
+	}
+	
+	private void actualizarFilaMagicasYTrampasJugadorDos() {
+		Baraja filaMagicasYTrampas = campoDeJuegoDos.obtenerFilaDeMagicasYTrampas();
+		Iterator<Rectangle> iterZone = P2STZone.iterator();		
+		Iterator<Carta> iterFila = filaMagicasYTrampas.obtenerIteradorDeBaraja();
+
+		final int maxCardHand = 5;
+		int actualCards = 0;
+		
+		String URL; ImagePattern image;
+		while(iterZone.hasNext() && iterFila.hasNext()) {
+			URL = database.getURL(iterFila.next().obtenerNombre());
+			image = new ImagePattern( new Image(URL) );
+			iterZone.next().setFill(image);
+			actualCards++;
+		}
+	}
+	
+	private void restaurarPosiciones() {
+		Iterator<Rectangle> iterMZoneOne = P1MZone.iterator();	
+		Iterator<Rectangle> iterMZoneTwo = P2MZone.iterator();
+		Iterator<Rectangle> iterSTZoneOne = P1STZone.iterator();	
+		Iterator<Rectangle> iterSTZoneTwo = P2STZone.iterator();
+
+		while(iterMZoneOne.hasNext()) {
+			iterMZoneOne.next().setFill(Color.DARKCYAN);
+		}
+		
+		while(iterMZoneTwo.hasNext()) {
+			iterMZoneTwo.next().setFill(Color.DARKCYAN);
+		}
+		
+		while(iterSTZoneOne.hasNext()) {
+			iterSTZoneOne.next().setFill(Color.DARKCYAN);
+		}
+		
+		while(iterSTZoneTwo.hasNext()) {
+			iterSTZoneTwo.next().setFill(Color.DARKCYAN);
+		}
 		
 	}
+	
+	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
@@ -340,18 +445,17 @@ public class VentanaDeJuego {
 	}
 	
 	private void setActionToHand() {
+		CartasManoHandler handler01 = new CartasManoHandler(this, manoJugadorUno, playerOne, 0, handOne.get(0));
+		CartasManoHandler handler02 = new CartasManoHandler(this, manoJugadorUno, playerOne, 1, handOne.get(1));
+		CartasManoHandler handler03 = new CartasManoHandler(this, manoJugadorUno, playerOne, 2, handOne.get(2));
+		CartasManoHandler handler04 = new CartasManoHandler(this, manoJugadorUno, playerOne, 3, handOne.get(3));
+		CartasManoHandler handler05 = new CartasManoHandler(this, manoJugadorUno, playerOne, 4, handOne.get(4));
 		
-		CartasManoHandler handler01 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(0), playerOne, 0);
-		CartasManoHandler handler02 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(1), playerOne, 1);
-		CartasManoHandler handler03 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(2), playerOne, 2);
-		CartasManoHandler handler04 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(3), playerOne, 3);
-		CartasManoHandler handler05 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(4), playerOne, 4);
-		
-		CartasManoHandler handler06 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(0), playerOne, 0);
-		CartasManoHandler handler07 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(1), playerOne, 1);
-		CartasManoHandler handler08 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(2), playerOne, 2);
-		CartasManoHandler handler09 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(3), playerOne, 3);
-		CartasManoHandler handler10 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(4), playerOne, 4);
+		CartasManoHandler handler06 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 0, handTwo.get(0));
+		CartasManoHandler handler07 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 1, handTwo.get(1));
+		CartasManoHandler handler08 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 2, handTwo.get(2));
+		CartasManoHandler handler09 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 3, handTwo.get(3));
+		CartasManoHandler handler10 = new CartasManoHandler(this, manoJugadorDos, playerTwo, 4, handTwo.get(4));
 		
 		handOne.get(0).setOnContextMenuRequested(handler01); handTwo.get(0).setOnContextMenuRequested(handler06);
 		handOne.get(1).setOnContextMenuRequested(handler02); handTwo.get(1).setOnContextMenuRequested(handler07);
