@@ -1,23 +1,35 @@
 package jugabilidad;
 
+import atributos.Vida;
 
 public class Controlador {
 	
-	Jugador jugadorUno;
-	Jugador jugadorDos;
-	Jugador atacante;
-	Jugador defensor;
-
-	public Controlador(Jugador jugadorUno, Jugador jugadorDos) {
+	private Jugador jugadorUno;
+	private Jugador jugadorDos;
+	private Jugador atacante;
+	private Jugador defensor;
+	
+	private static Controlador instancia = new Controlador();
+	
+	private Controlador() {	
+		Vida vidaJugadorUno = new Vida(8000);
+		Vida vidaJugadorDos = new Vida(8000);
 		
-		this.jugadorUno = jugadorUno;
-		this.jugadorDos = jugadorDos;
+		this.jugadorUno = new Jugador( vidaJugadorUno );
+		this.jugadorDos = new Jugador( vidaJugadorDos );
 		
 		this.asignarRivales(jugadorUno, jugadorDos);
 		
 		//Decidir esto se va a encargar otra clase(Inicializador)
 		atacante = jugadorUno;
 		defensor = jugadorDos;
+	}
+	
+	public static Controlador obtener() {
+		 if(instancia == null) {
+			 instancia = new Controlador();
+		 }
+		 return instancia;
 	}
 	
 	public void asignarMazos(Baraja mazoUno, Baraja mazoDos) {
@@ -47,6 +59,14 @@ public class Controlador {
 		for(int i = 0; i < 5; i++) {
 			jugadorDos.repartirCarta();
 		}
+	}
+	
+	public Jugador obtenerJugadorUno() {
+		return jugadorUno;
+	}
+	
+	public Jugador obtenerJugadorDos() {
+		return jugadorDos;
 	}
 	
 	/*Metodos usador para determinar ganador*/

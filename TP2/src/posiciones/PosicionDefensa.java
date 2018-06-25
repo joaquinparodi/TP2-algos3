@@ -35,5 +35,10 @@ public class PosicionDefensa extends Posicion {
 	public void atacar(Atacable atacante, Atacable atacado) {
 		throw new ErrorAtaqueDesdePosicionInvalida();
 	}
+	
+
+	public boolean estaRotada() {
+		return true;
+	}
 
 }

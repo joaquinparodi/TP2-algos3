@@ -19,13 +19,11 @@ public class TestControlador {
 	@Test
 	public void test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego() {
 		
-		Vida vidaUno = new Vida(8000);
-		Vida vidaDos = new Vida(8000);
-		
-		Jugador jugadorUno = new Jugador(vidaUno);
-		Jugador jugadorDos = new Jugador(vidaDos);
-				
-		Controlador controlador = new Controlador(jugadorUno, jugadorDos);
+		/*Al crearse el controlador tiene al jugador uno como atacante*/
+		Controlador controlador = Controlador.obtener();
+
+		Jugador jugadorUno = controlador.obtenerJugadorUno();
+		Jugador jugadorDos = controlador.obtenerJugadorDos();
 		
 		FabricaDeCartas fabrica = new FabricaDeCartas(jugadorUno);
 		FabricaDeCartas fabrica2 = new FabricaDeCartas(jugadorDos);
@@ -63,14 +61,11 @@ public class TestControlador {
 	@Test
 	public void test03AtacarJugadorYDejarloSinVidaGanaElDuelo() {
 		
-		Vida vidaUno = new Vida(100);
-		Vida vidaDos = new Vida(100);
-		
-		Jugador jugadorUno = new Jugador(vidaUno);
-		Jugador jugadorDos = new Jugador(vidaDos);
-			
-		//El primer jugador es el atacante, segundo es el defensor, luego se van permutando
-		Controlador controlador = new Controlador(jugadorUno, jugadorDos);
+		/*Al crearse el controlador tiene al jugador uno como atacante*/
+		Controlador controlador = Controlador.obtener();
+
+		Jugador jugadorUno = controlador.obtenerJugadorUno();
+		Jugador jugadorDos = controlador.obtenerJugadorDos();
 		
 		FabricaDeCartas fabrica = new FabricaDeCartas(jugadorUno);
 		FabricaDeCartas fabrica2 = new FabricaDeCartas(jugadorDos);
@@ -110,13 +105,11 @@ public class TestControlador {
 	@Test 
 	public void test04QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo() {
 		
-		Vida vidaUno = new Vida(8000);
-		Vida vidaDos = new Vida(8000);
-		
-		Jugador jugadorUno = new Jugador(vidaUno);
-		Jugador jugadorDos = new Jugador(vidaDos);
 				
-		Controlador controlador = new Controlador(jugadorUno, jugadorDos);
+		Controlador controlador = Controlador.obtener();
+		
+		Jugador jugadorUno = controlador.obtenerJugadorUno();
+		Jugador jugadorDos = controlador.obtenerJugadorDos();
 		
 		FabricaDeCartas fabrica = new FabricaDeCartas(jugadorUno);
 		FabricaDeCartas fabrica2 = new FabricaDeCartas(jugadorDos);

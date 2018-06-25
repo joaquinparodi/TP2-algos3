@@ -120,9 +120,14 @@ public class Monstruo extends Carta implements Atacable {
 		return componeAExodia;
 	}
 
-	@Override
 	public void agregarseEnCampo() {
 		jugadorDuenio.agregarCartaEnCampo(this);	
+	}
+
+	/*Nuevo metodo probar*/
+	
+	public boolean estaRotado() {
+		return this.posicion.estaRotada();
 	}
 }
 

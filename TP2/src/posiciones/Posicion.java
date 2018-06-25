@@ -12,4 +12,6 @@ public abstract class Posicion {
 
 	public abstract void atacar(Atacable atacante, Atacable atacado);
 	
+	public abstract boolean estaRotada();
+	
 }
