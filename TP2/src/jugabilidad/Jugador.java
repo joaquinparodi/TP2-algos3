@@ -219,6 +219,10 @@ public class Jugador {
 		return campoDeJuego.cartaMonstruoEnEstaRotada(index);
 	}
 	
+	public void rotarCartaEnMano(int index) {
+		Carta carta = mano.obtenerCartaDePosicion(index);
+		carta.cambiarPosicion();
+	}
 	
 	/*Metodos utilizados para actualizar la interfaz*/
 	

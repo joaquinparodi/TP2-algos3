@@ -30,4 +30,11 @@ public class Trampa extends Carta {
 		jugadorDuenio.agregarCartaEnCampo(this);
 	}
 
+	@Override
+	public void cambiarPosicion() {
+		return;	
+	}
+	
+	
+
 }

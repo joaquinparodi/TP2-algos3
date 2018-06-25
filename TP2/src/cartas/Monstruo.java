@@ -125,6 +125,7 @@ public class Monstruo extends Carta implements Atacable {
 	}
 
 	/*Nuevo metodo probar*/
+	
 	public boolean estaRotado() {
 		return this.posicion.estaRotada();
 	}

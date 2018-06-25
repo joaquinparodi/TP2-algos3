@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -25,6 +26,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import jugabilidad.Baraja;
@@ -61,6 +63,8 @@ public class VentanaDeJuego {
 	private Rectangle cementerioJugadorDos;
 	private Rectangle cartaDeCampoUno;
 	private Rectangle cartaDeCampoDos;
+	
+	private Text textJugadorActual;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -429,7 +433,19 @@ public class VentanaDeJuego {
 		P2STZone.add(P2STzone4); P2MZone.add(P2Mzone4);
 		P2STZone.add(P2STzone5); P2MZone.add(P2Mzone5);
 		
+		
 		this.setActionToMZone();
+		/*---------------------------Zona central del tablero-------------------------------------*/
+		
+		this.textJugadorActual = new Text();
+		this.textJugadorActual.setText("Turno Jugador 1");
+		this.textJugadorActual.setFont(Font.font ("Verdana", 50));
+		this.textJugadorActual.setFill(Color.RED);
+		gridPane.add(this.textJugadorActual, 3, 2, 4, 4);
+		GridPane.setMargin(this.textJugadorActual, new Insets(0,0,0,-140));
+		
+	
+		//gridPane.setGridLinesVisible(true); //->para prueba
 		return gridPane;
 	}
 	

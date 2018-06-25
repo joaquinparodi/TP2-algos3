@@ -31,8 +31,6 @@ public class Main extends Application {
 		this.repartirCartas(); 
 		this.inicializarVentanas();
 		
-		controlador = new Controlador (jugadorUno,jugadorDos);
-		
 		stage.setTitle("Yu-Gi-Oh! The Game");	
 		
 		Scene gameScene = ventanaDeJuego.createGameScene();
@@ -43,11 +41,9 @@ public class Main extends Application {
 	}
 		
 	private void inicializarJugadores() {	
-		Vida vidaJugadorUno = new Vida(8000);
-		Vida vidaJugadorDos = new Vida(8000);
-		
-		this.jugadorUno = new Jugador(vidaJugadorUno);
-		this.jugadorDos = new Jugador(vidaJugadorDos);
+		this.controlador = Controlador.obtener();
+		this.jugadorUno = controlador.obtenerJugadorUno();
+		this.jugadorDos = controlador.obtenerJugadorDos();
 		
 	//	Randomizador randomizador = new Randomizador();
 	//	randomizador.cargarMazo(jugadorUno);

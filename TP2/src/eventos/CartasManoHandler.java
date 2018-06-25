@@ -32,14 +32,17 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	
 	public void handle(ContextMenuEvent event) {
 		ContextMenu menuDesplegable = new ContextMenu();
+		Rectangle rect = (Rectangle)event.getSource();
 		
 		MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
-		MenuItem rotar = new MenuItem("Rotar");
-		MenuItem voltear = new MenuItem("Voltear");
-		menuDesplegable.getItems().addAll(agregarEnCampo, rotar, voltear);
+		MenuItem agregarRotada = new MenuItem("Agregar rotada");
+		MenuItem agregarVolteada = new MenuItem("Agregar volteada");
+		menuDesplegable.getItems().addAll(agregarEnCampo, agregarRotada, agregarVolteada);
 
 		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+		BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
 		agregarEnCampo.setOnAction(handlerAgregar);
+		agregarRotada.setOnAction(handlerAgregarRotada);
 		
 		menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
 	}

@@ -29,5 +29,10 @@ public class Magica extends Carta{
 		jugadorDuenio.agregarCartaEnCampo(this);
 	}
 
+	@Override
+	public void cambiarPosicion() {
+		return;
+	}
+
 }
 

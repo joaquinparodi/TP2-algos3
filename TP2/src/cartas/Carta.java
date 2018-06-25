@@ -31,6 +31,8 @@ public abstract class Carta {
     	orientacion = orientacion.voltear();
     }
     
+    public abstract void cambiarPosicion();
+    
     /* metodos usados para actualizar la interfaz */
     
     public String obtenerNombre() {
