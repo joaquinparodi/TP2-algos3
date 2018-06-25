@@ -227,6 +227,7 @@ public class VentanaDeJuego {
 	    return scene;
 	}
 	
+
 	private BorderPane createBorderPane() {
 		BorderPane rootBorderPane = new BorderPane();
 		
@@ -244,6 +245,7 @@ public class VentanaDeJuego {
 		return rootBorderPane;
 	}
 		
+	
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
 		//gridPane.setPrefWidth(200);
@@ -274,16 +276,16 @@ public class VentanaDeJuego {
 		gridPane.setHgap(10);
 		gridPane.setVgap(9);
 		
-		gridPane.setMargin(square1, new Insets(10)); 
-		gridPane.setMargin(square2, new Insets(10)); 
+		gridPane.setMargin(square1, new Insets(10,10,10,10)); 
+		gridPane.setMargin(square2, new Insets(10,10,10,10)); 
 		
 		gridPane.setMargin(P1Deck, new Insets(10,10,10,30));
-		gridPane.setMargin(P2Deck, new Insets(10,10,10,30));
+		gridPane.setMargin(P2Deck, new Insets(40,10,10,30));
 		
 		gridPane.setMargin(playerOneName, new Insets(0,0,0,10));
-		gridPane.setMargin(playerTwoName, new Insets(0,0,0,10));
+		gridPane.setMargin(playerTwoName, new Insets(40,0,0,10));
 		gridPane.setMargin(playerOneLife, new Insets(0,0,0,-30));
-		gridPane.setMargin(playerTwoLife, new Insets(0,0,0,-30));
+		gridPane.setMargin(playerTwoLife, new Insets(40,0,0,-20));
 		
 		gridPane.setMargin(P1life, new Insets(0,0,0,-10));
 		gridPane.setMargin(P2life, new Insets(0,0,0,-10));
@@ -305,6 +307,7 @@ public class VentanaDeJuego {
 		return gridPane;
 	}
 
+	
 	private GridPane createCenterGridPane() {		
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
@@ -314,7 +317,7 @@ public class VentanaDeJuego {
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
-		gridPane.setHgap(0);
+		gridPane.setHgap(5);
 		gridPane.setVgap(0);
 		double with = 70; double height = 100;
 		
@@ -334,11 +337,11 @@ public class VentanaDeJuego {
 		Rectangle P1cemetery = new Rectangle(with, height, Color.DIMGRAY); 
 		Rectangle P1Lzone = new Rectangle(with, height, Color.DARKVIOLET);
 		
-		gridPane.setMargin(P1STzone1, new Insets(10)); gridPane.setMargin(P1Mzone1, new Insets(10)); 
-		gridPane.setMargin(P1STzone2, new Insets(10)); gridPane.setMargin(P1Mzone2, new Insets(10)); 
-		gridPane.setMargin(P1STzone3, new Insets(10)); gridPane.setMargin(P1Mzone3, new Insets(10)); 
-		gridPane.setMargin(P1STzone4, new Insets(10)); gridPane.setMargin(P1Mzone4, new Insets(10)); 
-		gridPane.setMargin(P1STzone5, new Insets(10)); gridPane.setMargin(P1Mzone5, new Insets(10)); 
+		gridPane.setMargin(P1STzone1, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone1, new Insets(20)); 
+		gridPane.setMargin(P1STzone2, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone2, new Insets(20)); 
+		gridPane.setMargin(P1STzone3, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone3, new Insets(20)); 
+		gridPane.setMargin(P1STzone4, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone4, new Insets(20)); 
+		gridPane.setMargin(P1STzone5, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone5, new Insets(20)); 
 		
 		gridPane.setMargin(P1cemetery, new Insets(10)); gridPane.setMargin(P1Lzone, new Insets(10));
 		
@@ -372,11 +375,11 @@ public class VentanaDeJuego {
 		Rectangle P2cemetery = new Rectangle(with, height, Color.DIMGRAY);
 		Rectangle P2Lzone = new Rectangle(with, height, Color.DARKVIOLET);
 		
-		GridPane.setMargin(P2STzone1, new Insets(10)); GridPane.setMargin(P2Mzone1, new Insets(10)); 
-		GridPane.setMargin(P2STzone2, new Insets(10)); GridPane.setMargin(P2Mzone2, new Insets(10)); 
-		GridPane.setMargin(P2STzone3, new Insets(10)); GridPane.setMargin(P2Mzone3, new Insets(10)); 
-		GridPane.setMargin(P2STzone4, new Insets(10)); GridPane.setMargin(P2Mzone4, new Insets(10)); 
-		GridPane.setMargin(P2STzone5, new Insets(10)); GridPane.setMargin(P2Mzone5, new Insets(10)); 
+		GridPane.setMargin(P2STzone1, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone1, new Insets(20)); 
+		GridPane.setMargin(P2STzone2, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone2, new Insets(20)); 
+		GridPane.setMargin(P2STzone3, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone3, new Insets(20)); 
+		GridPane.setMargin(P2STzone4, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone4, new Insets(20)); 
+		GridPane.setMargin(P2STzone5, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone5, new Insets(20)); 
 		
 		GridPane.setMargin(P2cemetery, new Insets(10)); GridPane.setMargin(P2Lzone, new Insets(10));
 		
@@ -396,6 +399,7 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
+	
 	
 	private GridPane createRightGridPane() {
 		GridPane gridPane = new GridPane();
@@ -453,6 +457,7 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
+	
 	
 	private void setActionToHand() {
 		CartasManoHandler handler01 = new CartasManoHandler(this, manoJugadorUno, playerOne, 0, handOne.get(0));

@@ -49,7 +49,7 @@ public class Main extends Application {
 		this.jugadorUno = new Jugador(vidaJugadorUno);
 		this.jugadorDos = new Jugador(vidaJugadorDos);
 		
-	//	Randomizador randomizador = new Randomizador();
+		Randomizador randomizador = new Randomizador();
 	//	randomizador.cargarMazo(jugadorUno);
 	//	randomizador.cargarMazo(jugadorDos);
 	}
