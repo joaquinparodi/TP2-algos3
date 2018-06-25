@@ -52,6 +52,8 @@ public class VentanaDeJuego {
 	ArrayList<Rectangle> P2MZone;
 	
 	BaseDeDatosDeCartas database;
+	private Rectangle P1mount;
+	private Rectangle P2mount;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -90,6 +92,9 @@ public class VentanaDeJuego {
 		Iterator<Carta> iterDeckOne = manoJugadorUno.obtenerIteradorDeBaraja();
 		Iterator<Carta> iterDeckTwo = manoJugadorDos.obtenerIteradorDeBaraja();
 		
+		ArrayList<Carta> sextaCartaUno = new ArrayList<Carta>();
+		ArrayList<Carta> sextaCartaDos = new ArrayList<Carta>();
+		
 		final int maxCardHand = 5;
 		int actualCards = 0;
 		
@@ -101,6 +106,15 @@ public class VentanaDeJuego {
 			actualCards++;
 		}
 		
+		while(iterDeckOne.hasNext()) {
+			sextaCartaUno.add(iterDeckOne.next());
+		}
+		
+		if (sextaCartaUno.size() > 0) {
+			URL = database.getURL(sextaCartaUno.get(0).obtenerNombre());
+			this.P1mount.setFill(new ImagePattern(new Image(URL)) );
+		}
+		
 		actualCards = 0;
 		while(iterTwo.hasNext() && actualCards <= maxCardHand && iterDeckTwo.hasNext()) {
 			URL = database.getURL(iterDeckTwo.next().obtenerNombre());
@@ -108,6 +122,15 @@ public class VentanaDeJuego {
 			iterTwo.next().setFill(image);
 			actualCards++;
 		} 
+		
+		while (iterDeckTwo.hasNext()) {
+			sextaCartaDos.add(iterDeckTwo.next());
+		}
+		
+		if (sextaCartaDos.size() > 0) {
+			URL = database.getURL(sextaCartaDos.get(0).obtenerNombre());
+			P2mount.setFill(new ImagePattern(new Image(URL)) );
+		}
 
 		//Repartir mas cartas no solo 5
 	} 
@@ -430,7 +453,9 @@ public class VentanaDeJuego {
 		handOne.add(P1card3); handTwo.add(P2card3); 
 		handOne.add(P1card4); handTwo.add(P2card4); 
 		handOne.add(P1card5); handTwo.add(P2card5); 
-
+		this.P1mount = P1mount;
+		this.P2mount = P2mount;
+		
 		this.setActionToHand();
 
 		gridPane.setMargin(P1card1, new Insets(10)); gridPane.setMargin(P2card1, new Insets(10)); 
