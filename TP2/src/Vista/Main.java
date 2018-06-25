@@ -49,7 +49,7 @@ public class Main extends Application {
 		this.jugadorUno = new Jugador(vidaJugadorUno);
 		this.jugadorDos = new Jugador(vidaJugadorDos);
 		
-		Randomizador randomizador = new Randomizador();
+	//	Randomizador randomizador = new Randomizador();
 	//	randomizador.cargarMazo(jugadorUno);
 	//	randomizador.cargarMazo(jugadorDos);
 	}
@@ -64,27 +64,27 @@ public class Main extends Application {
 		FabricaDeCartas fabrica1 = new FabricaDeCartas(jugadorUno);
 		FabricaDeCartas fabrica2 = new FabricaDeCartas(jugadorDos);
 		
-		Carta sangan1 = fabrica1.crearSangan();
+		Carta fisura1 = fabrica1.crearFisura();
 		Carta devNiveles1 = fabrica1.crearDevoradorDeNiveles();
-		Carta gusanoAguja1 = fabrica1.crearGusanoAguja();
+		Carta sogen1 = fabrica1.crearSogen();
 		Carta jirai1 = fabrica1.crearJiraiGumo();
 		Carta parasito1 = fabrica1.crearParasitoParacida();
 		
-		jugadorUno.repartirCarta(sangan1);
+		jugadorUno.repartirCarta(fisura1);
 		jugadorUno.repartirCarta(devNiveles1);
-		jugadorUno.repartirCarta(gusanoAguja1);
+		jugadorUno.repartirCarta(sogen1);
 		jugadorUno.repartirCarta(jirai1);
 		jugadorUno.repartirCarta(parasito1);
 		
-		Carta sangan2 = fabrica2.crearSangan();
+		Carta fisura2 = fabrica2.crearFisura();
 		Carta devNiveles2 = fabrica2.crearDevoradorDeNiveles();
-		Carta gusanoAguja2 = fabrica2.crearGusanoAguja();
+		Carta wasteland2 = fabrica2.crearWasteland();
 		Carta jirai2 = fabrica2.crearJiraiGumo();
 		Carta parasito2 = fabrica2.crearParasitoParacida();
 		
-		jugadorDos.repartirCarta(sangan2);
+		jugadorDos.repartirCarta(fisura2);
 		jugadorDos.repartirCarta(devNiveles2);
-		jugadorDos.repartirCarta(gusanoAguja2);
+		jugadorDos.repartirCarta(wasteland2);
 		jugadorDos.repartirCarta(jirai2);
 		jugadorDos.repartirCarta(parasito2);	
 	} 

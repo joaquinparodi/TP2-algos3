@@ -162,6 +162,9 @@ public class CampoDeJuego {
 		return monstruo.estaRotado();
 	}
 		
+	public boolean cementerioContieneCartas() {
+		return cementerio.tieneCartas();
+	}
 	
 	/*--------------------Metodos utilizados en la interfaz------------------------------------*/
 	
@@ -172,6 +175,13 @@ public class CampoDeJuego {
 	public Baraja obtenerFilaDeMagicasYTrampas() {
 		return filaMagicasYTrampas;
 	}
+	
+	public boolean seAgregoCartaDeCampo() {
+		return cartaDeCampo != null;
+	}
 
+	public String obtenerNombreCartaDeCampo() {
+		return cartaDeCampo.obtenerNombre();
+	}
 
 }
