@@ -24,26 +24,9 @@ public class BotonRotarEnZonaMonstruo implements EventHandler<ActionEvent> {
 	}
 
 	public void handle(ActionEvent event) {
-		if( jugador.cartaMonstruoEnCampoEstaRotada(index) ) this.ponerEnPosicionDeAtaque();
-		else  this.ponerEnPosicionDeDefensa();
- 		
-		jugador.rotarCartaMonstruoEnCampo(index);
+		jugador.rotarCartaMonstruoEnCampo(index);		
 		ventana.actualizarCampoDeJuego();
 	}
 	
-	private void ponerEnPosicionDeAtaque() {
-		double ancho = 70; double altura = 100;
-		double centroDeRotacionX = (ancho) / 2;
-		double centroDeRotacionY = (altura) / 2;
-
-		rect.getTransforms().add(new Rotate(90, centroDeRotacionX, centroDeRotacionY));
-	}
-	
-	private void ponerEnPosicionDeDefensa() {
-		double ancho = 70; double altura = 100;
-		double centroDeRotacionX = (ancho) / 2;
-		double centroDeRotacionY = (altura) / 2;
-
-		rect.getTransforms().add(new Rotate(-90, centroDeRotacionX, centroDeRotacionY));
-	}
+	 
 }

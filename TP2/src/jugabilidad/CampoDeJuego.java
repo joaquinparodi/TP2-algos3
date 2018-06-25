@@ -183,5 +183,9 @@ public class CampoDeJuego {
 	public String obtenerNombreCartaDeCampo() {
 		return cartaDeCampo.obtenerNombre();
 	}
+	
+	public int cantidadDeCartasMonstruosAgregados() {
+		return filaMonstruos.obtenerCantidadDeCartas();
+	}
 
 }

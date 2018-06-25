@@ -47,5 +47,6 @@ public class Campo extends Carta {
 	public void cambiarPosicion() {
 		return;	
 	}
+	
 
 }

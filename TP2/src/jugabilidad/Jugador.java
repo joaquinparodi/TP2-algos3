@@ -234,6 +234,8 @@ public class Jugador {
 	    return this.vida.obtenerPuntosDeVida();
     }
 
-
+    public int cantidadDeMonstruosAgregados() {
+    	return campoDeJuego.cantidadDeCartasMonstruosAgregados();
+    }
 
 }

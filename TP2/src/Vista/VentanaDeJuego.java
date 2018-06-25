@@ -139,6 +139,7 @@ public class VentanaDeJuego {
 			image = new ImagePattern( new Image(URL) );
 			actualRect = iterZone.next();
 			actualRect.setFill(image);
+			if(monstruoActual.estaRotado()) actualRect.setRotate(90);
 		}
 	}
 	
@@ -154,6 +155,7 @@ public class VentanaDeJuego {
 			image = new ImagePattern( new Image(URL) );
 			actualRect = iterZone.next();
 			actualRect.setFill(image);
+			if(monstruoActual.estaRotado()) actualRect.setRotate(90);
 		}
 	}
 
@@ -201,11 +203,15 @@ public class VentanaDeJuego {
 
 		Rectangle rect;
 		while(iterMZoneOne.hasNext()) {	
-			iterMZoneOne.next().setFill(Color.GOLDENROD);
+			rect = iterMZoneOne.next();
+			rect.setFill(Color.GOLDENROD);
+			rect.setRotate(0);
 		}
 		
 		while(iterMZoneTwo.hasNext()) {
-			iterMZoneTwo.next().setFill(Color.GOLDENROD);
+			rect = iterMZoneTwo.next();
+			rect.setFill(Color.GOLDENROD);
+			rect.setRotate(0);
 		}
 		
 		while(iterSTZoneOne.hasNext()) {
@@ -248,7 +254,7 @@ public class VentanaDeJuego {
 		} else cartaDeCampoDos.setFill(Color.DARKVIOLET);
 		
 	}
-	
+
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
@@ -539,5 +545,6 @@ public class VentanaDeJuego {
 		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
 	}
+
 
 }
