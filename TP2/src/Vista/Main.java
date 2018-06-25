@@ -28,7 +28,7 @@ public class Main extends Application {
 
 	public void start( Stage stage ) throws Exception {
 		this.inicializarJugadores();
-		this.repartirCartas(); //SOlo de pruebas! Borrar!
+		this.repartirCartas(); 
 		this.inicializarVentanas();
 		
 		controlador = new Controlador (jugadorUno,jugadorDos);
@@ -49,9 +49,9 @@ public class Main extends Application {
 		this.jugadorUno = new Jugador(vidaJugadorUno);
 		this.jugadorDos = new Jugador(vidaJugadorDos);
 		
-		//Randomizador randomizador = new Randomizador();
-		//randomizador.cargarMazo(jugadorUno);
-		//randomizador.cargarMazo(jugadorDos);
+	//	Randomizador randomizador = new Randomizador();
+	//	randomizador.cargarMazo(jugadorUno);
+	//	randomizador.cargarMazo(jugadorDos);
 	}
 	
 	private void inicializarVentanas() {
@@ -87,6 +87,6 @@ public class Main extends Application {
 		jugadorDos.repartirCarta(gusanoAguja2);
 		jugadorDos.repartirCarta(jirai2);
 		jugadorDos.repartirCarta(parasito2);	
-	}
+	} 
 	
 }

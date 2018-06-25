@@ -185,13 +185,15 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterMZoneTwo = P2MZone.iterator();
 		Iterator<Rectangle> iterSTZoneOne = P1STZone.iterator();	
 		Iterator<Rectangle> iterSTZoneTwo = P2STZone.iterator();
+		Iterator<Rectangle> iterHandOne = handOne.iterator();
+		Iterator<Rectangle> iterHandTwo = handTwo.iterator();
 
 		while(iterMZoneOne.hasNext()) {
-			iterMZoneOne.next().setFill(Color.DARKCYAN);
+			iterMZoneOne.next().setFill(Color.GOLDENROD);
 		}
 		
 		while(iterMZoneTwo.hasNext()) {
-			iterMZoneTwo.next().setFill(Color.DARKCYAN);
+			iterMZoneTwo.next().setFill(Color.GOLDENROD);
 		}
 		
 		while(iterSTZoneOne.hasNext()) {
@@ -200,6 +202,14 @@ public class VentanaDeJuego {
 		
 		while(iterSTZoneTwo.hasNext()) {
 			iterSTZoneTwo.next().setFill(Color.DARKCYAN);
+		}
+		
+		while(iterHandOne.hasNext()) {
+			iterHandOne.next().setFill(Color.DARKCYAN);
+		}
+		
+		while(iterHandTwo.hasNext()) {
+			iterHandTwo.next().setFill(Color.DARKCYAN);
 		}
 		
 	}
