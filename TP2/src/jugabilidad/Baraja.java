@@ -40,14 +40,6 @@ public class Baraja {
 		}
 	}
 	
-	public Carta obtenerCartaDePosicion(int index) {
-		try {
-			return contenedor.get(index);
-		}catch(IndexOutOfBoundsException error) {
-			throw new ErrorNoHayCartasEnLaBaraja(); ///////CAmbiar!!!!!!!!!!!!!!!!!!!1
-		}
-	}
-	
 	public boolean pertenece(Carta cartaBuscada) {
 		return contenedor.contains(cartaBuscada);
 	}
@@ -72,6 +64,16 @@ public class Baraja {
 			if (iterador.next().esParteDeExodia()) contador++;
 		}
 		return (contador == 5);
+	}
+
+	/*Nuevos metodos falta probar*/
+	
+	public Carta obtenerCartaDePosicion(int index) {
+		try {
+			return contenedor.get(index);
+		}catch(IndexOutOfBoundsException error) {
+			throw new ErrorNoHayCartasEnLaBaraja(); ///////CAmbiar!!!!!!!!!!!!!!!!!!!1
+		}
 	}
 
 		

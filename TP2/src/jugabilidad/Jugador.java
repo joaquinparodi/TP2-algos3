@@ -202,9 +202,23 @@ public class Jugador {
 		return (this.vida.obtenerPuntosDeVida() == vida);
 	}
 
+	
+	
+	/*Metodos nuevos que faltarian probar*/
+	
+	
 	public void agregarCartaDeManoEnCampo(int index) {
 		mano.obtenerCartaDePosicion(index).agregarseEnCampo();	
 	}
+	
+	public void rotarCartaMonstruoEnCampo(int index) {
+		campoDeJuego.rotarCartaMonstruo(index);
+	}
+	
+	public boolean cartaMonstruoEnCampoEstaRotada(int index) {
+		return campoDeJuego.cartaMonstruoEnEstaRotada(index);
+	}
+	
 	
 	/*Metodos utilizados para actualizar la interfaz*/
 	

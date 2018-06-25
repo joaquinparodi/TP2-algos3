@@ -151,6 +151,18 @@ public class CampoDeJuego {
 		return mazo.tieneCartas();
 	}
 	
+	/*Nuevos metodos faltann probar*/
+	public void rotarCartaMonstruo(int index) {
+		Monstruo monstruoEnIndice = (Monstruo)filaMonstruos.obtenerCartaDePosicion(index);
+		monstruoEnIndice.cambiarPosicion();
+	}
+	
+	public boolean cartaMonstruoEnEstaRotada(int index) {
+		Monstruo monstruo = (Monstruo)filaMonstruos.obtenerCartaDePosicion(index);
+		return monstruo.estaRotado();
+	}
+		
+	
 	/*--------------------Metodos utilizados en la interfaz------------------------------------*/
 	
 	public Baraja obtenerFilaDeMonstruos() {
@@ -160,5 +172,6 @@ public class CampoDeJuego {
 	public Baraja obtenerFilaDeMagicasYTrampas() {
 		return filaMagicasYTrampas;
 	}
-		
+
+
 }

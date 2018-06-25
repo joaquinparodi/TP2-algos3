@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import cartas.Carta;
+import cartas.Monstruo;
+import eventos.BotonRotarEnZonaMonstruo;
 import eventos.CartasManoHandler;
+import eventos.CartasZonaMonstruoHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.scene.transform.Rotate;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
@@ -116,16 +120,14 @@ public class VentanaDeJuego {
 		Baraja filaMonstruos = campoDeJuegoUno.obtenerFilaDeMonstruos();
 		Iterator<Rectangle> iterZone = P1MZone.iterator();		
 		Iterator<Carta> iterFila = filaMonstruos.obtenerIteradorDeBaraja();
-
-		final int maxCardHand = 5;
-		int actualCards = 0;
 		
-		String URL; ImagePattern image;
+		String URL; ImagePattern image; Rectangle actualRect; Monstruo monstruoActual;
 		while(iterZone.hasNext() && iterFila.hasNext()) {
-			URL = database.getURL(iterFila.next().obtenerNombre());
+			monstruoActual = (Monstruo)iterFila.next();
+			URL = database.getURL(monstruoActual.obtenerNombre());
 			image = new ImagePattern( new Image(URL) );
-			iterZone.next().setFill(image);
-			actualCards++;
+			actualRect = iterZone.next();
+			actualRect.setFill(image);
 		}
 	}
 	
@@ -134,15 +136,13 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterZone = P2MZone.iterator();		
 		Iterator<Carta> iterFila = filaMonstruos.obtenerIteradorDeBaraja();
 
-		final int maxCardHand = 5;
-		int actualCards = 0;
-		
-		String URL; ImagePattern image;
+		String URL; ImagePattern image; Rectangle actualRect; Monstruo monstruoActual;
 		while(iterZone.hasNext() && iterFila.hasNext()) {
-			URL = database.getURL(iterFila.next().obtenerNombre());
+			monstruoActual = (Monstruo)iterFila.next();
+			URL = database.getURL(monstruoActual.obtenerNombre());
 			image = new ImagePattern( new Image(URL) );
-			iterZone.next().setFill(image);
-			actualCards++;
+			actualRect = iterZone.next();
+			actualRect.setFill(image);
 		}
 	}
 
@@ -188,7 +188,8 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterHandOne = handOne.iterator();
 		Iterator<Rectangle> iterHandTwo = handTwo.iterator();
 
-		while(iterMZoneOne.hasNext()) {
+		Rectangle rect;
+		while(iterMZoneOne.hasNext()) {	
 			iterMZoneOne.next().setFill(Color.GOLDENROD);
 		}
 		
@@ -214,6 +215,8 @@ public class VentanaDeJuego {
 		
 	}
 	
+
+	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
@@ -227,7 +230,6 @@ public class VentanaDeJuego {
 	    return scene;
 	}
 	
-
 	private BorderPane createBorderPane() {
 		BorderPane rootBorderPane = new BorderPane();
 		
@@ -244,7 +246,6 @@ public class VentanaDeJuego {
 		
 		return rootBorderPane;
 	}
-		
 	
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
@@ -306,7 +307,6 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
-
 	
 	private GridPane createCenterGridPane() {		
 		GridPane gridPane = new GridPane();
@@ -319,23 +319,23 @@ public class VentanaDeJuego {
 		
 		gridPane.setHgap(5);
 		gridPane.setVgap(0);
-		double with = 70; double height = 100;
+		double width = 70; double height = 100;
 		
 		/*---------------------------Campo de juego jugadorUno-------------------------------------*/
-		Rectangle P1STzone1 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1STzone2 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1STzone3 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1STzone4 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1STzone5 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P1STzone1 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1STzone2 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1STzone3 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1STzone4 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1STzone5 = new Rectangle(width, height, Color.DARKCYAN); 
 		
-		Rectangle P1Mzone1 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P1Mzone2 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P1Mzone3 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P1Mzone4 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P1Mzone5 = new Rectangle(with, height, Color.GOLDENROD); 
+		Rectangle P1Mzone1 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P1Mzone2 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P1Mzone3 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P1Mzone4 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P1Mzone5 = new Rectangle(width, height, Color.GOLDENROD); 
 		
-		Rectangle P1cemetery = new Rectangle(with, height, Color.DIMGRAY); 
-		Rectangle P1Lzone = new Rectangle(with, height, Color.DARKVIOLET);
+		Rectangle P1cemetery = new Rectangle(width, height, Color.DIMGRAY); 
+		Rectangle P1Lzone = new Rectangle(width, height, Color.DARKVIOLET);
 		
 		gridPane.setMargin(P1STzone1, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone1, new Insets(20)); 
 		gridPane.setMargin(P1STzone2, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone2, new Insets(20)); 
@@ -360,20 +360,20 @@ public class VentanaDeJuego {
 		P1STZone.add(P1STzone5); P1MZone.add(P1Mzone5);
 		
 		/*---------------------------Campo de juego jugadorDos-------------------------------------*/
-		Rectangle P2STzone1 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2STzone2 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2STzone3 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2STzone4 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2STzone5 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2STzone1 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2STzone2 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2STzone3 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2STzone4 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2STzone5 = new Rectangle(width, height, Color.DARKCYAN); 
 		
-		Rectangle P2Mzone1 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P2Mzone2 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P2Mzone3 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P2Mzone4 = new Rectangle(with, height, Color.GOLDENROD); 
-		Rectangle P2Mzone5 = new Rectangle(with, height, Color.GOLDENROD); 
+		Rectangle P2Mzone1 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P2Mzone2 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P2Mzone3 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P2Mzone4 = new Rectangle(width, height, Color.GOLDENROD); 
+		Rectangle P2Mzone5 = new Rectangle(width, height, Color.GOLDENROD); 
 		
-		Rectangle P2cemetery = new Rectangle(with, height, Color.DIMGRAY);
-		Rectangle P2Lzone = new Rectangle(with, height, Color.DARKVIOLET);
+		Rectangle P2cemetery = new Rectangle(width, height, Color.DIMGRAY);
+		Rectangle P2Lzone = new Rectangle(width, height, Color.DARKVIOLET);
 		
 		GridPane.setMargin(P2STzone1, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone1, new Insets(20)); 
 		GridPane.setMargin(P2STzone2, new Insets(0,20,10,20)); GridPane.setMargin(P2Mzone2, new Insets(20)); 
@@ -397,9 +397,9 @@ public class VentanaDeJuego {
 		P2STZone.add(P2STzone4); P2MZone.add(P2Mzone4);
 		P2STZone.add(P2STzone5); P2MZone.add(P2Mzone5);
 		
+		this.setActionToMZone();
 		return gridPane;
 	}
-	
 	
 	private GridPane createRightGridPane() {
 		GridPane gridPane = new GridPane();
@@ -413,19 +413,19 @@ public class VentanaDeJuego {
 		gridPane.setHgap(0);
 		gridPane.setVgap(14);
 		
-		double with = 70; double height = 100;
+		double width = 70; double height = 100;
 		
-		Rectangle P1card1 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1card2 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1card3 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1card4 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P1card5 = new Rectangle(with, height, Color.DARKCYAN);  
+		Rectangle P1card1 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1card2 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1card3 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1card4 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P1card5 = new Rectangle(width, height, Color.DARKCYAN);  
 		
-		Rectangle P2card1 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2card2 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2card3 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2card4 = new Rectangle(with, height, Color.DARKCYAN); 
-		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
+		Rectangle P2card1 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2card2 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2card3 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2card4 = new Rectangle(width, height, Color.DARKCYAN); 
+		Rectangle P2card5 = new Rectangle(width, height, Color.DARKCYAN); 
 		
 		handOne.add(P1card1); handTwo.add(P2card1); 
 		handOne.add(P1card2); handTwo.add(P2card2); 
@@ -451,8 +451,7 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
-	
-	
+		
 	private void setActionToHand() {
 		CartasManoHandler handler01 = new CartasManoHandler(this, manoJugadorUno, playerOne, 0, handOne.get(0));
 		CartasManoHandler handler02 = new CartasManoHandler(this, manoJugadorUno, playerOne, 1, handOne.get(1));
@@ -473,4 +472,23 @@ public class VentanaDeJuego {
 		handOne.get(4).setOnContextMenuRequested(handler05); handTwo.get(4).setOnContextMenuRequested(handler10);
 	}
 	
+	private void setActionToMZone() {
+		CartasZonaMonstruoHandler handlerO1 = new CartasZonaMonstruoHandler(this, playerOne, 0, P1MZone.get(0));
+		CartasZonaMonstruoHandler handlerO2 = new CartasZonaMonstruoHandler(this, playerOne, 1, P1MZone.get(1));
+		CartasZonaMonstruoHandler handlerO3 = new CartasZonaMonstruoHandler(this, playerOne, 2, P1MZone.get(2));
+		CartasZonaMonstruoHandler handlerO4 = new CartasZonaMonstruoHandler(this, playerOne, 3, P1MZone.get(3));
+		CartasZonaMonstruoHandler handlerO5 = new CartasZonaMonstruoHandler(this, playerOne, 4, P1MZone.get(4));
+		
+		CartasZonaMonstruoHandler handlerO6 = new CartasZonaMonstruoHandler(this, playerTwo, 0, P2MZone.get(0));
+		CartasZonaMonstruoHandler handlerO7 = new CartasZonaMonstruoHandler(this, playerTwo, 1, P2MZone.get(1));
+		CartasZonaMonstruoHandler handlerO8 = new CartasZonaMonstruoHandler(this, playerTwo, 2, P2MZone.get(2));
+		CartasZonaMonstruoHandler handlerO9 = new CartasZonaMonstruoHandler(this, playerTwo, 3, P2MZone.get(3));
+		CartasZonaMonstruoHandler handler10 = new CartasZonaMonstruoHandler(this, playerTwo, 4, P2MZone.get(4));
+		
+		P1MZone.get(0).setOnContextMenuRequested(handlerO1); P2MZone.get(0).setOnContextMenuRequested(handlerO6);
+		P1MZone.get(1).setOnContextMenuRequested(handlerO2); P2MZone.get(1).setOnContextMenuRequested(handlerO7);
+		P1MZone.get(2).setOnContextMenuRequested(handlerO3); P2MZone.get(2).setOnContextMenuRequested(handlerO8);
+		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
+		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
+	}
 }

@@ -20,7 +20,6 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 
 	private VentanaDeJuego ventanaDeJuego;
 	private Jugador jugador;
-	private Baraja manoJugador;
 	private Node nodo;
 	private int index;
 	
@@ -29,7 +28,6 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 		this.nodo = nodo;
 		this.index = index;
 		this.ventanaDeJuego = ventana;
-		this.manoJugador = manoJugador;
 	}
 	
 	public void handle(ContextMenuEvent event) {
@@ -40,7 +38,7 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 		MenuItem voltear = new MenuItem("Voltear");
 		menuDesplegable.getItems().addAll(agregarEnCampo, rotar, voltear);
 
-		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, manoJugador, jugador, index);
+		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
 		agregarEnCampo.setOnAction(handlerAgregar);
 		
 		menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());

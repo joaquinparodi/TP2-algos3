@@ -34,5 +34,9 @@ public class PosicionAtaque extends Posicion {
 	public void atacar(Atacable atacante, Atacable atacado) {
 		atacante.aplicarAtaque(atacado);
 	}
+	
+	public boolean estaRotada() {
+		return false;
+	}
 
 }
