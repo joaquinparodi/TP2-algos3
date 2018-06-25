@@ -3,13 +3,11 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Vida;
 import cartas.Carta;
-import errores.ErrorCartaNoEncontrada;
 import factories.FabricaDeCartas;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;

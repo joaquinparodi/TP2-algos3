@@ -31,6 +31,7 @@ public class CampoDeJuego {
 		cementerio = new Baraja();
 		cartasMagicas = new Baraja();
 		cartasTrampas = new Baraja();
+		mazo = new Baraja();
 	}
 	
 	public void agregarMazo(Baraja nuevoMazo) {

@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Iterator;
 
 import cartas.Carta;
-import errores.ErrorCartaNoEncontrada;
 import errores.ErrorNoHayCartasEnLaBaraja;
 
 public class Baraja {

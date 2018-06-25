@@ -7,7 +7,6 @@ import java.util.Iterator;
 import org.junit.Test;
 import atributos.Estrellas;
 import atributos.Puntos;
-import atributos.Vida;
 import cartas.*;
 import factories.FabricaDeCartas;
 import jugabilidad.Baraja;
@@ -144,6 +143,6 @@ public class TestControlador {
 		//Ahora el atacante deberia sacar una carta, como no tiene perdio el duelo
 		assertTrue( controlador.hayGanador() );
 		
-	}	
+	}
 		
 }

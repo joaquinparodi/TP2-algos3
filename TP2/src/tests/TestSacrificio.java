@@ -1,14 +1,12 @@
 package tests;
 
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.Test;
 import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Sacrificio;
 import atributos.Vida;
 import cartas.Monstruo;
-import errores.ErrorCartaNoEncontrada;
 import factories.FabricaDeCartas;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;

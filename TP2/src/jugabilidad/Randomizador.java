@@ -50,7 +50,7 @@ public class Randomizador {
 			}       
 		}
 		
-		Iterator<Carta> iteradorMazo = mazo.obtenerIteradorDeBaraja();
+		//Iterator<Carta> iteradorMazo = mazo.obtenerIteradorDeBaraja();
 	
 		for(int i = 0; i < 20; i++) {
 			
@@ -67,38 +67,38 @@ public class Randomizador {
 		    case 4: mazo.agregarCarta( fabricaDeCartas.crearInsectoComeHombres() );
 		    		break;
 		    		
-		    case 5: while(iteradorMazo.hasNext()) {
+		    case 5:/* while(iteradorMazo.hasNext()) {
 		    			Carta carta = iteradorMazo.next();
 		    			if(carta instanceof CabezaExodia) continue;
-		    		}
+		    		}*/
 		    		mazo.agregarCarta( fabricaDeCartas.crearCabezaExodia() );
 		    		break;
 		    		
-		    case 6: while(iteradorMazo.hasNext()) {
+		    case 6: /*while(iteradorMazo.hasNext()) {
     					Carta carta = iteradorMazo.next();
     					if(carta instanceof BrazoIzquierdoExodia) continue;
-    				}
+    				}*/
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoIzquierdoExodia() );
 					break;
 					
-		    case 7: while(iteradorMazo.hasNext()) {
+		    case 7: /*while(iteradorMazo.hasNext()) {
     					Carta carta = iteradorMazo.next();
     					if(carta instanceof BrazoDerechoExodia) continue;
-    				}
+    				}*/
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoDerechoExodia() );
 					break;
 					
-		    case 8: while(iteradorMazo.hasNext()) {
+		    case 8: /*while(iteradorMazo.hasNext()) {
     					Carta carta = iteradorMazo.next();
     					if(carta instanceof PiernaDerechaExodia) continue;
-    				}
+    				}*/
 		    		mazo.agregarCarta( fabricaDeCartas.crearPiernaDerechaExodia() );
 					break;
 					
-            case 9: while(iteradorMazo.hasNext()) {
+            case 9:/* while(iteradorMazo.hasNext()) {
     					Carta carta = iteradorMazo.next();
     					if(carta instanceof PiernaIzquierdaExodia) continue;
-    				}
+    				}*/
             		mazo.agregarCarta( fabricaDeCartas.crearPiernaIzquierdaExodia() );
 					break;	
 					
@@ -116,9 +116,10 @@ public class Randomizador {
     				break;
             default:mazo.agregarCarta( fabricaDeCartas.crearSogen() );
     				break;
-			}    
+			}
 		}  
-		//mazo.mezclarBaraja();
+		
+		mazo.mezclarBaraja();
 	}
 
 }
