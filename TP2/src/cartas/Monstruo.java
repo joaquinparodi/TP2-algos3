@@ -116,9 +116,13 @@ public class Monstruo extends Carta implements Atacable {
 		return nombreCarta;
 	}
 
-	@Override
 	public boolean esParteDeExodia() {
 		return componeAExodia;
+	}
+
+	@Override
+	public void agregarseEnCampo() {
+		jugadorDuenio.agregarCartaEnCampo(this);	
 	}
 }
 

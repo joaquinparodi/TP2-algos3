@@ -38,4 +38,9 @@ public class Campo extends Carta {
 		return false;
 	}
 
+	@Override
+	public void agregarseEnCampo() {
+		jugadorDuenio.agregarCartaEnCampo(this);
+	}
+
 }

@@ -151,10 +151,6 @@ public class Jugador {
     public CampoDeJuego obtenerCampo() {
     	return this.campoDeJuego;
     }
-    
-    public void voltearCartaDeMano (String nombreDeCarta) {
-    	mano.voltearCarta(nombreDeCarta);
-    }
     	
     public void agregarCartaDeCampoRival(Campo cartaCampo) {
     	this.campoDeJuego.agregarCartaDeCampoRival(cartaCampo);
@@ -189,8 +185,7 @@ public class Jugador {
 	public boolean poseeCartasEnMazo() {
 		return campoDeJuego.hayCartasEnMazo();
 	}
-		
-	
+			
 	public boolean fueDerrotado() {
 		return vida.estaVacia();
 	}
@@ -207,6 +202,10 @@ public class Jugador {
 		return (this.vida.obtenerPuntosDeVida() == vida);
 	}
 
+	public void agregarCartaDeManoEnCampo(int index) {
+		mano.obtenerCartaDePosicion(index).agregarseEnCampo();	
+	}
+	
 	/*Metodos utilizados para actualizar la interfaz*/
 	
 	public Baraja obtenerMano() {
@@ -216,5 +215,7 @@ public class Jugador {
     public double obtenerVida() {
 	    return this.vida.obtenerPuntosDeVida();
     }
+
+
 
 }

@@ -22,6 +22,11 @@ public class Magica extends Carta{
 	@Override
 	public boolean esParteDeExodia() {
 		return false;
+	}
+
+	@Override
+	public void agregarseEnCampo() {
+		jugadorDuenio.agregarCartaEnCampo(this);
 	}	
 	
 }

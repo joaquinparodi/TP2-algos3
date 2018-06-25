@@ -6,13 +6,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class EventoActivarBoton implements EventHandler<KeyEvent> {
+public class ActivarBotonHandler implements EventHandler<KeyEvent> {
 	
 	private Button botonAActivar;
 	private TextField esteCampo;
 	private TextField elOtroCampo;
 	
-	public EventoActivarBoton (Button boton, TextField campo1, TextField campo2) {
+	public ActivarBotonHandler (Button boton, TextField campo1, TextField campo2) {
 		this.botonAActivar = boton;
 		this.esteCampo = campo1;
 		this.elOtroCampo = campo2;

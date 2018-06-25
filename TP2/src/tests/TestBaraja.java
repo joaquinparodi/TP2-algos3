@@ -33,12 +33,4 @@ public class TestBaraja {
 		assertTrue( baraja.pertenece(monstruo) );
 	}
 	
-	//Este de aca no se si sirve, xq si se manda el objeto no hay necesidad de obtener la carta
-	@Test
-	public void test02CartaNoEncontrada(){
-		Baraja baraja = new Baraja();
-		
-		Assertions.assertThrows(ErrorCartaNoEncontrada.class, () -> baraja.obtenerCarta("CartaTest"));
-	}
-	
 }

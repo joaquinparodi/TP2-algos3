@@ -22,6 +22,8 @@ public abstract class Carta {
     }
 
     public abstract void enviarAlCementerio();
+
+    public abstract void agregarseEnCampo();
     
     public abstract boolean esParteDeExodia();
     

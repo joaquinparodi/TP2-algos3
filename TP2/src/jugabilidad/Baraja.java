@@ -40,13 +40,12 @@ public class Baraja {
 		}
 	}
 	
-	public Carta obtenerCarta(String nombreCarta) {
-		Iterator<Carta> iter = contenedor.iterator();
-	    while(iter.hasNext()) {
-	    	Carta carta = iter.next();
-	    	if( carta.seLlama(nombreCarta) ) return carta;
-	    }
-	    throw new ErrorCartaNoEncontrada();
+	public Carta obtenerCartaDePosicion(int index) {
+		try {
+			return contenedor.get(index);
+		}catch(IndexOutOfBoundsException error) {
+			throw new ErrorNoHayCartasEnLaBaraja(); ///////CAmbiar!!!!!!!!!!!!!!!!!!!1
+		}
 	}
 	
 	public boolean pertenece(Carta cartaBuscada) {
@@ -55,11 +54,6 @@ public class Baraja {
 	
 	public boolean tieneCartas() {
 		return !contenedor.isEmpty();
-	}
-	
-	public void voltearCarta (String nombreDeCarta) {
-		Carta carta = this.obtenerCarta(nombreDeCarta);
-		carta.voltear();
 	}
 
 	public Iterator<Carta> obtenerIteradorDeBaraja() {
@@ -80,4 +74,5 @@ public class Baraja {
 		return (contador == 5);
 	}
 
+		
 }

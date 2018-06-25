@@ -37,27 +37,4 @@ public class TestSacrificio {
 		assertTrue( campo.cartaPerteneceAlCementerio(unaCarta) );
 	}
 	
-	@Test
-	public void test02LasCartasSacrificadasSeSacanDelCampoDeJuego() {
-		
-		Vida vidaJugadorUno = new Vida (8000);
-	
-		//Jugador se usa para inicializar el mosntruo, para el test se usa otro campo
-		Jugador jugadorUno = new Jugador (vidaJugadorUno);
-		Puntos puntosCartaUno = new Puntos(1500, 2000);
-		Estrellas estrellas = new Estrellas(1);
-		
-		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugadorUno);
-		
-		Monstruo unaCarta = fabricaDeCartas.crearMonstruoPersonalizado("Facundo", estrellas, puntosCartaUno);
-		CampoDeJuego campo = new CampoDeJuego();
-		campo.agregarCarta(unaCarta);
-		
-		Sacrificio sacrificio = new Sacrificio();
-		sacrificio.agregarCarta( unaCarta );
-		sacrificio.enviarSacrificiosAlCementerio(campo);
-		
-		//Al no encontrar la carta, lanza la excepcion
-		assertThrows(ErrorCartaNoEncontrada.class, () -> campo.obtenerMonstruo( "Facundo" ));
-	}
 }

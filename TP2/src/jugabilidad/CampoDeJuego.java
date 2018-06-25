@@ -104,10 +104,6 @@ public class CampoDeJuego {
 		return this.filaMonstruos;
 	}
 
-	public Monstruo obtenerMonstruo(String nombreMonstruo) {
-		return (Monstruo)filaMonstruos.obtenerCarta(nombreMonstruo);
-	}
-
 	public void agregarCartaDeCampoRival(Campo cartaCampoRival) {
 		this.cartaDeCampoRival = cartaCampoRival;
 	}

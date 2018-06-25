@@ -4,10 +4,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import cartas.Carta;
+import eventos.CartasManoHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -34,12 +40,22 @@ public class VentanaDeJuego {
 	ArrayList<Rectangle> handOne;
 	ArrayList<Rectangle> handTwo;
 	
+	ArrayList<Rectangle> P1STZone;
+	ArrayList<Rectangle> P2STZone;
+	
+	ArrayList<Rectangle> P1MZone;
+	ArrayList<Rectangle> P2MZone;
+	
 	BaseDeDatosDeCartas database;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
 		handOne = new ArrayList<Rectangle>();
 		handTwo = new ArrayList<Rectangle>();
+		P1STZone = new ArrayList<Rectangle>();
+		P2STZone = new ArrayList<Rectangle>();
+		P1MZone = new ArrayList<Rectangle>();
+		P2MZone = new ArrayList<Rectangle>();
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
 	}
@@ -48,7 +64,6 @@ public class VentanaDeJuego {
 		playerOneName.setText(playerOne.obtenerNombre());
 		playerTwoName.setText(playerTwo.obtenerNombre());
 	}
-	
 	
 	public void actualizarManos() {
 		Iterator<Rectangle> iterOne = handOne.iterator();
@@ -77,8 +92,14 @@ public class VentanaDeJuego {
 			image = new ImagePattern( new Image(URL) );
 			iterTwo.next().setFill(image);
 			actualCards++;
-		}
+		} 
+
+		//Repartir mas cartas no solo 5
 	} 
+
+	public void agregarCartaEnZonaMonstruos() {
+		
+	}
 	
 	public Scene createGameScene() {
 	    BorderPane rootBorderPane = this.createBorderPane();
@@ -90,7 +111,6 @@ public class VentanaDeJuego {
 	    
 	    return scene;
 	}
-	
 	
 	private BorderPane createBorderPane() {
 		BorderPane rootBorderPane = new BorderPane();
@@ -108,14 +128,13 @@ public class VentanaDeJuego {
 		
 		return rootBorderPane;
 	}
-	
-	
+		
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
 		//gridPane.setPrefWidth(200);
 		
-		CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
-		BackgroundFill fill = new BackgroundFill(Color.DARKRED, cornerProperties, null);
+		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
+		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
@@ -170,14 +189,13 @@ public class VentanaDeJuego {
 		
 		return gridPane;
 	}
-	
 
 	private GridPane createCenterGridPane() {		
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
 		
-		CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
-		BackgroundFill fill = new BackgroundFill(Color.DARKGREEN, cornerProperties, null);
+		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
+		BackgroundFill fill = new BackgroundFill(Color.DARKGREEN, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
@@ -185,7 +203,7 @@ public class VentanaDeJuego {
 		gridPane.setVgap(0);
 		double with = 70; double height = 100;
 		
-		/*Campo de juego jugadorUno */
+		/*---------------------------Campo de juego jugadorUno-------------------------------------*/
 		Rectangle P1STzone1 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1STzone2 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P1STzone3 = new Rectangle(with, height, Color.DARKCYAN); 
@@ -217,7 +235,13 @@ public class VentanaDeJuego {
 		
 		gridPane.add(P1cemetery, 0, 3); gridPane.add(P1Lzone, 6, 3);
 			
-		/*Campo de juego jugadorDos*/
+		P1STZone.add(P1STzone1); P1MZone.add(P1Mzone1);
+		P1STZone.add(P1STzone2); P1MZone.add(P1Mzone2);
+		P1STZone.add(P1STzone3); P1MZone.add(P1Mzone3);
+		P1STZone.add(P1STzone4); P1MZone.add(P1Mzone4);
+		P1STZone.add(P1STzone5); P1MZone.add(P1Mzone5);
+		
+		/*---------------------------Campo de juego jugadorDos-------------------------------------*/
 		Rectangle P2STzone1 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2STzone2 = new Rectangle(with, height, Color.DARKCYAN); 
 		Rectangle P2STzone3 = new Rectangle(with, height, Color.DARKCYAN); 
@@ -233,13 +257,13 @@ public class VentanaDeJuego {
 		Rectangle P2cemetery = new Rectangle(with, height, Color.DIMGRAY);
 		Rectangle P2Lzone = new Rectangle(with, height, Color.DARKVIOLET);
 		
-		gridPane.setMargin(P2STzone1, new Insets(10)); gridPane.setMargin(P2Mzone1, new Insets(10)); 
-		gridPane.setMargin(P2STzone2, new Insets(10)); gridPane.setMargin(P2Mzone2, new Insets(10)); 
-		gridPane.setMargin(P2STzone3, new Insets(10)); gridPane.setMargin(P2Mzone3, new Insets(10)); 
-		gridPane.setMargin(P2STzone4, new Insets(10)); gridPane.setMargin(P2Mzone4, new Insets(10)); 
-		gridPane.setMargin(P2STzone5, new Insets(10)); gridPane.setMargin(P2Mzone5, new Insets(10)); 
+		GridPane.setMargin(P2STzone1, new Insets(10)); GridPane.setMargin(P2Mzone1, new Insets(10)); 
+		GridPane.setMargin(P2STzone2, new Insets(10)); GridPane.setMargin(P2Mzone2, new Insets(10)); 
+		GridPane.setMargin(P2STzone3, new Insets(10)); GridPane.setMargin(P2Mzone3, new Insets(10)); 
+		GridPane.setMargin(P2STzone4, new Insets(10)); GridPane.setMargin(P2Mzone4, new Insets(10)); 
+		GridPane.setMargin(P2STzone5, new Insets(10)); GridPane.setMargin(P2Mzone5, new Insets(10)); 
 		
-		gridPane.setMargin(P2cemetery, new Insets(10)); gridPane.setMargin(P2Lzone, new Insets(10));
+		GridPane.setMargin(P2cemetery, new Insets(10)); GridPane.setMargin(P2Lzone, new Insets(10));
 		
 		gridPane.add(P2STzone1, 1, 6); gridPane.add(P2Mzone1, 1, 5);
 		gridPane.add(P2STzone2, 2, 6); gridPane.add(P2Mzone2, 2, 5);
@@ -249,17 +273,21 @@ public class VentanaDeJuego {
 		
 		gridPane.add(P2Lzone, 0, 4); gridPane.add(P2cemetery, 6, 4);
 		
-		//gridPane.setGridLinesVisible(true); //->para prueba
+		P2STZone.add(P2STzone1); P2MZone.add(P2Mzone1);
+		P2STZone.add(P2STzone2); P2MZone.add(P2Mzone2);
+		P2STZone.add(P2STzone3); P2MZone.add(P2Mzone3);
+		P2STZone.add(P2STzone4); P2MZone.add(P2Mzone4);
+		P2STZone.add(P2STzone5); P2MZone.add(P2Mzone5);
+		
 		return gridPane;
 	}
-	
 	
 	private GridPane createRightGridPane() {
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
 		
-		CornerRadii cornerProperties = new CornerRadii(15, 0, 0, 15, false);
-		BackgroundFill fill = new BackgroundFill(Color.DARKRED, cornerProperties, null);
+		//CornerRadii cornerProperties = new CornerRadii(15, 0, 0, 15, false);
+		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
@@ -288,6 +316,8 @@ public class VentanaDeJuego {
 		handOne.add(P1card4); handTwo.add(P2card4); 
 		handOne.add(P1card5); handTwo.add(P2card5); 
 
+		this.setActionToHand();
+
 		gridPane.setMargin(P1card1, new Insets(10)); gridPane.setMargin(P2card1, new Insets(10)); 
 		gridPane.setMargin(P1card2, new Insets(10)); gridPane.setMargin(P2card2, new Insets(10)); 
 		gridPane.setMargin(P1card3, new Insets(10)); gridPane.setMargin(P2card3, new Insets(10)); 
@@ -307,6 +337,27 @@ public class VentanaDeJuego {
 		//gridPane.setGridLinesVisible(true); //->para prueba
 		
 		return gridPane;
+	}
+	
+	private void setActionToHand() {
+		
+		CartasManoHandler handler01 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(0), playerOne, 0);
+		CartasManoHandler handler02 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(1), playerOne, 1);
+		CartasManoHandler handler03 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(2), playerOne, 2);
+		CartasManoHandler handler04 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(3), playerOne, 3);
+		CartasManoHandler handler05 = new CartasManoHandler(this, P1STZone, P1MZone, handOne.get(4), playerOne, 4);
+		
+		CartasManoHandler handler06 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(0), playerOne, 0);
+		CartasManoHandler handler07 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(1), playerOne, 1);
+		CartasManoHandler handler08 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(2), playerOne, 2);
+		CartasManoHandler handler09 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(3), playerOne, 3);
+		CartasManoHandler handler10 = new CartasManoHandler(this, P2STZone, P2MZone, handOne.get(4), playerOne, 4);
+		
+		handOne.get(0).setOnContextMenuRequested(handler01); handTwo.get(0).setOnContextMenuRequested(handler06);
+		handOne.get(1).setOnContextMenuRequested(handler02); handTwo.get(1).setOnContextMenuRequested(handler07);
+		handOne.get(2).setOnContextMenuRequested(handler03); handTwo.get(2).setOnContextMenuRequested(handler08);
+		handOne.get(3).setOnContextMenuRequested(handler04); handTwo.get(3).setOnContextMenuRequested(handler09);
+		handOne.get(4).setOnContextMenuRequested(handler05); handTwo.get(4).setOnContextMenuRequested(handler10);
 	}
 	
 }

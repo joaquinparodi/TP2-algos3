@@ -1,7 +1,7 @@
 package Vista;
 
 import eventos.BotonInicioHandler;
-import eventos.EventoActivarBoton;
+import eventos.ActivarBotonHandler;
 import eventos.TextFieldNombreHandler;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -75,7 +75,7 @@ public class VentanaInicial {
 		namePlayerOne.setPromptText("Nombre jugador uno");
 		namePlayerTwo.setPromptText("Nombre jugador dos");
 		
-		EventoActivarBoton activarBotonHandler = new EventoActivarBoton(enterButton,namePlayerOne,namePlayerTwo);
+		ActivarBotonHandler activarBotonHandler = new ActivarBotonHandler(enterButton,namePlayerOne,namePlayerTwo);
 		
 		namePlayerOne.setOnKeyPressed(activarBotonHandler);
 		namePlayerTwo.setOnKeyPressed(activarBotonHandler);

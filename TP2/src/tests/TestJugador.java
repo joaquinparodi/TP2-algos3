@@ -288,7 +288,7 @@ class TestJugador {
 		jugadorUno.repartirCarta(agujeroNegro);
 		jugadorDos.repartirCarta(monstruoDos);
 		
-		jugadorUno.voltearCartaDeMano("Agujero Negro");
+		agujeroNegro.voltear();
 		
 		jugadorUno.agregarCartaEnCampo(monstruoUno);
 		jugadorDos.agregarCartaEnCampo(monstruoDos);

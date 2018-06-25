@@ -41,8 +41,7 @@ public class Main extends Application {
 		stage.setScene(initialScene);
 		stage.show();
 	}
-	
-	
+		
 	private void inicializarJugadores() {	
 		Vida vidaJugadorUno = new Vida(8000);
 		Vida vidaJugadorDos = new Vida(8000);
@@ -59,7 +58,6 @@ public class Main extends Application {
 		ventanaInicial = new VentanaInicial(jugadorUno, jugadorDos);
 		ventanaDeJuego = new VentanaDeJuego(jugadorUno, jugadorDos);
 	}
-	
 	
 	//Solo de prueba!
 	private void repartirCartas() {
