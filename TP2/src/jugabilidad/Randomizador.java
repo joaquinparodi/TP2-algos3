@@ -49,8 +49,6 @@ public class Randomizador {
 					
 			}       
 		}
-		
-		//Iterator<Carta> iteradorMazo = mazo.obtenerIteradorDeBaraja();
 	
 		for(int i = 0; i < 20; i++) {
 			
@@ -67,38 +65,43 @@ public class Randomizador {
 		    case 4: mazo.agregarCarta( fabricaDeCartas.crearInsectoComeHombres() );
 		    		break;
 		    		
-		    case 5:/* while(iteradorMazo.hasNext()) {
+		    case 5: Iterator<Carta> iteradorMazo = mazo.obtenerIteradorDeBaraja();
+		    		while(iteradorMazo.hasNext()) {
 		    			Carta carta = iteradorMazo.next();
 		    			if(carta instanceof CabezaExodia) continue;
-		    		}*/
+		    		}
 		    		mazo.agregarCarta( fabricaDeCartas.crearCabezaExodia() );
 		    		break;
 		    		
-		    case 6: /*while(iteradorMazo.hasNext()) {
-    					Carta carta = iteradorMazo.next();
+		    case 6: Iterator<Carta> iteradorMazo2 = mazo.obtenerIteradorDeBaraja();
+		    		while(iteradorMazo2.hasNext()) {
+    					Carta carta = iteradorMazo2.next();
     					if(carta instanceof BrazoIzquierdoExodia) continue;
-    				}*/
+    				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoIzquierdoExodia() );
 					break;
 					
-		    case 7: /*while(iteradorMazo.hasNext()) {
-    					Carta carta = iteradorMazo.next();
+		    case 7: Iterator<Carta> iteradorMazo3 = mazo.obtenerIteradorDeBaraja();
+		    		while(iteradorMazo3.hasNext()) {
+    					Carta carta = iteradorMazo3.next();
     					if(carta instanceof BrazoDerechoExodia) continue;
-    				}*/
+    				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoDerechoExodia() );
 					break;
 					
-		    case 8: /*while(iteradorMazo.hasNext()) {
-    					Carta carta = iteradorMazo.next();
+		    case 8: Iterator<Carta> iteradorMazo4 = mazo.obtenerIteradorDeBaraja();
+		    		while(iteradorMazo4.hasNext()) {
+    					Carta carta = iteradorMazo4.next();
     					if(carta instanceof PiernaDerechaExodia) continue;
-    				}*/
+    				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearPiernaDerechaExodia() );
 					break;
 					
-            case 9:/* while(iteradorMazo.hasNext()) {
-    					Carta carta = iteradorMazo.next();
+            case 9: Iterator<Carta> iteradorMazo5 = mazo.obtenerIteradorDeBaraja();
+            		while(iteradorMazo5.hasNext()) {
+    					Carta carta = iteradorMazo5.next();
     					if(carta instanceof PiernaIzquierdaExodia) continue;
-    				}*/
+    				}
             		mazo.agregarCarta( fabricaDeCartas.crearPiernaIzquierdaExodia() );
 					break;	
 					
