@@ -4,6 +4,7 @@ import Vista.VentanaDeJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import jugabilidad.AreaDeSacrificios;
 import jugabilidad.Controlador;
 
 public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
@@ -35,7 +36,8 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 				//ACA TERMINA EL JUEGO
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
-			}		
+			}
+			AreaDeSacrificios.obtener().reiniciarSacrificios();
 		}
 	}
 }
