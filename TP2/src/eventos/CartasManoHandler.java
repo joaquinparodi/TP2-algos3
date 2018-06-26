@@ -61,7 +61,8 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 
 				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
-				
+				agregarEnCampo.setOnAction(handlerAgregar);
+
 			}else if (carta.esDeTrampa()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);

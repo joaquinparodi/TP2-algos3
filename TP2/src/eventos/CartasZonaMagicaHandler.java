@@ -1,6 +1,8 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
+import cartas.Carta;
+import cartas.Monstruo;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
@@ -8,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Rectangle;
 import jugabilidad.Baraja;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 
 public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
@@ -17,6 +20,7 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 	private Baraja manoJugador;
 	private Rectangle rect;
 	private int index;
+	private Carta carta;
 	
 	public CartasZonaMagicaHandler(VentanaDeJuego ventana, Jugador jugador, int index, Rectangle rect) {
 		this.jugador = jugador;
@@ -26,6 +30,7 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 	}
 	
 	public void handle(ContextMenuEvent event) {
+		if ((Controlador.obtener().obtenerFase() == "Final") && carta.esDeMagia()) {
 			ContextMenu menuDesplegable = new ContextMenu();
 	
 			MenuItem voltear = new MenuItem("voltear");
@@ -35,6 +40,11 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 			voltear.setOnAction(handler);
 		
 			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
+		}
+	}
+
+	public void asignarMagicaEnPosicion(Carta carta) {
+		this.carta = carta;
 	}
 
 	
