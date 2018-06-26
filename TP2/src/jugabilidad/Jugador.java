@@ -103,12 +103,12 @@ public class Jugador {
     		throw new ErrorCartaNoEncontrada();
     	}
     	
-    	mano.eliminarCarta(cartaMonstruo);
     	
     	if( cartaMonstruo.necesitaSacrificiosParaInvocacion() ) {
     		throw new ErrorSacrificiosInsuficientes();
     	}
     	
+    	mano.eliminarCarta(cartaMonstruo);
     	campoDeJuego.agregarCarta(cartaMonstruo);
     }
     
