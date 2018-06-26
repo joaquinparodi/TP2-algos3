@@ -30,7 +30,6 @@ public class Randomizador {
 		for(int i = 0; i < 20; i++) {
 			int numeroAlAzar = (int) (Math.random() * 7) + 1;
 			
-			System.out.println(numeroAlAzar);
 			switch (numeroAlAzar) {
             
 				case 1: mazo.agregarCarta( fabricaDeCartas.crearSangan() );

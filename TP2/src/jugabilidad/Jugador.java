@@ -244,5 +244,5 @@ public class Jugador {
 	public boolean pertenece(Monstruo monstruoUno) {
 		return campoDeJuego.obtenerMonstruos().pertenece(monstruoUno);
 	}
-
+	
 }
