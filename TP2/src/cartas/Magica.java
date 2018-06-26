@@ -18,6 +18,11 @@ public class Magica extends Carta{
 	public void aplicarEfecto() {
 		this.orientacion.aplicarEfecto(this.efecto,this.jugadorDuenio);
 	}
+	
+	public void voltear() {
+		orientacion = orientacion.voltear();
+		this.orientacion.aplicarEfecto(efecto, jugadorDuenio);
+	}
 
 	@Override
 	public boolean esParteDeExodia() {
