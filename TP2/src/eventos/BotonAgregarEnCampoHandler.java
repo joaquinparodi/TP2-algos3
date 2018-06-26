@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import Vista.BaseDeDatosDeCartas;
 import Vista.VentanaDeJuego;
+import errores.ErrorSacrificiosInsuficientes;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -28,7 +31,15 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 	}
 	
 	public void handle(ActionEvent event) {
-		jugador.agregarCartaDeManoEnCampo(index);
+		try {
+			jugador.agregarCartaDeManoEnCampo(index);
+		}catch (ErrorSacrificiosInsuficientes error) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Sacrificios incompletos");
+			alert.setContentText("No se han seleccionado sacrificios suficientes para invocar este monstruo");
+			alert.showAndWait();
+		}
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
 
