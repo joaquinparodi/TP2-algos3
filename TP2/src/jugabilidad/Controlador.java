@@ -21,6 +21,8 @@ public class Controlador {
 		
 		this.asignarRivales(jugadorUno, jugadorDos);
 		
+		this.fase = new FasePreparacion();
+		
 		//Decidir esto se va a encargar otra clase(Inicializador)
 		atacante = jugadorUno;
 		defensor = jugadorDos;
