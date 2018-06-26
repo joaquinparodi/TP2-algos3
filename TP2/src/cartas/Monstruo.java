@@ -129,5 +129,25 @@ public class Monstruo extends Carta implements Atacable {
 	public boolean estaRotado() {
 		return this.posicion.estaRotada();
 	}
+
+	@Override
+	public boolean esDeMagia() {
+		return false;
+	}
+
+	@Override
+	public boolean esMonstruo() {
+		return true;
+	}
+
+	@Override
+	public boolean esDeCampo() {
+		return false;
+	}
+
+	@Override
+	public boolean esDeTrampa() {
+		return false;
+	}
 }
 

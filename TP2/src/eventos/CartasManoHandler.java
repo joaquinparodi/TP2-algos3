@@ -3,6 +3,7 @@ package eventos;
 import java.util.ArrayList;
 
 import Vista.VentanaDeJuego;
+import cartas.Carta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
@@ -23,6 +24,7 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	private Jugador jugador;
 	private Node nodo;
 	private int index;
+	private Carta carta;
 	
 	public CartasManoHandler(VentanaDeJuego ventana, Baraja manoJugador, Jugador jugador, int index, Node nodo) {
 		this.jugador = jugador;
@@ -36,22 +38,45 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 			ContextMenu menuDesplegable = new ContextMenu();
 			Rectangle rect = (Rectangle)event.getSource();
 			
-			MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
-			MenuItem agregarRotada = new MenuItem("Agregar rotada");
-			MenuItem agregarVolteada = new MenuItem("Agregar volteada");
-			menuDesplegable.getItems().addAll(agregarEnCampo, agregarRotada, agregarVolteada);
-	
-			BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
-			BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
-			BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);
-			
-			agregarEnCampo.setOnAction(handlerAgregar);
-			agregarRotada.setOnAction(handlerAgregarRotada);
-			agregarVolteada.setOnAction(handlerAgregarVolteada);
+			if (carta.esDeMagia()) {
+				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
+				menuDesplegable.getItems().addAll(agregarEnCampo);
+				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+				agregarEnCampo.setOnAction(handlerAgregarVolteada);
+			}else if (carta.esMonstruo()) {
+				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
+				MenuItem agregarRotada = new MenuItem("Agregar rotada");
+				MenuItem agregarVolteada = new MenuItem("Agregar volteada");
+				menuDesplegable.getItems().addAll(agregarEnCampo,agregarRotada,agregarVolteada);
+
+				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+				BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
+				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+				
+				agregarEnCampo.setOnAction(handlerAgregar);
+				agregarRotada.setOnAction(handlerAgregarRotada);
+				agregarVolteada.setOnAction(handlerAgregarVolteada);			
+			}else if (carta.esDeCampo()) {
+				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
+				menuDesplegable.getItems().addAll(agregarEnCampo);
+
+				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+				
+			}else if (carta.esDeTrampa()) {
+				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
+				menuDesplegable.getItems().addAll(agregarEnCampo);
+				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+				agregarEnCampo.setOnAction(handlerAgregarVolteada);
+
+			}
 			
 			
 			menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
 	
 		}
+	}
+
+	public void setCarta(Carta carta) {
+		this.carta = carta;
 	}
 }

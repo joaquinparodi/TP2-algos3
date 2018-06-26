@@ -47,6 +47,26 @@ public class Campo extends Carta {
 	public void cambiarPosicion() {
 		return;	
 	}
+
+	@Override
+	public boolean esDeMagia() {
+		return false;
+	}
+
+	@Override
+	public boolean esMonstruo() {
+		return false;
+	}
+
+	@Override
+	public boolean esDeCampo() {
+		return true;
+	}
+
+	@Override
+	public boolean esDeTrampa() {
+		return false;
+	}
 	
 
 }

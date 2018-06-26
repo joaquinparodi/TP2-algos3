@@ -46,5 +46,13 @@ public abstract class Carta {
     public Jugador obtenerDuenio() {
     	return this.jugadorDuenio;
     }
+
+	public abstract boolean esDeMagia();
+
+	public abstract boolean esMonstruo();
+	
+	public abstract boolean esDeCampo();
+
+	public abstract boolean esDeTrampa();
 }
 	

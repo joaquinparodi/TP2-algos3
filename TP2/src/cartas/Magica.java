@@ -34,5 +34,25 @@ public class Magica extends Carta{
 		return;
 	}
 
+	@Override
+	public boolean esDeMagia() {
+		return true;
+	}
+
+	@Override
+	public boolean esMonstruo() {
+		return false;
+	}
+
+	@Override
+	public boolean esDeCampo() {
+		return false;
+	}
+
+	@Override
+	public boolean esDeTrampa() {
+		return false;
+	}
+
 }
 

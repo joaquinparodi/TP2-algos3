@@ -564,6 +564,7 @@ public class VentanaDeJuego {
 		int i=0;
 		while (i < handOne.size()) {
 			CartasManoHandler handler = new CartasManoHandler (this,manoJugadorUno,playerOne,i,iterador.next());
+			handler.setCarta(manoJugadorUno.obtenerCartaDePosicion(i));
 			handOne.get(i).setOnContextMenuRequested(handler);
 			i++;
 		}
@@ -573,6 +574,7 @@ public class VentanaDeJuego {
 		i=0;
 		while (i < handTwo.size()) {
 			CartasManoHandler handler = new CartasManoHandler (this,manoJugadorDos,playerTwo,i,iterador.next());
+			handler.setCarta(manoJugadorDos.obtenerCartaDePosicion(i));
 			handTwo.get(i).setOnContextMenuRequested(handler);
 			i++;
 		}
