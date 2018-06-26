@@ -163,7 +163,7 @@ public class VentanaDeJuego {
 			image = new ImagePattern( new Image(URL) );
 			rectangulo.setFill(image);
 			actualCards++;
-		} 
+		}
 
 		scrollPlayer1.setBackground(background);
 		scrollPlayer2.setBackground(background);
@@ -171,7 +171,7 @@ public class VentanaDeJuego {
 		setActionToHand();
 		//Repartir mas cartas no solo 5
 	} 
-	
+
 	private void actualizarFilaMonstruosJugadorUno() {
 		Baraja filaMonstruos = campoDeJuegoUno.obtenerFilaDeMonstruos();
 		Iterator<Rectangle> iterZone = P1MZone.iterator();		
