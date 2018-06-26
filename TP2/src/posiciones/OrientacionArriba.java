@@ -4,6 +4,7 @@ import atributos.Efecto;
 import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
+import cartas.Magica;
 import jugabilidad.Jugador;
 import resultados.Resultado;
 
@@ -17,8 +18,8 @@ public class OrientacionArriba extends Orientacion{
 		unEfecto.aplicar(unJugador);
 	}
 	
-	public void aplicarEfecto(EfectoDeCampo unEfecto, Jugador unJugador) {
-		unEfecto.aplicar(unJugador);
+	public void aplicarEfecto(Magica cartaDuenia) {
+		cartaDuenia.aplicarEfectoBocaArriba();
 	}
 
 	public Resultado recibirAtaque(Atacable atacado, Puntos puntosAtacante) {
