@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import jugabilidad.Baraja;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 
 public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
@@ -31,24 +32,26 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	}
 	
 	public void handle(ContextMenuEvent event) {
-		ContextMenu menuDesplegable = new ContextMenu();
-		Rectangle rect = (Rectangle)event.getSource();
-		
-		MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
-		MenuItem agregarRotada = new MenuItem("Agregar rotada");
-		MenuItem agregarVolteada = new MenuItem("Agregar volteada");
-		menuDesplegable.getItems().addAll(agregarEnCampo, agregarRotada, agregarVolteada);
-
-		BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
-		BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
-		BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);
-		
-		agregarEnCampo.setOnAction(handlerAgregar);
-		agregarRotada.setOnAction(handlerAgregarRotada);
-		agregarVolteada.setOnAction(handlerAgregarVolteada);
-		
-		
-		menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
+		if ((Controlador.obtener().esElTurnoDe(jugador)) && (Controlador.obtener().obtenerFase() == "Preparacion")) {
+			ContextMenu menuDesplegable = new ContextMenu();
+			Rectangle rect = (Rectangle)event.getSource();
+			
+			MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
+			MenuItem agregarRotada = new MenuItem("Agregar rotada");
+			MenuItem agregarVolteada = new MenuItem("Agregar volteada");
+			menuDesplegable.getItems().addAll(agregarEnCampo, agregarRotada, agregarVolteada);
+	
+			BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+			BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
+			BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);
+			
+			agregarEnCampo.setOnAction(handlerAgregar);
+			agregarRotada.setOnAction(handlerAgregarRotada);
+			agregarVolteada.setOnAction(handlerAgregarVolteada);
+			
+			
+			menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
+	
+		}
 	}
-
 }

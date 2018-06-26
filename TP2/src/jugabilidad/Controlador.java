@@ -107,4 +107,8 @@ public class Controlador {
 	public void repartirCartaAJugador() {
 		this.atacante.repartirCarta();
 	}
+
+	public boolean esElTurnoDe(Jugador jugador) {
+		return (jugador == atacante);
+	}
 }
