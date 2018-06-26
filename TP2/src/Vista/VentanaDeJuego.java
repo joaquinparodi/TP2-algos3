@@ -7,6 +7,7 @@ import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonRotarEnZonaMonstruo;
 import eventos.CartasManoHandler;
+import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -494,6 +495,7 @@ public class VentanaDeJuego {
 		
 		
 		this.setActionToMZone();
+		this.setActionToSTZone();
 		/*---------------------------Zona central del tablero-------------------------------------*/
 		
 		this.textJugadorActual = new Text();
@@ -603,6 +605,26 @@ public class VentanaDeJuego {
 		P1MZone.get(2).setOnContextMenuRequested(handlerO3); P2MZone.get(2).setOnContextMenuRequested(handlerO8);
 		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
+	}
+	
+	private void setActionToSTZone() {
+		CartasZonaMagicaHandler handlerO1 = new CartasZonaMagicaHandler(this, playerOne, 0, P1STZone.get(0));
+		CartasZonaMagicaHandler handlerO2 = new CartasZonaMagicaHandler(this, playerOne, 1, P1STZone.get(1));
+		CartasZonaMagicaHandler handlerO3 = new CartasZonaMagicaHandler(this, playerOne, 2, P1STZone.get(2));
+		CartasZonaMagicaHandler handlerO4 = new CartasZonaMagicaHandler(this, playerOne, 3, P1STZone.get(3));
+		CartasZonaMagicaHandler handlerO5 = new CartasZonaMagicaHandler(this, playerOne, 4, P1STZone.get(4));
+		
+		CartasZonaMagicaHandler handlerO6 = new CartasZonaMagicaHandler(this, playerTwo, 0, P2STZone.get(0));
+		CartasZonaMagicaHandler handlerO7 = new CartasZonaMagicaHandler(this, playerTwo, 1, P2STZone.get(1));
+		CartasZonaMagicaHandler handlerO8 = new CartasZonaMagicaHandler(this, playerTwo, 2, P2STZone.get(2));
+		CartasZonaMagicaHandler handlerO9 = new CartasZonaMagicaHandler(this, playerTwo, 3, P2STZone.get(3));
+		CartasZonaMagicaHandler handler10 = new CartasZonaMagicaHandler(this, playerTwo, 4, P2STZone.get(4));
+		
+		P1STZone.get(0).setOnContextMenuRequested(handlerO1); P2STZone.get(0).setOnContextMenuRequested(handlerO6);
+		P1STZone.get(1).setOnContextMenuRequested(handlerO2); P2STZone.get(1).setOnContextMenuRequested(handlerO7);
+		P1STZone.get(2).setOnContextMenuRequested(handlerO3); P2STZone.get(2).setOnContextMenuRequested(handlerO8);
+		P1STZone.get(3).setOnContextMenuRequested(handlerO4); P2STZone.get(3).setOnContextMenuRequested(handlerO9);
+		P1STZone.get(4).setOnContextMenuRequested(handlerO5); P2STZone.get(4).setOnContextMenuRequested(handler10);
 	}
 
 }
