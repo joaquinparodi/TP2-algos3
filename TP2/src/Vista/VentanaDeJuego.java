@@ -5,34 +5,25 @@ import java.util.Iterator;
 
 import cartas.Carta;
 import cartas.Monstruo;
-import eventos.BotonRotarEnZonaMonstruo;
 import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import eventos.MazoHandler;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.transform.Rotate;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
@@ -609,5 +600,4 @@ public class VentanaDeJuego {
 		P1STZone.get(3).setOnContextMenuRequested(handlerO4); P2STZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1STZone.get(4).setOnContextMenuRequested(handlerO5); P2STZone.get(4).setOnContextMenuRequested(handler10);
 	}
-
 }
