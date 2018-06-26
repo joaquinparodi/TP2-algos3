@@ -8,6 +8,7 @@ public class Controlador {
 	private Jugador jugadorDos;
 	private Jugador atacante;
 	private Jugador defensor;
+	private Fase fase;
 	
 	private static Controlador instancia = new Controlador();
 	
@@ -85,6 +86,16 @@ public class Controlador {
 	
 	public boolean hayGanador() {
 		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
+	}
+	
+	public void avanzarFase() {
+		fase = fase.avanzarFase();
+	}
+
+	public void cambiarTurno() {
+		Jugador jugadorAuxiliar = atacante; 
+		atacante = defensor;
+		defensor = jugadorAuxiliar;
 	}
 	
 }
