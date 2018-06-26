@@ -16,12 +16,21 @@ public class Magica extends Carta{
 	}
 
 	public void aplicarEfecto() {
-		this.orientacion.aplicarEfecto(this.efecto,this.jugadorDuenio);
+		this.orientacion.aplicarEfecto(this);
+	}
+	
+	public void aplicarEfectoBocaArriba() {
+		efecto.aplicar(jugadorDuenio);
+		this.enviarAlCementerio();
+	}
+	
+	public void aplicarEfectoBocaAbajo() {
+		
 	}
 	
 	public void voltear() {
 		orientacion = orientacion.voltear();
-		this.orientacion.aplicarEfecto(efecto, jugadorDuenio);
+		this.orientacion.aplicarEfecto(this);
 	}
 
 	@Override

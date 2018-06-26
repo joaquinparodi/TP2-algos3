@@ -45,6 +45,7 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
 				agregarEnCampo.setOnAction(handlerAgregarVolteada);
 			}
+			
 			if (carta.esMonstruo()) {
 				
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
@@ -60,14 +61,15 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 				agregarRotada.setOnAction(handlerAgregarRotada);
 				agregarVolteada.setOnAction(handlerAgregarVolteada);			
 			}
+			
 			if (carta.esDeCampo()) {
-				
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 
 				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);
-				
+				agregarEnCampo.setOnAction(handlerAgregar);
 			}
+			
 			if (carta.esDeTrampa()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);

@@ -1,9 +1,9 @@
 package posiciones;
 
-import atributos.Efecto;
 import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
+import cartas.Magica;
 import jugabilidad.Jugador;
 import resultados.Resultado;
 
@@ -12,8 +12,9 @@ public class OrientacionAbajo extends Orientacion {
 	public Orientacion voltear() {
 		return new OrientacionArriba ();
 	}
-
-	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) { 
+	
+	public void aplicarEfecto(Magica cartaDuenia) {
+		cartaDuenia.aplicarEfectoBocaAbajo();
 	}
 	
 	public void aplicarEfecto(EfectoDeCampo unEfecto, Jugador unJugador) {
