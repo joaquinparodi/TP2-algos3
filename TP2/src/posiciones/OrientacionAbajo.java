@@ -1,6 +1,5 @@
 package posiciones;
 
-import atributos.Efecto;
 import atributos.EfectoDeCampo;
 import atributos.Puntos;
 import cartas.Atacable;
@@ -12,9 +11,6 @@ public class OrientacionAbajo extends Orientacion {
 
 	public Orientacion voltear() {
 		return new OrientacionArriba ();
-	}
-
-	public void aplicarEfecto(Efecto unEfecto, Jugador unJugador) { 
 	}
 	
 	public void aplicarEfecto(Magica cartaDuenia) {
