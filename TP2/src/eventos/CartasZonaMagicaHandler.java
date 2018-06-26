@@ -26,15 +26,15 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 	}
 	
 	public void handle(ContextMenuEvent event) {
-		ContextMenu menuDesplegable = new ContextMenu();
+			ContextMenu menuDesplegable = new ContextMenu();
 	
-		MenuItem voltear = new MenuItem("voltear");
-		menuDesplegable.getItems().addAll(voltear);
+			MenuItem voltear = new MenuItem("voltear");
+			menuDesplegable.getItems().addAll(voltear);
 
-		BotonVoltearEnZonaMagica handler = new BotonVoltearEnZonaMagica(ventanaDeJuego, jugador, index, rect);
-		voltear.setOnAction(handler);
+			BotonVoltearEnZonaMagica handler = new BotonVoltearEnZonaMagica(ventanaDeJuego, jugador, index, rect);
+			voltear.setOnAction(handler);
 		
-		menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
+			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
 	}
 
 	

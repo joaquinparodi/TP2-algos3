@@ -1,6 +1,5 @@
 package eventos;
 
-import Vista.BaseDeDatosDeCartas;
 import Vista.VentanaDeJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

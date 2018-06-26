@@ -10,7 +10,7 @@ public class Controlador {
 	private Jugador defensor;
 	private Fase fase;
 	
-	private static Controlador instancia = new Controlador();
+	private static Controlador instancia;
 	
 	private Controlador() {	
 		Vida vidaJugadorUno = new Vida(8000);
@@ -28,7 +28,6 @@ public class Controlador {
 		
 		atacante = jugadorUno;
 		defensor = jugadorDos;
-		
 		
 	}
 	
@@ -94,6 +93,8 @@ public class Controlador {
 		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
 	}
 	
+	/*metodos nuevos necesitan pruebas*/
+	
 	public void avanzarFase() {
 		fase = fase.avanzarFase();
 	}
@@ -118,6 +119,10 @@ public class Controlador {
 	
 	public boolean esElTurnoDe(Jugador jugador) {
 		return (jugador == atacante);
+	}
+	
+	public boolean partidaEstaEnFase(String nombreFase) {
+		return nombreFase == fase.obtenerNombre();
 	}
 
 }
