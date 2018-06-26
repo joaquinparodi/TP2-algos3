@@ -101,4 +101,8 @@ public class Controlador {
 	public String obtenerFase() {
 		return fase.obtenerNombre();
 	}
+
+	public void repartirCartaAJugador() {
+		this.atacante.repartirCarta();
+	}
 }

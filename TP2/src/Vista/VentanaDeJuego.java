@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import cartas.Carta;
 import cartas.Monstruo;
+import eventos.BotonFaseYTurnoHandler;
 import eventos.BotonRotarEnZonaMonstruo;
 import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
@@ -399,7 +400,10 @@ public class VentanaDeJuego {
 		gridPane.add(square2, 0, 20);
 		gridPane.add(P2life, 1, 20);
 		
-		Button botonCambiarTurno = new Button("Cambiar Turno");
+		Button botonCambiarTurno = new Button("Avanzar Fase");
+		BotonFaseYTurnoHandler botonFaseYTurnoHandler = new BotonFaseYTurnoHandler(botonCambiarTurno);
+		botonCambiarTurno.setOnAction(botonFaseYTurnoHandler);
+		
 		gridPane.add(botonCambiarTurno, 0, 10);
 		GridPane.setMargin(botonCambiarTurno, new Insets(15,0,0,20) );
 		//gridPane.setGridLinesVisible(true); //->Solo para guiarse,despues lo sacamos
