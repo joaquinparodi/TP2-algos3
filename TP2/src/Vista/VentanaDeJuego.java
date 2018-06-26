@@ -17,6 +17,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
@@ -344,8 +345,7 @@ public class VentanaDeJuego {
 	
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
-		//gridPane.setPrefWidth(200);
-		
+
 		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
 		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
 		Background background =  new Background(fill);
@@ -373,19 +373,19 @@ public class VentanaDeJuego {
 		gridPane.setHgap(10);
 		gridPane.setVgap(9);
 		
-		gridPane.setMargin(square1, new Insets(10,10,10,10)); 
-		gridPane.setMargin(square2, new Insets(10,10,10,10)); 
+		GridPane.setMargin(square1, new Insets(10,10,10,10)); 
+		GridPane.setMargin(square2, new Insets(10,10,10,10)); 
 		
-		gridPane.setMargin(this.mazoJugadorUno, new Insets(10,10,10,30));
-		gridPane.setMargin(this.mazoJugadorDos, new Insets(40,10,10,30));
+		GridPane.setMargin(this.mazoJugadorUno, new Insets(10,10,10,30));
+		GridPane.setMargin(this.mazoJugadorDos, new Insets(40,10,10,30));
 		
-		gridPane.setMargin(playerOneName, new Insets(0,0,0,10));
-		gridPane.setMargin(playerTwoName, new Insets(40,0,0,10));
-		gridPane.setMargin(playerOneLife, new Insets(0,0,0,-30));
-		gridPane.setMargin(playerTwoLife, new Insets(40,0,0,-20));
+		GridPane.setMargin(playerOneName, new Insets(0,0,0,10));
+		GridPane.setMargin(playerTwoName, new Insets(-40,0,0,10));
+		GridPane.setMargin(playerOneLife, new Insets(0,0,0,-30));
+		GridPane.setMargin(playerTwoLife, new Insets(-40,0,0,-20));
 		
-		gridPane.setMargin(P1life, new Insets(0,0,0,-10));
-		gridPane.setMargin(P2life, new Insets(0,0,0,-10));
+		GridPane.setMargin(P1life, new Insets(0,0,0,-10));
+		GridPane.setMargin(P2life, new Insets(0,0,0,-10));
 		
 		gridPane.add(square1, 0, 0);
 		gridPane.add(playerOneName, 0, 1);
@@ -399,6 +399,9 @@ public class VentanaDeJuego {
 		gridPane.add(square2, 0, 20);
 		gridPane.add(P2life, 1, 20);
 		
+		Button botonCambiarTurno = new Button("Cambiar Turno");
+		gridPane.add(botonCambiarTurno, 0, 10);
+		GridPane.setMargin(botonCambiarTurno, new Insets(15,0,0,20) );
 		//gridPane.setGridLinesVisible(true); //->Solo para guiarse,despues lo sacamos
 		this.setActionToDecks();
 		return gridPane;
