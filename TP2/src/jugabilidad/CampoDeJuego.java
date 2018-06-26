@@ -158,6 +158,11 @@ public class CampoDeJuego {
 		monstruoEnIndice.cambiarPosicion();
 	}
 	
+	public void voltearCartaMagica(int index) {
+		Carta magicaEnIndice = filaMagicasYTrampas.obtenerCartaDePosicion(index);
+		magicaEnIndice.voltear();
+	}
+	
 	public boolean cartaMonstruoEnEstaRotada(int index) {
 		Monstruo monstruo = (Monstruo)filaMonstruos.obtenerCartaDePosicion(index);
 		return monstruo.estaRotado();
