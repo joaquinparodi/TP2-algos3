@@ -27,7 +27,7 @@ public class BaseDeDatosDeCartas {
 	private final String brazoizquierdoDeExodia = "file:images/brazoIzquierdo.jpg";
 	private final String piernaIzquierdaDeExodia = "file:images/piernaIzquierda.jpg";
 	private final String piernaDerechaDeExodia = "file:images/piernaDerecha.jpg";
-	private final String insectoComeHombres = "file:images/insecto.jpg";
+	private final String insectoComeHombres = "file:images/insecto.png";
 	private final String jinzo7 = "file:images/jinzo.jpg";
 	
 	public BaseDeDatosDeCartas() {
