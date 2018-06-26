@@ -12,7 +12,6 @@ public class Vida {
 		this.vida -= danio;
 	}
 	
-	//No se si esta bien esto!
 	public double obtenerPuntosDeVida () {
 		return this.vida;
 	}

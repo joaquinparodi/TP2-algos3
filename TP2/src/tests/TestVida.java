@@ -15,5 +15,13 @@ class TestVida {
 		
 		assertEquals(vida.obtenerPuntosDeVida(), 6000);	
 	}
+	
+	@Test
+	public void test02VidaVacia() {
+		Vida vida = new Vida(8000);
+		vida.quitarVida(8100);
+		
+		assert(vida.estaVacia());
+	}
 
 }
