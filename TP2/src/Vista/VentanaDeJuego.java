@@ -26,6 +26,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
@@ -68,6 +70,8 @@ public class VentanaDeJuego {
 	private Rectangle mazoJugadorDos;
 	
 	private Text faseYTurno;
+
+	private Stage stage;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -324,7 +328,8 @@ public class VentanaDeJuego {
 	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
-	public Scene createGameScene() {
+	public Scene createGameScene(Stage stage) {
+		this.stage = stage;
 	    BorderPane rootBorderPane = this.createBorderPane();
 		
 	    /* Creacion de la escena */
@@ -635,5 +640,9 @@ public class VentanaDeJuego {
 		P1STZone.get(2).setOnContextMenuRequested(handlerO3); P2STZone.get(2).setOnContextMenuRequested(handlerO8);
 		P1STZone.get(3).setOnContextMenuRequested(handlerO4); P2STZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1STZone.get(4).setOnContextMenuRequested(handlerO5); P2STZone.get(4).setOnContextMenuRequested(handler10);
+	}
+
+	public Window getStage() {
+		return stage;
 	}
 }

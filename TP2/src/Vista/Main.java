@@ -27,7 +27,7 @@ public class Main extends Application {
 		
 		stage.setTitle("Yu-Gi-Oh! The Game");	
 		
-		Scene gameScene = ventanaDeJuego.createGameScene();
+		Scene gameScene = ventanaDeJuego.createGameScene(stage);
 		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
 		
 		stage.setScene(initialScene);
