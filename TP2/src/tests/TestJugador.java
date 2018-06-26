@@ -26,7 +26,15 @@ import org.junit.jupiter.api.Assertions;
 
 class TestJugador {
 
-    @Test
+	@Test
+	public void test00AsignarNombre() {
+		Vida vida = new Vida(8000);
+		Jugador jugador = new Jugador(vida);
+		jugador.asignarNombre("jugador");
+		assert(jugador.obtenerNombre()=="jugador");
+	}
+	
+	@Test
     public void test01JugadorNuevoTieneXPuntos (){
         
     	Vida vida = new Vida(8000);
@@ -1163,6 +1171,41 @@ class TestJugador {
 		
 	}
 	
+	@Test
+	public void test39Agregar6CartasMagicasOTrampasLanzaExcepcion() {
+		Vida vida = new Vida (8000);
+		Jugador jugador = new Jugador (vida);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Magica fisuraUno = fabrica.crearFisura();
+		Trampa cilindroMagicoUno = fabrica.crearCilindroMagico();
+		Magica fisuraDos = fabrica.crearFisura();
+		Trampa cilindroMagicoDos = fabrica.crearCilindroMagico();
+		Magica fisuraTres = fabrica.crearFisura();
+		Trampa cilindroMagicoTres = fabrica.crearCilindroMagico();
+		
+		fisuraUno.voltear();
+		fisuraDos.voltear();
+		fisuraTres.voltear();
+		cilindroMagicoUno.voltear();
+		cilindroMagicoDos.voltear();
+		cilindroMagicoTres.voltear();
+		jugador.repartirCarta(fisuraUno);
+		jugador.repartirCarta(fisuraDos);
+		jugador.repartirCarta(fisuraTres);
+		jugador.repartirCarta(cilindroMagicoUno);
+		jugador.repartirCarta(cilindroMagicoDos);
+		jugador.repartirCarta(cilindroMagicoTres);
+
+		jugador.agregarCartaEnCampo(fisuraUno);
+		jugador.agregarCartaEnCampo(fisuraDos);
+		jugador.agregarCartaEnCampo(fisuraTres);
+		jugador.agregarCartaEnCampo(cilindroMagicoUno);
+		jugador.agregarCartaEnCampo(cilindroMagicoDos);
+		
+		assertThrows(ErrorYaHayCincoCartasEnLaFila.class, () -> jugador.agregarCartaEnCampo(cilindroMagicoTres));
+	}
 	
 
 }

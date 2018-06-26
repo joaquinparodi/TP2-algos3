@@ -1,5 +1,6 @@
 package tests;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
@@ -58,7 +59,7 @@ public class TestControlador {
 	} 
 	
 	@Test
-	public void test03AtacarJugadorYDejarloSinVidaGanaElDuelo() {
+	public void test02AtacarJugadorYDejarloSinVidaGanaElDuelo() {
 		
 		/*Al crearse el controlador tiene al jugador uno como atacante*/
 		Controlador controlador = Controlador.obtener();
@@ -69,7 +70,7 @@ public class TestControlador {
 		FabricaDeCartas fabrica = new FabricaDeCartas(jugadorUno);
 		FabricaDeCartas fabrica2 = new FabricaDeCartas(jugadorDos);
 		
-		Puntos puntosUno = new Puntos(200, 200);
+		Puntos puntosUno = new Puntos(8200, 200);
 		Puntos puntosDos = new Puntos(50, 50);
 		Estrellas estrellas = new Estrellas(3);
 		
@@ -102,7 +103,7 @@ public class TestControlador {
 	}	
 	
 	@Test 
-	public void test04QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo() {
+	public void test03QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo() {
 			
 		Controlador controlador = Controlador.obtener();
 		
@@ -143,5 +144,44 @@ public class TestControlador {
 		assertTrue( controlador.hayGanador() );
 		
 	}
-		
+	
+	@Test
+	public void test04AsignarRival() {
+		Controlador controlador = Controlador.obtener();
+		Jugador jugadorAtacante = controlador.obtenerJugadorAtacante();
+		Jugador jugadorDefensor = controlador.obtenerJugadorDefensor();
+		assertEquals(jugadorAtacante.obtenerRival(), jugadorDefensor);
+	}
+	
+	@Test
+	public void test05AvanzarDeFasePreparacionAAtaque() {
+		Controlador controlador = Controlador.obtener();
+		controlador.avanzarFase();
+		assert(controlador.partidaEstaEnFase("Ataque"));
+	}
+	
+	@Test
+	public void test06AvanzarDeFaseAtaqueAFinal() {
+		Controlador controlador = Controlador.obtener();
+		controlador.avanzarFase();
+		controlador.avanzarFase();
+		assert(controlador.partidaEstaEnFase("Final"));
+	}
+	
+	@Test
+	public void test07AvanzarDeFaseFinalAPreparacion() {
+		Controlador controlador = Controlador.obtener();
+		controlador.avanzarFase();
+		controlador.avanzarFase();
+		controlador.avanzarFase();
+		assert(controlador.partidaEstaEnFase("Preparacion"));
+	}
+	
+	@Test
+	public void test08CambiarTurnos() {
+		Controlador controlador = Controlador.obtener();
+		Jugador jugadorDef = controlador.obtenerJugadorDefensor();
+		controlador.cambiarTurno();
+		assert(controlador.esElTurnoDe(jugadorDef));
+	}
 }
