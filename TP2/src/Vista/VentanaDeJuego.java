@@ -2,7 +2,6 @@ package Vista;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonFaseYTurnoHandler;
@@ -66,7 +65,7 @@ public class VentanaDeJuego {
 	private Rectangle mazoJugadorUno;
 	private Rectangle mazoJugadorDos;
 	
-	private Text textJugadorActual;
+	private Text faseYTurno;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -305,6 +304,10 @@ public class VentanaDeJuego {
 		if( !playerTwo.poseeCartasEnMazo() ) this.mazoJugadorDos.setFill(Color.PERU);
 	}
 	
+	public void cambiarFase(String nuevaFase, int numeroJugador) {	
+		faseYTurno.setText(nuevaFase + " Jugador" + " " + numeroJugador);
+	}
+	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
@@ -392,7 +395,7 @@ public class VentanaDeJuego {
 		gridPane.add(P2life, 1, 20);
 		
 		Button botonCambiarTurno = new Button("Avanzar Fase");
-		BotonFaseYTurnoHandler botonFaseYTurnoHandler = new BotonFaseYTurnoHandler(botonCambiarTurno);
+		BotonFaseYTurnoHandler botonFaseYTurnoHandler = new BotonFaseYTurnoHandler(this ,botonCambiarTurno);
 		botonCambiarTurno.setOnAction(botonFaseYTurnoHandler);
 		
 		gridPane.add(botonCambiarTurno, 0, 10);
@@ -500,12 +503,12 @@ public class VentanaDeJuego {
 		this.setActionToSTZone();
 		/*---------------------------Zona central del tablero-------------------------------------*/
 		
-		this.textJugadorActual = new Text();
-		this.textJugadorActual.setText("Turno Jugador 1");
-		this.textJugadorActual.setFont(Font.font ("Verdana", 50));
-		this.textJugadorActual.setFill(Color.RED);
-		gridPane.add(this.textJugadorActual, 3, 2, 4, 4);
-		GridPane.setMargin(this.textJugadorActual, new Insets(0,0,0,-140));
+		this.faseYTurno = new Text();
+		this.faseYTurno.setText("Preparacion Jugador 1");
+		this.faseYTurno.setFont(Font.font ("Verdana", 45));
+		this.faseYTurno.setFill(Color.RED);
+		gridPane.add(this.faseYTurno, 3, 2, 4, 4);
+		GridPane.setMargin(this.faseYTurno, new Insets(0,0,0,-175));
 		
 	
 		//gridPane.setGridLinesVisible(true); //->para prueba

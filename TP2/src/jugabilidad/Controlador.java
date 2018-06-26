@@ -19,13 +19,17 @@ public class Controlador {
 		this.jugadorUno = new Jugador( vidaJugadorUno );
 		this.jugadorDos = new Jugador( vidaJugadorDos );
 		
+		this.jugadorUno.asignarNumeroDeJugador(1);
+		this.jugadorDos.asignarNumeroDeJugador(2);
+		
 		this.asignarRivales(jugadorUno, jugadorDos);
 		
 		this.fase = new FasePreparacion();
 		
-		//Decidir esto se va a encargar otra clase(Inicializador)
 		atacante = jugadorUno;
 		defensor = jugadorDos;
+		
+		
 	}
 	
 	public static Controlador obtener() {
@@ -75,7 +79,7 @@ public class Controlador {
 	/*Metodos usador para determinar ganador*/
 	
 	private boolean restanCartasEnMazo() { 
-		return atacante.poseeCartasEnMazo(); 
+		return !defensor.poseeCartasEnMazo(); 
 	}
 	
 	private boolean exodiaEstaCompleto() {
@@ -107,4 +111,9 @@ public class Controlador {
 	public void repartirCartaAJugador() {
 		this.atacante.repartirCarta();
 	}
+	
+	public int obtenerNumeroJugadorAtacante() {
+		return atacante.obtenerNumeroDeJugador();
+	}
+	
 }

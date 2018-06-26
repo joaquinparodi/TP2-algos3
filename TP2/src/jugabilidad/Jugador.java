@@ -25,6 +25,7 @@ public class Jugador {
     private Jugador jugadorRival;
     private Baraja mano;
     private String nombreJugador;
+    private int numeroDeJugador;
   
 	public Jugador(Vida vida) {
 	    this.vida = vida;
@@ -247,6 +248,14 @@ public class Jugador {
 
 	public boolean pertenece(Monstruo monstruoUno) {
 		return campoDeJuego.obtenerMonstruos().pertenece(monstruoUno);
+	}
+	
+	public void asignarNumeroDeJugador(int numeroDeJugador) {
+		this.numeroDeJugador = numeroDeJugador;
+	}
+	
+	public int obtenerNumeroDeJugador() {
+		return this.numeroDeJugador;
 	}
 	
 }

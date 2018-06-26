@@ -103,8 +103,7 @@ public class TestControlador {
 	
 	@Test 
 	public void test04QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo() {
-		
-				
+			
 		Controlador controlador = Controlador.obtener();
 		
 		Jugador jugadorUno = controlador.obtenerJugadorUno();
