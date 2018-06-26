@@ -30,7 +30,6 @@ public class Randomizador {
 		for(int i = 0; i < 20; i++) {
 			int numeroAlAzar = (int) (Math.random() * 7) + 1;
 			
-			System.out.println(numeroAlAzar);
 			switch (numeroAlAzar) {
             
 				case 1: mazo.agregarCarta( fabricaDeCartas.crearSangan() );
@@ -68,7 +67,10 @@ public class Randomizador {
 		    case 5: Iterator<Carta> iteradorMazo = mazo.obtenerIteradorDeBaraja();
 		    		while(iteradorMazo.hasNext()) {
 		    			Carta carta = iteradorMazo.next();
-		    			if(carta instanceof CabezaExodia) continue;
+		    			if(carta instanceof CabezaExodia) {
+		    				mazo.agregarCarta( fabricaDeCartas.crearJinzo7() );
+		    				break;
+		    			}
 		    		}
 		    		mazo.agregarCarta( fabricaDeCartas.crearCabezaExodia() );
 		    		break;
@@ -76,7 +78,10 @@ public class Randomizador {
 		    case 6: Iterator<Carta> iteradorMazo2 = mazo.obtenerIteradorDeBaraja();
 		    		while(iteradorMazo2.hasNext()) {
     					Carta carta = iteradorMazo2.next();
-    					if(carta instanceof BrazoIzquierdoExodia) continue;
+    					if(carta instanceof BrazoIzquierdoExodia) {
+    						mazo.agregarCarta( fabricaDeCartas.crearDragonBlancoDeOjosAzules() );
+    			    		break;
+    					}
     				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoIzquierdoExodia() );
 					break;
@@ -84,7 +89,10 @@ public class Randomizador {
 		    case 7: Iterator<Carta> iteradorMazo3 = mazo.obtenerIteradorDeBaraja();
 		    		while(iteradorMazo3.hasNext()) {
     					Carta carta = iteradorMazo3.next();
-    					if(carta instanceof BrazoDerechoExodia) continue;
+    					if(carta instanceof BrazoDerechoExodia) {
+    						mazo.agregarCarta( fabricaDeCartas.crearDragonDefinitivo() );
+    			    		break;
+    					}
     				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearBrazoDerechoExodia() );
 					break;
@@ -92,7 +100,10 @@ public class Randomizador {
 		    case 8: Iterator<Carta> iteradorMazo4 = mazo.obtenerIteradorDeBaraja();
 		    		while(iteradorMazo4.hasNext()) {
     					Carta carta = iteradorMazo4.next();
-    					if(carta instanceof PiernaDerechaExodia) continue;
+    					if(carta instanceof PiernaDerechaExodia) {
+    						mazo.agregarCarta( fabricaDeCartas.crearInsectoComeHombres() );
+    			    		break;
+    					}
     				}
 		    		mazo.agregarCarta( fabricaDeCartas.crearPiernaDerechaExodia() );
 					break;
@@ -100,7 +111,10 @@ public class Randomizador {
             case 9: Iterator<Carta> iteradorMazo5 = mazo.obtenerIteradorDeBaraja();
             		while(iteradorMazo5.hasNext()) {
     					Carta carta = iteradorMazo5.next();
-    					if(carta instanceof PiernaIzquierdaExodia) continue;
+    					if(carta instanceof PiernaIzquierdaExodia) {
+    						mazo.agregarCarta( fabricaDeCartas.crearWasteland() );
+    						break;
+    					}
     				}
             		mazo.agregarCarta( fabricaDeCartas.crearPiernaIzquierdaExodia() );
 					break;	

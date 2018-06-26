@@ -213,6 +213,10 @@ public class Jugador {
 		campoDeJuego.rotarCartaMonstruo(index);
 	}
 	
+	public void voltearCartaMagicaEnCampo(int index) {
+		campoDeJuego.voltearCartaMagica(index);
+	}
+	
 	public boolean cartaMonstruoEnCampoEstaRotada(int index) {
 		return campoDeJuego.cartaMonstruoEnEstaRotada(index);
 	}
@@ -244,5 +248,5 @@ public class Jugador {
 	public boolean pertenece(Monstruo monstruoUno) {
 		return campoDeJuego.obtenerMonstruos().pertenece(monstruoUno);
 	}
-
+	
 }

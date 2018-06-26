@@ -7,7 +7,9 @@ import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonRotarEnZonaMonstruo;
 import eventos.CartasManoHandler;
+import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
+import eventos.MazoHandler;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,6 +70,8 @@ public class VentanaDeJuego {
 	private Rectangle cementerioJugadorDos;
 	private Rectangle cartaDeCampoUno;
 	private Rectangle cartaDeCampoDos;
+	private Rectangle mazoJugadorUno;
+	private Rectangle mazoJugadorDos;
 	
 	private Text textJugadorActual;
 	
@@ -95,6 +99,7 @@ public class VentanaDeJuego {
 	public void actualizarCampoDeJuego() {
 		this.restaurarPosiciones();
 		this.actualizarCementerio();
+		this.actualizarMazos();
 		this.actualizarFilaMonstruosJugadorUno();
 		this.actualizarFilaMonstruosJugadorDos();
 		this.actualizarFilaMagicasYTrampasJugadorUno();
@@ -132,12 +137,6 @@ public class VentanaDeJuego {
 		int actualCards = 0;
 		
 		String URL; ImagePattern image;
-//		while(iterDeckOne.hasNext()) {
-//			URL = database.getURL(iterDeckOne.next().obtenerNombre());
-//			image = new ImagePattern( new Image(URL) );
-//			iterOne.next().setFill(image);
-//		}
-
 		actualCards = 0;
 		while(iterDeckOne.hasNext()) {
 			URL = database.getURL(iterDeckOne.next().obtenerNombre());
@@ -162,7 +161,7 @@ public class VentanaDeJuego {
 			image = new ImagePattern( new Image(URL) );
 			rectangulo.setFill(image);
 			actualCards++;
-		} 
+		}
 
 		scrollPlayer1.setBackground(background);
 		scrollPlayer2.setBackground(background);
@@ -170,7 +169,7 @@ public class VentanaDeJuego {
 		setActionToHand();
 		//Repartir mas cartas no solo 5
 	} 
-	
+
 	private void actualizarFilaMonstruosJugadorUno() {
 		Baraja filaMonstruos = campoDeJuegoUno.obtenerFilaDeMonstruos();
 		Iterator<Rectangle> iterZone = P1MZone.iterator();		
@@ -308,6 +307,11 @@ public class VentanaDeJuego {
 		rect.setFill(image);
 	}
 	
+	private void actualizarMazos() {
+		if( !playerOne.poseeCartasEnMazo() ) this.mazoJugadorUno.setFill(Color.PERU);
+		if( !playerTwo.poseeCartasEnMazo() ) this.mazoJugadorDos.setFill(Color.PERU);
+	}
+	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene() {
@@ -350,8 +354,9 @@ public class VentanaDeJuego {
 		Rectangle square1 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
 		Rectangle square2 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
 		
-		Rectangle P1Deck = new Rectangle(70, 100, Color.PERU);
-		Rectangle P2Deck = new Rectangle(70, 100, Color.PERU);
+		ImagePattern img = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
+		this.mazoJugadorUno = new Rectangle(70, 100, img);
+		this.mazoJugadorDos = new Rectangle(70, 100, img);
 		
 		double lifeOne = 100; double lifeTwo = 100;
 		Rectangle P1life = new Rectangle(10, lifeOne, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
@@ -371,8 +376,8 @@ public class VentanaDeJuego {
 		gridPane.setMargin(square1, new Insets(10,10,10,10)); 
 		gridPane.setMargin(square2, new Insets(10,10,10,10)); 
 		
-		gridPane.setMargin(P1Deck, new Insets(10,10,10,30));
-		gridPane.setMargin(P2Deck, new Insets(40,10,10,30));
+		gridPane.setMargin(this.mazoJugadorUno, new Insets(10,10,10,30));
+		gridPane.setMargin(this.mazoJugadorDos, new Insets(40,10,10,30));
 		
 		gridPane.setMargin(playerOneName, new Insets(0,0,0,10));
 		gridPane.setMargin(playerTwoName, new Insets(40,0,0,10));
@@ -385,17 +390,17 @@ public class VentanaDeJuego {
 		gridPane.add(square1, 0, 0);
 		gridPane.add(playerOneName, 0, 1);
 		gridPane.add(playerOneLife, 1, 1);
-		gridPane.add(P1Deck, 0, 5);
+		gridPane.add(this.mazoJugadorUno, 0, 5);
 		gridPane.add(P1life, 1, 0);
 		
-		gridPane.add(P2Deck, 0, 15);
+		gridPane.add(this.mazoJugadorDos, 0, 15);
 		gridPane.add(playerTwoLife, 1, 19);
 		gridPane.add(playerTwoName, 0, 19);
 		gridPane.add(square2, 0, 20);
 		gridPane.add(P2life, 1, 20);
 		
 		//gridPane.setGridLinesVisible(true); //->Solo para guiarse,despues lo sacamos
-		
+		this.setActionToDecks();
 		return gridPane;
 	}
 	
@@ -494,6 +499,7 @@ public class VentanaDeJuego {
 		
 		
 		this.setActionToMZone();
+		this.setActionToSTZone();
 		/*---------------------------Zona central del tablero-------------------------------------*/
 		
 		this.textJugadorActual = new Text();
@@ -528,38 +534,6 @@ public class VentanaDeJuego {
 		gridPane.add(scrollPlayer1, 1, 0);
 		gridPane.add(scrollPlayer2, 1, 26);
 		
-//		Rectangle P1card1 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P1card2 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P1card3 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P1card4 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P1card5 = new Rectangle(with, height, Color.DARKCYAN);  
-//		
-//		Rectangle P2card1 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P2card2 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P2card3 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P2card4 = new Rectangle(with, height, Color.DARKCYAN); 
-//		Rectangle P2card5 = new Rectangle(with, height, Color.DARKCYAN); 
-//		
-//		handOne.add(P1card1); handTwo.add(P2card1); 
-//		handOne.add(P1card2); handTwo.add(P2card2); 
-//		handOne.add(P1card3); handTwo.add(P2card3); 
-//		handOne.add(P1card4); handTwo.add(P2card4); 
-//		handOne.add(P1card5); handTwo.add(P2card5); 
-
-//		gridPane.setMargin(P1card1, new Insets(30,10,10,10)); gridPane.setMargin(P2card1, new Insets(10)); 
-//		gridPane.setMargin(P1card2, new Insets(30,10,10,10)); gridPane.setMargin(P2card2, new Insets(10)); 
-//		gridPane.setMargin(P1card3, new Insets(30,10,10,10)); gridPane.setMargin(P2card3, new Insets(10)); 
-//		gridPane.setMargin(P1card4, new Insets(30,10,10,10)); gridPane.setMargin(P2card4, new Insets(10)); 
-//		gridPane.setMargin(P1card5, new Insets(30,10,10,10)); gridPane.setMargin(P2card5, new Insets(10)); 
-//		
-//		gridScroll1.add(P2card1, 1, 34); gridScroll2.add(P1card1, 1, 0); 
-//		gridScroll1.add(P2card2, 2, 34); gridScroll2.add(P1card2, 2, 0);
-//		gridScroll1.add(P2card3, 3, 34); gridScroll2.add(P1card3, 3, 0);
-//		gridScroll1.add(P2card4, 4, 34); gridScroll2.add(P1card4, 4, 0);
-//		gridScroll1.add(P2card5, 5, 34); gridScroll2.add(P1card5, 5, 0);
-//		
-		
-		//gridPane.setGridLinesVisible(true); //->para prueba
 		return gridPane;
 	}
 		
@@ -603,6 +577,34 @@ public class VentanaDeJuego {
 		P1MZone.get(2).setOnContextMenuRequested(handlerO3); P2MZone.get(2).setOnContextMenuRequested(handlerO8);
 		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
 		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
+	}
+	
+	private void setActionToDecks() {
+		MazoHandler handlerMasoUno = new MazoHandler(this, playerOne);
+		MazoHandler handlerMasoDos = new MazoHandler(this, playerTwo);
+		
+		this.mazoJugadorUno.setOnMouseClicked(handlerMasoUno);
+		this.mazoJugadorDos.setOnMouseClicked(handlerMasoDos);
+	}
+
+	private void setActionToSTZone() {
+		CartasZonaMagicaHandler handlerO1 = new CartasZonaMagicaHandler(this, playerOne, 0, P1STZone.get(0));
+		CartasZonaMagicaHandler handlerO2 = new CartasZonaMagicaHandler(this, playerOne, 1, P1STZone.get(1));
+		CartasZonaMagicaHandler handlerO3 = new CartasZonaMagicaHandler(this, playerOne, 2, P1STZone.get(2));
+		CartasZonaMagicaHandler handlerO4 = new CartasZonaMagicaHandler(this, playerOne, 3, P1STZone.get(3));
+		CartasZonaMagicaHandler handlerO5 = new CartasZonaMagicaHandler(this, playerOne, 4, P1STZone.get(4));
+		
+		CartasZonaMagicaHandler handlerO6 = new CartasZonaMagicaHandler(this, playerTwo, 0, P2STZone.get(0));
+		CartasZonaMagicaHandler handlerO7 = new CartasZonaMagicaHandler(this, playerTwo, 1, P2STZone.get(1));
+		CartasZonaMagicaHandler handlerO8 = new CartasZonaMagicaHandler(this, playerTwo, 2, P2STZone.get(2));
+		CartasZonaMagicaHandler handlerO9 = new CartasZonaMagicaHandler(this, playerTwo, 3, P2STZone.get(3));
+		CartasZonaMagicaHandler handler10 = new CartasZonaMagicaHandler(this, playerTwo, 4, P2STZone.get(4));
+		
+		P1STZone.get(0).setOnContextMenuRequested(handlerO1); P2STZone.get(0).setOnContextMenuRequested(handlerO6);
+		P1STZone.get(1).setOnContextMenuRequested(handlerO2); P2STZone.get(1).setOnContextMenuRequested(handlerO7);
+		P1STZone.get(2).setOnContextMenuRequested(handlerO3); P2STZone.get(2).setOnContextMenuRequested(handlerO8);
+		P1STZone.get(3).setOnContextMenuRequested(handlerO4); P2STZone.get(3).setOnContextMenuRequested(handlerO9);
+		P1STZone.get(4).setOnContextMenuRequested(handlerO5); P2STZone.get(4).setOnContextMenuRequested(handler10);
 	}
 
 }
