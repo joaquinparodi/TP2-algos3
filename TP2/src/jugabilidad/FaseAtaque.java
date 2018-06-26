@@ -7,4 +7,9 @@ public class FaseAtaque implements Fase {
 		return new FaseFinal();
 	}
 
+	@Override
+	public String obtenerNombre() {
+		return "Ataque";
+	}
+
 }

@@ -8,4 +8,9 @@ public class FaseFinal implements Fase {
 		return new FasePreparacion();
 	}
 
+	@Override
+	public String obtenerNombre() {
+		return "Final";
+	}
+
 }

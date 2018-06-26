@@ -6,5 +6,10 @@ public class FasePreparacion implements Fase {
 	public Fase avanzarFase() {
 		return new FaseAtaque();
 	}
+
+	@Override
+	public String obtenerNombre() {
+		return "Preparacion";
+	}
 	
 }

@@ -98,4 +98,7 @@ public class Controlador {
 		defensor = jugadorAuxiliar;
 	}
 	
+	public String obtenerFase() {
+		return fase.obtenerNombre();
+	}
 }
