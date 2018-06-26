@@ -57,5 +57,4 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 		}
 	}
 
-	
 }

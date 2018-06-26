@@ -9,12 +9,14 @@ import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import eventos.MazoHandler;
+import javafx.event.EventHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -98,6 +100,7 @@ public class VentanaDeJuego {
 		this.actualizarFilaMagicasYTrampasJugadorDos();
 		this.actualizarZonaDeCartasDeCampo();
 		this.actualizarManos();
+		this.actualizarOpcionesDeManejo();
 	}
 	
 	public void actualizarManos() {
@@ -297,6 +300,10 @@ public class VentanaDeJuego {
 	private void voltearCarta(Rectangle rect) {
 		ImagePattern image = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
 		rect.setFill(image);
+	}
+	
+	private void actualizarOpcionesDeManejo() {
+		this.setActionToMZone();
 	}
 	
 	private void actualizarMazos() {
@@ -561,23 +568,37 @@ public class VentanaDeJuego {
 	}
 	
 	private void setActionToMZone() {
-		CartasZonaMonstruoHandler handlerO1 = new CartasZonaMonstruoHandler(this, playerOne, 0, P1MZone.get(0));
-		CartasZonaMonstruoHandler handlerO2 = new CartasZonaMonstruoHandler(this, playerOne, 1, P1MZone.get(1));
-		CartasZonaMonstruoHandler handlerO3 = new CartasZonaMonstruoHandler(this, playerOne, 2, P1MZone.get(2));
-		CartasZonaMonstruoHandler handlerO4 = new CartasZonaMonstruoHandler(this, playerOne, 3, P1MZone.get(3));
-		CartasZonaMonstruoHandler handlerO5 = new CartasZonaMonstruoHandler(this, playerOne, 4, P1MZone.get(4));
+		ArrayList<CartasZonaMonstruoHandler> handlersUno = new ArrayList<CartasZonaMonstruoHandler>();
+		ArrayList<CartasZonaMonstruoHandler> handlersDos = new ArrayList<CartasZonaMonstruoHandler>();
 		
-		CartasZonaMonstruoHandler handlerO6 = new CartasZonaMonstruoHandler(this, playerTwo, 0, P2MZone.get(0));
-		CartasZonaMonstruoHandler handlerO7 = new CartasZonaMonstruoHandler(this, playerTwo, 1, P2MZone.get(1));
-		CartasZonaMonstruoHandler handlerO8 = new CartasZonaMonstruoHandler(this, playerTwo, 2, P2MZone.get(2));
-		CartasZonaMonstruoHandler handlerO9 = new CartasZonaMonstruoHandler(this, playerTwo, 3, P2MZone.get(3));
-		CartasZonaMonstruoHandler handler10 = new CartasZonaMonstruoHandler(this, playerTwo, 4, P2MZone.get(4));
+		handlersUno.add( new CartasZonaMonstruoHandler(this, playerOne, 0, P1MZone.get(0)) );
+		handlersUno.add( new CartasZonaMonstruoHandler(this, playerOne, 1, P1MZone.get(1)) );
+		handlersUno.add( new CartasZonaMonstruoHandler(this, playerOne, 2, P1MZone.get(2)) );
+		handlersUno.add( new CartasZonaMonstruoHandler(this, playerOne, 3, P1MZone.get(3)) );
+		handlersUno.add( new CartasZonaMonstruoHandler(this, playerOne, 4, P1MZone.get(4)) );
 		
-		P1MZone.get(0).setOnContextMenuRequested(handlerO1); P2MZone.get(0).setOnContextMenuRequested(handlerO6);
-		P1MZone.get(1).setOnContextMenuRequested(handlerO2); P2MZone.get(1).setOnContextMenuRequested(handlerO7);
-		P1MZone.get(2).setOnContextMenuRequested(handlerO3); P2MZone.get(2).setOnContextMenuRequested(handlerO8);
-		P1MZone.get(3).setOnContextMenuRequested(handlerO4); P2MZone.get(3).setOnContextMenuRequested(handlerO9);
-		P1MZone.get(4).setOnContextMenuRequested(handlerO5); P2MZone.get(4).setOnContextMenuRequested(handler10);
+		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 0, P2MZone.get(0)) );
+		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 1, P2MZone.get(1)) );
+		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 2, P2MZone.get(2)) );
+		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 3, P2MZone.get(3)) );
+		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 4, P2MZone.get(4)) );
+		
+		P1MZone.get(0).setOnContextMenuRequested(handlersUno.get(0)); P2MZone.get(0).setOnContextMenuRequested(handlersDos.get(0));
+		P1MZone.get(1).setOnContextMenuRequested(handlersUno.get(1)); P2MZone.get(1).setOnContextMenuRequested(handlersDos.get(1));
+		P1MZone.get(2).setOnContextMenuRequested(handlersUno.get(2)); P2MZone.get(2).setOnContextMenuRequested(handlersDos.get(2));
+		P1MZone.get(3).setOnContextMenuRequested(handlersUno.get(3)); P2MZone.get(3).setOnContextMenuRequested(handlersDos.get(3));
+		P1MZone.get(4).setOnContextMenuRequested(handlersUno.get(4)); P2MZone.get(4).setOnContextMenuRequested(handlersDos.get(4));
+	
+		/*Desactivo los que no contienen cartas*/
+		int index = campoDeJuegoUno.cantidadDeMonstruosEnFila();
+		for(int i = index; i < 5; i++) {
+			P1MZone.get(i).setOnContextMenuRequested(null);
+		}
+		
+		index = campoDeJuegoDos.cantidadDeMonstruosEnFila();
+		for(int i = index; i < 5; i++) {
+			P2MZone.get(i).setOnContextMenuRequested(null);
+		}
 	}
 	
 	private void setActionToDecks() {

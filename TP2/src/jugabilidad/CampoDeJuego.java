@@ -190,6 +190,8 @@ public class CampoDeJuego {
 		return cartaDeCampo.obtenerNombre();
 	}
 
-	
+	public int cantidadDeMonstruosEnFila() {
+		return filaMonstruos.obtenerCantidadDeCartas();
+	}
 
 }
