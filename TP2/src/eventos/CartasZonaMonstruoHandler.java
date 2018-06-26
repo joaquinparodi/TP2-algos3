@@ -1,6 +1,7 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
+import cartas.Monstruo;
 import javafx.event.EventHandler;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
@@ -14,6 +15,7 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 	private VentanaDeJuego ventanaDeJuego;
 	private Jugador jugador;
 	private Rectangle rect;
+	private Monstruo monstruo;
 	private int index;
 	
 	public CartasZonaMonstruoHandler(VentanaDeJuego ventana, Jugador jugador, int index, Rectangle rect) {
@@ -43,6 +45,8 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 	
 			MenuItem atacar = new MenuItem("Atacar");
 			menuDesplegable.getItems().addAll(atacar);
+			BotonAtacar handler = new BotonAtacar(monstruo, ventanaDeJuego);
+			atacar.setOnAction(handler);
 		
 			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
 		}
@@ -50,11 +54,18 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 		if(Controlador.obtener().partidaEstaEnFase("Ataque") && controlador.esElTurnoDe(jugador)) {
 			ContextMenu menuDesplegable = new ContextMenu();
 			
-			MenuItem seleccionarAtacante = new MenuItem("Seleccion como atacante");
+			MenuItem seleccionarAtacante = new MenuItem("Seleccionar como atacante");
 			menuDesplegable.getItems().addAll(seleccionarAtacante);
-		
+			BotonSeleccionarAtacante handler = new BotonSeleccionarAtacante(monstruo, ventanaDeJuego);
+			seleccionarAtacante.setOnAction(handler);
+			
 			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
 		}
+	}
+
+
+	public void asignarMonstruoEnPosicion(Monstruo monstruo) {
+		this.monstruo = monstruo;
 	}
 
 }

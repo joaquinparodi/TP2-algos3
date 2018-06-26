@@ -193,5 +193,9 @@ public class CampoDeJuego {
 	public int cantidadDeMonstruosEnFila() {
 		return filaMonstruos.obtenerCantidadDeCartas();
 	}
+	
+	public Monstruo obtenerMonstruoEnPosicion(int index) {
+		return (Monstruo)filaMonstruos.obtenerCartaDePosicion(index);
+	}
 
 }

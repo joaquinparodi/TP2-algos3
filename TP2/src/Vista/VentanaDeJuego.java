@@ -101,6 +101,7 @@ public class VentanaDeJuego {
 		this.actualizarZonaDeCartasDeCampo();
 		this.actualizarManos();
 		this.actualizarOpcionesDeManejo();
+		this.actualizarVidaJugadores();
 	}
 	
 	public void actualizarManos() {
@@ -313,6 +314,12 @@ public class VentanaDeJuego {
 	
 	public void cambiarFase(String nuevaFase, int numeroJugador) {	
 		faseYTurno.setText(nuevaFase + " Jugador" + " " + numeroJugador);
+	}
+	
+	private void actualizarVidaJugadores() {
+		double vidaUno = playerOne.obtenerVida(); double vidaDos = playerTwo.obtenerVida();
+		playerOneLife.setText( String.valueOf(vidaUno) );
+		playerTwoLife.setText( String.valueOf(vidaDos) );
 	}
 	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
@@ -583,22 +590,23 @@ public class VentanaDeJuego {
 		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 3, P2MZone.get(3)) );
 		handlersDos.add( new CartasZonaMonstruoHandler(this, playerTwo, 4, P2MZone.get(4)) );
 		
-		P1MZone.get(0).setOnContextMenuRequested(handlersUno.get(0)); P2MZone.get(0).setOnContextMenuRequested(handlersDos.get(0));
-		P1MZone.get(1).setOnContextMenuRequested(handlersUno.get(1)); P2MZone.get(1).setOnContextMenuRequested(handlersDos.get(1));
-		P1MZone.get(2).setOnContextMenuRequested(handlersUno.get(2)); P2MZone.get(2).setOnContextMenuRequested(handlersDos.get(2));
-		P1MZone.get(3).setOnContextMenuRequested(handlersUno.get(3)); P2MZone.get(3).setOnContextMenuRequested(handlersDos.get(3));
-		P1MZone.get(4).setOnContextMenuRequested(handlersUno.get(4)); P2MZone.get(4).setOnContextMenuRequested(handlersDos.get(4));
-	
-		/*Desactivo los que no contienen cartas*/
-		int index = campoDeJuegoUno.cantidadDeMonstruosEnFila();
-		for(int i = index; i < 5; i++) {
+		for(int i = 0; i < 5; i++) {
+			P1MZone.get(i).setOnContextMenuRequested(null);
 			P1MZone.get(i).setOnContextMenuRequested(null);
 		}
 		
-		index = campoDeJuegoDos.cantidadDeMonstruosEnFila();
-		for(int i = index; i < 5; i++) {
-			P2MZone.get(i).setOnContextMenuRequested(null);
+		int tope = campoDeJuegoUno.cantidadDeMonstruosEnFila();
+		for(int i = 0; i < tope; i++) {
+			handlersUno.get(i).asignarMonstruoEnPosicion(campoDeJuegoUno.obtenerMonstruoEnPosicion(i));
+			P1MZone.get(i).setOnContextMenuRequested(handlersUno.get(i));
 		}
+		
+		tope = campoDeJuegoDos.cantidadDeMonstruosEnFila();
+		for(int i = 0; i < tope; i++) {
+			handlersDos.get(i).asignarMonstruoEnPosicion(campoDeJuegoDos.obtenerMonstruoEnPosicion(i));
+			P2MZone.get(i).setOnContextMenuRequested(handlersDos.get(i));
+		}
+		
 	}
 	
 	private void setActionToDecks() {

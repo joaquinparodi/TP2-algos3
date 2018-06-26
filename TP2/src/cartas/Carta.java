@@ -42,5 +42,9 @@ public abstract class Carta {
     public String obtenerNombre() {
     	return this.nombreCarta;
     }
+    
+    public Jugador obtenerDuenio() {
+    	return this.jugadorDuenio;
+    }
 }
 	
