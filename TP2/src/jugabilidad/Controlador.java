@@ -116,4 +116,8 @@ public class Controlador {
 		return atacante.obtenerNumeroDeJugador();
 	}
 	
+	public boolean esElTurnoDe(Jugador jugador) {
+		return (jugador == atacante);
+	}
+
 }
