@@ -82,7 +82,6 @@ public class Jugador {
     
     	if( !mano.pertenece(cartaMonstruo) ) throw new ErrorCartaNoEncontrada();	
     	
-    	mano.eliminarCarta(cartaMonstruo);
     	int sacrificiosNecesarios = cartaMonstruo.obtenerCantidadDeSacrificiosNecesarios();
     	
     	if ( sacrificios.obtenerCantidadDeCartas() != sacrificiosNecesarios ) {
@@ -90,12 +89,12 @@ public class Jugador {
     	}
     	
     	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {
-    		//Algunas cartas necesitan sacrificios especificos
     		throw new ErrorCartasSacrificadasIncorrectas();
     	}
     	
     	sacrificios.enviarSacrificiosAlCementerio( campoDeJuego );
     	campoDeJuego.agregarCarta(cartaMonstruo);
+    	mano.eliminarCarta(cartaMonstruo);
     }
     
     public void agregarCartaEnCampo(Monstruo cartaMonstruo) {

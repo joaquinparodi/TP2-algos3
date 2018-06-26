@@ -32,11 +32,14 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 			ContextMenu menuDesplegable = new ContextMenu();
 	
 			MenuItem rotar = new MenuItem("rotar");
-			menuDesplegable.getItems().addAll(rotar);
+			MenuItem sacrificar = new MenuItem("sacrificar");
+			menuDesplegable.getItems().addAll(rotar, sacrificar);
 
-			BotonRotarEnZonaMonstruo handler = new BotonRotarEnZonaMonstruo(ventanaDeJuego, jugador, index, rect);
-			rotar.setOnAction(handler);
-		
+			BotonRotarEnZonaMonstruo handlerRotar = new BotonRotarEnZonaMonstruo(ventanaDeJuego, jugador, index, rect);
+			BotonSacrificar handlerSacrificar = new BotonSacrificar(monstruo);
+			rotar.setOnAction(handlerRotar);
+			sacrificar.setOnAction(handlerSacrificar);
+			
 			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
 		}
 		
