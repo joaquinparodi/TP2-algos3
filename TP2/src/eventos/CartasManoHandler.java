@@ -23,8 +23,9 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	private VentanaDeJuego ventanaDeJuego;
 	private Jugador jugador;
 	private Node nodo;
-	private int index;
 	private Carta carta;
+	private int index;
+	
 	
 	public CartasManoHandler(VentanaDeJuego ventana, Baraja manoJugador, Jugador jugador, int index, Node nodo) {
 		this.jugador = jugador;
@@ -43,40 +44,43 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
 				agregarEnCampo.setOnAction(handlerAgregarVolteada);
-			}else if (carta.esMonstruo()) {
+			}
+			if (carta.esMonstruo()) {
+				
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				MenuItem agregarRotada = new MenuItem("Agregar rotada");
 				MenuItem agregarVolteada = new MenuItem("Agregar volteada");
 				menuDesplegable.getItems().addAll(agregarEnCampo,agregarRotada,agregarVolteada);
 
-				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);
 				BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
 				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
 				
 				agregarEnCampo.setOnAction(handlerAgregar);
 				agregarRotada.setOnAction(handlerAgregarRotada);
 				agregarVolteada.setOnAction(handlerAgregarVolteada);			
-			}else if (carta.esDeCampo()) {
+			}
+			if (carta.esDeCampo()) {
+				
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 
-				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, index);
+				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);
 				
-			}else if (carta.esDeTrampa()) {
+			}
+			if (carta.esDeTrampa()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
 				agregarEnCampo.setOnAction(handlerAgregarVolteada);
 
 			}
-			
-			
 			menuDesplegable.show(nodo, event.getScreenX(), event.getScreenY());
 	
 		}
 	}
 
-	public void setCarta(Carta carta) {
+	public void asignarCartaEnPoscion(Carta carta) {
 		this.carta = carta;
 	}
 }
