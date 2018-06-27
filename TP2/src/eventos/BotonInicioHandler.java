@@ -36,8 +36,9 @@ public class BotonInicioHandler implements EventHandler<ActionEvent>  {
 		jugadorRandom1.obtenerRival().asignarNombre(nombreJugador2.getText());
         stage.setScene(nextScene);
         stage.setFullScreen(true);
-        ventanaDeJuego.actualizarNombres();
-        ventanaDeJuego.actualizarManos();
+//        ventanaDeJuego.actualizarNombres();
+//        ventanaDeJuego.actualizarManos();
+        ventanaDeJuego.actualizarCampoDeJuego();
 	}
 
 }
