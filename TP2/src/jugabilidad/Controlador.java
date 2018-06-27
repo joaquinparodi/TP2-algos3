@@ -93,8 +93,6 @@ public class Controlador {
 		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
 	}
 	
-	/*metodos nuevos necesitan pruebas*/
-	
 	public void avanzarFase() {
 		fase = fase.avanzarFase();
 	}

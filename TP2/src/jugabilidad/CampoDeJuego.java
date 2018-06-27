@@ -152,7 +152,7 @@ public class CampoDeJuego {
 		return mazo.tieneCartas();
 	}
 	
-	/*Nuevos metodos faltann probar*/
+	/*Nuevos metodos*/
 	public void rotarCartaMonstruo(int index) {
 		Monstruo monstruoEnIndice = (Monstruo)filaMonstruos.obtenerCartaDePosicion(index);
 		monstruoEnIndice.cambiarPosicion();

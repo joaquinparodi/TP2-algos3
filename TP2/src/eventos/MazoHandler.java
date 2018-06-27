@@ -1,7 +1,6 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import jugabilidad.Jugador;

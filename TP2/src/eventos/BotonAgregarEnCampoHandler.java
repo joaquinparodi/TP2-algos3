@@ -1,6 +1,5 @@
 package eventos;
 
-import java.util.ArrayList;
 
 import Vista.BaseDeDatosDeCartas;
 import Vista.VentanaDeJuego;
@@ -11,11 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Rectangle;
 import jugabilidad.AreaDeSacrificios;
-import jugabilidad.Baraja;
 import jugabilidad.Jugador;
 
 public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
