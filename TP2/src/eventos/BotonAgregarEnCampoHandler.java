@@ -45,6 +45,7 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 					areaDeSacrificios.reiniciarSacrificios();
 				} catch ( ErrorSacrificiosInsuficientes error ) {
 					Alert alert = new Alert(AlertType.ERROR);
+					alert.initOwner(ventanaDeJuego.getStage());
 					alert.setTitle("Error");
 					alert.setHeaderText("Sacrificios incompletos");
 					alert.setContentText("No se han seleccionado sacrificios suficientes para invocar este monstruo");
