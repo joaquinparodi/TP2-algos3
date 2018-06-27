@@ -2,17 +2,20 @@ package jugabilidad;
 
 import java.util.ArrayList;
 
+import cartas.InsectoComeHombres;
 import cartas.Monstruo;
 
 public class ReglasDeMonstruos {
 	
 	private ArrayList<Monstruo> monstruosQueAtacaron;
 	private ArrayList<Monstruo> monstruosQueSeAgregaron;
+	private ArrayList<Monstruo> monstruosQueSeVoltearon;
 	private static ReglasDeMonstruos instancia;
 	
 	private ReglasDeMonstruos () {
 		monstruosQueAtacaron = new ArrayList<Monstruo>();
 		monstruosQueSeAgregaron = new ArrayList<Monstruo>();
+		monstruosQueSeVoltearon = new ArrayList<Monstruo>();
 	}
 	
 	public static ReglasDeMonstruos obtener() {
@@ -25,6 +28,7 @@ public class ReglasDeMonstruos {
 	public void reiniciar() {
 		monstruosQueAtacaron.clear();
 		monstruosQueSeAgregaron.clear();
+		monstruosQueSeVoltearon.clear();
 	}
 	
 	public boolean monstruoAtaco(Monstruo monstruo) {
@@ -43,8 +47,16 @@ public class ReglasDeMonstruos {
 		return monstruosQueSeAgregaron.add(monstruo);
 	}
 	
+	public boolean agregarMonstruoQueFueVolteadoEnEsteTurno(Monstruo monstruo) {
+		return monstruosQueSeVoltearon.add(monstruo);
+	}
+	
 	public boolean algunaCartaFueAgregadaEsteTurno() {
 		return (this.monstruosQueSeAgregaron.size() != 0);
+	}
+
+	public boolean cartaFueVolteadaEsteTurno(Monstruo monstruo) {
+		return monstruosQueSeVoltearon.contains(monstruo);
 	}
 
 }

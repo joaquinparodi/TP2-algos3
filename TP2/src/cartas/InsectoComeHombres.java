@@ -3,6 +3,7 @@ package cartas;
 import atributos.Estrellas;
 import atributos.Puntos;
 import jugabilidad.Jugador;
+import jugabilidad.ReglasDeMonstruos;
 import posiciones.OrientacionArriba;
 import resultados.Derrota;
 import resultados.Resultado;
@@ -26,4 +27,13 @@ public class InsectoComeHombres extends Monstruo {
 	public Resultado recibirAtaqueBocaArriba (Puntos puntosAtacante) {
 		return posicion.recibirAtaque(puntosAtacante);
 	}
+	
+	public void atacarConEfecto(Atacable otroMonstruo) {
+		if (ReglasDeMonstruos.obtener().cartaFueVolteadaEsteTurno(this)) {
+			otroMonstruo.enviarAlCementerio();
+		}else {
+			this.atacarSinEfecto(otroMonstruo);
+		}
+	}
+	
 }
