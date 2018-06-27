@@ -1348,4 +1348,32 @@ class TestJugador {
 		assert(monstruoCuatro.estaVolteada());
 		
 	}
+	
+	@Test
+	public void test44InterfazRecuperarMano() {
+			Vida vida = new Vida(8000);
+	    	Jugador jugador = new Jugador(vida);
+			
+			Estrellas estrellas = new Estrellas(2);
+			Puntos puntos = new Puntos(1000, 2000);
+			
+			FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+			
+			Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("MonstruoUno", estrellas, puntos);
+			Monstruo monstruoDos = fabrica.crearMonstruoPersonalizado("MonstruoDos", estrellas, puntos);
+			
+			jugador.repartirCarta(monstruoUno);
+			jugador.repartirCarta(monstruoDos);
+			Baraja mano = jugador.obtenerMano();
+			assert(mano.pertenece(monstruoUno));
+			assert(mano.pertenece(monstruoDos));
+			
+	}
+	
+	@Test
+	public void test45InterfazRecuperarVida() {
+		Vida vida = new Vida(8000);
+		Jugador jugador = new Jugador(vida);
+		assertEquals(jugador.obtenerVida(), 8000);
+	}
 }
