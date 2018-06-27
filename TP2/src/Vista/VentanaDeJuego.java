@@ -9,6 +9,7 @@ import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import eventos.EventoCrearVistaMaximizada;
+import eventos.EventoCrearVistaMaximizadaAbajo;
 import eventos.MazoHandler;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
@@ -118,7 +119,7 @@ public class VentanaDeJuego {
 	private void actualizarVistaMaximizadaDeCartas() {
 		
 		this.actualizarVistaMaximizadaDeManos(handOne);
-		this.actualizarVistaMaximizadaDeManos(handTwo);
+		this.actualizarVistaMaximizadaDeManosAbajo(handTwo);
 		this.actualizarVistaMaximizadaDeCampo(P1MZone, this.campoDeJuegoUno.obtenerFilaDeMonstruos());
 		this.actualizarVistaMaximizadaDeCampo(P2MZone, this.campoDeJuegoDos.obtenerFilaDeMonstruos());
 		this.actualizarVistaMaximizadaDeCampo(P1STZone, this.campoDeJuegoUno.obtenerFilaDeMagicasYTrampas());
@@ -144,6 +145,28 @@ public class VentanaDeJuego {
 			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
 			rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
 			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
+		}
+
+	}
+	
+	private void actualizarVistaMaximizadaDeManosAbajo(ArrayList<Rectangle> rectangulos) {
+		Iterator<Rectangle> iterador = rectangulos.iterator();
+		
+		while (iterador.hasNext()) {
+			Rectangle rectangulo = iterador.next();
+			rectangulo.setOnMouseEntered(null);
+			rectangulo.setOnMouseExited(null);
+			rectangulo.setOnMouseMoved(null);
+		}
+
+		iterador = rectangulos.iterator();	
+		while (iterador.hasNext()) {
+			Rectangle rectangulo = iterador.next();
+			Paint fill = rectangulo.getFill();
+			EventoCrearVistaMaximizadaAbajo eventoCrearVistaMaximizadaAbajo = new EventoCrearVistaMaximizadaAbajo(fill,stage);
+			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizadaAbajo);
+			rectangulo.setOnMouseExited(eventoCrearVistaMaximizadaAbajo);
+			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizadaAbajo);
 		}
 
 	}

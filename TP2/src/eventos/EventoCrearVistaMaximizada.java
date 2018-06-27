@@ -40,7 +40,7 @@ public class EventoCrearVistaMaximizada implements EventHandler<MouseEvent> {
 		}else if (event.getEventType() == MouseEvent.MOUSE_EXITED) {
 			stage.hide();
 		}else if (event.getEventType() == MouseEvent.MOUSE_MOVED) {
-			stage.setY(event.getScreenY()+5); stage.setX(event.getScreenX()+5);
+			stage.setY(event.getScreenY()+5); stage.setX(event.getScreenX()-150);
 		}
 	}
 
