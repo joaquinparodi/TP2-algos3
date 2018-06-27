@@ -2,7 +2,6 @@ package jugabilidad;
 
 import java.util.ArrayList;
 
-import cartas.InsectoComeHombres;
 import cartas.Monstruo;
 
 public class ReglasDeMonstruos {
