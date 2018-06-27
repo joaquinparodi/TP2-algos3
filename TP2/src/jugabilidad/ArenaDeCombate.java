@@ -33,6 +33,7 @@ public class ArenaDeCombate {
 		if(this.monstruoAtacado != null && this.monstruoAtacante != null ) {
 			Jugador atacante = monstruoAtacante.obtenerDuenio();
 			atacante.atacarCartaConCarta(monstruoAtacado, monstruoAtacante);
+			ReglasDeMonstruos.obtener().agregarMonstruoQueAtaco(monstruoAtacante);
 			/*seteo los mosntruos a null nuevamente*/
 			this.monstruoAtacado = null;
 			this.monstruoAtacante = null;

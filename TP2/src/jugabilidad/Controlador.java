@@ -101,6 +101,7 @@ public class Controlador {
 		Jugador jugadorAuxiliar = atacante; 
 		atacante = defensor;
 		defensor = jugadorAuxiliar;
+		ReglasDeMonstruos.obtener().reiniciar();
 	}
 	
 	public String obtenerFase() {

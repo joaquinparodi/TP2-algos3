@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import jugabilidad.AreaDeSacrificios;
 import jugabilidad.Jugador;
+import jugabilidad.ReglasDeMonstruos;
 
 public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 	
@@ -46,8 +47,8 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 					alert.setContentText("No se han seleccionado sacrificios suficientes para invocar este monstruo");
 					alert.showAndWait();
 				}
-			} else carta.agregarseEnCampo();
-		} else carta.agregarseEnCampo();
+			} else carta.agregarseEnCampo(); ReglasDeMonstruos.obtener().agregarMonstruoQueFueAgregadoEnEsteTurno(monstruo);
+		} else carta.agregarseEnCampo(); ReglasDeMonstruos.obtener().agregarMonstruoQueFueAgregadoEnEsteTurno((Monstruo)carta);
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
 

@@ -9,6 +9,7 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Rectangle;
 import jugabilidad.Controlador;
 import jugabilidad.Jugador;
+import jugabilidad.ReglasDeMonstruos;
 
 public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent> {
 
@@ -26,44 +27,55 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 	}
 	
 	public void handle(ContextMenuEvent event) {
-		Controlador controlador = Controlador.obtener();
+			Controlador controlador = Controlador.obtener();
+			
+			if(controlador.partidaEstaEnFase("Preparacion") && controlador.esElTurnoDe(jugador)) {
+				ContextMenu menuDesplegable = new ContextMenu();
 		
-		if(controlador.partidaEstaEnFase("Preparacion") && controlador.esElTurnoDe(jugador)) {
-			ContextMenu menuDesplegable = new ContextMenu();
+				MenuItem rotar = new MenuItem("rotar");
+				
+				if (ReglasDeMonstruos.obtener().monstruoFueAgregadoEnEsteTurno(monstruo)) {
+					rotar.setDisable(true);
+				}
+				
+				MenuItem sacrificar = new MenuItem("sacrificar");
+				menuDesplegable.getItems().addAll(rotar, sacrificar);
 	
-			MenuItem rotar = new MenuItem("rotar");
-			MenuItem sacrificar = new MenuItem("sacrificar");
-			menuDesplegable.getItems().addAll(rotar, sacrificar);
-
-			BotonRotarEnZonaMonstruo handlerRotar = new BotonRotarEnZonaMonstruo(ventanaDeJuego, jugador, index, rect);
-			BotonSacrificar handlerSacrificar = new BotonSacrificar(monstruo);
-			rotar.setOnAction(handlerRotar);
-			sacrificar.setOnAction(handlerSacrificar);
+				BotonRotarEnZonaMonstruo handlerRotar = new BotonRotarEnZonaMonstruo(ventanaDeJuego, jugador, index, rect);
+				BotonSacrificar handlerSacrificar = new BotonSacrificar(monstruo);
+				rotar.setOnAction(handlerRotar);
+				sacrificar.setOnAction(handlerSacrificar);
+				
+				menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
+			}
 			
-			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
-		}
+			if(Controlador.obtener().partidaEstaEnFase("Ataque") && !controlador.esElTurnoDe(jugador)) {
+				ContextMenu menuDesplegable = new ContextMenu();
 		
-		if(Controlador.obtener().partidaEstaEnFase("Ataque") && !controlador.esElTurnoDe(jugador)) {
-			ContextMenu menuDesplegable = new ContextMenu();
-	
-			MenuItem atacar = new MenuItem("Atacar");
-			menuDesplegable.getItems().addAll(atacar);
-			BotonAtacar handler = new BotonAtacar(monstruo, ventanaDeJuego);
-			atacar.setOnAction(handler);
-		
-			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
-		}
-		
-		if(Controlador.obtener().partidaEstaEnFase("Ataque") && controlador.esElTurnoDe(jugador)) {
-			ContextMenu menuDesplegable = new ContextMenu();
+				MenuItem atacar = new MenuItem("Atacar");
+				menuDesplegable.getItems().addAll(atacar);
+				BotonAtacar handler = new BotonAtacar(monstruo, ventanaDeJuego);
+				atacar.setOnAction(handler);
 			
-			MenuItem seleccionarAtacante = new MenuItem("Seleccionar como atacante");
-			menuDesplegable.getItems().addAll(seleccionarAtacante);
-			BotonSeleccionarAtacante handler = new BotonSeleccionarAtacante(monstruo, ventanaDeJuego);
-			seleccionarAtacante.setOnAction(handler);
+				menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
+			}
 			
-			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
-		}
+			if(Controlador.obtener().partidaEstaEnFase("Ataque") && controlador.esElTurnoDe(jugador)) {
+				ContextMenu menuDesplegable = new ContextMenu();
+				
+				MenuItem seleccionarAtacante = new MenuItem("Seleccionar como atacante");
+				
+				if (ReglasDeMonstruos.obtener().monstruoAtaco(monstruo)) {
+					seleccionarAtacante.setDisable(true);
+				}
+				
+				menuDesplegable.getItems().addAll(seleccionarAtacante);
+				BotonSeleccionarAtacante handler = new BotonSeleccionarAtacante(monstruo, ventanaDeJuego);
+				seleccionarAtacante.setOnAction(handler);
+				
+				menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
+			}
+			
 	}
 
 

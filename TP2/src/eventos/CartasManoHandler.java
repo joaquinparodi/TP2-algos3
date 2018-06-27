@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import jugabilidad.Baraja;
 import jugabilidad.Controlador;
 import jugabilidad.Jugador;
+import jugabilidad.ReglasDeMonstruos;
 
 public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 
@@ -44,17 +45,21 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 			if (carta.esMonstruo()) {
 				
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
-				MenuItem agregarRotada = new MenuItem("Agregar rotada");
-				MenuItem agregarVolteada = new MenuItem("Agregar volteada");
-				menuDesplegable.getItems().addAll(agregarEnCampo,agregarRotada,agregarVolteada);
+				if (ReglasDeMonstruos.obtener().algunaCartaFueAgregadaEsteTurno()) {
+					agregarEnCampo.setDisable(true);
+				}
+//				MenuItem agregarRotada = new MenuItem("Agregar rotada");
+//				MenuItem agregarVolteada = new MenuItem("Agregar volteada");
+				menuDesplegable.getItems().addAll(agregarEnCampo);
 
 				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);
-				BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
-				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+//				BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
+//				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
 				
 				agregarEnCampo.setOnAction(handlerAgregar);
-				agregarRotada.setOnAction(handlerAgregarRotada);
-				agregarVolteada.setOnAction(handlerAgregarVolteada);			
+//				agregarRotada.setOnAction(handlerAgregarRotada);
+//				agregarVolteada.setOnAction(handlerAgregarVolteada);
+				
 			}
 			
 			if (carta.esDeCampo()) {
