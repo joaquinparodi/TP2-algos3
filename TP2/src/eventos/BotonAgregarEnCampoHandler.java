@@ -47,8 +47,15 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 					alert.setContentText("No se han seleccionado sacrificios suficientes para invocar este monstruo");
 					alert.showAndWait();
 				}
-			} else {carta.agregarseEnCampo(); ReglasDeMonstruos.obtener().agregarMonstruoQueFueAgregadoEnEsteTurno(monstruo);}
-		} else {carta.agregarseEnCampo(); ReglasDeMonstruos.obtener().agregarMonstruoQueFueAgregadoEnEsteTurno((Monstruo)carta);}
+			} else {
+				carta.agregarseEnCampo(); 
+				ReglasDeMonstruos.obtener().agregarMonstruoQueFueAgregadoEnEsteTurno(monstruo);
+			}
+			
+			
+		} else {
+			carta.agregarseEnCampo();
+		}
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
 

@@ -118,16 +118,16 @@ public class VentanaDeJuego {
 	
 	private void actualizarVistaMaximizadaDeCartas() {
 		
-		this.actualizarVistaMaximizadaDeManos(handOne);
-		this.actualizarVistaMaximizadaDeManosAbajo(handTwo);
-		this.actualizarVistaMaximizadaDeCampo(P1MZone, this.campoDeJuegoUno.obtenerFilaDeMonstruos());
-		this.actualizarVistaMaximizadaDeCampo(P2MZone, this.campoDeJuegoDos.obtenerFilaDeMonstruos());
-		this.actualizarVistaMaximizadaDeCampo(P1STZone, this.campoDeJuegoUno.obtenerFilaDeMagicasYTrampas());
-		this.actualizarVistaMaximizadaDeCampo(P2STZone, this.campoDeJuegoDos.obtenerFilaDeMagicasYTrampas());
+		this.actualizarVistaMaximizadaDeManos(handOne,-150,20);
+		this.actualizarVistaMaximizadaDeManos(handTwo,-150,-320);
+		this.actualizarVistaMaximizadaDeCampo(P1MZone, this.campoDeJuegoUno.obtenerFilaDeMonstruos(), -150,20);
+		this.actualizarVistaMaximizadaDeCampo(P2MZone, this.campoDeJuegoDos.obtenerFilaDeMonstruos(), -150, -320);
+		this.actualizarVistaMaximizadaDeCampo(P1STZone, this.campoDeJuegoUno.obtenerFilaDeMagicasYTrampas(), 20, -150);
+		this.actualizarVistaMaximizadaDeCampo(P2STZone, this.campoDeJuegoDos.obtenerFilaDeMagicasYTrampas(), -150, -320);
 
 	}
 	
-	private void actualizarVistaMaximizadaDeManos(ArrayList<Rectangle> rectangulos) {
+	private void actualizarVistaMaximizadaDeManos(ArrayList<Rectangle> rectangulos,double offsetX,double offsetY) {
 		Iterator<Rectangle> iterador = rectangulos.iterator();
 		
 		while (iterador.hasNext()) {
@@ -141,7 +141,7 @@ public class VentanaDeJuego {
 		while (iterador.hasNext()) {
 			Rectangle rectangulo = iterador.next();
 			Paint fill = rectangulo.getFill();
-			EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage);
+			EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage,offsetX,offsetY);
 			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
 			rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
 			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
@@ -149,29 +149,29 @@ public class VentanaDeJuego {
 
 	}
 	
-	private void actualizarVistaMaximizadaDeManosAbajo(ArrayList<Rectangle> rectangulos) {
-		Iterator<Rectangle> iterador = rectangulos.iterator();
-		
-		while (iterador.hasNext()) {
-			Rectangle rectangulo = iterador.next();
-			rectangulo.setOnMouseEntered(null);
-			rectangulo.setOnMouseExited(null);
-			rectangulo.setOnMouseMoved(null);
-		}
-
-		iterador = rectangulos.iterator();	
-		while (iterador.hasNext()) {
-			Rectangle rectangulo = iterador.next();
-			Paint fill = rectangulo.getFill();
-			EventoCrearVistaMaximizadaAbajo eventoCrearVistaMaximizadaAbajo = new EventoCrearVistaMaximizadaAbajo(fill,stage);
-			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizadaAbajo);
-			rectangulo.setOnMouseExited(eventoCrearVistaMaximizadaAbajo);
-			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizadaAbajo);
-		}
-
-	}
+//	private void actualizarVistaMaximizadaDeManosAbajo(ArrayList<Rectangle> rectangulos) {
+//		Iterator<Rectangle> iterador = rectangulos.iterator();
+//		
+//		while (iterador.hasNext()) {
+//			Rectangle rectangulo = iterador.next();
+//			rectangulo.setOnMouseEntered(null);
+//			rectangulo.setOnMouseExited(null);
+//			rectangulo.setOnMouseMoved(null);
+//		}
+//
+//		iterador = rectangulos.iterator();	
+//		while (iterador.hasNext()) {
+//			Rectangle rectangulo = iterador.next();
+//			Paint fill = rectangulo.getFill();
+//			EventoCrearVistaMaximizadaAbajo eventoCrearVistaMaximizadaAbajo = new EventoCrearVistaMaximizadaAbajo(fill,stage);
+//			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizadaAbajo);
+//			rectangulo.setOnMouseExited(eventoCrearVistaMaximizadaAbajo);
+//			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizadaAbajo);
+//		}
+//
+//	}
 	
-	private void actualizarVistaMaximizadaDeCampo(ArrayList<Rectangle> rectangulos, Baraja baraja) {
+	private void actualizarVistaMaximizadaDeCampo(ArrayList<Rectangle> rectangulos, Baraja baraja,double offsetX,double offsetY) {
 		Iterator<Rectangle> iterador1 = rectangulos.iterator();
 		Iterator<Carta> iterador2 = baraja.obtenerIteradorDeBaraja();
 		
@@ -184,13 +184,14 @@ public class VentanaDeJuego {
 		
 		iterador1 = rectangulos.iterator();
 		while (iterador1.hasNext() && iterador2.hasNext()) {
-			iterador2.next();
-			Rectangle rectangulo = iterador1.next();
-			Paint fill = rectangulo.getFill();
-			EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage);
-			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
-			rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
-			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
+			if (!iterador2.next().estaVolteada()) {
+				Rectangle rectangulo = iterador1.next();
+				Paint fill = rectangulo.getFill();
+				EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage,offsetX,offsetY);
+				rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
+				rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
+				rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
+			}
 		}
 		
 	}
