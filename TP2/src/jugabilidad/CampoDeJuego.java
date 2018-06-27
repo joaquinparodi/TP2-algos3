@@ -88,7 +88,6 @@ public class CampoDeJuego {
 	}
 	
 	public void agregarCarta(Campo cartaCampo) {
-		//Mato la carta atenrior
 		if (this.cartaDeCampo != null) {
 			throw new ErrorYaHayCartaDeCampoInvocada();
 		}

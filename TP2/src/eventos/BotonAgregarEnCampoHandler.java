@@ -6,6 +6,7 @@ import Vista.VentanaDeJuego;
 import cartas.Carta;
 import cartas.Monstruo;
 import errores.ErrorSacrificiosInsuficientes;
+import errores.ErrorYaHayCartaDeCampoInvocada;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -54,7 +55,16 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 			
 			
 		} else {
-			carta.agregarseEnCampo();
+			try {
+				carta.agregarseEnCampo();				
+			}catch(ErrorYaHayCartaDeCampoInvocada error) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.initOwner(ventanaDeJuego.getStage());
+				alert.setTitle("Error");
+				alert.setHeaderText("Carta de campo");
+				alert.setContentText("Ya has invocado una carta de campo");
+				alert.showAndWait();				
+			}
 		}
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
