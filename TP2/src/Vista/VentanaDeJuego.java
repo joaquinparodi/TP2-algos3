@@ -74,6 +74,10 @@ public class VentanaDeJuego {
 	private Text faseYTurno;
 
 	private Stage stage;
+
+	private Rectangle P1BarraDeVida;
+
+	private Rectangle P2BarraDeVida;
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -388,6 +392,8 @@ public class VentanaDeJuego {
 		double vidaUno = playerOne.obtenerVida(); double vidaDos = playerTwo.obtenerVida();
 		playerOneLife.setText( String.valueOf(vidaUno) );
 		playerTwoLife.setText( String.valueOf(vidaDos) );
+		P1BarraDeVida.setHeight(vidaUno/80);
+		P2BarraDeVida.setHeight(vidaDos/80);
 	}
 	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
@@ -440,6 +446,9 @@ public class VentanaDeJuego {
 		double lifeOne = 100; double lifeTwo = 100;
 		Rectangle P1life = new Rectangle(10, lifeOne, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
 		Rectangle P2life = new Rectangle(10, lifeTwo, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
+		
+		this.P1BarraDeVida = P1life;
+		this.P2BarraDeVida = P2life;
 		
 		square1.setArcWidth(15); square1.setArcHeight(15);
 		square2.setArcWidth(15); square2.setArcHeight(15);
