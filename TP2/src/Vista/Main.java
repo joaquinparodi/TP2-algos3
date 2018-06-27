@@ -1,11 +1,15 @@
 package Vista;
 
+import java.nio.file.Paths;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import jugabilidad.Randomizador;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
 	
@@ -16,6 +20,7 @@ public class Main extends Application {
 	Jugador jugadorDos;
 	
 	Controlador controlador;
+	MediaPlayer reproductor;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -30,6 +35,8 @@ public class Main extends Application {
 		Scene gameScene = ventanaDeJuego.createGameScene(stage);
 		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
 		
+		agregarMusicaAlJuego();
+
 		stage.setScene(initialScene);
 		stage.show();
 	}
@@ -53,5 +60,13 @@ public class Main extends Application {
 	private void inicializarVentanas() {
 		ventanaInicial = new VentanaInicial(jugadorUno, jugadorDos);
 		ventanaDeJuego = new VentanaDeJuego(jugadorUno, jugadorDos);
-	}	
+	}
+	
+	private void agregarMusicaAlJuego() {
+		    String cancion = "cancion.mp3";
+		    Media media = new Media(Paths.get(cancion).toUri().toString());
+		    reproductor = new MediaPlayer(media);
+		    reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+		    reproductor.play();
+		}	
 }

@@ -3,11 +3,9 @@ package Vista;
 import eventos.BotonInicioHandler;
 import eventos.ActivarBotonHandler;
 import eventos.TextFieldNombreHandler;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -44,6 +42,7 @@ public class VentanaInicial {
 		BorderPane rootBorderPane = this.createBorderPane();
 		
 		double with = 1360; double height = 1280;
+		
 		Scene initScene = new Scene(rootBorderPane, with, height, Color.DARKSLATEBLUE);
 		return initScene;
 	}
