@@ -176,10 +176,12 @@ public class VentanaDeJuego {
 		this.gridScrollPlayer1 = new GridPane();
 		this.gridScrollPlayer2 = new GridPane();
 		
-		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
+		ImagePattern img1 = new ImagePattern( new Image("file:images/textura_roja_2.jpg") );
+		BackgroundFill fill = new BackgroundFill(img1, null, null);
 		Background background =  new Background(fill);
 		gridScrollPlayer1.setBackground(background);
-		gridScrollPlayer2.setBackground(background);
+		gridScrollPlayer2.setBackground(background); 
+		
 		gridScrollPlayer1.setPrefWidth(480);gridScrollPlayer1.setPrefHeight(180);
 		gridScrollPlayer2.setPrefWidth(480);gridScrollPlayer2.setPrefHeight(180);
 		scrollPlayer1.setContent(gridScrollPlayer1);
@@ -222,7 +224,7 @@ public class VentanaDeJuego {
 			rectangulo.setFill(image);
 			actualCards++;
 		}
-
+		
 		scrollPlayer1.setBackground(background);
 		scrollPlayer2.setBackground(background);
 
@@ -423,16 +425,17 @@ public class VentanaDeJuego {
 		GridPane gridPane = new GridPane();
 
 		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
-		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
+		ImagePattern img1 = new ImagePattern( new Image("file:images/textura_roja_2.jpg") );
+		BackgroundFill fill = new BackgroundFill(img1, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
 		Rectangle square1 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
 		Rectangle square2 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
 		
-		ImagePattern img = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
-		this.mazoJugadorUno = new Rectangle(70, 100, img);
-		this.mazoJugadorDos = new Rectangle(70, 100, img);
+		ImagePattern img2 = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
+		this.mazoJugadorUno = new Rectangle(70, 100, img2);
+		this.mazoJugadorDos = new Rectangle(70, 100, img2);
 		
 		double lifeOne = 100; double lifeTwo = 100;
 		Rectangle P1life = new Rectangle(10, lifeOne, Color.LAWNGREEN); //Hay que cambiar el tamanio para la vida
@@ -445,6 +448,10 @@ public class VentanaDeJuego {
 		playerTwoName = new Text(playerOne.obtenerNombre()); 
 		playerOneLife = new Text("8000");
 		playerTwoLife = new Text("8000");
+		playerOneName.setFill(Color.WHITE);
+		playerTwoName.setFill(Color.WHITE);
+		playerOneLife.setFill(Color.WHITE);
+		playerTwoLife.setFill(Color.WHITE);
 		
 		gridPane.setHgap(10);
 		gridPane.setVgap(9);
@@ -491,7 +498,8 @@ public class VentanaDeJuego {
 		gridPane.setPrefWidth(600);
 		
 		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
-		BackgroundFill fill = new BackgroundFill(Color.DARKGREEN, null, null);
+		ImagePattern img = new ImagePattern( new Image("file:images/fondo_campodejuego_3.jpg") );
+		BackgroundFill fill = new BackgroundFill(img, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
@@ -600,13 +608,12 @@ public class VentanaDeJuego {
 		GridPane gridPane = new GridPane();
 		gridPane.setPrefWidth(600);
 		
-		//CornerRadii cornerProperties = new CornerRadii(15, 0, 0, 15, false);
 		BackgroundFill fill = new BackgroundFill(Color.DARKRED, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
 		gridPane.setHgap(0);
-		gridPane.setVgap(14);
+		gridPane.setVgap(17);
 		
 		this.scrollPlayer1 = new ScrollPane(); 
 		this.scrollPlayer2 = new ScrollPane(); 
@@ -614,7 +621,7 @@ public class VentanaDeJuego {
 		this.gridScrollPlayer2 = new GridPane();
 		
 		gridPane.add(scrollPlayer1, 1, 0);
-		gridPane.add(scrollPlayer2, 1, 26);		
+		gridPane.add(scrollPlayer2, 1, 26);	
 		
 		return gridPane;
 	}
@@ -742,4 +749,5 @@ public class VentanaDeJuego {
 	public Window getStage() {
 		return stage;
 	}
+
 }
