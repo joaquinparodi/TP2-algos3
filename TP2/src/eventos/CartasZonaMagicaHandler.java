@@ -2,9 +2,7 @@ package eventos;
 
 import Vista.VentanaDeJuego;
 import cartas.Carta;
-import cartas.Monstruo;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;

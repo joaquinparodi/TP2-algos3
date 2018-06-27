@@ -1,7 +1,6 @@
 package tests;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Iterator;
 
@@ -54,7 +53,7 @@ public class TestControlador {
 		
 		controlador.asignarMazos(mazoUno, mazoDos);	
 		
-		assertTrue( controlador.hayGanador() );
+		assert( controlador.hayGanador() );
 		
 	} 
 	
@@ -98,7 +97,7 @@ public class TestControlador {
 		jugadorDos.agregarCartaEnCampo(monstruoA);
 		jugadorUno.atacarCartaConCarta(monstruoA, monstruo1);
 		//El jugador atacado queda con vida negativa, por lo tanto el jugador atacante es el ganador
-		assertTrue( controlador.hayGanador() );
+		assert( controlador.hayGanador() );
 		
 	}	
 	
@@ -141,7 +140,7 @@ public class TestControlador {
 		while(mazoUno.tieneCartas()) iter.next();
 		
 		//Ahora el atacante deberia sacar una carta, como no tiene perdio el duelo
-		assertTrue( controlador.hayGanador() );
+		assert( controlador.hayGanador() );
 		
 	}
 	
@@ -165,14 +164,14 @@ public class TestControlador {
 		Controlador controlador = Controlador.obtener();
 		controlador.avanzarFase();
 		controlador.avanzarFase();
+		controlador.avanzarFase();
+		controlador.avanzarFase();
 		assert(controlador.partidaEstaEnFase("Final"));
 	}
 	
 	@Test
 	public void test07AvanzarDeFaseFinalAPreparacion() {
 		Controlador controlador = Controlador.obtener();
-		controlador.avanzarFase();
-		controlador.avanzarFase();
 		controlador.avanzarFase();
 		assert(controlador.partidaEstaEnFase("Preparacion"));
 	}
@@ -183,5 +182,13 @@ public class TestControlador {
 		Jugador jugadorDef = controlador.obtenerJugadorDefensor();
 		controlador.cambiarTurno();
 		assert(controlador.esElTurnoDe(jugadorDef));
+	}
+	
+	@Test
+	public void test09JugadorAtacanteEsElCorrecto() {
+		Controlador controlador = Controlador.obtener();
+		Jugador jugadorAtacante = controlador.obtenerJugadorAtacante();
+		
+		assert(controlador.esElTurnoDe(jugadorAtacante));
 	}
 }

@@ -1,12 +1,9 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
-import cartas.Monstruo;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Rotate;
 import jugabilidad.Jugador;
 
 public class BotonRotarEnZonaMonstruo implements EventHandler<ActionEvent> {

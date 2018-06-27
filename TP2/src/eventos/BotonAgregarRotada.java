@@ -4,8 +4,6 @@ import Vista.BaseDeDatosDeCartas;
 import Vista.VentanaDeJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.transform.Rotate;
 import jugabilidad.Jugador;
 
 public class BotonAgregarRotada implements EventHandler<ActionEvent> {

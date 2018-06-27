@@ -1,18 +1,13 @@
 package eventos;
 
-import java.util.ArrayList;
 
 import Vista.VentanaDeJuego;
 import cartas.Carta;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 import jugabilidad.Baraja;
 import jugabilidad.Controlador;

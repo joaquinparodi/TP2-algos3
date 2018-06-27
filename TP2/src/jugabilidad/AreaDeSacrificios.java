@@ -1,7 +1,6 @@
 package jugabilidad;
 
 import atributos.Sacrificio;
-import cartas.Carta;
 import cartas.Monstruo;
 
 public class AreaDeSacrificios {

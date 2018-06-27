@@ -1207,5 +1207,41 @@ class TestJugador {
 		assertThrows(ErrorYaHayCincoCartasEnLaFila.class, () -> jugador.agregarCartaEnCampo(cilindroMagicoTres));
 	}
 	
+/*	@Test
+	public void test40SeRobaCartaMonstruoCorrectamente() {
+
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellas = new Estrellas(1);
+		Estrellas estrellasMonstruoUno = new Estrellas(7);
+		Puntos puntos = new Puntos(2000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("joaquincin", estrellasMonstruoUno, puntos);
+		monstruoUno.rotar();
+		
+		assertTrue( jugador.cartaEstaMuerta(monstruoTres) );
+	} */
+	
+	@Test
+	public void test40SeRobaCartaMonstruoCorrectamente() {
+
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellasMonstruoUno = new Estrellas(7);
+		Puntos puntos = new Puntos(2000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("joaquincin", estrellasMonstruoUno, puntos);
+		
+		monstruoUno.enviarAlCementerio();
+		
+		assertTrue(jugador.obtenerCampo().cementerioContieneCartas());
+		
+	}
 
 }
