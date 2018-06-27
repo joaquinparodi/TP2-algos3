@@ -15,7 +15,6 @@ import cartas.Trampa;
 import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
 import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorIntentaAtacarACartaPropia;
-import errores.ErrorNoHayCartasEnLaBaraja;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
 import errores.ErrorYaHayCincoCartasEnLaFila;
