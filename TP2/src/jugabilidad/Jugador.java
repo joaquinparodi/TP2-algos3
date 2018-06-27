@@ -89,7 +89,7 @@ public class Jugador {
     	}
     	
     	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {
-    		throw new ErrorSacrificiosInsuficientes();
+    		throw new ErrorCartasSacrificadasIncorrectas();
     	}
     	
     	sacrificios.enviarSacrificiosAlCementerio( campoDeJuego );

@@ -13,7 +13,7 @@ public class DragonDefinitivo extends Monstruo{
 		super(nombre, unJugador, estrellas, puntos);
 	}
 	
-	
+	@Override
 	public int obtenerCantidadDeSacrificiosNecesarios() {
 		return 3;
 	}

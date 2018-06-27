@@ -8,6 +8,7 @@ import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Vida;
 import cartas.Carta;
+import errores.ErrorNoHayCartasEnLaBaraja;
 import factories.FabricaDeCartas;
 import jugabilidad.Baraja;
 import jugabilidad.Jugador;
@@ -29,6 +30,12 @@ public class TestBaraja {
 		baraja.agregarCarta(monstruo);
 		
 		assertTrue( baraja.pertenece(monstruo) );
+	}
+	
+	@Test
+	public void test02NoHayCartaEnLaBaraja() {
+		Baraja baraja = new Baraja();
+		assertThrows(ErrorNoHayCartasEnLaBaraja.class, () ->baraja.obtenerCartaDePosicion(2) );
 	}
 	
 }
