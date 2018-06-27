@@ -8,6 +8,7 @@ import eventos.BotonFaseYTurnoHandler;
 import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
+import eventos.EventoCrearVistaMaximizada;
 import eventos.MazoHandler;
 import javafx.event.EventHandler;
 import javafx.geometry.*;
@@ -23,6 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -106,6 +108,64 @@ public class VentanaDeJuego {
 		this.actualizarManos();
 		this.actualizarOpcionesDeManejo();
 		this.actualizarVidaJugadores();
+		this.actualizarVistaMaximizadaDeCartas();
+	}
+	
+	private void actualizarVistaMaximizadaDeCartas() {
+		
+		this.actualizarVistaMaximizadaDeManos(handOne);
+		this.actualizarVistaMaximizadaDeManos(handTwo);
+		this.actualizarVistaMaximizadaDeCampo(P1MZone, this.campoDeJuegoUno.obtenerFilaDeMonstruos());
+		this.actualizarVistaMaximizadaDeCampo(P2MZone, this.campoDeJuegoDos.obtenerFilaDeMonstruos());
+		this.actualizarVistaMaximizadaDeCampo(P1STZone, this.campoDeJuegoUno.obtenerFilaDeMagicasYTrampas());
+		this.actualizarVistaMaximizadaDeCampo(P2STZone, this.campoDeJuegoDos.obtenerFilaDeMagicasYTrampas());
+
+	}
+	
+	private void actualizarVistaMaximizadaDeManos(ArrayList<Rectangle> rectangulos) {
+		Iterator<Rectangle> iterador = rectangulos.iterator();
+		
+		while (iterador.hasNext()) {
+			Rectangle rectangulo = iterador.next();
+			rectangulo.setOnMouseEntered(null);
+			rectangulo.setOnMouseExited(null);
+			rectangulo.setOnMouseMoved(null);
+		}
+
+		iterador = rectangulos.iterator();	
+		while (iterador.hasNext()) {
+			Rectangle rectangulo = iterador.next();
+			Paint fill = rectangulo.getFill();
+			EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage);
+			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
+			rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
+			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
+		}
+
+	}
+	
+	private void actualizarVistaMaximizadaDeCampo(ArrayList<Rectangle> rectangulos, Baraja baraja) {
+		Iterator<Rectangle> iterador1 = rectangulos.iterator();
+		Iterator<Carta> iterador2 = baraja.obtenerIteradorDeBaraja();
+		
+		while (iterador1.hasNext()) {
+			Rectangle rectangulo = iterador1.next();
+			rectangulo.setOnMouseEntered(null);
+			rectangulo.setOnMouseExited(null);
+			rectangulo.setOnMouseMoved(null);
+		}
+		
+		iterador1 = rectangulos.iterator();
+		while (iterador1.hasNext() && iterador2.hasNext()) {
+			iterador2.next();
+			Rectangle rectangulo = iterador1.next();
+			Paint fill = rectangulo.getFill();
+			EventoCrearVistaMaximizada eventoCrearVistaMaximizada = new EventoCrearVistaMaximizada(fill,stage);
+			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizada);
+			rectangulo.setOnMouseExited(eventoCrearVistaMaximizada);
+			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizada);
+		}
+		
 	}
 	
 	public void actualizarManos() {
@@ -554,7 +614,7 @@ public class VentanaDeJuego {
 		this.gridScrollPlayer2 = new GridPane();
 		
 		gridPane.add(scrollPlayer1, 1, 0);
-		gridPane.add(scrollPlayer2, 1, 26);
+		gridPane.add(scrollPlayer2, 1, 26);		
 		
 		return gridPane;
 	}
