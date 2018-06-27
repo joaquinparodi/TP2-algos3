@@ -15,6 +15,7 @@ import cartas.Trampa;
 import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
 import errores.ErrorCartaEnManoNoPuedeAtacar;
 import errores.ErrorIntentaAtacarACartaPropia;
+import errores.ErrorNoHayCartasEnLaBaraja;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
 import errores.ErrorYaHayCincoCartasEnLaFila;
@@ -1243,5 +1244,108 @@ class TestJugador {
 		assertTrue(jugador.obtenerCampo().cementerioContieneCartas());
 		
 	}
+	
+	@Test
+	public void test41AgregarCartaEnCampoConIndex() {
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellas = new Estrellas(2);
+		Puntos puntos = new Puntos(1000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("MonstruoUno", estrellas, puntos);
+		Monstruo monstruoDos = fabrica.crearMonstruoPersonalizado("MonstruoDos", estrellas, puntos);
+		Monstruo monstruoTres = fabrica.crearMonstruoPersonalizado("MonstruoTres", estrellas, puntos);
+		Monstruo monstruoCuatro = fabrica.crearMonstruoPersonalizado("MonstruoCuatro", estrellas, puntos);
+		Monstruo monstruoCinco = fabrica.crearMonstruoPersonalizado("MonstruoCinco", estrellas, puntos);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		jugador.repartirCarta(monstruoTres);
+		jugador.repartirCarta(monstruoCuatro);
+		jugador.repartirCarta(monstruoCinco);
+		
+		jugador.agregarCartaDeManoEnCampo(2);
+		
+		assert(jugador.obtenerCampo().cantidadDeMonstruosEnFila()==1);
+		assertFalse(jugador.contieneCartaEnMano(monstruoTres));
+	}
+	
+	@Test
+	public void test42RotarCartaMonstruoEnCampoConIndex() {
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellas = new Estrellas(2);
+		Puntos puntos = new Puntos(1000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("MonstruoUno", estrellas, puntos);
+		jugador.repartirCarta(monstruoUno);
+		jugador.agregarCartaEnCampo(monstruoUno);
+		jugador.rotarCartaMonstruoEnCampo(0);
+		
+		assert(monstruoUno.estaRotado());
+		assert(jugador.cartaMonstruoEnCampoEstaRotada(0));
+		
+	}
 
+	@Test
+	public void test43RotarCartaEnManoConIndex() {
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellas = new Estrellas(2);
+		Puntos puntos = new Puntos(1000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("MonstruoUno", estrellas, puntos);
+		Monstruo monstruoDos = fabrica.crearMonstruoPersonalizado("MonstruoDos", estrellas, puntos);
+		Monstruo monstruoTres = fabrica.crearMonstruoPersonalizado("MonstruoTres", estrellas, puntos);
+		Monstruo monstruoCuatro = fabrica.crearMonstruoPersonalizado("MonstruoCuatro", estrellas, puntos);
+		Monstruo monstruoCinco = fabrica.crearMonstruoPersonalizado("MonstruoCinco", estrellas, puntos);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		jugador.repartirCarta(monstruoTres);
+		jugador.repartirCarta(monstruoCuatro);
+		jugador.repartirCarta(monstruoCinco);
+		
+		jugador.rotarCartaEnMano(4);
+		
+		assert(monstruoCinco.estaRotado());
+		
+	}
+	
+	@Test
+	public void test43VoltearCartaEnManoConIndex() {
+		Vida vida = new Vida(8000);
+    	Jugador jugador = new Jugador(vida);
+		
+		Estrellas estrellas = new Estrellas(2);
+		Puntos puntos = new Puntos(1000, 2000);
+		
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		
+		Monstruo monstruoUno = fabrica.crearMonstruoPersonalizado("MonstruoUno", estrellas, puntos);
+		Monstruo monstruoDos = fabrica.crearMonstruoPersonalizado("MonstruoDos", estrellas, puntos);
+		Monstruo monstruoTres = fabrica.crearMonstruoPersonalizado("MonstruoTres", estrellas, puntos);
+		Monstruo monstruoCuatro = fabrica.crearMonstruoPersonalizado("MonstruoCuatro", estrellas, puntos);
+		Monstruo monstruoCinco = fabrica.crearMonstruoPersonalizado("MonstruoCinco", estrellas, puntos);
+		
+		jugador.repartirCarta(monstruoUno);
+		jugador.repartirCarta(monstruoDos);
+		jugador.repartirCarta(monstruoTres);
+		jugador.repartirCarta(monstruoCuatro);
+		jugador.repartirCarta(monstruoCinco);
+		
+		jugador.voltearCartaEnMano(3);
+		
+		assert(monstruoCuatro.estaVolteada());
+		
+	}
 }
