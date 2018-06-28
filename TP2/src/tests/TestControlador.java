@@ -123,21 +123,21 @@ public class TestControlador {
 		mazoUno.agregarCarta(fabrica.crearMonstruoPersonalizado("monstruo3", estrellas, puntos));
 		mazoUno.agregarCarta(fabrica.crearMonstruoPersonalizado("monstruo4", estrellas, puntos));
 		mazoUno.agregarCarta(fabrica.crearMonstruoPersonalizado("monstruo5", estrellas, puntos));
-		mazoUno.agregarCarta(fabrica.crearMonstruoPersonalizado("monstruo6", estrellas, puntos));
 	
 		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoA", estrellas, puntos));
 		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoB", estrellas, puntos));
 		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoC", estrellas, puntos));
 		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoD", estrellas, puntos));
 		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoE", estrellas, puntos));
-		mazoDos.agregarCarta(fabrica2.crearMonstruoPersonalizado("monstruoF", estrellas, puntos));	
 		
 		controlador.asignarMazos(mazoUno, mazoDos);	
 		
 		//Saco las cartas del mazo del atacante
 		
 		Iterator<Carta> iter = mazoUno.obtenerIteradorDeBaraja();
-		while(mazoUno.tieneCartas()) iter.next();
+		while(mazoUno.tieneCartas()) {
+			iter.next().agregarseEnCampo();
+		}
 		
 		//Ahora el atacante deberia sacar una carta, como no tiene perdio el duelo
 		assert( controlador.ganoElJugadorDelTurnoActual() );
