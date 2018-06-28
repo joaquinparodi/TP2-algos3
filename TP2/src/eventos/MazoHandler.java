@@ -19,15 +19,22 @@ public class MazoHandler implements EventHandler<MouseEvent> {
 	}
 	
 	public void handle(MouseEvent event) {
-		if (Controlador.obtener().obtenerFase()!="Preparacion" || Controlador.obtener().obtenerJugadorAtacante() != jugador) {
+		if (!(Controlador.obtener().partidaEstaEnFase("Preparacion")) || !(Controlador.obtener().esElTurnoDe(jugador))) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(ventana.getStage());
 			alert.setTitle("Error");
 			alert.setHeaderText("No se puede repartir carta");
 			alert.setContentText("No se puede repartir carta en este fase del juego");
 			alert.showAndWait();
+		} else if(Controlador.obtener().jugadorYaRepartiCarta()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.initOwner(ventana.getStage());
+			alert.setTitle("Error");
+			alert.setHeaderText("No puede repartir carta");
+			alert.setContentText("No se puede repartir mas de una carta en el turno");
+			alert.showAndWait();
 		}else{
-			jugador.repartirCarta();
+			Controlador.obtener().repartirCartaAJugador();
 		}
 		ventana.actualizarCampoDeJuego();
 	}

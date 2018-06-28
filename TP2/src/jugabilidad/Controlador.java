@@ -9,6 +9,7 @@ public class Controlador {
 	private Jugador atacante;
 	private Jugador defensor;
 	private Fase fase;
+	private boolean cartaRepartida;
 	
 	private static Controlador instancia;
 	
@@ -25,6 +26,8 @@ public class Controlador {
 		this.asignarRivales(jugadorUno, jugadorDos);
 		
 		this.fase = new FasePreparacion();
+		
+		this.cartaRepartida = false;
 		
 		atacante = jugadorUno;
 		defensor = jugadorDos;
@@ -99,6 +102,7 @@ public class Controlador {
 	}
 
 	public void cambiarTurno() {
+		this.cartaRepartida = false;
 		Jugador jugadorAuxiliar = atacante; 
 		atacante = defensor;
 		defensor = jugadorAuxiliar;
@@ -111,6 +115,7 @@ public class Controlador {
 
 	public void repartirCartaAJugador() {
 		this.atacante.repartirCarta();
+		this.cartaRepartida = true;
 	}
 	
 	public int obtenerNumeroJugadorAtacante() {
@@ -123,6 +128,11 @@ public class Controlador {
 	
 	public boolean partidaEstaEnFase(String nombreFase) {
 		return nombreFase == fase.obtenerNombre();
+	}
+
+
+	public boolean jugadorYaRepartiCarta() {
+		return this.cartaRepartida;
 	}
 
 }
