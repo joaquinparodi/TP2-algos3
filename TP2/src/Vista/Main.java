@@ -50,10 +50,7 @@ public class Main extends Application {
 		randomizador.cargarMazo(jugadorUno);
 		randomizador.cargarMazo(jugadorDos);
 		
-		for(int i = 0; i < 5; i++) {
-			jugadorUno.repartirCarta();
-			jugadorDos.repartirCarta();
-		}
+		Controlador.obtener().repartirCartasIniciales();
 
 	}
 	

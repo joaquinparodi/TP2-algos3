@@ -57,7 +57,7 @@ public class Controlador {
 		jugadorDos.asignarRival(jugadorUno);
 	}
 	
-	private void repartirCartasIniciales() {
+	public void repartirCartasIniciales() {
 		for (int i = 0; i < 6; i++) {
 			jugadorUno.repartirCarta();
 		}
@@ -93,6 +93,7 @@ public class Controlador {
 		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
 	}
 	
+	/*Metodos usados para manejar los turnos*/
 	public void avanzarFase() {
 		fase = fase.avanzarFase();
 	}

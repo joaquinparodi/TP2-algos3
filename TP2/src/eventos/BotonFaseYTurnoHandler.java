@@ -3,7 +3,9 @@ package eventos;
 import Vista.VentanaDeJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import jugabilidad.AreaDeSacrificios;
 import jugabilidad.Controlador;
 
@@ -33,7 +35,7 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 		
 		if (fase == "Preparacion") {	
 			if (Controlador.obtener().hayGanador()) {
-				//ACA TERMINA EL JUEGO
+				
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
 			}
