@@ -53,7 +53,7 @@ public class TestControlador {
 		
 		controlador.asignarMazos(mazoUno, mazoDos);	
 		
-		assert( controlador.hayGanador() );
+		assert( controlador.ganoElJugadorDelTurnoActual() );
 		
 	} 
 	
@@ -97,7 +97,7 @@ public class TestControlador {
 		jugadorDos.agregarCartaEnCampo(monstruoA);
 		jugadorUno.atacarCartaConCarta(monstruoA, monstruo1);
 		//El jugador atacado queda con vida negativa, por lo tanto el jugador atacante es el ganador
-		assert( controlador.hayGanador() );
+		assert( controlador.ganoElJugadorDelTurnoActual() );
 		
 	}	
 	
@@ -140,7 +140,7 @@ public class TestControlador {
 		while(mazoUno.tieneCartas()) iter.next();
 		
 		//Ahora el atacante deberia sacar una carta, como no tiene perdio el duelo
-		assert( controlador.hayGanador() );
+		assert( controlador.ganoElJugadorDelTurnoActual() );
 		
 	}
 	

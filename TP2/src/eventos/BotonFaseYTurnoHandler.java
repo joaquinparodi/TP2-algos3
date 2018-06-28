@@ -34,14 +34,21 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 			boton.setText("Avanzar Fase");
 		}
 		
-		if (fase == "Preparacion") {	
-			if (Controlador.obtener().hayGanador()) {
-				Alert alert = new Alert(AlertType.NONE);
+		if (fase == "Preparacion") {
+			if (controlador.hayGanador()) {
+				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.initOwner(ventana.getStage());
 				alert.setTitle("Fin del juego");
-				alert.setHeaderText("Ganador jugador: " + controlador.obtenerJugadorAtacante().obtenerNombre());
+				if (controlador.ganoElJugadorDelTurnoActual()) {
+					alert.setHeaderText("Ganador: " + controlador.obtenerJugadorAtacante().obtenerNombre());	
+				}else {
+					alert.setHeaderText("Ganador: " + controlador.obtenerJugadorDefensor().obtenerNombre());	
+				}
 				alert.setContentText("Gracias por jugar");
+				EventoCerrarJuego evento = new EventoCerrarJuego(ventana.getStage());
+				alert.setOnCloseRequest(evento);
 				alert.show();
+				
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
 			}

@@ -14,7 +14,7 @@ public class Controlador {
 	private static Controlador instancia;
 	
 	private Controlador() {	
-		Vida vidaJugadorUno = new Vida(8000);
+		Vida vidaJugadorUno = new Vida(100);
 		Vida vidaJugadorDos = new Vida(8000);
 		
 		this.jugadorUno = new Jugador( vidaJugadorUno );
@@ -80,20 +80,24 @@ public class Controlador {
 	
 	/*Metodos usador para determinar ganador*/
 	
-	private boolean restanCartasEnMazo() { 
-		return defensor.poseeCartasEnMazo(); 
+	private boolean restanCartasEnMazo(Jugador jugador) { 
+		return jugador.poseeCartasEnMazo(); 
 	}
 	
-	private boolean exodiaEstaCompleto() {
-		return atacante.poseeExodiaCompleto(); 
+	private boolean exodiaEstaCompleto(Jugador jugador) {
+		return jugador.poseeExodiaCompleto(); 
 	}
 	
-	private boolean hayJugadorSinVida() {
-		return defensor.fueDerrotado();
+	private boolean hayJugadorSinVida(Jugador jugador) {
+		return jugador.fueDerrotado();
 	}
 	
-	public boolean hayGanador() {
-		return this.exodiaEstaCompleto() || !this.restanCartasEnMazo() || this.hayJugadorSinVida();
+	public boolean ganoElJugadorDelTurnoActual() {
+		return (this.exodiaEstaCompleto(atacante) || !this.restanCartasEnMazo(defensor) || this.hayJugadorSinVida(defensor));
+	}
+	
+	public boolean ganoElOponente() {
+		return (this.exodiaEstaCompleto(defensor) || !this.restanCartasEnMazo(atacante) || this.hayJugadorSinVida(atacante));
 	}
 	
 	/*Metodos usados para manejar los turnos*/
@@ -133,6 +137,10 @@ public class Controlador {
 
 	public boolean jugadorYaRepartiCarta() {
 		return this.cartaRepartida;
+	}
+
+	public boolean hayGanador() {
+		return (this.ganoElJugadorDelTurnoActual() || this.ganoElOponente());
 	}
 
 }
