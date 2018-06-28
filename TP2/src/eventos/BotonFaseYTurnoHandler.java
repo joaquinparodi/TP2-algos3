@@ -7,6 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import jugabilidad.AreaDeSacrificios;
+import jugabilidad.ArenaDeCombate;
 import jugabilidad.Controlador;
 
 public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
@@ -44,7 +45,9 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
 			}
-			AreaDeSacrificios.obtener().reiniciarSacrificios();
 		}
+		ArenaDeCombate.obtener().reiniciarCombatientes();
+		AreaDeSacrificios.obtener().reiniciarSacrificios();
+		ventana.actualizarCampoDeJuego();
 	}
 }

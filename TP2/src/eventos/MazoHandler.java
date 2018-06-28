@@ -23,7 +23,7 @@ public class MazoHandler implements EventHandler<MouseEvent> {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.initOwner(ventana.getStage());
 			alert.setTitle("Error");
-			alert.setHeaderText("No puede repartir carta");
+			alert.setHeaderText("No se puede repartir carta");
 			alert.setContentText("No se puede repartir carta en este fase del juego");
 			alert.showAndWait();
 		}else{

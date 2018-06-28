@@ -6,6 +6,7 @@ import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonFaseYTurnoHandler;
 import eventos.CartasManoHandler;
+import eventos.CartasSacrificadasHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import eventos.EventoCrearVistaMaximizada;
@@ -28,6 +29,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import jugabilidad.AreaDeSacrificios;
+import jugabilidad.ArenaDeCombate;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
@@ -48,6 +51,7 @@ public class VentanaDeJuego {
 	private Text playerTwoName;
 	private Text playerOneLife;
 	private Text playerTwoLife;
+	private Text faseYTurno;
 	
 	private ArrayList<Rectangle> handOne;
 	private ArrayList<Rectangle> handTwo;
@@ -68,14 +72,15 @@ public class VentanaDeJuego {
 	private Rectangle cartaDeCampoDos;
 	private Rectangle mazoJugadorUno;
 	private Rectangle mazoJugadorDos;
-	
-	private Text faseYTurno;
-
-	private Stage stage;
-
+	private Rectangle sacrificio1;
+	private Rectangle sacrificio2;
+	private Rectangle sacrificio3;
 	private Rectangle P1BarraDeVida;
-
 	private Rectangle P2BarraDeVida;
+	
+	private Stage stage;
+	private Button atacar;
+
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -111,6 +116,7 @@ public class VentanaDeJuego {
 		this.actualizarOpcionesDeManejo();
 		this.actualizarVidaJugadores();
 		this.actualizarVistaMaximizadaDeCartas();
+		this.actualizarCartasEnSacrificio();
 	}
 	
 	private void actualizarVistaMaximizadaDeCartas() {
@@ -395,6 +401,47 @@ public class VentanaDeJuego {
 		P2BarraDeVida.setHeight(vidaDos/80);
 	}
 	
+	private void actualizarCartasEnSacrificio() {
+		AreaDeSacrificios areaDeSacrificios = AreaDeSacrificios.obtener();
+		if( areaDeSacrificios.haySacrificios() ) {
+			Monstruo sacrificado = areaDeSacrificios.obtenerPrimerSacrificio();
+			CartasSacrificadasHandler handler = new CartasSacrificadasHandler(sacrificado, this);
+			String URL = database.getURL(areaDeSacrificios.obtenerNombrePrimerSacrificio());
+			ImagePattern img = new ImagePattern( new Image(URL) );
+			this.sacrificio1.setFill(img);
+			this.sacrificio1.setOnContextMenuRequested(handler);
+		} else {
+			this.sacrificio1.setFill(Color.DARKRED);
+			this.sacrificio1.setOnContextMenuRequested(null);
+		}
+		
+		if( areaDeSacrificios.hayMasDeUnSacrificios() ) {
+			Monstruo sacrificado = areaDeSacrificios.obtenerSegundoSacrificio();
+			CartasSacrificadasHandler handler = new CartasSacrificadasHandler(sacrificado, this);
+			String URL = database.getURL(areaDeSacrificios.obtenerNombreSegundoSacrificio());
+			ImagePattern img = new ImagePattern( new Image(URL) );
+			this.sacrificio2.setFill(img);
+			this.sacrificio2.setOnContextMenuRequested(handler);
+		} else {
+			this.sacrificio2.setFill(Color.DARKRED);
+			this.sacrificio2.setOnContextMenuRequested(null);
+		}
+		
+		if( areaDeSacrificios.hayMasDeDosSacrificios() ) {
+			Monstruo sacrificado = areaDeSacrificios.obtenerTercerSacrificio();
+			CartasSacrificadasHandler handler = new CartasSacrificadasHandler(sacrificado, this);
+			String URL = database.getURL(areaDeSacrificios.obtenerNombreTercerSacrificio());
+			ImagePattern img = new ImagePattern( new Image(URL) );
+			this.sacrificio3.setFill(img);
+			this.sacrificio3.setOnContextMenuRequested(handler);
+		} else {
+			this.sacrificio3.setFill(Color.DARKRED);
+			this.sacrificio3.setOnContextMenuRequested(null);
+		}
+	
+	}
+	
+	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene(Stage stage) {
@@ -620,17 +667,31 @@ public class VentanaDeJuego {
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		
-		gridPane.setHgap(0);
-		gridPane.setVgap(17);
+		gridPane.setHgap(-50);
+		gridPane.setVgap(10);
+
+		this.atacar = new Button("Atacar");
+		this.sacrificio1 = new Rectangle(110, 140, Color.DARKRED);
+		this.sacrificio2 = new Rectangle(110, 140, Color.DARKRED);
+		this.sacrificio3 = new Rectangle(110, 140, Color.DARKRED);
+		
+		gridPane.add(sacrificio1, 0, 13);
+		gridPane.add(sacrificio2, 3, 13);
+		gridPane.add(sacrificio3, 6, 13);
+		
+		gridPane.setMargin(sacrificio1, new Insets(0,0,0,22));
+		gridPane.setMargin(sacrificio2, new Insets(0,0,0,-155));
+		gridPane.setMargin(sacrificio3, new Insets(0,0,0,145));
+		
 		
 		this.scrollPlayer1 = new ScrollPane(); 
 		this.scrollPlayer2 = new ScrollPane(); 
 		this.gridScrollPlayer1 = new GridPane();
 		this.gridScrollPlayer2 = new GridPane();
 		
-		gridPane.add(scrollPlayer1, 1, 0);
-		gridPane.add(scrollPlayer2, 1, 26);	
-		
+		gridPane.add(scrollPlayer1, 0, 0);
+		gridPane.add(scrollPlayer2, 0, 26);	
+
 		return gridPane;
 	}
 		

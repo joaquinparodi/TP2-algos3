@@ -39,4 +39,27 @@ public class ArenaDeCombate {
 			this.monstruoAtacante = null;
 		}
 	}
+
+	public boolean tieneMonstruoAtacante() {
+		return monstruoAtacante != null;
+	}
+	
+	public boolean tieneMonstruoAtacado() {
+		return monstruoAtacado != null;
+	}
+	
+	public String obtenerNombreMonstruoAtacado() {
+		return monstruoAtacado.obtenerNombre();
+	}
+	
+	public String obtenerNombreMonstruoAtacante() {
+		return monstruoAtacante.obtenerNombre();
+	}
+
+	public void reiniciarCombatientes() {
+		this.monstruoAtacante = null;
+		this.monstruoAtacado = null;
+		
+	}
+	
 }

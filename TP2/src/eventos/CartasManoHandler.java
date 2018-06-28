@@ -33,7 +33,6 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	public void handle(ContextMenuEvent event) {
 		if ((Controlador.obtener().esElTurnoDe(jugador)) && (Controlador.obtener().obtenerFase() == "Preparacion")) {
 			ContextMenu menuDesplegable = new ContextMenu();
-			Rectangle rect = (Rectangle)event.getSource();
 			
 			if (carta.esDeMagia()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
@@ -48,17 +47,12 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 				if (ReglasDeMonstruos.obtener().algunaCartaFueAgregadaEsteTurno()) {
 					agregarEnCampo.setDisable(true);
 				}
-//				MenuItem agregarRotada = new MenuItem("Agregar rotada");
-//				MenuItem agregarVolteada = new MenuItem("Agregar volteada");
+
 				menuDesplegable.getItems().addAll(agregarEnCampo);
 
-				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);
-//				BotonAgregarRotada handlerAgregarRotada = new BotonAgregarRotada(ventanaDeJuego, jugador, index);
-//				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
-				
+				BotonAgregarEnCampoHandler handlerAgregar = new BotonAgregarEnCampoHandler(ventanaDeJuego, jugador, carta);	
 				agregarEnCampo.setOnAction(handlerAgregar);
-//				agregarRotada.setOnAction(handlerAgregarRotada);
-//				agregarVolteada.setOnAction(handlerAgregarVolteada);
+
 				
 			}
 			

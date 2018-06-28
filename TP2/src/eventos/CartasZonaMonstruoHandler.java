@@ -44,7 +44,7 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 	
 				BotonRotarEnZonaMonstruo handlerRotar = new BotonRotarEnZonaMonstruo(ventanaDeJuego, jugador, index, rect);
 				BotonVoltearEnZonaMonstruo handlerVoltear = new BotonVoltearEnZonaMonstruo(ventanaDeJuego,jugador,monstruo,rect);
-				BotonSacrificar handlerSacrificar = new BotonSacrificar(monstruo);
+				BotonSacrificar handlerSacrificar = new BotonSacrificar(monstruo, ventanaDeJuego);
 				rotar.setOnAction(handlerRotar);
 				voltear.setOnAction(handlerVoltear);
 				sacrificar.setOnAction(handlerSacrificar);
