@@ -81,7 +81,7 @@ public class Controlador {
 	/*Metodos usador para determinar ganador*/
 	
 	private boolean restanCartasEnMazo() { 
-		return !defensor.poseeCartasEnMazo(); 
+		return defensor.poseeCartasEnMazo(); 
 	}
 	
 	private boolean exodiaEstaCompleto() {

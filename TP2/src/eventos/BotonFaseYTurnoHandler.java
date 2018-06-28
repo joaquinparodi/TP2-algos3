@@ -35,7 +35,12 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 		
 		if (fase == "Preparacion") {	
 			if (Controlador.obtener().hayGanador()) {
-				
+				Alert alert = new Alert(AlertType.NONE);
+				alert.initOwner(ventana.getStage());
+				alert.setTitle("Fin del juego");
+				alert.setHeaderText("Ganador jugador: " + controlador.obtenerJugadorAtacante().obtenerNombre());
+				alert.setContentText("Gracias por jugar");
+				alert.show();
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
 			}
