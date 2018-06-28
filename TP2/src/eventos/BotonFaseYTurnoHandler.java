@@ -21,7 +21,7 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 	}
 	
 	public void handle(ActionEvent arg0) {
-		
+
 		Controlador controlador = Controlador.obtener();
 		controlador.avanzarFase();
 		
@@ -42,12 +42,11 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 				alert.setHeaderText("Ganador jugador: " + controlador.obtenerJugadorAtacante().obtenerNombre());
 				alert.setContentText("Gracias por jugar");
 				alert.show();
-			}else {
-				Controlador.obtener().repartirCartaAJugador();
 			}
 		}
 		ArenaDeCombate.obtener().reiniciarCombatientes();
 		AreaDeSacrificios.obtener().reiniciarSacrificios();
 		ventana.actualizarCampoDeJuego();
 	}
+	
 }

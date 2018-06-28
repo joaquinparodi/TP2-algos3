@@ -17,6 +17,8 @@ public class EfectoFisura extends Efecto {
 		CampoDeJuego campoRival = rival.obtenerCampo();
 		Baraja monstruosRival = campoRival.obtenerMonstruos();
 		
+		if(!monstruosRival.tieneCartas()) return;
+		
 		Iterator<Carta> iter = monstruosRival.obtenerIteradorDeBaraja();
 		//Lanzar exception si esta vacio el campo de monstruo rival!
 		
