@@ -5,11 +5,15 @@ import java.util.Iterator;
 import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonFaseYTurnoHandler;
+import eventos.BotonHelpHandler;
+import eventos.BotonSalirEvento;
 import eventos.CartasManoHandler;
 import eventos.CartasSacrificadasHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
+import eventos.EventoCerrarJuego;
 import eventos.EventoCrearVistaMaximizada;
+import eventos.EventoMostrarToolbar;
 import eventos.MazoHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
@@ -28,6 +32,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import jugabilidad.AreaDeSacrificios;
 import jugabilidad.ArenaDeCombate;
@@ -461,7 +466,18 @@ public class VentanaDeJuego {
 		GridPane centerGridPane = this.createCenterGridPane();
 		GridPane rightGridPane = this.createRightGridPane();
 		
-		ToolBar toolbar = new ToolBar();
+		Button botonSalir = new Button("Salir");
+		Button botonHelp = new Button("About");
+		botonSalir.setOnAction(new BotonSalirEvento(stage));
+		botonHelp.setOnAction(new BotonHelpHandler(stage));
+		ToolBar toolbar = new ToolBar(botonSalir,botonHelp);
+		
+		toolbar.setManaged(false);
+		toolbar.setVisible(false);
+		
+		EventoMostrarToolbar evento = new EventoMostrarToolbar (toolbar);
+		
+		rootBorderPane.setOnKeyPressed(evento);
 		
 		rootBorderPane.setLeft(leftGridPane);
 		rootBorderPane.setCenter(centerGridPane);

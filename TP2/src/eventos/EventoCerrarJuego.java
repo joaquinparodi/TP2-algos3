@@ -4,7 +4,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.DialogEvent;
 import javafx.stage.Window;
 
-public class EventoCerrarJuego implements EventHandler<DialogEvent> {
+public class EventoCerrarJuego implements EventHandler<DialogEvent>{
 
 	private Window stage;
 
