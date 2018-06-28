@@ -496,8 +496,10 @@ public class VentanaDeJuego {
 		gridPane.setBackground(background);
 		gridPane.setMaxWidth(gridPane.getWidth());
 		
-		Rectangle square1 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
-		Rectangle square2 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
+		ImagePattern imgUno = new ImagePattern( new Image("file:images/imagenJugadorUno.jpg") );
+		ImagePattern imgDos = new ImagePattern( new Image("file:images/imagenJugadorDos.jpeg") );
+		Rectangle square1 = new Rectangle(100, 100, imgUno);
+		Rectangle square2 = new Rectangle(100, 100, imgDos); 
 		
 		ImagePattern img2 = new ImagePattern( new Image("file:images/lomo_carta.jpg") );
 		this.mazoJugadorUno = new Rectangle(70, 100, img2);
