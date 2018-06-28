@@ -21,7 +21,7 @@ import jugabilidad.Jugador;
 
 public class VentanaInicial {
 	
-	private static final String backgroundURL = "file:images/background_initial_scene.jpg";
+	private static final String backgroundURL = "file:images/background_initial_scene_2.png";
 	
 	private Scene nextScene;
 	private Stage stage;
