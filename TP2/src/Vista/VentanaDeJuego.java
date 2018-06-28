@@ -41,6 +41,7 @@ import javafx.stage.Window;
 import jugabilidad.AreaDeSacrificios;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;		
 
 
@@ -395,7 +396,7 @@ public class VentanaDeJuego {
 	}
 	
 	public void cambiarFase(String nuevaFase, int numeroJugador) {	
-		faseYTurno.setText(nuevaFase + " Jugador" + " " + numeroJugador);
+		faseYTurno.setText(nuevaFase + " " + Controlador.obtener().obtenerJugadorAtacante().obtenerNombre());
 	}
 	
 	private void actualizarVidaJugadores() {
@@ -677,7 +678,7 @@ public class VentanaDeJuego {
 		/*---------------------------Zona central del tablero-------------------------------------*/
 		
 		this.faseYTurno = new Text();
-		this.faseYTurno.setText("Preparacion Jugador 1");
+		this.faseYTurno.setText("Preparacion "+Controlador.obtener().obtenerJugadorAtacante().obtenerNombre());
 		this.faseYTurno.setFont(Font.font("Ubuntu", 44));
 		this.faseYTurno.setFill(Color.BEIGE);
 		this.faseYTurno.setCache(true);

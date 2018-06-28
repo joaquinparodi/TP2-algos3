@@ -39,6 +39,7 @@ public class BotonInicioHandler implements EventHandler<ActionEvent>  {
         ventanaDeJuego.actualizarNombres();
         ventanaDeJuego.actualizarManos();
         ventanaDeJuego.actualizarCampoDeJuego();
+        ventanaDeJuego.cambiarFase("Preparacion", 1);
 	}
 
 }

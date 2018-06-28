@@ -76,6 +76,7 @@ public class VentanaInicial {
 		namePlayerOne.setPromptText("Nombre jugador uno");
 		namePlayerTwo.setPromptText("Nombre jugador dos");
 		
+		
 		ActivarBotonHandler activarBotonHandler = new ActivarBotonHandler(enterButton,namePlayerOne,namePlayerTwo);
 		
 		namePlayerOne.setOnKeyPressed(activarBotonHandler);

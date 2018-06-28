@@ -23,7 +23,7 @@ public class ActivarBotonHandler implements EventHandler<KeyEvent> {
 		botonAActivar.setDisable(true);
 		String text1 = esteCampo.getText();
 		String text2 = elOtroCampo.getText();
-		if ((text1.length() != 0) && (text2.length() != 0) && (!text1.equalsIgnoreCase(text2))) {
+		if ((text1.length() != 0) && (text2.length() != 0) && (!text1.equalsIgnoreCase(text2) && (text1.length() < 9 ) && (text2.length() < 9)))  {
 				botonAActivar.setDisable(false);
 				if (event.getCode() == KeyCode.ENTER) {
 					botonAActivar.fire();
