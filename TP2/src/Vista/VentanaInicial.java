@@ -78,6 +78,8 @@ public class VentanaInicial {
 		
 		namePlayerOne.setOnKeyPressed(activarBotonHandler);
 		namePlayerTwo.setOnKeyPressed(activarBotonHandler);
+		namePlayerOne.setOnKeyTyped(activarBotonHandler);
+		namePlayerTwo.setOnKeyTyped(activarBotonHandler);
 		
 		TextFieldNombreHandler nameOneHandler = new TextFieldNombreHandler(playerOne);
 		nameOneHandler.asignarNombreObtenido(namePlayerOne.getText());
