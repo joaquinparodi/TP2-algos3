@@ -201,34 +201,9 @@ public class Jugador {
 	public boolean tieneVida(double vida) {
 		return (this.vida.obtenerPuntosDeVida() == vida);
 	}
-
-	/*Metodos nuevos que faltarian probar*/
-	
-	
-	public void agregarCartaDeManoEnCampo(int index) {
-		mano.obtenerCartaDePosicion(index).agregarseEnCampo();	
-	}
-	
-	public void rotarCartaMonstruoEnCampo(int index) {
-		campoDeJuego.rotarCartaMonstruo(index);
-	}
-	
-	public void voltearCartaMagicaEnCampo(int index) {
-		campoDeJuego.voltearCartaMagica(index);
-	}
-	
+		
 	public boolean cartaMonstruoEnCampoEstaRotada(int index) {
 		return campoDeJuego.cartaMonstruoEnEstaRotada(index);
-	}
-	
-	public void rotarCartaEnMano(int index) {
-		Carta carta = mano.obtenerCartaDePosicion(index);
-		carta.cambiarPosicion();
-	}
-	
-	public void voltearCartaEnMano(int index) {
-		Carta carta = mano.obtenerCartaDePosicion(index);
-		carta.voltear();
 	}
 	
 	/*Metodos utilizados para actualizar la interfaz*/

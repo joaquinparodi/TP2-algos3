@@ -15,13 +15,11 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 	private VentanaDeJuego ventanaDeJuego;
 	private Jugador jugador;
 	private Rectangle rect;
-	private int index;
 	private Carta carta;
 	
 	public CartasZonaMagicaHandler(VentanaDeJuego ventana, Jugador jugador, int index, Rectangle rect) {
 		this.jugador = jugador;
 		this.rect = rect;
-		this.index = index;
 		this.ventanaDeJuego = ventana;
 	}
 	
@@ -32,7 +30,7 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 			MenuItem voltear = new MenuItem("voltear");
 			menuDesplegable.getItems().addAll(voltear);
 
-			BotonVoltearEnZonaMagica handler = new BotonVoltearEnZonaMagica(ventanaDeJuego, jugador, index, rect);
+			BotonVoltearEnZonaMagica handler = new BotonVoltearEnZonaMagica(ventanaDeJuego, carta);
 			voltear.setOnAction(handler);
 		
 			menuDesplegable.show(rect, event.getScreenX(), event.getScreenY());
