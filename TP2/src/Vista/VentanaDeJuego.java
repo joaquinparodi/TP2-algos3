@@ -20,6 +20,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -31,6 +33,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
@@ -399,8 +402,13 @@ public class VentanaDeJuego {
 	
 	private void actualizarVidaJugadores() {
 		double vidaUno = playerOne.obtenerVida(); double vidaDos = playerTwo.obtenerVida();
+
+		if (vidaUno < 0) vidaUno = 0;
+		if (vidaDos < 0) vidaDos = 0;
+		
 		playerOneLife.setText( String.valueOf(vidaUno) );
-		playerTwoLife.setText( String.valueOf(vidaDos) );
+		playerTwoLife.setText( String.valueOf(vidaDos) );	
+		
 		P1BarraDeVida.setHeight(vidaUno/80);
 		P2BarraDeVida.setHeight(vidaDos/80);
 	}
@@ -663,8 +671,15 @@ public class VentanaDeJuego {
 		
 		this.faseYTurno = new Text();
 		this.faseYTurno.setText("Preparacion Jugador 1");
-		this.faseYTurno.setFont(Font.font ("Verdana", 45));
-		this.faseYTurno.setFill(Color.RED);
+		this.faseYTurno.setFont(Font.font("Ubuntu", 50));
+		this.faseYTurno.setFill(Color.BEIGE);
+		this.faseYTurno.setCache(true);
+		
+		DropShadow shadow = new DropShadow();
+		shadow.setOffsetY(3.0f); shadow.setOffsetX(3.0f);
+		shadow.setColor(Color.BLACK);
+		this.faseYTurno.setEffect(shadow);
+		
 		gridPane.add(this.faseYTurno, 3, 2, 4, 4);
 		GridPane.setMargin(this.faseYTurno, new Insets(0,0,0,-175));
 		
