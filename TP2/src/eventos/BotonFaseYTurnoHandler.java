@@ -48,8 +48,6 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 				EventoCerrarJuego evento = new EventoCerrarJuego(ventana.getStage());
 				alert.setOnCloseRequest(evento);
 				alert.show();
-			}else {
-				Controlador.obtener().repartirCartaAJugador();
 			}
 		}
 		ArenaDeCombate.obtener().reiniciarCombatientes();
