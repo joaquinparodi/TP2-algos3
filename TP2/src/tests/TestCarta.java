@@ -4,9 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 
 import cartas.Atacable;
+import cartas.Campo;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
+import errores.ErrorCartaNoVolteable;
 import errores.ErrorCartasSacrificadasIncorrectas;
+import errores.ErrorMonstruoYaSacrificado;
 import factories.FabricaDeCartas;
 
 import org.junit.jupiter.api.Test;
@@ -572,4 +575,45 @@ class TestCarta {
 		
 		assertTrue(jugadorUno.tieneVida(vidaEsperada));
 	}
+	
+	@Test
+	public void test19CartaDeCampoNoVolteable() {
+		Vida vida = new Vida(8000);
+		Jugador jugador = new Jugador(vida);
+		Jugador jugador2 = new Jugador(vida);
+		
+		jugador.asignarRival(jugador2);
+	
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		Monstruo monstruo = fabricaDeCartas.crearBrazoDerechoExodia();
+		Campo cartaCampo = fabricaDeCartas.crearSogen();
+		jugador.repartirCarta(cartaCampo);
+		jugador.repartirCarta(monstruo);
+		jugador.agregarCartaEnCampo(monstruo);
+		
+		FabricaDeCartas fabricaDeCartas2 = new FabricaDeCartas(jugador2);
+		Monstruo monstruo2 = fabricaDeCartas2.crearBrazoDerechoExodia();
+		jugador2.repartirCarta(monstruo2);
+		jugador2.agregarCartaEnCampo(monstruo2);
+		
+		jugador.agregarCartaEnCampo(cartaCampo);
+		
+		assertThrows(ErrorCartaNoVolteable.class, () -> cartaCampo.voltear());
+		
+	}
+	
+	@Test
+	public void test20MonstruoYaSacrificado() {
+		Vida vida = new Vida(8000);
+		Jugador jugador = new Jugador(vida);
+		
+		FabricaDeCartas fabricaDeCartas = new FabricaDeCartas(jugador);
+		Monstruo monstruo = fabricaDeCartas.crearBrazoDerechoExodia();
+		Sacrificio sacrificios = new Sacrificio();
+		sacrificios.agregarCarta(monstruo);
+		assertThrows(ErrorMonstruoYaSacrificado.class, () -> sacrificios.agregarCarta(monstruo));
+
+	}
+	
+	
 }

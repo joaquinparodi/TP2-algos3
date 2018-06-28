@@ -88,10 +88,15 @@ public class VentanaInicial {
 		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage, playerOne, playerTwo, namePlayerOne, namePlayerTwo, ventanaDeJuego);
 		enterButton.setOnAction(buttonHandler);
 		
+		Button botonDummy = new Button();
+		
+		gridPane.add(botonDummy, 3, 0);
 		gridPane.add(namePlayerOne, 0, 0);
 		gridPane.add(namePlayerTwo, 0, 1);
 		gridPane.add(enterButton, 0, 2);
-
+		botonDummy.requestFocus();
+		botonDummy.setOpacity(0);
+				
 		return gridPane;
 	}
 	
