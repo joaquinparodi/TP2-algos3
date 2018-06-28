@@ -35,8 +35,6 @@ public class Main extends Application {
 		Scene gameScene = ventanaDeJuego.createGameScene(stage);
 		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
 		
-		agregarMusicaAlJuego();
-
 		stage.setScene(initialScene);
 		stage.show();
 	}
@@ -59,11 +57,4 @@ public class Main extends Application {
 		ventanaDeJuego = new VentanaDeJuego(jugadorUno, jugadorDos);
 	}
 	
-	private void agregarMusicaAlJuego() {
-		    String cancion = "cancion.mp3";
-		    Media media = new Media(Paths.get(cancion).toUri().toString());
-		    reproductor = new MediaPlayer(media);
-		    reproductor.setCycleCount(MediaPlayer.INDEFINITE);
-		    reproductor.play();
-		}	
 }

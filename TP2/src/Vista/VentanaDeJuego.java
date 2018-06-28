@@ -1,11 +1,13 @@
 package Vista;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 import cartas.Carta;
 import cartas.Monstruo;
 import eventos.BotonFaseYTurnoHandler;
 import eventos.BotonHelpHandler;
+import eventos.BotonMusicaEvento;
 import eventos.BotonSalirEvento;
 import eventos.CartasManoHandler;
 import eventos.CartasSacrificadasHandler;
@@ -25,6 +27,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
@@ -83,6 +87,8 @@ public class VentanaDeJuego {
 	private Rectangle P2BarraDeVida;
 	
 	private Stage stage;
+
+	private MediaPlayer reproductor;
 
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
@@ -449,14 +455,17 @@ public class VentanaDeJuego {
 	
 	public Scene createGameScene(Stage stage) {
 		this.stage = stage;
+	    this.agregarMusicaAlJuego();
+
 	    BorderPane rootBorderPane = this.createBorderPane();
 		
 	    /* Creacion de la escena */
 	    Color backgroundColor = Color.GREEN;
 	    double with = 1360; double height = 1280;
-	    Scene scene = new Scene(rootBorderPane, with, height, backgroundColor);
+	    Scene scene = new Scene(rootBorderPane, with, height, backgroundColor);    
 	    
 	    return scene;
+	    
 	}
 	
 	private BorderPane createBorderPane() {
@@ -466,11 +475,13 @@ public class VentanaDeJuego {
 		GridPane centerGridPane = this.createCenterGridPane();
 		GridPane rightGridPane = this.createRightGridPane();
 		
+		Button botonMusica = new Button("Musica");
 		Button botonSalir = new Button("Salir");
 		Button botonHelp = new Button("About");
 		botonSalir.setOnAction(new BotonSalirEvento(stage));
 		botonHelp.setOnAction(new BotonHelpHandler(stage));
-		ToolBar toolbar = new ToolBar(botonSalir,botonHelp);
+		botonMusica.setOnAction(new BotonMusicaEvento(reproductor));
+		ToolBar toolbar = new ToolBar(botonSalir,botonHelp,botonMusica);
 		
 		toolbar.setManaged(false);
 		toolbar.setVisible(false);
@@ -831,5 +842,14 @@ public class VentanaDeJuego {
 	public Window getStage() {
 		return stage;
 	}
+	
+	private void agregarMusicaAlJuego() {
+	    String cancion = "cancion.mp3";
+	    Media media = new Media(Paths.get(cancion).toUri().toString());
+	    this.reproductor = new MediaPlayer(media);
+	    this.reproductor.setCycleCount(MediaPlayer.INDEFINITE);
+	    this.reproductor.play();
+	}	
+
 
 }
