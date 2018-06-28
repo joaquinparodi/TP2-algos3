@@ -102,10 +102,10 @@ public class Controlador {
 	}
 
 	public void cambiarTurno() {
+		this.cartaRepartida = false;
 		Jugador jugadorAuxiliar = atacante; 
 		atacante = defensor;
 		defensor = jugadorAuxiliar;
-		this.cartaRepartida = false;
 		ReglasDeMonstruos.obtener().reiniciar();
 	}
 	
