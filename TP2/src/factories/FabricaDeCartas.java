@@ -69,7 +69,7 @@ public class FabricaDeCartas {
 	}
 	
 	public Monstruo crearCabezaExodia() {
-		return new CabezaExodia("Cabeza Exodia", jugador, new Estrellas(3), new Puntos(450,600));
+		return new CabezaExodia("Cabeza Exodia", jugador, new Estrellas(3), new Puntos(1000,1000));
 	}
 	
 	public Monstruo crearBrazoIzquierdoExodia() {
