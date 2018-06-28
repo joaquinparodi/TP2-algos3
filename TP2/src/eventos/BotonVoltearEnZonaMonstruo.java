@@ -12,16 +12,12 @@ import javafx.event.EventHandler;
 public class BotonVoltearEnZonaMonstruo implements EventHandler<ActionEvent> {
 
 	private VentanaDeJuego ventana;
-	private Jugador jugador;
 	private Monstruo monstruo;
-	private Object rectangulo;
 
 	public BotonVoltearEnZonaMonstruo(VentanaDeJuego ventanaDeJuego, Jugador jugador, Monstruo monstruo,
 			Rectangle rect) {
 		this.ventana = ventanaDeJuego;
-		this.jugador = jugador;
 		this.monstruo = monstruo;
-		this.rectangulo = rectangulo;
 	}
 
 	@Override

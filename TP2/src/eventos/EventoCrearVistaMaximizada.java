@@ -14,8 +14,6 @@ import javafx.stage.StageStyle;
 
 public class EventoCrearVistaMaximizada implements EventHandler<MouseEvent> {
 	
-	private Paint fill;
-	private Stage stageJuego;
 	private Stage stage;
 	private double offsetX;
 	private double offsetY;
@@ -23,8 +21,6 @@ public class EventoCrearVistaMaximizada implements EventHandler<MouseEvent> {
 	public EventoCrearVistaMaximizada(Paint fill,Stage stageJuego,double offsetX,double offsetY) {
 		this.offsetX = offsetX;
 		this.offsetY = offsetY;
-		this.fill = fill;
-		this.stageJuego = stageJuego;
 		this.stage = new Stage(StageStyle.UNDECORATED);
 		stage.initOwner(stageJuego);
 		BorderPane borderPane =  new BorderPane();

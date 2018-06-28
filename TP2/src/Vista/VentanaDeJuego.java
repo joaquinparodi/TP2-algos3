@@ -11,7 +11,6 @@ import eventos.CartasManoHandler;
 import eventos.CartasSacrificadasHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
-import eventos.EventoCerrarJuego;
 import eventos.EventoCrearVistaMaximizada;
 import eventos.EventoMostrarToolbar;
 import eventos.MazoHandler;
@@ -21,7 +20,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -33,12 +31,9 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import jugabilidad.AreaDeSacrificios;
-import jugabilidad.ArenaDeCombate;
 import jugabilidad.Baraja;
 import jugabilidad.CampoDeJuego;
 import jugabilidad.Jugador;		
@@ -211,7 +206,6 @@ public class VentanaDeJuego {
 		Iterator<Carta> iterDeckOne = manoJugadorUno.obtenerIteradorDeBaraja();
 		Iterator<Carta> iterDeckTwo = manoJugadorDos.obtenerIteradorDeBaraja();
 		
-		final int maxCardHand = 5;
 		int actualCards = 0;
 		
 		String URL; ImagePattern image;
@@ -305,9 +299,6 @@ public class VentanaDeJuego {
 		Iterator<Rectangle> iterZone = P2STZone.iterator();		
 		Iterator<Carta> iterFila = filaMagicasYTrampas.obtenerIteradorDeBaraja();
 
-		final int maxCardHand = 5;
-		int actualCards = 0;
-		
 		String URL; ImagePattern image; Carta carta; Rectangle actualRect;
 		while(iterZone.hasNext() && iterFila.hasNext()) {
 			carta = iterFila.next();

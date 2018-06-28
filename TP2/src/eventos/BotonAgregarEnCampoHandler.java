@@ -1,7 +1,6 @@
 package eventos;
 
 
-import Vista.BaseDeDatosDeCartas;
 import Vista.VentanaDeJuego;
 import cartas.Carta;
 import cartas.Monstruo;
@@ -16,17 +15,13 @@ import jugabilidad.Jugador;
 import jugabilidad.ReglasDeMonstruos;
 
 public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
-	
-	private BaseDeDatosDeCartas database = new BaseDeDatosDeCartas();
-	
-	private Jugador jugador;
+		
 	private VentanaDeJuego ventanaDeJuego;
 	private Carta carta;
 	private AreaDeSacrificios areaDeSacrificios;
 
 	
 	public BotonAgregarEnCampoHandler(VentanaDeJuego ventana, Jugador jugador, Carta carta) {
-		this.jugador = jugador;
 		this.carta = carta;
 		this.ventanaDeJuego = ventana;
 		this.areaDeSacrificios = AreaDeSacrificios.obtener();

@@ -7,7 +7,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.shape.Rectangle;
-import jugabilidad.Baraja;
 import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 
@@ -15,7 +14,6 @@ public class CartasZonaMagicaHandler implements EventHandler<ContextMenuEvent> {
 
 	private VentanaDeJuego ventanaDeJuego;
 	private Jugador jugador;
-	private Baraja manoJugador;
 	private Rectangle rect;
 	private int index;
 	private Carta carta;
