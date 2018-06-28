@@ -19,13 +19,10 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 	private Jugador jugador;
 	private Node nodo;
 	private Carta carta;
-	private int index;
-	
-	
-	public CartasManoHandler(VentanaDeJuego ventana, Baraja manoJugador, Jugador jugador, int index, Node nodo) {
+
+	public CartasManoHandler(VentanaDeJuego ventana, Baraja manoJugador, Jugador jugador, Node nodo) {
 		this.jugador = jugador;
 		this.nodo = nodo;
-		this.index = index;
 		this.ventanaDeJuego = ventana;
 	}
 	
@@ -36,7 +33,7 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 			if (carta.esDeMagia()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);
-				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, carta);			
 				agregarEnCampo.setOnAction(handlerAgregarVolteada);
 			}
 			
@@ -66,7 +63,7 @@ public class CartasManoHandler implements EventHandler<ContextMenuEvent> {
 			if (carta.esDeTrampa()) {
 				MenuItem agregarEnCampo = new MenuItem("Agregar en campo");
 				menuDesplegable.getItems().addAll(agregarEnCampo);
-				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, jugador, index);			
+				BotonAgregarVolteada handlerAgregarVolteada = new BotonAgregarVolteada(ventanaDeJuego, carta);			
 				agregarEnCampo.setOnAction(handlerAgregarVolteada);
 
 			}

@@ -1,26 +1,25 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
+import cartas.Carta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import jugabilidad.Jugador;
 
 public class BotonAgregarVolteada implements EventHandler<ActionEvent> {
 		
-	private Jugador jugador;
+
 	private VentanaDeJuego ventanaDeJuego;
-	private int index;
+	private Carta carta;
 
 		
-	public BotonAgregarVolteada(VentanaDeJuego ventana, Jugador jugador, int index) {
-		this.jugador = jugador;
-		this.index = index;
+	public BotonAgregarVolteada(VentanaDeJuego ventana, Carta carta) {
+		this.carta = carta;
 		this.ventanaDeJuego = ventana;
 	}
 		
 	public void handle(ActionEvent event) {
-		jugador.voltearCartaEnMano(index);
-		jugador.agregarCartaDeManoEnCampo(index);
+		carta.voltear();
+		carta.agregarseEnCampo();
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
 	

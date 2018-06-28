@@ -1,26 +1,26 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
+import cartas.Carta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import jugabilidad.Jugador;
+
 
 public class BotonAgregarRotada implements EventHandler<ActionEvent> {
 
-	private Jugador jugador;
+
 	private VentanaDeJuego ventanaDeJuego;
-	private int index;
+	private Carta carta;
 
 	
-	public BotonAgregarRotada(VentanaDeJuego ventana, Jugador jugador, int index) {
-		this.jugador = jugador;
-		this.index = index;
+	public BotonAgregarRotada(VentanaDeJuego ventana, Carta carta) {
 		this.ventanaDeJuego = ventana;
+		this.carta = carta;
 	}
 	
 	public void handle(ActionEvent event) {
-		jugador.rotarCartaEnMano(index);
-		jugador.agregarCartaDeManoEnCampo(index);
+		carta.cambiarPosicion();
+		carta.agregarseEnCampo();
 		ventanaDeJuego.actualizarCampoDeJuego();
 	}
 	
