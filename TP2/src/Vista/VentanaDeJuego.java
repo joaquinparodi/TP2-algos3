@@ -494,6 +494,7 @@ public class VentanaDeJuego {
 		BackgroundFill fill = new BackgroundFill(img1, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
+		gridPane.setMaxWidth(gridPane.getWidth());
 		
 		Rectangle square1 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
 		Rectangle square2 = new Rectangle(100, 100, Color.DARKORANGE); //Van a ser las fotos
@@ -551,6 +552,7 @@ public class VentanaDeJuego {
 		gridPane.add(P2life, 1, 20);
 		
 		Button botonCambiarTurno = new Button("Avanzar Fase");
+		botonCambiarTurno.setFont(Font.font("Arial",11));
 		BotonFaseYTurnoHandler botonFaseYTurnoHandler = new BotonFaseYTurnoHandler(this ,botonCambiarTurno);
 		botonCambiarTurno.setOnAction(botonFaseYTurnoHandler);
 		
