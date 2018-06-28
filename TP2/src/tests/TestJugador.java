@@ -14,6 +14,7 @@ import cartas.Monstruo;
 import cartas.Trampa;
 import errores.ErrorCartaAUsarNoPerteneceAlJugadorQueLaIntentaUsar;
 import errores.ErrorCartaEnManoNoPuedeAtacar;
+import errores.ErrorCartaNoEncontrada;
 import errores.ErrorIntentaAtacarACartaPropia;
 import errores.ErrorSacrificiosInsuficientes;
 import errores.ErrorYaHayCartaDeCampoInvocada;
@@ -1374,5 +1375,14 @@ class TestJugador {
 		Vida vida = new Vida(8000);
 		Jugador jugador = new Jugador(vida);
 		assertEquals(jugador.obtenerVida(), 8000);
+	}
+	
+	@Test
+	public void test46ExcepcionCartaNoEncontrada() {
+		Vida vida = new Vida(8000);
+		Jugador jugador = new Jugador(vida);
+		FabricaDeCartas fabrica = new FabricaDeCartas(jugador);
+		Monstruo monstruo = fabrica.crearGigobyte();
+		assertThrows(ErrorCartaNoEncontrada.class, () -> jugador.agregarCartaEnCampo(monstruo));
 	}
 }
