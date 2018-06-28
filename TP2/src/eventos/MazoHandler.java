@@ -1,7 +1,6 @@
 package eventos;
 
 import Vista.VentanaDeJuego;
-import error.ErrorNoPuedeRepartirCartas;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
