@@ -9,7 +9,6 @@ import eventos.CartasManoHandler;
 import eventos.CartasZonaMagicaHandler;
 import eventos.CartasZonaMonstruoHandler;
 import eventos.EventoCrearVistaMaximizada;
-import eventos.EventoCrearVistaMaximizadaAbajo;
 import eventos.MazoHandler;
 import javafx.geometry.*;
 import javafx.scene.Scene;
@@ -146,28 +145,6 @@ public class VentanaDeJuego {
 		}
 
 	}
-	
-//	private void actualizarVistaMaximizadaDeManosAbajo(ArrayList<Rectangle> rectangulos) {
-//		Iterator<Rectangle> iterador = rectangulos.iterator();
-//		
-//		while (iterador.hasNext()) {
-//			Rectangle rectangulo = iterador.next();
-//			rectangulo.setOnMouseEntered(null);
-//			rectangulo.setOnMouseExited(null);
-//			rectangulo.setOnMouseMoved(null);
-//		}
-//
-//		iterador = rectangulos.iterator();	
-//		while (iterador.hasNext()) {
-//			Rectangle rectangulo = iterador.next();
-//			Paint fill = rectangulo.getFill();
-//			EventoCrearVistaMaximizadaAbajo eventoCrearVistaMaximizadaAbajo = new EventoCrearVistaMaximizadaAbajo(fill,stage);
-//			rectangulo.setOnMouseEntered(eventoCrearVistaMaximizadaAbajo);
-//			rectangulo.setOnMouseExited(eventoCrearVistaMaximizadaAbajo);
-//			rectangulo.setOnMouseMoved(eventoCrearVistaMaximizadaAbajo);
-//		}
-//
-//	}
 	
 	private void actualizarVistaMaximizadaDeCampo(ArrayList<Rectangle> rectangulos, Baraja baraja,double offsetX,double offsetY) {
 		Iterator<Rectangle> iterador1 = rectangulos.iterator();
