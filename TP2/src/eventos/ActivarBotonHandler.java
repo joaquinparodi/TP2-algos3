@@ -3,6 +3,7 @@ package eventos;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class ActivarBotonHandler implements EventHandler<KeyEvent> {
@@ -22,6 +23,9 @@ public class ActivarBotonHandler implements EventHandler<KeyEvent> {
 		
 		if ((esteCampo.getText().length() != 0) && (elOtroCampo.getText().length() !=0 )) {
 				botonAActivar.setDisable(false);
+				if (event.getCode() == KeyCode.ENTER) {
+					botonAActivar.fire();
+				}
 		}
 		else {	
 			botonAActivar.setDisable(true);
