@@ -14,7 +14,7 @@ public class Controlador {
 	private static Controlador instancia;
 	
 	private Controlador() {	
-		Vida vidaJugadorUno = new Vida(100);
+		Vida vidaJugadorUno = new Vida(8000);
 		Vida vidaJugadorDos = new Vida(8000);
 		
 		this.jugadorUno = new Jugador( vidaJugadorUno );
@@ -61,7 +61,7 @@ public class Controlador {
 	}
 	
 	public void repartirCartasIniciales() {
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			jugadorUno.repartirCarta();
 		}
 		
@@ -133,7 +133,6 @@ public class Controlador {
 	public boolean partidaEstaEnFase(String nombreFase) {
 		return nombreFase == fase.obtenerNombre();
 	}
-
 
 	public boolean jugadorYaRepartiCarta() {
 		return this.cartaRepartida;

@@ -79,7 +79,6 @@ public class VentanaDeJuego {
 	private Rectangle P2BarraDeVida;
 	
 	private Stage stage;
-	private Button atacar;
 
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
@@ -441,7 +440,6 @@ public class VentanaDeJuego {
 	
 	}
 	
-	
 	/*----------------------------------Creacion de la vista inicial--------------------------------------*/
 	
 	public Scene createGameScene(Stage stage) {
@@ -670,7 +668,6 @@ public class VentanaDeJuego {
 		gridPane.setHgap(-50);
 		gridPane.setVgap(10);
 
-		this.atacar = new Button("Atacar");
 		this.sacrificio1 = new Rectangle(110, 140, Color.DARKRED);
 		this.sacrificio2 = new Rectangle(110, 140, Color.DARKRED);
 		this.sacrificio3 = new Rectangle(110, 140, Color.DARKRED);

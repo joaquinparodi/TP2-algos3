@@ -21,7 +21,7 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 	}
 	
 	public void handle(ActionEvent arg0) {
-		
+
 		Controlador controlador = Controlador.obtener();
 		controlador.avanzarFase();
 		
@@ -48,7 +48,6 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 				EventoCerrarJuego evento = new EventoCerrarJuego(ventana.getStage());
 				alert.setOnCloseRequest(evento);
 				alert.show();
-				
 			}else {
 				Controlador.obtener().repartirCartaAJugador();
 			}
@@ -57,4 +56,5 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 		AreaDeSacrificios.obtener().reiniciarSacrificios();
 		ventana.actualizarCampoDeJuego();
 	}
+	
 }
