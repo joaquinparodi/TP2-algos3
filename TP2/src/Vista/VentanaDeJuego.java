@@ -31,6 +31,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import jugabilidad.AreaDeSacrificios;
@@ -664,9 +665,11 @@ public class VentanaDeJuego {
 		
 		this.faseYTurno = new Text();
 		this.faseYTurno.setText("Preparacion Jugador 1");
-		this.faseYTurno.setFont(Font.font("Ubuntu", 50));
+		this.faseYTurno.setFont(Font.font("Ubuntu", 44));
 		this.faseYTurno.setFill(Color.BEIGE);
 		this.faseYTurno.setCache(true);
+		this.faseYTurno.setWrappingWidth(450);
+		this.faseYTurno.setTextAlignment(TextAlignment.CENTER);
 		
 		DropShadow shadow = new DropShadow();
 		shadow.setOffsetY(3.0f); shadow.setOffsetX(3.0f);
