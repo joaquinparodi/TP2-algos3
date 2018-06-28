@@ -29,7 +29,9 @@ public class MazoHandler implements EventHandler<MouseEvent> {
 			alert.setContentText("No se puede repartir carta en este fase del juego");
 			alert.showAndWait();
 		}
-		jugador.repartirCarta();
+		else{
+			jugador.repartirCarta();
+		}
 		ventana.actualizarCampoDeJuego();
 	}
 	
