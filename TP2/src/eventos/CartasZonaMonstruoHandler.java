@@ -38,6 +38,9 @@ public class CartasZonaMonstruoHandler implements EventHandler<ContextMenuEvent>
 					rotar.setDisable(true);
 					voltear.setDisable(true);
 				}
+				if (ReglasDeMonstruos.obtener().cartaFueVolteadaEsteTurno(monstruo)) {
+					voltear.setDisable(true);
+				}
 				
 				MenuItem sacrificar = new MenuItem("sacrificar");
 				menuDesplegable.getItems().addAll(rotar, voltear, sacrificar);
