@@ -596,14 +596,14 @@ public class VentanaDeJuego {
 		this.cementerioJugadorUno = new Rectangle(width, height, Color.DIMGRAY); 
 		this.cartaDeCampoUno = new Rectangle(width, height, Color.DARKVIOLET);
 		
-		gridPane.setMargin(P1STzone1, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone1, new Insets(20)); 
-		gridPane.setMargin(P1STzone2, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone2, new Insets(20)); 
-		gridPane.setMargin(P1STzone3, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone3, new Insets(20)); 
-		gridPane.setMargin(P1STzone4, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone4, new Insets(20)); 
-		gridPane.setMargin(P1STzone5, new Insets(15,20,10,20)); gridPane.setMargin(P1Mzone5, new Insets(20)); 
+		GridPane.setMargin(P1STzone1, new Insets(15,20,10,20)); GridPane.setMargin(P1Mzone1, new Insets(20)); 
+		GridPane.setMargin(P1STzone2, new Insets(15,20,10,20)); GridPane.setMargin(P1Mzone2, new Insets(20)); 
+		GridPane.setMargin(P1STzone3, new Insets(15,20,10,20)); GridPane.setMargin(P1Mzone3, new Insets(20)); 
+		GridPane.setMargin(P1STzone4, new Insets(15,20,10,20)); GridPane.setMargin(P1Mzone4, new Insets(20)); 
+		GridPane.setMargin(P1STzone5, new Insets(15,20,10,20)); GridPane.setMargin(P1Mzone5, new Insets(20)); 
 		
-		gridPane.setMargin(this.cementerioJugadorUno, new Insets(10)); 
-		gridPane.setMargin(this.cartaDeCampoUno, new Insets(10));
+		GridPane.setMargin(this.cementerioJugadorUno, new Insets(10)); 
+		GridPane.setMargin(this.cartaDeCampoUno, new Insets(10));
 		
 		gridPane.add(P1STzone1, 1, 1); gridPane.add(P1Mzone1, 1, 2);
 		gridPane.add(P1STzone2, 2, 1); gridPane.add(P1Mzone2, 2, 2);
@@ -705,15 +705,20 @@ public class VentanaDeJuego {
 		gridPane.add(sacrificio2, 3, 13);
 		gridPane.add(sacrificio3, 6, 13);
 		
-		gridPane.setMargin(sacrificio1, new Insets(0,0,0,22));
-		gridPane.setMargin(sacrificio2, new Insets(0,0,0,-155));
-		gridPane.setMargin(sacrificio3, new Insets(0,0,0,145));
-		
+		GridPane.setMargin(sacrificio1, new Insets(0,0,0,22));
+		GridPane.setMargin(sacrificio2, new Insets(0,0,0,-155));
+		GridPane.setMargin(sacrificio3, new Insets(0,0,0,145));
 		
 		this.scrollPlayer1 = new ScrollPane(); 
 		this.scrollPlayer2 = new ScrollPane(); 
 		this.gridScrollPlayer1 = new GridPane();
 		this.gridScrollPlayer2 = new GridPane();
+		
+		this.scrollPlayer1.getStylesheets().add("file:format.css");
+		this.scrollPlayer2.getStylesheets().add("file:format.css");
+		this.gridScrollPlayer1.getStylesheets().add("file:format.css");
+		this.gridScrollPlayer2.getStylesheets().add("file:format.css");
+		
 		
 		gridPane.add(scrollPlayer1, 0, 0);
 		gridPane.add(scrollPlayer2, 0, 26);	

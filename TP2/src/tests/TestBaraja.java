@@ -8,8 +8,6 @@ import atributos.Estrellas;
 import atributos.Puntos;
 import atributos.Vida;
 import cartas.Carta;
-import cartas.Monstruo;
-import errores.ErrorCartaNoEncontrada;
 import errores.ErrorNoHayCartasEnLaBaraja;
 import factories.FabricaDeCartas;
 import jugabilidad.Baraja;
