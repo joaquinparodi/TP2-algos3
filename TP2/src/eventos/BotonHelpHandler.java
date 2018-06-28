@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 public class BotonHelpHandler implements EventHandler<ActionEvent> {
 
