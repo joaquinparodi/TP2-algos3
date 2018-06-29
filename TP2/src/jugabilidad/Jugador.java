@@ -175,7 +175,6 @@ public class Jugador {
     	}
     	
     	jugadorRival.recibirAtaqueDeCarta(cartaAUsar,cartaAAtacar);
-    	
     }
     
 	private void recibirAtaqueDeCarta(Atacable cartaAtacante, Atacable cartaAtacada) {
