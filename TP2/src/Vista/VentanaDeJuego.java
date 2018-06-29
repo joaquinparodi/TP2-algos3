@@ -114,19 +114,24 @@ public class VentanaDeJuego {
 	}
 	
 	public void actualizarCampoDeJuego() {
-		this.restaurarPosiciones();
-		this.actualizarCementerio();
 		this.actualizarMazos();
+		this.actualizarTablero();
+		this.actualizarVistaMaximizadaDeCartas();
+		this.actualizarCartasEnSacrificio();
+	}
+	
+	public void actualizarTablero() {
+		this.restaurarPosiciones();
+		this.actualizarManos();
 		this.actualizarFilaMonstruosJugadorUno();
 		this.actualizarFilaMonstruosJugadorDos();
 		this.actualizarFilaMagicasYTrampasJugadorUno();
 		this.actualizarFilaMagicasYTrampasJugadorDos();
 		this.actualizarZonaDeCartasDeCampo();
-		this.actualizarManos();
 		this.actualizarOpcionesDeManejo();
 		this.actualizarVidaJugadores();
-		this.actualizarVistaMaximizadaDeCartas();
-		this.actualizarCartasEnSacrificio();
+		this.actualizarCementerio();
+
 	}
 	
 	private void actualizarVistaMaximizadaDeCartas() {

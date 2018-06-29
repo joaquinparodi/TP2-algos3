@@ -128,7 +128,7 @@ public class CampoDeJuego {
 			
 			Trampa cartaTrampa = (Trampa)cartasTrampas.obtenerPrimeraCarta();
 			cartaTrampa.aplicarEfecto( atacante, atacado, jugadorRival);
-			cartasTrampas.agregarCartaPrimero(cartaTrampa);
+//			cartasTrampas.agregarCartaPrimero(cartaTrampa);
 			
 		}catch (ErrorNoHayCartasEnLaBaraja error) {
 			

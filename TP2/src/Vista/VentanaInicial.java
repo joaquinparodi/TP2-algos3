@@ -3,6 +3,7 @@ package Vista;
 import eventos.BotonInicioHandler;
 import eventos.ActivarBotonHandler;
 import eventos.TextFieldNombreHandler;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -65,11 +66,16 @@ public class VentanaInicial {
 	private GridPane createCenterGridPane() {
 		GridPane gridPane = new GridPane();
 		
-		gridPane.setAlignment(Pos.CENTER);
+//		gridPane.setAlignment(Pos.CENTER);
 		gridPane.setVgap(10);
+		gridPane.setPadding(new Insets(350,10,10,550));
 		
 		Button enterButton = new Button("Comenzar");
 		enterButton.setDisable(true);
+		Text helpText1 = new Text("Ingrese un nombre");
+		helpText1.setFill(Color.WHITE);
+		Text helpText2 = new Text("Ingrese un nombre");
+		helpText2.setFill(Color.WHITE);
 		TextField namePlayerOne = new TextField();
 		TextField namePlayerTwo = new TextField();
 		
@@ -77,7 +83,7 @@ public class VentanaInicial {
 		namePlayerTwo.setPromptText("Nombre jugador dos");
 		
 		
-		ActivarBotonHandler activarBotonHandler = new ActivarBotonHandler(enterButton,namePlayerOne,namePlayerTwo);
+		ActivarBotonHandler activarBotonHandler = new ActivarBotonHandler(enterButton,namePlayerOne,namePlayerTwo,helpText1,helpText2);
 		
 		namePlayerOne.setOnKeyPressed(activarBotonHandler);
 		namePlayerTwo.setOnKeyPressed(activarBotonHandler);
@@ -95,9 +101,15 @@ public class VentanaInicial {
 		
 		Button botonDummy = new Button();
 		
-		gridPane.add(botonDummy, 3, 0);
+		gridPane.setMargin(helpText1,new Insets(0,0,0,20));
+		gridPane.setMargin(helpText2,new Insets(0,0,0,20));
+
+		
+		gridPane.add(botonDummy, 10, 0);
 		gridPane.add(namePlayerOne, 0, 0);
 		gridPane.add(namePlayerTwo, 0, 1);
+		gridPane.add(helpText1, 1, 0);
+		gridPane.add(helpText2, 1, 1);
 		gridPane.add(enterButton, 0, 2);
 		botonDummy.requestFocus();
 		botonDummy.setOpacity(0);
