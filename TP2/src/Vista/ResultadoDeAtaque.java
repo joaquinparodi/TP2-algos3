@@ -61,7 +61,7 @@ public class ResultadoDeAtaque {
 	public void mostrar () {
 		if ( (monstruo1 != null) && (monstruo2 != null) ) {
 			Alert alerta = new Alert(AlertType.INFORMATION);
-			alerta.initOwner(null);
+			alerta.initOwner(stage);
 			alerta.setTitle("Resultado");
 			alerta.setHeaderText("Resultado del ataque:");
 			String texto = "";

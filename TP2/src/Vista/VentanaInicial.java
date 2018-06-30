@@ -48,8 +48,8 @@ public class VentanaInicial {
 		
 		Scene initScene = new Scene(rootBorderPane, with, height, Color.DARKSLATEBLUE);
 		
-		ResultadoDeAtaque.obtener().setStage(stage);
-		
+		ResultadoDeAtaque.obtener().setStage(stage);		
+
 		return initScene;
 	}
 
