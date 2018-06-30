@@ -14,8 +14,8 @@ public class Controlador {
 	private static Controlador instancia;
 	
 	private Controlador() {	
-		Vida vidaJugadorUno = new Vida(8000);
-		Vida vidaJugadorDos = new Vida(8000);
+		Vida vidaJugadorUno = new Vida(500);
+		Vida vidaJugadorDos = new Vida(500);
 		
 		this.jugadorUno = new Jugador( vidaJugadorUno );
 		this.jugadorDos = new Jugador( vidaJugadorDos );

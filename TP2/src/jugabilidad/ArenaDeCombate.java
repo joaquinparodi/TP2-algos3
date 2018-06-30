@@ -1,8 +1,7 @@
 package jugabilidad;
 
+import Vista.ResultadoDeAtaque;
 import cartas.Monstruo;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 
 public class ArenaDeCombate {
 
@@ -43,31 +42,13 @@ public class ArenaDeCombate {
 			double vidaResultante2 = atacante.obtenerRival().obtenerVida();
 
 			ReglasDeMonstruos.obtener().agregarMonstruoQueAtaco(monstruoAtacante);
-
-			Alert alerta = new Alert(AlertType.INFORMATION);
-			alerta.setTitle("Resultado");
-			alerta.setHeaderText("Resultado del ataque:");
-			String texto = "";
+			ResultadoDeAtaque resultadoMostrable = ResultadoDeAtaque.obtener();
 			
-			if (atacante.cartaEstaMuerta(monstruoAtacante)) {
-				texto = texto+monstruoAtacante.obtenerNombre()+" ha muerto\n";
-			} 
+			resultadoMostrable.setMonstruo1(monstruoAtacante);
+			resultadoMostrable.setMonstruo2(monstruoAtacado);
+			resultadoMostrable.setVidaPerdida1((int)(vidaAnterior1-vidaResultante1));
+			resultadoMostrable.setVidaPerdida2((int)(vidaAnterior2-vidaResultante2));
 			
-			if (atacante.obtenerRival().cartaEstaMuerta(monstruoAtacado)) {
-				texto = texto+monstruoAtacado.obtenerNombre()+" ha muerto\n";
-			} 
-			
-			if ((!atacante.cartaEstaMuerta(monstruoAtacante)) && (!atacante.obtenerRival().cartaEstaMuerta(monstruoAtacado))){
-				texto = "Ningun monstruo ha muerto\n";
-			}
-			
-			
-			texto = texto+(atacante.obtenerNombre()+" ha perdido "+((int)vidaAnterior1-(int)vidaResultante1)+" puntos de vida\n");
-			texto = texto+(atacante.obtenerRival().obtenerNombre()+" ha perdido "+((int)vidaAnterior2-(int)vidaResultante2)+" puntos de vida");
-			
-			alerta.setContentText(texto);
-			
-			alerta.showAndWait();
 			
 			/*seteo los mosntruos a null nuevamente*/
 			this.monstruoAtacado = null;

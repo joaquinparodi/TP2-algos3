@@ -1,5 +1,6 @@
 package cartas;
 
+import Vista.ResultadoDeAtaque;
 import atributos.EfectoDeTrampa;
 import jugabilidad.Jugador;
 
@@ -20,6 +21,7 @@ public class Trampa extends Carta {
 
 	public void aplicarEfecto(Atacable atacante, Atacable atacado, Jugador jugadorRival) {
 		this.efecto.aplicar( atacante,  atacado,  jugadorRival, this);
+		ResultadoDeAtaque.obtener().setTrampaUsada(this);
 	}
 
 	public boolean esParteDeExodia() {

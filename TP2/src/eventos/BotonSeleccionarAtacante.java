@@ -1,5 +1,6 @@
 package eventos;
 
+import Vista.ResultadoDeAtaque;
 import Vista.VentanaDeJuego;
 import cartas.Monstruo;
 import errores.ErrorAtaqueDesdePosicionInvalida;
@@ -36,6 +37,7 @@ public class BotonSeleccionarAtacante implements EventHandler<ActionEvent> {
 			alert.showAndWait();
 		}
 		this.ventana.actualizarCampoDeJuego();
+		ResultadoDeAtaque.obtener().mostrar();
 	}
 
 }
