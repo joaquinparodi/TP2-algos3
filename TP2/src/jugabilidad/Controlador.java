@@ -142,4 +142,8 @@ public class Controlador {
 		return (this.ganoElJugadorDelTurnoActual() || this.ganoElOponente());
 	}
 
+	public void reiniciarControlador() {
+		instancia = new Controlador();
+	}
+
 }

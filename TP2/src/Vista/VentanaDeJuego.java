@@ -134,8 +134,7 @@ public class VentanaDeJuego {
 
 	}
 	
-	private void actualizarVistaMaximizadaDeCartas() {
-		
+	private void actualizarVistaMaximizadaDeCartas() {		
 		this.actualizarVistaMaximizadaDeManos(handOne,-150,20);
 		this.actualizarVistaMaximizadaDeManos(handTwo,-150,-320);
 		this.actualizarVistaMaximizadaDeCampo(P1MZone, this.campoDeJuegoUno.obtenerFilaDeMonstruos(), -150,20);

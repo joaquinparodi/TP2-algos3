@@ -27,16 +27,7 @@ public class Main extends Application {
 	}
 
 	public void start( Stage stage ) throws Exception {
-		this.inicializarJugadores(); 
-		this.inicializarVentanas();
-		
-		stage.setTitle("Yu-Gi-Oh! The Game");	
-		
-		Scene gameScene = ventanaDeJuego.createGameScene(stage);
-		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
-		
-		stage.setScene(initialScene);
-		stage.show();
+		this.incializarJuego(stage);
 	}
 		
 	private void inicializarJugadores() {	
@@ -55,6 +46,26 @@ public class Main extends Application {
 	private void inicializarVentanas() {
 		ventanaInicial = new VentanaInicial(jugadorUno, jugadorDos);
 		ventanaDeJuego = new VentanaDeJuego(jugadorUno, jugadorDos);
+	}
+	
+	public void incializarJuego(Stage stage) {
+		this.inicializarJugadores(); 
+		this.inicializarVentanas();
+		
+		stage.setTitle("Yu-Gi-Oh! The Game");	
+		
+		Scene gameScene = ventanaDeJuego.createGameScene(stage);
+		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
+		
+		stage.setScene(initialScene);
+		stage.setFullScreenExitHint("Pulse ALT para habilitar el toolbar");
+		stage.show();
+	}
+	
+	public void reiniciarJuego(Stage stage) {
+		this.controlador = Controlador.obtener();
+		this.controlador.reiniciarControlador();
+		this.incializarJuego(stage);
 	}
 	
 }
