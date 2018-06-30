@@ -206,15 +206,15 @@ public class VentanaDeJuego {
 		gridScrollPlayer1.setBackground(background);
 		gridScrollPlayer2.setBackground(background); 
 		
-		gridScrollPlayer1.setPrefWidth(480);gridScrollPlayer1.setPrefHeight(180);
-		gridScrollPlayer2.setPrefWidth(480);gridScrollPlayer2.setPrefHeight(180);
+		gridScrollPlayer1.setPrefWidth(480);gridScrollPlayer1.setPrefHeight(169);
+		gridScrollPlayer2.setPrefWidth(480);gridScrollPlayer2.setPrefHeight(169);
 		scrollPlayer1.setContent(gridScrollPlayer1);
 		scrollPlayer2.setContent(gridScrollPlayer2);
 		
-		scrollPlayer1.setMaxWidth(480);scrollPlayer1.setMinWidth(480);
-		scrollPlayer2.setMaxWidth(480);scrollPlayer2.setMinWidth(480);
-		scrollPlayer1.setMaxHeight(200);scrollPlayer1.setMinHeight(150);
-		scrollPlayer2.setMaxHeight(200);scrollPlayer2.setMinHeight(150);
+//		scrollPlayer1.setMaxWidth(480);scrollPlayer1.setMinWidth(480);
+//		scrollPlayer2.setMaxWidth(480);scrollPlayer2.setMinWidth(480);
+//		scrollPlayer1.setMaxHeight(200);scrollPlayer1.setMinHeight(150);
+//		scrollPlayer2.setMaxHeight(200);scrollPlayer2.setMinHeight(150);
 
 		Iterator<Carta> iterDeckOne = manoJugadorUno.obtenerIteradorDeBaraja();
 		Iterator<Carta> iterDeckTwo = manoJugadorDos.obtenerIteradorDeBaraja();
@@ -512,7 +512,9 @@ public class VentanaDeJuego {
 		BackgroundFill fill = new BackgroundFill(img1, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
-		gridPane.setMaxWidth(gridPane.getWidth());
+		gridPane.setPrefWidth(150);
+//		gridPane.setMaxWidth(gridPane.getWidth());
+//		gridPane.setMinWidth(gridPane.getWidth());
 		
 		ImagePattern imgUno = new ImagePattern( new Image("file:images/imagenJugadorUno.jpg") );
 		ImagePattern imgDos = new ImagePattern( new Image("file:images/imagenJugadorDos.jpeg") );
@@ -728,6 +730,10 @@ public class VentanaDeJuego {
 		
 		this.scrollPlayer1 = new ScrollPane(); 
 		this.scrollPlayer2 = new ScrollPane(); 
+		this.scrollPlayer1.setPrefWidth(450);
+		this.scrollPlayer2.setPrefWidth(450);
+		this.scrollPlayer1.setPrefHeight(200);
+		this.scrollPlayer2.setPrefHeight(200);
 		this.gridScrollPlayer1 = new GridPane();
 		this.gridScrollPlayer2 = new GridPane();
 		

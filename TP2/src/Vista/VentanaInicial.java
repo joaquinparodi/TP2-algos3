@@ -1,6 +1,7 @@
 package Vista;
 
 import eventos.BotonInicioHandler;
+import eventos.BotonSalirEvento;
 import eventos.ActivarBotonHandler;
 import eventos.TextFieldNombreHandler;
 import javafx.geometry.Insets;
@@ -69,11 +70,14 @@ public class VentanaInicial {
 	private GridPane createCenterGridPane() {
 		GridPane gridPane = new GridPane();
 		
-//		gridPane.setAlignment(Pos.CENTER);
-		gridPane.setVgap(10);
-		gridPane.setPadding(new Insets(350,10,10,550));
+		gridPane.setAlignment(Pos.CENTER_RIGHT);
+		gridPane.setVgap(20);
+		gridPane.setHgap(10);
+//		gridPane.setPadding(new Insets(350,10,10,550));
 		
 		Button enterButton = new Button("Comenzar");
+		Button exitButton = new Button("Salir");
+
 		enterButton.setDisable(true);
 		Text helpText1 = new Text("Ingrese un nombre");
 		helpText1.setFill(Color.WHITE);
@@ -81,6 +85,9 @@ public class VentanaInicial {
 		helpText2.setFill(Color.WHITE);
 		TextField namePlayerOne = new TextField();
 		TextField namePlayerTwo = new TextField();
+		
+		helpText1.setWrappingWidth(480);
+		helpText2.setWrappingWidth(480);
 		
 		namePlayerOne.setPromptText("Nombre jugador uno");
 		namePlayerTwo.setPromptText("Nombre jugador dos");
@@ -101,6 +108,8 @@ public class VentanaInicial {
 		
 		BotonInicioHandler buttonHandler = new BotonInicioHandler(nextScene, stage, playerOne, playerTwo, namePlayerOne, namePlayerTwo, ventanaDeJuego);
 		enterButton.setOnAction(buttonHandler);
+		BotonSalirEvento botonSalirHandler = new BotonSalirEvento(stage);
+		exitButton.setOnAction(botonSalirHandler);
 		
 		Button botonDummy = new Button();
 		
@@ -114,6 +123,7 @@ public class VentanaInicial {
 		gridPane.add(helpText1, 1, 0);
 		gridPane.add(helpText2, 1, 1);
 		gridPane.add(enterButton, 0, 2);
+		gridPane.add(exitButton, 0, 3);
 		botonDummy.requestFocus();
 		botonDummy.setOpacity(0);
 				
