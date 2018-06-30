@@ -47,6 +47,9 @@ public class VentanaInicial {
 		double with = 1360; double height = 1280;
 		
 		Scene initScene = new Scene(rootBorderPane, with, height, Color.DARKSLATEBLUE);
+		
+		ResultadoDeAtaque.obtener().setStage(stage);
+		
 		return initScene;
 	}
 

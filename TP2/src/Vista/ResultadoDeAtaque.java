@@ -4,6 +4,7 @@ import cartas.Monstruo;
 import cartas.Trampa;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 import jugabilidad.Jugador;
 
 public class ResultadoDeAtaque {
@@ -15,6 +16,7 @@ public class ResultadoDeAtaque {
 	private Jugador jugador1;
 	private Jugador jugador2;
 	private Trampa trampa;
+	private Stage stage;
 	private static ResultadoDeAtaque instancia = null;
 	
 	private ResultadoDeAtaque () {
@@ -59,6 +61,7 @@ public class ResultadoDeAtaque {
 	public void mostrar () {
 		if ( (monstruo1 != null) && (monstruo2 != null) ) {
 			Alert alerta = new Alert(AlertType.INFORMATION);
+			alerta.initOwner(null);
 			alerta.setTitle("Resultado");
 			alerta.setHeaderText("Resultado del ataque:");
 			String texto = "";
@@ -93,5 +96,9 @@ public class ResultadoDeAtaque {
 
 	public void setTrampaUsada(Trampa trampa) {
 		this.trampa = trampa;
+	}
+	
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
 }
