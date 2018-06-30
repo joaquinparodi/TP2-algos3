@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="TP2-newMaster">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="10"/>
+    <property name="source" value="10"/>
+    <path id="JUnit 5.libraryclasspath">
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="TP2-newMaster.classpath">
+        <pathelement location="bin"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.TestJugador.test12AgregarCartaDeCampoWastelandAumenta200PuntoDeAtaquesDeljugadorQuePusoLaCarta.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test33AtacarJugadorConCilindroInflinjeDanioDelAtaqueAlAtacante.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.tests (1).classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test29jugadorNoPuedeAtacarConCartaEnMano.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestControlador.test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test31jugadorNoPuedeAtacarConCartaAjena.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test24CadaJugadorAgregaUnaCartaCampoYSeAplicaElEfectoDeAmbas.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test22EfectoDeLaCartaDeCampoWastelandNoModificaLasCartasQueYaSeLesAplicoElEfecto.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test13AgregarCartaDeCampoWastelandAumenta300PuntoDeDefensaDeljugadorOponente.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestCarta.test14bisJinzo7BocaAbajoAtacaComoUnMonstruoCualquiera.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test34CartaTrampaCilindroMagicoDespuesDelAtaqueVaAlCementerio.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test20EfectoDeLaCartaDeCampoSogenNoModificaLasCartasQueYaSeLesAplicoElEfecto.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test32jugadorNoPuedeAtacarCartaPropia.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TP2-newMaster.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestControlador.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test21EfectoDeLaCartaDeCampoWastelandPerduraACartarAgregadasDespues.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestCarta (2).classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.Main (1).classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestControlador.test03QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test19EfectoDeLaCartaDeCampoSogenPerduraACartarAgregadasDespues.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.Main.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador.test30jugadoNoPuedeAtacarConCartaEnMano.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestCarta.test14jinzo7AtacaDirectamenteAPuntosDeVida.classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <path id="run.TestJugador (1).classpath">
+        <path refid="TP2-newMaster.classpath"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.api_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.engine_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.migrationsupport_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.jupiter.params_5.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.commons_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.engine_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.launcher_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.runner_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.platform.suite.api_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit.vintage.engine_4.12.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.opentest4j_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.apiguardian_1.0.0.v20170910-2246.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../.p2/pool/plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="TP2/src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.xtend"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="TP2/src"/>
+            <classpath refid="TP2-newMaster.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="TestJugador.test12AgregarCartaDeCampoWastelandAumenta200PuntoDeAtaquesDeljugadorQuePusoLaCarta">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test12AgregarCartaDeCampoWastelandAumenta200PuntoDeAtaquesDeljugadorQuePusoLaCarta.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test33AtacarJugadorConCilindroInflinjeDanioDelAtaqueAlAtacante">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test33AtacarJugadorConCilindroInflinjeDanioDelAtaqueAlAtacante.classpath"/>
+        </junit>
+    </target>
+    <target name="tests (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestAreaDeSacrificios" todir="${junit.output.dir}"/>
+            <test name="tests.TestArenaDeCombate" todir="${junit.output.dir}"/>
+            <test name="tests.TestBaraja" todir="${junit.output.dir}"/>
+            <test name="tests.TestControlador" todir="${junit.output.dir}"/>
+            <test name="tests.TestRandomizador" todir="${junit.output.dir}"/>
+            <test name="tests.TestSacrificio" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.tests (1).classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test29jugadorNoPuedeAtacarConCartaEnMano">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test29jugadorNoPuedeAtacarConCartaEnMano.classpath"/>
+        </junit>
+    </target>
+    <target name="TestControlador.test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestControlador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestControlador.test01ObtenerExodiaEnLaManoGanaAutomaticamenteElJuego.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test31jugadorNoPuedeAtacarConCartaAjena">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test31jugadorNoPuedeAtacarConCartaAjena.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test24CadaJugadorAgregaUnaCartaCampoYSeAplicaElEfectoDeAmbas">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test24CadaJugadorAgregaUnaCartaCampoYSeAplicaElEfectoDeAmbas.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test22EfectoDeLaCartaDeCampoWastelandNoModificaLasCartasQueYaSeLesAplicoElEfecto">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test22EfectoDeLaCartaDeCampoWastelandNoModificaLasCartasQueYaSeLesAplicoElEfecto.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test13AgregarCartaDeCampoWastelandAumenta300PuntoDeDefensaDeljugadorOponente">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test13AgregarCartaDeCampoWastelandAumenta300PuntoDeDefensaDeljugadorOponente.classpath"/>
+        </junit>
+    </target>
+    <target name="TestCarta.test14bisJinzo7BocaAbajoAtacaComoUnMonstruoCualquiera">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestCarta" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestCarta.test14bisJinzo7BocaAbajoAtacaComoUnMonstruoCualquiera.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test34CartaTrampaCilindroMagicoDespuesDelAtaqueVaAlCementerio">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test34CartaTrampaCilindroMagicoDespuesDelAtaqueVaAlCementerio.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test20EfectoDeLaCartaDeCampoSogenNoModificaLasCartasQueYaSeLesAplicoElEfecto">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test20EfectoDeLaCartaDeCampoSogenNoModificaLasCartasQueYaSeLesAplicoElEfecto.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test32jugadorNoPuedeAtacarCartaPropia">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test32jugadorNoPuedeAtacarCartaPropia.classpath"/>
+        </junit>
+    </target>
+    <target name="TP2-newMaster">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestAreaDeSacrificios" todir="${junit.output.dir}"/>
+            <test name="tests.TestArenaDeCombate" todir="${junit.output.dir}"/>
+            <test name="tests.TestBaraja" todir="${junit.output.dir}"/>
+            <test name="tests.TestControlador" todir="${junit.output.dir}"/>
+            <test name="tests.TestRandomizador" todir="${junit.output.dir}"/>
+            <test name="tests.TestSacrificio" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TP2-newMaster.classpath"/>
+        </junit>
+    </target>
+    <target name="TestControlador">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestControlador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestControlador.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test21EfectoDeLaCartaDeCampoWastelandPerduraACartarAgregadasDespues">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test21EfectoDeLaCartaDeCampoWastelandPerduraACartarAgregadasDespues.classpath"/>
+        </junit>
+    </target>
+    <target name="TestCarta (2)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestCarta" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestCarta (2).classpath"/>
+        </junit>
+    </target>
+    <target name="jugar">
+        <java classname="Vista.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main (1).classpath"/>
+        </java>
+    </target>
+    <target name="TestControlador.test03QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestControlador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestControlador.test03QuedarseSinCartasEnElMasoHaceQueElOponenteGaneElDuelo.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador.test19EfectoDeLaCartaDeCampoSogenPerduraACartarAgregadasDespues">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test19EfectoDeLaCartaDeCampoSogenPerduraACartarAgregadasDespues.classpath"/>
+        </junit>
+    </target>
+    <target name="Main">
+        <java classname="jugabilidad.Main" failonerror="true" fork="yes">
+            <classpath refid="run.Main.classpath"/>
+        </java>
+    </target>
+    <target name="TestJugador.test30jugadoNoPuedeAtacarConCartaEnMano">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador.test30jugadoNoPuedeAtacarConCartaEnMano.classpath"/>
+        </junit>
+    </target>
+    <target name="TestCarta.test14jinzo7AtacaDirectamenteAPuntosDeVida">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestCarta" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestCarta.test14jinzo7AtacaDirectamenteAPuntosDeVida.classpath"/>
+        </junit>
+    </target>
+    <target name="TestJugador (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="tests.TestJugador" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.TestJugador (1).classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>
