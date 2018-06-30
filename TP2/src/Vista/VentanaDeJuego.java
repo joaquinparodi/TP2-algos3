@@ -481,7 +481,7 @@ public class VentanaDeJuego {
 		GridPane centerGridPane = this.createCenterGridPane();
 		GridPane rightGridPane = this.createRightGridPane();
 		
-		Button botonMusica = new Button("Musica");
+		Button botonMusica = new Button("Encender/Apagar Sonido");
 		Button botonSalir = new Button("Salir");
 		Button botonHelp = new Button("About");
 		botonSalir.setOnAction(new BotonSalirEvento(stage));
