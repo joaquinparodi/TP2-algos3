@@ -812,7 +812,7 @@ public class VentanaDeJuego {
 		
 		for(int i = 0; i < 5; i++) {
 			P1MZone.get(i).setOnContextMenuRequested(null);
-			P1MZone.get(i).setOnContextMenuRequested(null);
+			P2MZone.get(i).setOnContextMenuRequested(null);
 		}
 		
 		int tope = campoDeJuegoUno.cantidadDeMonstruosEnFila();
