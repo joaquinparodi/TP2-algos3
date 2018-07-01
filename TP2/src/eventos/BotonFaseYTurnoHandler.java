@@ -62,11 +62,12 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 				}
 				if(respuesta.get() == reiniciar) {
 					Window stageAnterior = ventana.getStage();
+					ventana.pararMusica();
 					stageAnterior.hide();
 					Stage stage = new Stage();
 					Main main = new Main();	
 					stage.setFullScreen(true);
-					stage.setFullScreenExitHint("Pulse ALT para habilitar el toolbar");
+					stage.setFullScreenExitHint("");
 					main.reiniciarJuego(stage);
 				}
 			}

@@ -1,12 +1,10 @@
 package eventos;
 
-import javafx.scene.input.KeyEvent;
-
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.ToolBar;
-import javafx.scene.input.KeyCode;
 
-public class EventoMostrarToolbar implements EventHandler<KeyEvent> {
+public class EventoMostrarToolbar implements EventHandler<ActionEvent> {
 
 	private ToolBar toolbar;
 
@@ -15,11 +13,9 @@ public class EventoMostrarToolbar implements EventHandler<KeyEvent> {
 	}
 
 	@Override
-	public void handle(KeyEvent event) {
-		if (event.getCode() == KeyCode.ALT) {
-			toolbar.setManaged(!toolbar.isVisible());
-			toolbar.setVisible(!toolbar.isVisible());
-		}
+	public void handle(ActionEvent event) {
+		toolbar.setManaged(!toolbar.isVisible());
+		toolbar.setVisible(!toolbar.isVisible());
 	}
 
 }

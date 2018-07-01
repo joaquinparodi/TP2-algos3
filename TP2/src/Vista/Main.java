@@ -1,14 +1,11 @@
 package Vista;
 
-import java.nio.file.Paths;
-
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import jugabilidad.Randomizador;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class Main extends Application {
@@ -20,7 +17,7 @@ public class Main extends Application {
 	Jugador jugadorDos;
 	
 	Controlador controlador;
-	MediaPlayer reproductor;
+//	MediaPlayer reproductor;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -58,7 +55,7 @@ public class Main extends Application {
 		Scene initialScene = ventanaInicial.createInitialScene(gameScene, stage, ventanaDeJuego);
 		
 		stage.setScene(initialScene);
-		stage.setFullScreenExitHint("Pulse ALT para habilitar el toolbar");
+		stage.setFullScreenExitHint("");
 		stage.show();
 	}
 	

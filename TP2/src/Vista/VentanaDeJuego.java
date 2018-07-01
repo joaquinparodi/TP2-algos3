@@ -91,6 +91,8 @@ public class VentanaDeJuego {
 
 	private MediaPlayer reproductor;
 
+	private ToolBar toolbar;
+
 	
 	public VentanaDeJuego(Jugador playerOne, Jugador playerTwo) {
 		database = new BaseDeDatosDeCartas();
@@ -106,6 +108,14 @@ public class VentanaDeJuego {
 		this.campoDeJuegoDos = playerTwo.obtenerCampo();
 		this.manoJugadorUno = playerOne.obtenerMano();
 		this.manoJugadorDos = playerTwo.obtenerMano();
+	}
+	
+	public void reproducirMusica () {
+		reproductor.play();
+	}
+	
+	public void pararMusica() {
+		reproductor.stop();
 	}
 	
 	public void actualizarNombres() {
@@ -226,7 +236,7 @@ public class VentanaDeJuego {
 			URL = database.getURL(iterDeckOne.next().obtenerNombre());
 			Rectangle rectangulo = new Rectangle(70, 100, Color.DARKCYAN); 
 			this.gridScrollPlayer1.add(rectangulo, actualCards, 0);
-			this.gridScrollPlayer1.setMargin(rectangulo, new Insets(30,30,30,30));
+			GridPane.setMargin(rectangulo, new Insets(30,30,30,30));
 			handOne.add(rectangulo);
 			image = new ImagePattern( new Image(URL) );
 			rectangulo.setFill(image);
@@ -240,7 +250,7 @@ public class VentanaDeJuego {
 			URL = database.getURL(iterDeckTwo.next().obtenerNombre());
 			Rectangle rectangulo = new Rectangle(70, 100, Color.DARKCYAN); 
 			this.gridScrollPlayer2.add(rectangulo, actualCards, 0);
-			this.gridScrollPlayer2.setMargin(rectangulo, new Insets(30,30,30,30));
+			GridPane.setMargin(rectangulo, new Insets(30,30,30,30));
 			handTwo.add(rectangulo);
 			image = new ImagePattern( new Image(URL) );
 			rectangulo.setFill(image);
@@ -409,8 +419,8 @@ public class VentanaDeJuego {
 		if (vidaUno < 0) vidaUno = 0;
 		if (vidaDos < 0) vidaDos = 0;
 		
-		playerOneLife.setText( String.valueOf(vidaUno) );
-		playerTwoLife.setText( String.valueOf(vidaDos) );	
+		playerOneLife.setText( String.valueOf((int)vidaUno) );
+		playerTwoLife.setText( String.valueOf((int)vidaDos) );	
 		
 		P1BarraDeVida.setHeight(vidaUno/80);
 		P2BarraDeVida.setHeight(vidaDos/80);
@@ -461,6 +471,7 @@ public class VentanaDeJuego {
 	public Scene createGameScene(Stage stage) {
 		this.stage = stage;
 	    this.agregarMusicaAlJuego();
+	    this.pararMusica();
 
 	    BorderPane rootBorderPane = this.createBorderPane();
 		
@@ -476,25 +487,26 @@ public class VentanaDeJuego {
 	private BorderPane createBorderPane() {
 		BorderPane rootBorderPane = new BorderPane();
 		
-		GridPane leftGridPane = this.createLeftGridPane();
-		GridPane centerGridPane = this.createCenterGridPane();
-		GridPane rightGridPane = this.createRightGridPane();
-		
 		Button botonMusica = new Button("Encender/Apagar Sonido");
-		Button botonSalir = new Button("Salir");
+		Button botonSalir = new Button("Salir del juego");
 		Button botonHelp = new Button("About");
+		Button botonCerrarOpciones = new Button("Cerrar");
+
 		botonSalir.setOnAction(new BotonSalirEvento(stage));
 		botonHelp.setOnAction(new BotonHelpHandler(stage));
 		botonMusica.setOnAction(new BotonMusicaEvento(reproductor));
-		ToolBar toolbar = new ToolBar(botonSalir,botonHelp,botonMusica);
+
+		this.toolbar = new ToolBar(botonSalir,botonHelp,botonMusica,botonCerrarOpciones);
+
+		botonCerrarOpciones.setOnAction(new EventoMostrarToolbar(toolbar));
+
+		GridPane leftGridPane = this.createLeftGridPane();
+		GridPane centerGridPane = this.createCenterGridPane();
+		GridPane rightGridPane = this.createRightGridPane();		
 		
 		toolbar.setManaged(false);
 		toolbar.setVisible(false);
-		
-		EventoMostrarToolbar evento = new EventoMostrarToolbar (toolbar);
-		
-		rootBorderPane.setOnKeyPressed(evento);
-		
+				
 		rootBorderPane.setLeft(leftGridPane);
 		rootBorderPane.setCenter(centerGridPane);
 		rootBorderPane.setRight(rightGridPane);
@@ -566,7 +578,7 @@ public class VentanaDeJuego {
 		gridPane.add(this.mazoJugadorUno, 0, 5);
 		gridPane.add(P1life, 1, 0);
 		
-		gridPane.add(this.mazoJugadorDos, 0, 15);
+		gridPane.add(this.mazoJugadorDos, 0, 13);
 		gridPane.add(playerTwoLife, 1, 19);
 		gridPane.add(playerTwoName, 0, 19);
 		gridPane.add(square2, 0, 20);
@@ -577,8 +589,18 @@ public class VentanaDeJuego {
 		BotonFaseYTurnoHandler botonFaseYTurnoHandler = new BotonFaseYTurnoHandler(this ,botonCambiarTurno);
 		botonCambiarTurno.setOnAction(botonFaseYTurnoHandler);
 		
+		Button botonOpciones = new Button("Opciones...");
+		botonOpciones.setFont(Font.font("Arial",11));
+		EventoMostrarToolbar botonOpcionesHandler = new EventoMostrarToolbar(toolbar);
+		botonOpciones.setOnAction(botonOpcionesHandler);
+
 		gridPane.add(botonCambiarTurno, 0, 10);
-		GridPane.setMargin(botonCambiarTurno, new Insets(15,0,0,20) );
+		gridPane.add(botonOpciones, 0, 11);
+		GridPane.setMargin(botonCambiarTurno, new Insets(5,0,0,20) );
+		GridPane.setMargin(botonOpciones, new Insets(5,0,0,20) );
+		
+		gridPane.setAlignment(Pos.CENTER_LEFT);
+		
 		//gridPane.setGridLinesVisible(true); //->Solo para guiarse,despues lo sacamos
 		this.setActionToDecks();
 		return gridPane;
