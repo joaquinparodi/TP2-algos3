@@ -518,14 +518,12 @@ public class VentanaDeJuego {
 	private GridPane createLeftGridPane() {		
 		GridPane gridPane = new GridPane();
 
-		//CornerRadii cornerProperties = new CornerRadii(0, 15, 15, 0, false);
 		ImagePattern img1 = new ImagePattern( new Image("file:images/textura_roja_2.jpg") );
 		BackgroundFill fill = new BackgroundFill(img1, null, null);
 		Background background =  new Background(fill);
 		gridPane.setBackground(background);
 		gridPane.setPrefWidth(150);
-//		gridPane.setMaxWidth(gridPane.getWidth());
-//		gridPane.setMinWidth(gridPane.getWidth());
+
 		
 		ImagePattern imgUno = new ImagePattern( new Image("file:images/imagenJugadorUno.jpg") );
 		ImagePattern imgDos = new ImagePattern( new Image("file:images/imagenJugadorDos.jpeg") );
@@ -751,8 +749,8 @@ public class VentanaDeJuego {
 		
 		this.scrollPlayer1 = new ScrollPane(); 
 		this.scrollPlayer2 = new ScrollPane(); 
-		this.scrollPlayer1.setPrefWidth(450);
-		this.scrollPlayer2.setPrefWidth(450);
+		this.scrollPlayer1.setPrefWidth(480);
+		this.scrollPlayer2.setPrefWidth(480);
 		this.scrollPlayer1.setPrefHeight(200);
 		this.scrollPlayer2.setPrefHeight(200);
 		this.gridScrollPlayer1 = new GridPane();

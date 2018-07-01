@@ -29,6 +29,10 @@ public class BaseDeDatosDeCartas {
 	private final String piernaDerechaDeExodia = "file:images/piernaDerecha.jpg";
 	private final String insectoComeHombres = "file:images/insecto.png";
 	private final String jinzo7 = "file:images/jinzo.jpg";
+	private final String bestiaAnfibia = "file:images/bestiaAnfibia.jpg";
+	private final String magoOscuro = "file:images/magoOscuro.jpg";
+	private final String baronDeLaEspadaDemoniaca = "file:images/Baron_de_la_espada_demoniaca.jpg";
+	
 	
 	public BaseDeDatosDeCartas() {
 		URL = new HashMap<String, String>();
@@ -63,6 +67,9 @@ public class BaseDeDatosDeCartas {
 		URL.put("Pierna Izquierda Exodia", piernaIzquierdaDeExodia);
 		URL.put("Insecto Come-Hombres", insectoComeHombres);
 		URL.put("Jinzo 7", jinzo7);
+		URL.put("Bestia Anfibia", bestiaAnfibia);
+		URL.put("Mago Oscuro", magoOscuro);
+		URL.put("Baron De La Espada Demoniaca", baronDeLaEspadaDemoniaca);
 	}
 	
 	

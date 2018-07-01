@@ -36,11 +36,12 @@ public class BotonAgregarEnCampoHandler implements EventHandler<ActionEvent> {
 					jugador.agregarCartaEnCampo(monstruo, areaDeSacrificios.obtenerSacrificios() );
 					areaDeSacrificios.reiniciarSacrificios();
 				} catch ( ErrorSacrificiosInsuficientes error ) {
+					int cantidadDeSacrificios = monstruo.obtenerCantidadDeSacrificiosNecesarios();
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.initOwner(ventanaDeJuego.getStage());
 					alert.setTitle("Error");
 					alert.setHeaderText("Sacrificios incompletos");
-					alert.setContentText("No se han seleccionado sacrificios suficientes para invocar este monstruo");
+					alert.setContentText("Esta carta necesita " + cantidadDeSacrificios + " sacrificios para invocarse");
 					alert.showAndWait();
 				}
 			} else {

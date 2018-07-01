@@ -29,7 +29,7 @@ public class Randomizador {
 		
 		for(int i = 0; i < 20; i++) {
 	
-			int numeroAlAzar = (int) (Math.random() * 7) + 1;
+			int numeroAlAzar = (int) (Math.random() * 10) + 1;
 			
 			switch (numeroAlAzar) {
             
@@ -45,6 +45,12 @@ public class Randomizador {
             		break;
 				case 6: mazo.agregarCarta( fabricaDeCartas.crearGigobyte() );
     				break;
+				case 7: mazo.agregarCarta( fabricaDeCartas.crearBestiaAnfibia() );
+					break;
+				case 8: mazo.agregarCarta( fabricaDeCartas.crearMagoOscuro() );
+					break;
+				case 10: mazo.agregarCarta( fabricaDeCartas.crearBaronDeLaEspadaDemoniaca() );
+					break;
 				default:mazo.agregarCarta( fabricaDeCartas.crearJiraiGumo() );
 					
 			}       

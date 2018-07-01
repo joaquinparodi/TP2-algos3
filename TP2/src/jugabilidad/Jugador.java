@@ -85,7 +85,7 @@ public class Jugador {
     	int sacrificiosNecesarios = cartaMonstruo.obtenerCantidadDeSacrificiosNecesarios();
     	
     	if ( sacrificios.obtenerCantidadDeCartas() != sacrificiosNecesarios ) {
-    		throw new ErrorSacrificiosInsuficientes();
+    			throw new ErrorSacrificiosInsuficientes();
     	}
     	
     	if (!cartaMonstruo.verificarSacrificios(sacrificios)) {

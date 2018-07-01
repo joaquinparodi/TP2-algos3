@@ -73,11 +73,11 @@ public class FabricaDeCartas {
 	}
 	
 	public Monstruo crearBrazoIzquierdoExodia() {
-		return new BrazoIzquierdoExodia("Brazo Izquierdo Exodia", jugador, new Estrellas(3), new Puntos(450,600));
+		return new BrazoIzquierdoExodia("Brazo Izquierdo Exodia", jugador, new Estrellas(3), new Puntos(200,300));
 	}
 	
 	public Monstruo crearBrazoDerechoExodia() {
-		return new BrazoDerechoExodia("Brazo Derecho Exodia", jugador, new Estrellas(3), new Puntos(450,600));
+		return new BrazoDerechoExodia("Brazo Derecho Exodia", jugador, new Estrellas(3), new Puntos(200,300));
 	}
 	
 	public Monstruo crearInsectoComeHombres() {
@@ -89,11 +89,11 @@ public class FabricaDeCartas {
 	}
 	
 	public Monstruo crearPiernaDerechaExodia() {
-		return new PiernaDerechaExodia("Pierna Derecha Exodia", jugador, new Estrellas(3), new Puntos(450,600));
+		return new PiernaDerechaExodia("Pierna Derecha Exodia", jugador, new Estrellas(3), new Puntos(200,300));
 	}
 	
 	public Monstruo crearPiernaIzquierdaExodia() {
-		return new PiernaIzquierdaExodia("Pierna Izquierda Exodia", jugador, new Estrellas(3), new Puntos(450,600));
+		return new PiernaIzquierdaExodia("Pierna Izquierda Exodia", jugador, new Estrellas(3), new Puntos(200,300));
 	}
 	
 	public Monstruo crearMonstruoPersonalizado(String nombre, Estrellas estrellas, Puntos puntos) {
@@ -128,5 +128,17 @@ public class FabricaDeCartas {
 	
 	public Monstruo crearJiraiGumo() {
 		return new Monstruo("Jirai Gumo", jugador, new Estrellas(4), new Puntos(2200,100));
+	}
+	
+	public Monstruo crearBestiaAnfibia() {
+		return new Monstruo("Bestia Anfibia", jugador, new Estrellas(6), new Puntos(2400,2000));
+	}
+	
+	public Monstruo crearMagoOscuro() {
+		return new Monstruo("Mago Oscuro", jugador, new Estrellas(7), new Puntos(2500,2100));
+	}
+	
+	public Monstruo crearBaronDeLaEspadaDemoniaca() {
+		return new Monstruo("Baron De La Espada Demoniaca", jugador, new Estrellas(4), new Puntos(1500,800)); 
 	}
 }
