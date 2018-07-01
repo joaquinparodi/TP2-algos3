@@ -6,6 +6,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import jugabilidad.Controlador;
 import jugabilidad.Jugador;
 import jugabilidad.Randomizador;
 

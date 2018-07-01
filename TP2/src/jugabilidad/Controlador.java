@@ -61,9 +61,11 @@ public class Controlador {
 	}
 	
 	public void repartirCartasIniciales() {
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 6; i++) {
 			jugadorUno.repartirCarta();
 		}
+		
+		this.cartaRepartida = true;
 		
 		for(int i = 0; i < 5; i++) {
 			jugadorDos.repartirCarta();

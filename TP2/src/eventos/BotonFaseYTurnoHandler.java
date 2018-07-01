@@ -71,6 +71,7 @@ public class BotonFaseYTurnoHandler implements EventHandler<ActionEvent> {
 					main.reiniciarJuego(stage);
 				}
 			}
+			controlador.repartirCartaAJugador();
 		}
 		ArenaDeCombate.obtener().reiniciarCombatientes();
 		AreaDeSacrificios.obtener().reiniciarSacrificios();
